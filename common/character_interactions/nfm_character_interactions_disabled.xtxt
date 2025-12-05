@@ -1,0 +1,44 @@
+﻿#actor is decision taker, recipient is obvious
+
+nfm_interaction_grantnobility = {
+    category = interaction_category_vassal
+    common_interaction = no
+    icon = icon_dynasty
+
+    greeting = positive
+
+    is_shown = {
+        scope:actor = {
+            # for now, maybe
+            is_ai = no
+
+            is_landed = yes
+
+            # Must be at least a Duke
+            tier >= tier_duchy
+
+            # Check Government
+            NOT = {
+                government_has_flag = cannot_be_vassal_or_liege # Covers Mercs and Landless
+                has_government = herder_government
+                has_government = theocracy_government
+                has_government = republic_government
+            }
+        }
+        scope:recipient = {
+            is_courtier_of = scope:actor
+            is_lowborn = yes
+            is_adult = yes
+            is_imprisoned = no
+        }
+        NOT = { scope:actor = scope:recipient }
+    }
+
+    on_accept = {
+        hidden_effect = {
+            scope:recipient = {
+            
+            }
+        }
+    }
+}

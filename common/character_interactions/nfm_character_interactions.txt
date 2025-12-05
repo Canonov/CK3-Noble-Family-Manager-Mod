@@ -1,0 +1,131 @@
+﻿#actor is decision taker, recipient is obvious
+
+nfm_interaction_grantnoblehouse = {
+    category = interaction_category_vassal
+    common_interaction = no
+    icon = icon_shift_privileges
+
+    greeting = positive
+
+    is_shown = {
+        scope:actor = {
+            # for now, maybe
+            is_ai = no
+
+            is_landed = yes
+
+            # Must be at least a King
+            highest_held_title_tier >= tier_kingdom
+
+            # Check Government
+            government_allows = administrative
+        }
+        scope:recipient = {
+            is_courtier_of = scope:actor
+            is_ruler = no
+            is_lowborn = no
+            is_adult = yes
+            is_imprisoned = no
+        }
+        NOT = { scope:actor = scope:recipient }
+    }
+
+    on_accept = {
+        scope:recipient = {
+            create_noble_family_effect = { GOVERNMENT_GIVER = scope:actor }
+
+            add_prestige = 250
+            add_influence = 150
+            add_gold = 50
+
+            if = {
+                limit = {
+                    scope:actor = { government_allows = merit }
+                }
+                change_merit_level = 3
+                add_character_modifier = {
+                    modifier = tgp_passed_provincial_exam_modifier
+                }
+            }
+
+            if = {
+                limit = {
+                    dynasty = scope:actor.dynasty
+                }
+                # Grant strong loyalty hook to the granter
+                add_hook = {
+                    target = scope:actor
+                    type = obligation_hook
+                }
+            }
+            else {
+                # Grant hook to the granter
+                add_hook = {
+                    target = scope:actor
+                    type = favor_hook
+                }
+            }
+
+
+        }
+        scope:actor = {
+            stress_impact = {
+                paranoid = minor_stress_impact_gain
+                greedy = minor_stress_impact_gain
+                arrogant = minor_stress_impact_gain
+                generous = minor_stress_impact_loss
+                trusting = minor_stress_impact_loss
+                peasant_leader = major_stress_impact_loss
+                populist_leader = major_stress_impact_loss
+            }
+
+
+        }
+    }
+
+    cost = {
+        prestige = {
+            value = 250
+
+            # Vassals pay double
+            if = {
+                limit = { scope:actor = { is_independent_ruler = no } }
+                multiply = 2
+            }
+        }
+        gold = {
+            value = 75
+
+            # Treasury Pays 50 Less
+            if = {
+                limit = {
+                    has_treasury = yes
+                }
+                value = 25
+            }
+        }
+
+        treasury = {
+            value = 0
+
+            # Treasury Pays 50
+            if = {
+                limit = {
+                    has_treasury = yes
+                }
+                value = 50
+            }
+        }
+
+        influence = {
+            value = 150
+
+            # Vassals pay double
+            if = {
+                limit = { scope:actor = { is_independent_ruler = no } }
+                multiply = 2
+            }
+        }
+
+    }
+}

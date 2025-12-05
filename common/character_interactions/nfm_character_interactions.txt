@@ -5,7 +5,11 @@ nfm_interaction_grantnoblehouse = {
     common_interaction = no
     icon = icon_shift_privileges
 
+    desc = nfm_interaction_grantnoblehouse_desc
+
     greeting = positive
+
+    auto_accept = yes
 
     is_shown = {
         scope:actor = {
@@ -26,17 +30,81 @@ nfm_interaction_grantnoblehouse = {
             is_lowborn = no
             is_adult = yes
             is_imprisoned = no
+
+            # Check Marriage Type
+            OR = {
+                # are unmarried
+                is_married = no
+                # dominant partner in at least one of their marriages
+                AND = {
+                    is_female = yes
+                    matrilinear_marriage = yes
+                }
+                AND = {
+                    is_male = yes
+                    matrilinear_marriage = no
+                }
+                # Your marriage is same-sex
+                NOR = {
+                    AND = {
+                        any_consort = {
+                            is_female = yes
+                        }
+                        is_male = yes
+                    }
+                    AND = {
+                        any_consort = {
+                            is_male = yes
+                        }
+                        is_female = yes
+                    }
+                }
+            }
         }
         NOT = { scope:actor = scope:recipient }
     }
 
+    is_valid_showing_failures_only = {
+        scope:recipient = {
+            NOT = { 
+                has_trait = devoted
+                has_trait = gallivanter
+            }
+            custom_description = {
+                text = is_not_theocratic_court_chaplain
+                subject = scope:recipient
+                NAND = {
+                    scope:actor.faith = {
+                        has_doctrine = doctrine_theocracy_temporal
+                    }
+                    scope:recipient = {
+                        faith = {
+                            has_doctrine = doctrine_theocracy_temporal
+                        }
+                        has_council_position = councillor_court_chaplain
+                    }
+                    scope:actor.faith.religious_head != scope:recipient
+                }
+            }
+        }
+    }
+
     on_accept = {
         scope:recipient = {
-            create_noble_family_effect = { GOVERNMENT_GIVER = scope:actor }
+            custom_tooltip = {
+                text = create_noble_family_tt
 
-            add_prestige = 250
-            add_influence = 150
-            add_gold = 50
+                create_noble_family_effect = { GOVERNMENT_GIVER = scope:actor }
+            }
+
+            custom_tooltip = {
+                text = nfm_interaction_grantnoblehouse_gaincosts_tt
+
+                add_prestige = 250
+                change_influence = 150
+                add_gold = 50
+            }
+
 
             if = {
                 limit = {
@@ -47,26 +115,6 @@ nfm_interaction_grantnoblehouse = {
                     modifier = tgp_passed_provincial_exam_modifier
                 }
             }
-
-            if = {
-                limit = {
-                    dynasty = scope:actor.dynasty
-                }
-                # Grant strong loyalty hook to the granter
-                add_hook = {
-                    target = scope:actor
-                    type = obligation_hook
-                }
-            }
-            else {
-                # Grant hook to the granter
-                add_hook = {
-                    target = scope:actor
-                    type = favor_hook
-                }
-            }
-
-
         }
         scope:actor = {
             stress_impact = {
@@ -79,7 +127,24 @@ nfm_interaction_grantnoblehouse = {
                 populist_leader = major_stress_impact_loss
             }
 
-
+            # Grant Hook
+            if = {
+                limit = {
+                    scope:recipient.dynasty = dynasty
+                }
+                # Grant strong loyalty hook to the granter
+                add_hook = {
+                    target = scope:recipient
+                    type = loyalty_hook
+                }
+            }
+            else = {
+                # Grant hook to the granter
+                add_hook = {
+                    target = scope:recipient
+                    type = obligation_hook
+                }
+            }
         }
     }
 
@@ -99,7 +164,7 @@ nfm_interaction_grantnoblehouse = {
             # Treasury Pays 50 Less
             if = {
                 limit = {
-                    has_treasury = yes
+                    scope:actor = { has_treasury = yes }
                 }
                 value = 25
             }
@@ -111,7 +176,7 @@ nfm_interaction_grantnoblehouse = {
             # Treasury Pays 50
             if = {
                 limit = {
-                    has_treasury = yes
+                    scope:actor = { has_treasury = yes }
                 }
                 value = 50
             }
@@ -128,4 +193,5 @@ nfm_interaction_grantnoblehouse = {
         }
 
     }
+}
 }

@@ -1,3 +1,4 @@
 ﻿l_english:
- nfm_interaction_grantnoblehouse: "Raise Noble House"
- nfm_interaction_grantnoblehouse_desc: "Desc TBD"
+ nfm_interaction_grantnoblehouse: "Elevate as Noble Family Head"
+ nfm_interaction_grantnoblehouse_desc: "Elevate [recipient.GetShortUIName] to the position of a [noble_family|E] head, creating a [cadet_branch|E] if necessary"
+ nfm_interaction_grantnoblehouse_gaincosts_tt: "Will gain the [prestige|E], [influence|E] and part of the [gold|E] costs"

@@ -194,4 +194,47 @@ nfm_interaction_grantnoblehouse = {
 
     }
 }
+
+
+nfm_interaction_destroynoblehouse = {
+    category = interaction_category_prison 
+    common_interaction = yes
+    icon = icon_governor_removal
+
+    desc = nfm_interaction_destroynoblehouse_desc
+
+    greeting = negative
+
+    auto_accept = yes
+
+    is_shown = {
+        scope:actor = {
+            is_ai = no
+            is_independent_ruler = yes
+
+            # Check Government
+            government_allows = administrative
+        }
+        scope:recipient = {
+            is_ruler = yes
+            top_liege ?= scope:actor
+
+            any_held_title = {
+                is_noble_family_title = yes
+            }
+
+            is_imprisoned = yes
+
+        }
+        NOT = { scope:actor = scope:recipient }
+    }
+
+    is_valid_showing_failures_only = {
+    }
+
+    on_accept = {
+    }
+
+    cost = {
+    }
 }

@@ -1,0 +1,276 @@
+﻿nfm_scriptvalue_domicileworth = {
+nfm_value_domicileworth = {
+    value = 10 # Base value for having any domicile
+
+    assert_if = {
+        limit = {
+            NOT = { exists = scope:domicile_to_destroy }
+        }
+        text = "Could not find the domicile scope in nfm_value_domicileworth"
+    }
+
+    scope:domicile_to_destroy ?= {
+        # Standard Estate
+        if = {
+            limit = {
+                domicile_type = estate
+            }
+
+            # Main Building (+100)
+            if = { limit = { has_domicile_building_or_higher = estate_main_01 } add = 100 }
+
+            # Major Production (+20)
+            if = { limit = { has_domicile_building_or_higher = market_01 } add = 20 }
+            if = { limit = { has_domicile_building_or_higher = silk_01 } add = 20 }
+            if = { limit = { has_domicile_building_or_higher = vineyard_01 } add = 20 }
+
+            # Military (+15)
+            if = { limit = { has_domicile_building_or_higher = barracks_01 } add = 15 }
+            if = { limit = { has_domicile_building_or_higher = watchtower_01 } add = 15 }
+            if = { limit = { has_domicile_building_or_higher = guardhouse_01 } add = 15 }
+
+            # Economy (+12)
+            if = { limit = { has_domicile_building_or_higher = workshop_01 } add = 12 }
+            if = { limit = { has_domicile_building_or_higher = storage_01 } add = 12 }
+
+            # Administrative (+10)
+            if = { limit = { has_domicile_building_or_higher = office_01 } add = 10 }
+            if = { limit = { has_domicile_building_or_higher = library_01 } add = 10 }
+            if = { limit = { has_domicile_building_or_higher = reception_hall_01 } add = 10 }
+
+            # Production (+8)
+            if = { limit = { has_domicile_building_or_higher = grain_field_01 } add = 8 }
+            if = { limit = { has_domicile_building_or_higher = rice_field_01 } add = 8 }
+            if = { limit = { has_domicile_building_or_higher = grazing_land_01 } add = 8 }
+            if = { limit = { has_domicile_building_or_higher = tea_01 } add = 8 }
+            if = { limit = { has_domicile_building_or_higher = olive_01 } add = 8 }
+
+            # Lifestyle (+6)
+            if = { limit = { has_domicile_building_or_higher = living_quarters_01 } add = 6 }
+            if = { limit = { has_domicile_building_or_higher = bath_01 } add = 6 }
+            if = { limit = { has_domicile_building_or_higher = guest_room_01 } add = 6 }
+            if = { limit = { has_domicile_building_or_higher = wine_cellar_01 } add = 6 }
+            if = { limit = { has_domicile_building_or_higher = courtyard_01 } add = 6 }
+            if = { limit = { has_domicile_building_or_higher = garden_01 } add = 6 }
+            if = { limit = { has_domicile_building_or_higher = grand_solar_01 } add = 6 }
+            if = { limit = { has_domicile_building_or_higher = temple_small_01 } add = 6 }
+
+            # Support (+4)
+            if = { limit = { has_domicile_building_or_higher = servants_quarters_01 } add = 4 }
+            if = { limit = { has_domicile_building_or_higher = stable_01 } add = 4 }
+            if = { limit = { has_domicile_building_or_higher = prison_01 } add = 4 }
+
+            # Luxury (+3)
+            if = { limit = { has_domicile_building_or_higher = trophy_room_01 } add = 3 }
+            if = { limit = { has_domicile_building_or_higher = cabinet_of_curiosities_01 } add = 3 }
+        }
+
+        # Japanese Manor
+        else_if = {
+            limit = {
+                domicile_type = japanese_manor
+            }
+
+            # Main Building (+100)
+            if = { limit = { has_domicile_building_or_higher = japanese_manor_main_01 } add = 100 }
+
+            # Major Production (+20)
+            if = { limit = { has_domicile_building_or_higher = japanese_rice_broker_01 } add = 20 }
+            if = { limit = { has_domicile_building_or_higher = japanese_matcha_factory_01 } add = 20 }
+
+            # Military (+15)
+            if = { limit = { has_domicile_building_or_higher = japanese_barracks_01 } add = 15 }
+            if = { limit = { has_domicile_building_or_higher = japanese_armory_01 } add = 15 }
+            if = { limit = { has_domicile_building_or_higher = japanese_watch_house_01 } add = 15 }
+            if = { limit = { has_domicile_building_or_higher = japanese_bladesmith_01 } add = 15 }
+            if = { limit = { has_domicile_building_or_higher = japanese_armorer_01 } add = 15 }
+            if = { limit = { has_domicile_building_or_higher = japanese_spy_network_01 } add = 15 }
+            if = { limit = { has_domicile_building_or_higher = japanese_infiltrators_01 } add = 15 }
+
+            # Economy (+12)
+            if = { limit = { has_domicile_building_or_higher = japanese_granary_01 } add = 12 }
+            if = { limit = { has_domicile_building_or_higher = japanese_workshop_01 } add = 12 }
+            if = { limit = { has_domicile_building_or_higher = japanese_brewery_01 } add = 12 }
+            if = { limit = { has_domicile_building_or_higher = japanese_koshu_cellars_01 } add = 12 }
+            if = { limit = { has_domicile_building_or_higher = japanese_bowyer_01 } add = 12 }
+            if = { limit = { has_domicile_building_or_higher = japanese_lacquerer_01 } add = 12 }
+            if = { limit = { has_domicile_building_or_higher = japanese_carpenter_01 } add = 12 }
+
+            # Administrative (+10)
+            if = { limit = { has_domicile_building_or_higher = japanese_manor_office_01 } add = 10 }
+            if = { limit = { has_domicile_building_or_higher = japanese_manor_library_confucian_01 } add = 10 }
+            if = { limit = { has_domicile_building_or_higher = japanese_archive_01 } add = 10 }
+            if = { limit = { has_domicile_building_or_higher = japanese_shokubo_01 } add = 10 }
+            if = { limit = { has_domicile_building_or_higher = japanese_schoolhouse_01 } add = 10 }
+            if = { limit = { has_domicile_building_or_higher = japanese_law_library_01 } add = 10 }
+            if = { limit = { has_domicile_building_or_higher = japanese_messenger_service_01 } add = 10 }
+            if = { limit = { has_domicile_building_or_higher = japanese_main_tax_collectors_01 } add = 10 }
+            if = { limit = { has_domicile_building_or_higher = japanese_main_carpenter_01 } add = 10 }
+
+            # Production (+8)
+            if = { limit = { has_domicile_building_or_higher = japanese_fields_01 } add = 8 }
+            if = { limit = { has_domicile_building_or_higher = japanese_tenant_farmers_01 } add = 8 }
+            if = { limit = { has_domicile_building_or_higher = japanese_tea_plantation_01 } add = 8 }
+            if = { limit = { has_domicile_building_or_higher = japanese_orchard_01 } add = 8 }
+            if = { limit = { has_domicile_building_or_higher = japanese_roastery_01 } add = 8 }
+
+            # Lifestyle (+6)
+            if = { limit = { has_domicile_building_or_higher = japanese_shrine_01 } add = 6 }
+            if = { limit = { has_domicile_building_or_higher = japanese_cemetery_01 } add = 6 }
+            if = { limit = { has_domicile_building_or_higher = japanese_monastery_01 } add = 6 }
+            if = { limit = { has_domicile_building_or_higher = japanese_garden_01 } add = 6 }
+            if = { limit = { has_domicile_building_or_higher = japanese_rock_garden_01 } add = 6 }
+            if = { limit = { has_domicile_building_or_higher = japanese_tea_house_01 } add = 6 }
+            if = { limit = { has_domicile_building_or_higher = japanese_guest_house_01 } add = 6 }
+            if = { limit = { has_domicile_building_or_higher = japanese_medicine_house_01 } add = 6 }
+            if = { limit = { has_domicile_building_or_higher = japanese_hunting_lodge_01 } add = 6 }
+
+            # Support (+4)
+            if = { limit = { has_domicile_building_or_higher = japanese_manor_servants_quarters_01 } add = 4 }
+            if = { limit = { has_domicile_building_or_higher = japanese_manor_retainer_accomodations_01 } add = 4 }
+            if = { limit = { has_domicile_building_or_higher = japanese_stables_01 } add = 4 }
+            if = { limit = { has_domicile_building_or_higher = japanese_prison_01 } add = 4 }
+            if = { limit = { has_domicile_building_or_higher = japanese_horse_pastures_01 } add = 4 }
+            if = { limit = { has_domicile_building_or_higher = japanese_stud_farm_01 } add = 4 }
+            if = { limit = { has_domicile_building_or_higher = japanese_ox_breeder_01 } add = 4 }
+            if = { limit = { has_domicile_building_or_higher = japanese_riding_school_01 } add = 4 }
+            if = { limit = { has_domicile_building_or_higher = japanese_yabusame_ground_01 } add = 4 }
+            if = { limit = { has_domicile_building_or_higher = japanese_farrier_01 } add = 4 }
+
+            # Luxury (+3)
+            if = { limit = { has_domicile_building_or_higher = japanese_manor_trophy_room_01 } add = 3 }
+            if = { limit = { has_domicile_building_or_higher = japanese_manor_poetry_library_01 } add = 3 }
+            if = { limit = { has_domicile_building_or_higher = sarugaku_stage_01 } add = 3 }
+            if = { limit = { has_domicile_building_or_higher = japanese_kazan_display_01 } add = 3 }
+            if = { limit = { has_domicile_building_or_higher = japanese_performance_stage_01 } add = 3 }
+            if = { limit = { has_domicile_building_or_higher = japanese_asobi_colony_01 } add = 3 }
+            if = { limit = { has_domicile_building_or_higher = japanese_gambling_den_01 } add = 3 }
+            if = { limit = { has_domicile_building_or_higher = japanese_sumo_hall_01 } add = 3 }
+        }
+
+        # East Asian Estate
+        else_if = {
+            limit = {
+                domicile_type = east_asian_estate
+            }
+
+            # Main Building (+100)
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_main_01 } add = 100 }
+
+            # Major Production (+20)
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_market_01 } add = 20 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_silk_01 } add = 20 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_tea_horse_road_office_01 } add = 20 }
+
+            # Military (+15)
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_barracks_01 } add = 15 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_watchtower_01 } add = 15 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_armorer_01 } add = 15 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_veterans_hall_01 } add = 15 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_quartermaster_01 } add = 15 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_sergeants_school_01 } add = 15 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_drill_yard_01 } add = 15 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_pass_office_01 } add = 15 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_gunpowder_storage_01 } add = 15 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_signal_fires_01 } add = 15 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_regular_patrols_01 } add = 15 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_crossbow_storage_01 } add = 15 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_militia_muster_green_01 } add = 15 }
+
+            # Economy (+12)
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_workshop_01 } add = 12 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_storage_01 } add = 12 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_buffer_stock_granary_01 } add = 12 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_weighing_house_01 } add = 12 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_dye_works_01 } add = 12 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_sericulture_school_01 } add = 12 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_silk_storage_01 } add = 12 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_vintner_halls_01 } add = 12 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_wine_press_01 } add = 12 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_cellar_cave_01 } add = 12 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_jar_kiln_01 } add = 12 }
+
+            # Administrative (+10)
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_library_01 } add = 10 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_taxation_01 } add = 10 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_minister_office_01 } add = 10 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_movement_study_01 } add = 10 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_archive_01 } add = 10 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_study_01 } add = 10 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_commander_study_01 } add = 10 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_office_01 } add = 10 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_cartography_office_01 } add = 10 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_drafting_room_01 } add = 10 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_clerks_hall_01 } add = 10 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_revenue_audit_desk_01 } add = 10 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_block_printing_hall_01 } add = 10 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_xuan_paper_stores_01 } add = 10 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_water_clock_room_01 } add = 10 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_examination_room_01 } add = 10 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_waterways_office_01 } add = 10 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_field_surveyors_office_01 } add = 10 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_inspection_office_01 } add = 10 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_courier_posthouse_01 } add = 10 }
+
+            # Production (+8)
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_rice_field_01 } add = 8 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_tea_01 } add = 8 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_grazing_land_01 } add = 8 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_rice_fish_duck_ponds_01 } add = 8 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_ration_wine_stores_01 } add = 8 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_mulberry_nursery_01 } add = 8 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_roasting_house_01 } add = 8 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_grading_hall_01 } add = 8 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_tea_tax_office_01 } add = 8 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_fruit_trees_01 } add = 8 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_ancestral_orchard_01 } add = 8 }
+
+            # Lifestyle (+6)
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_living_quarters_01 } add = 6 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_bath_01 } add = 6 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_guest_room_01 } add = 6 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_wine_cellar_01 } add = 6 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_courtyard_01 } add = 6 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_reception_hall_01 } add = 6 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_garden_01 } add = 6 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_ancestral_shrine_01 } add = 6 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_temple_01 } add = 6 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_gate_01 } add = 6 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_bell_drum_tower_01 } add = 6 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_temple_land_office_01 } add = 6 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_lecture_pavilion_01 } add = 6 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_guesthouse_01 } add = 6 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_chanting_hall_01 } add = 6 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_genealogy_hall_01 } add = 6 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_history_school_01 } add = 6 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_rites_office_01 } add = 6 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_memorial_archway_01 } add = 6 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_teahouse_01 } add = 6 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_health_01 } add = 6 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_pharmacy_01 } add = 6 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_hot_baths_01 } add = 6 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_medical_library_01 } add = 6 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_field_surgeon_cart_01 } add = 6 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_herb_drying_terrace_01 } add = 6 }
+
+            # Support (+4)
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_servants_quarters_01 } add = 4 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_prison_01 } add = 4 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_stable_01 } add = 4 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_foaling_pens_01 } add = 4 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_riding_arena_01 } add = 4 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_farriers_office_01 } add = 4 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_bloodline_records_office_01 } add = 4 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_meeting_houses_01 } add = 4 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_night_watch_01 } add = 4 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_fire_brigade_01 } add = 4 }
+
+            # Luxury (+3)
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_cabinet_of_curiosities_01 } add = 3 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_aviary_01 } add = 3 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_four_gentlemen_01 } add = 3 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_scholars_rocks_01 } add = 3 }
+            if = { limit = { has_domicile_building_or_higher = east_asian_estate_lotus_pond_01 } add = 3 }
+        }
+    }
+}

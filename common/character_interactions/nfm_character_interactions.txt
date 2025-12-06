@@ -400,7 +400,7 @@ nfm_interaction_destroynoblehouse = {
 
 
         ## Destroy the Title
-        destroy_title = scope:family_title
+        scope:actor = { destroy_title = scope:family_title }
 
 
         ## Family Punishment Options

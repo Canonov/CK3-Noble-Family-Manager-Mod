@@ -1,6 +1,4 @@
-﻿#actor is decision taker, recipient is obvious
-
-nfm_interaction_grantnoblehouse = {
+﻿nfm_interaction_grantnoblehouse = {
     category = interaction_category_vassal
     common_interaction = no
     icon = icon_shift_privileges
@@ -66,7 +64,7 @@ nfm_interaction_grantnoblehouse = {
 
     is_valid_showing_failures_only = {
         scope:recipient = {
-            NOT = { 
+            NOT = {
                 has_trait = devoted
                 has_trait = gallivanter
             }
@@ -195,44 +193,312 @@ nfm_interaction_grantnoblehouse = {
     }
 }
 
-
+## Destroy Noble House
+# TODO allow it to be done tyrannically and add a crown auth requirement
 nfm_interaction_destroynoblehouse = {
-    category = interaction_category_prison 
+    category = interaction_category_prison
     common_interaction = yes
     icon = icon_governor_removal
 
     desc = nfm_interaction_destroynoblehouse_desc
+    options_heading = nfm_interaction_destroynoblehouse_options
 
     greeting = negative
 
     auto_accept = yes
+    send_options_exclusive = no
 
     is_shown = {
         scope:actor = {
             is_ai = no
-            is_independent_ruler = yes
+            top_liege = this
 
             # Check Government
-            government_allows = administrative
+            OR = {
+                government_allows = administrative
+                has_government = japan_feudal_government
+            }
         }
+
         scope:recipient = {
-            is_ruler = yes
             top_liege ?= scope:actor
+            is_ruler = yes
+            is_imprisoned = yes
 
             any_held_title = {
                 is_noble_family_title = yes
             }
-
-            is_imprisoned = yes
-
         }
         NOT = { scope:actor = scope:recipient }
     }
 
     is_valid_showing_failures_only = {
+        scope:actor = {
+            is_imprisoned = no
+            NOT = { exists = involved_activity }
+
+            custom_tooltip = {
+                text = nfm_interaction_destroynoblehouse_musthavereason_tt
+
+                OR = {
+                    has_revoke_title_reason = scope:recipient
+                    has_execute_reason = scope:recipient
+                }
+            }
+        }
+
+        scope:recipient = {
+            NOT = { has_strong_hook = scope:actor }
+            tgp_is_ceremonial_liege_trigger = no
+        }
+
+        scope:recipient.house = {
+            is_powerful_family = no
+
+            custom_tooltip = {
+                text = nfm_interaction_destroynoblehouse_nofamilyrulers_tt
+
+                NOT = {
+                    any_house_member = {
+                        is_landed = yes
+                        top_liege = scope:actor
+                    }
+                }
+
+            }
+        }
     }
 
+    # Option: Sack their Estates
+    send_option = {
+        localization = nfm_interaction_destroynoblehouse_sack_estate
+        flag = sack_estate
+
+        is_shown = {
+            always = yes
+        }
+
+        # Tooltip
+        current_description = nfm_interaction_destroynoblehouse_sack_estate_desc
+    }
+
+    # Option: Imprison their family
+    send_option = {
+        localization = nfm_interaction_destroynoblehouse_imprison_family
+        flag = imprison_family
+
+        is_shown = {
+            scope:recipient.house ?= {
+                any_house_member = { count > 1 }
+            }
+        }
+
+        is_valid = {
+            # Incompatible 
+            custom_tooltip = {
+                text = nfm_interaction_destroynoblehouse_imprison_family_cannotalsobanish_tt
+                scope:banish_family = no
+            }
+            
+
+            # Their estate must also be sacked
+            custom_tooltip = {
+                text = nfm_interaction_destroynoblehouse_imprison_family_mustsack_tt
+
+                scope:sack_estate = yes
+            }
+
+            custom_tooltip = {
+                text = nfm_interaction_destroynoblehouse_imprison_family_requirements_tt
+
+                scope:actor = {
+                    OR = {
+                        dynasty ?= { has_dynasty_perk = ep3_administrative_legacy_5 }
+                        has_trait = vengeful
+                        has_trait = sadistic
+                        has_trait = arbitrary
+                    }
+                }
+            }
+        }
+
+        # Tooltip
+        current_description = nfm_interaction_destroynoblehouse_imprison_family_desc
+    }
+
+    # Option: Banish their family
+    send_option = {
+        localization = nfm_interaction_destroynoblehouse_banish_family
+        flag = banish_family
+
+        is_shown = {
+            scope:recipient.house ?= {
+                any_house_member = { count > 1 }
+            }
+        }
+
+        is_valid = {
+            # Incompatible
+            custom_tooltip = {
+                text = nfm_interaction_destroynoblehouse_banish_family_cannotalsoimprison_tt
+                scope:imprison_family = no
+            }
+        }
+
+        # Tooltip
+        current_description = nfm_interaction_destroynoblehouse_banish_family_desc
+    }
+
+
     on_accept = {
+        ## Setup
+        # Save their family title
+        scope:recipient = {
+            random_held_title = {
+                limit = { is_noble_family_title = yes }
+                save_scope_as = family_title
+            }
+        }
+        # Set up and Calculate Domicile worth
+        scope:family_title.title_domicile = {
+            save_scope_value_as = {
+                name = domicile_value
+                value = nfm_value_domicileworth
+            }
+        }
+
+
+        ## Gold
+        # Option: Sacking the Estate
+        if = {
+            limit = { scope:sack_estate = yes }
+
+            # 50% the value as loot
+            scope:actor = {
+                add_gold = {
+                    value = scope:domicile_value
+                    multiply = 0.5
+                }
+            }
+        }
+        else = {
+            # 20% the value as loot
+            scope:actor = {
+                add_gold = {
+                    value = scope:domicile_value
+                    multiply = 0.2
+                }
+            }
+            # 80% the value recovered
+            scope:recipient = {
+                add_gold = {
+                    value = scope:domicile_value
+                    multiply = 0.8
+                }
+            }
+        }
+
+
+        ## Destroy the Title
+        destroy_title = scope:family_title
+
+
+        ## Family Punishment Options
+        # Banish their family
+        if = {
+            limit = { scope:banish_family = yes }
+
+            scope:recipient.house ?= {
+                every_house_member = {
+                    custom = custom.every_house_member_recipient
+
+                    limit = {
+                        scope:recipient != this
+                        target_is_liege_or_above = scope:actor
+                    }
+                    banish = yes
+                    add_opinion = {
+                        modifier = banished_me
+                        target = scope:actor
+                    }
+                }
+            }
+
+
+        }
+        # Imprison their family
+        else_if = {
+            limit = { scope:imprison_family = yes }
+
+            scope:actor = {
+                custom_tooltip = {
+                    text = nfm_interaction_destroynoblehouse_imprison_family_tt
+                }
+            }
+            scope:recipient.house ?= {
+                every_house_member = {
+                    #custom = custom.every_house_member_recipient
+
+                    hidden_effect = {
+                        scope:actor = {
+                            imprison = {
+                                target = PREV
+                                type = house_arrest
+                            }
+                        }
+                        add_opinion = {
+                            modifier = imprisoned_me
+                            years = 10
+                            target = scope:actor
+                        }
+                        add_opinion = {
+                            target = scope:actor
+                            modifier = imprisoned_family_member
+                            opinion = -50
+                        }
+                    }
+                }
+            }
+            scope:recipient = {
+                add_opinion = {
+                    target = scope:actor
+                    modifier = imprisoned_family_member
+                    opinion = -1000
+                }
+            }
+        }
+
+
+        ## Post Effects
+        # Banish Them or keep them there
+        scope:recipient = {
+            if = {
+                limit = { scope:imprison_family = no }
+
+                # Banish them
+                add_opinion = {
+                    modifier = banished_me
+                    target = scope:actor
+                }
+
+                # TODO maybe guarantee it and give them a boost
+                # They might become an adventurer
+                banish_effect = { BANISHER = scope:actor }
+            }
+        }
+
+        # Tyranny and Stress Gain
+        scope:actor = {
+            stress_impact = {
+                # Stress Gain
+                forgiving = minor_stress_impact_gain
+                compassionate = minor_stress_impact_gain
+                # Stress Loss
+                vengeful = medium_stress_impact_loss
+            }
+            add_tyranny = nfm_value_familydestructiontyranny
+        }
+
     }
 
     cost = {

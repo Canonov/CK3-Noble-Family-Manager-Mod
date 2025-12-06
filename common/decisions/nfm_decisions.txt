@@ -1,0 +1,133 @@
+﻿
+# Elevate a Noble Family
+nfm_decision_elevate_local_nobles = {
+    title = nfm_decision_elevate_local_nobles
+    desc = nfm_decision_elevate_local_nobles_desc
+    selection_tooltip = nfm_decision_elevate_local_nobles_tooltip
+
+    picture = {
+        reference = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
+    }
+
+    decision_group_type = courtier
+
+    is_shown = {
+        # for now, maybe
+        is_ai = no
+
+        # Must be at least a King
+        is_landed = yes
+        highest_held_title_tier >= tier_kingdom
+
+        # Check Government
+        government_allows = administrative
+    }
+
+    is_valid = {
+    }
+
+    widget = {
+        gui = "decision_view_widget_option_list_generic"
+        controller = decision_option_list_controller
+        decision_to_second_step_button = "nfm_decision_elevate_local_nobles_confirm"
+        show_from_start = yes
+
+        # House of Administrators
+        item = {
+            value = stewardship_house
+            is_shown = {
+                always = yes
+            }
+
+            localization = stewardship_house_name
+            current_description = stewardship_house_desc
+
+            icon = "gfx/interface/icons/icon_skill_stewardship.dds"
+            is_default = yes
+
+            ai_chance = {
+                value = 0
+            }
+        }
+    
+        # House of Warriors
+        item = {
+            value = martial_house
+            is_shown = {
+                always = yes
+            }
+
+            localization = martial_house_name
+            current_description = martial_house_desc
+
+            icon = "gfx/interface/icons/icon_knight_acclaimed.dds"
+
+            ai_chance = {
+                value = 0
+            }
+        }
+
+        # House of Scholars
+        item = {
+            value = learning_house
+            is_shown = {
+                always = yes
+            }
+
+            localization = learning_house_name
+            current_description = learning_house_desc
+
+            icon = "gfx/interface/icons/icon_game_concept_innovation_fascination.dds"
+
+            ai_chance = {
+                value = 0
+            }
+        }
+
+        # House of Spies
+        item = {
+            value = intrigue_house
+            is_shown = {
+                always = yes
+            }
+
+            localization = intrigue_house_name
+            current_description = intrigue_house_desc
+
+            icon = "gfx/interface/icons/icon_scheme.dds"
+
+            ai_chance = {
+                value = 0
+            }
+        }
+
+        # House of Foreigners
+        item = {
+            value = foreign_house
+            is_shown = {
+                always = yes
+            }
+            is_valid = {
+                any_realm_county = { culture != root.culture }
+            }
+
+            localization = foreign_house_name
+            current_description = foreign_house_desc
+
+            icon = "gfx/interface/icons/icon_culture.dds"
+
+            ai_chance = {
+                value = 0
+            }
+        }
+
+    }
+
+    effect = {
+    }
+
+    # Prevent AI from taking this decision
+    ai_potential = {
+        always = no
+    }
+}

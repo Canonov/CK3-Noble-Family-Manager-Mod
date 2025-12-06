@@ -1,0 +1,29 @@
+﻿l_english:
+ ## Main Decision
+ nfm_decision_elevate_local_nobles: "Elevate a Noble Family"
+ nfm_decision_elevate_local_nobles_desc: "desc"
+ nfm_decision_elevate_local_nobles_tooltip: "tooltip"
+ nfm_decision_elevate_local_nobles_confirm: "Send a Summons"
+
+ ## House Types
+ # Stewards
+ stewardship_house_name: "Capable Stewards"
+ stewardship_house_desc: "Desc"
+ stewardship_house_tooltip: "Tooltip"
+ # Warriors
+ martial_house_name: "Soldiers and Commanders"
+ martial_house_desc: "Desc"
+ martial_house_tooltip: "Tooltip"
+ # Scholars
+ learning_house_name: "Learned Scholars"
+ learning_house_desc: "Desc"
+ learning_house_tooltip: "Tooltip"
+ # Spies
+ intrigue_house_name: "Trustworthy Spies"
+ intrigue_house_desc: "Desc"
+ intrigue_house_tooltip: "Tooltip"
+ # Minority
+ foreign_house_name: "Talented Minorities"
+ foreign_house_desc: "Desc"
+ foreign_house_tooltip: "Tooltip"
+ 

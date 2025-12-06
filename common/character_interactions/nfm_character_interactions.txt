@@ -483,6 +483,7 @@ nfm_interaction_destroynoblehouse = {
 
                 # TODO maybe guarantee it and give them a boost
                 # They might become an adventurer
+                release_from_prison = yes
                 banish_effect = { BANISHER = scope:actor }
             }
         }

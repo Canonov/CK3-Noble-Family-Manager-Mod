@@ -445,6 +445,10 @@ nfm_interaction_destroynoblehouse = {
             scope:recipient.house ?= {
                 every_house_member = {
                     #custom = custom.every_house_member_recipient
+                    limit = {
+                        is_imprisoned = no
+                        top_liege = scope:actor
+                    }
 
                     hidden_effect = {
                         scope:actor = {

@@ -380,6 +380,13 @@ nfm_interaction_destroynoblehouse = {
                     multiply = 0.5
                 }
             }
+            # 20% the value recovered
+            scope:recipient = {
+                add_gold = {
+                    value = scope:domicile_value
+                    multiply = 0.2
+                }
+            }
         }
         else = {
             # 20% the value as loot

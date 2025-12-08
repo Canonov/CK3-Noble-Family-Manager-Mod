@@ -1,4 +1,4 @@
-# House head - grateful for elevation to nobility
+﻿# House head - grateful for elevation to nobility
 nfm_elevated_to_nobility_opinion = {
     opinion = 30
     years = 20

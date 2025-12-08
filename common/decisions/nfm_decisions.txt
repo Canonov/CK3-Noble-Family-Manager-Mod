@@ -1,9 +1,9 @@
 ﻿
 # Elevate a Noble Family
-nfm_decision_elevate_local_nobles = {
-    title = nfm_decision_elevate_local_nobles
-    desc = nfm_decision_elevate_local_nobles_desc
-    selection_tooltip = nfm_decision_elevate_local_nobles_tooltip
+nfm_decision_elevate_nobles = {
+    title = nfm_decision_elevate_nobles
+    desc = nfm_decision_elevate_nobles_desc
+    selection_tooltip = nfm_decision_elevate_nobles_tooltip
 
 	picture = {
 		trigger = { culture = { has_graphical_east_asia_culture_group_trigger = yes } }
@@ -33,7 +33,7 @@ nfm_decision_elevate_local_nobles = {
     widget = {
         gui = "decision_view_widget_option_list_generic"
         controller = decision_option_list_controller
-        decision_to_second_step_button = "nfm_decision_elevate_local_nobles_confirm"
+        decision_to_second_step_button = "nfm_decision_elevate_nobles_confirm"
         show_from_start = yes
 
         # House of Administrators
@@ -135,21 +135,21 @@ nfm_decision_elevate_local_nobles = {
                     name = family_size
                     value = nfm_familysize_small
                 }
-                custom_tooltip = nfm_decision_elevate_local_nobles_familywillbesmall_tt
+                custom_tooltip = nfm_decision_elevate_nobles_small_tt
             }
             60 = {
                 save_scope_value_as  = {
                     name = family_size
                     value = nfm_familysize_medium
                 }
-                custom_tooltip = nfm_decision_elevate_local_nobles_familywillbemedium_tt
+                custom_tooltip = nfm_decision_elevate_nobles_medium_tt
             }
             20 = {
                 save_scope_value_as  = {
                     name = family_size
                     value = nfm_familysize_large
                 }
-                custom_tooltip = nfm_decision_elevate_local_nobles_familywillbelarge_tt
+                custom_tooltip = nfm_decision_elevate_nobles_large_tt
             }
         }
 
@@ -192,9 +192,9 @@ nfm_decision_elevate_local_nobles = {
         send_interface_toast = {
             type = event_generic_good_with_text
 
-            title = nfm_toast_familyelevated
-            desc = nfm_toast_familyelevated_desc
-            tooltip = nfm_toast_familyelevated_tt
+            title = nfm_toast_elevated
+            desc = nfm_toast_elevated_desc
+            tooltip = nfm_toast_elevated_tt
 
             left_icon = scope:new_house_head
             right_icon = scope:new_house_head.house

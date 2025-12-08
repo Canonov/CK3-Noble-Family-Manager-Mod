@@ -1,0 +1,184 @@
+﻿nfm_character_familyhead_stewardship = {
+    age = { 34 45 }
+    random_traits_list = {
+        count = 1
+        education_stewardship_3 = {}
+        education_stewardship_4 = {}
+    }
+	random_traits_list = {
+		count = 3
+		diligent = {}
+		just = {}
+		temperate = {}
+		stubborn = {}
+	}
+    random_traits = no
+
+    culture = root.culture
+    faith = root.faith
+
+    gender_female_chance = {
+        add = 0
+    }
+    stewardship = {
+        min_template_decent_skill
+        max_template_decent_skill
+    }
+    learning = {
+        min_template_average_skill
+        max_template_decent_skill
+    }
+
+
+    after_creation = {
+        # Chance to get a suitable lifestyle trait depending on education
+        random = {
+            chance = 40
+
+            add_trait = administrator
+        }
+        random = {
+            chance = 40
+
+            add_trait = avaricious
+        }
+    }
+}
+
+nfm_character_sibling_stewardship = {
+    random_traits_list = {
+        count = 1
+        education_stewardship_2 = {}
+        education_stewardship_3 = {}
+    }
+
+    random_traits = yes
+
+    culture = root.culture
+    faith = root.faith
+
+    gender_female_chance = {
+        if = {
+            limit = { root.capital_province.faith = { has_doctrine = doctrine_gender_male_dominated } }
+            add = 0
+        }
+        else_if = {
+            limit = { root.capital_province.faith = { has_doctrine = doctrine_gender_female_dominated } }
+            add = 100
+        }
+        else = {
+            add = 50
+        }
+    }
+    stewardship = {
+        min_template_decent_skill
+        max_template_decent_skill
+    }
+    learning = {
+        min_template_average_skill
+        max_template_decent_skill
+    }
+
+    after_creation = {
+        if = {
+            limit = { has_trait = education_stewardship }
+            random = {
+                chance = 10
+
+                add_trait = administrator
+            }
+            random = {
+                chance = 10
+
+                add_trait = avaricious
+            }
+        }
+        if = {
+            limit = { has_trait = education_learning }
+            random = {
+                chance = 10
+                modifier = {
+                    culture = {
+                        OR = {
+                            has_cultural_tradition = tradition_fp3_beacon_of_learning
+                            has_cultural_tradition = tradition_philosopher_culture
+                        }
+                    }
+                    add = 15
+                }
+
+                add_trait = scholar
+            }
+        }
+    }
+}
+
+nfm_character_child_stewardship = {
+    age = { 1 15 }
+    random_traits_list = {
+        count = 1
+        pensive = {}
+        bossy = {}
+    }
+
+    random_traits = yes
+
+    culture = root.culture
+    faith = root.faith
+
+    gender_female_chance = {
+        if = {
+            limit = { root.capital_province.faith = { has_doctrine = doctrine_gender_male_dominated } }
+            add = 40
+        }
+        else_if = {
+            limit = { root.capital_province.faith = { has_doctrine = doctrine_gender_female_dominated } }
+            add = 60
+        }
+        else = {
+            add = 50
+        }
+    }
+
+    stewardship = {
+        min_template_decent_skill
+        max_template_decent_skill
+    }
+    learning = {
+        min_template_average_skill
+        max_template_decent_skill
+    }
+
+    after_creation = {
+        if = {
+            limit = { has_trait = education_stewardship }
+            random = {
+                chance = 10
+
+                add_trait = administrator
+            }
+            random = {
+                chance = 10
+
+                add_trait = avaricious
+            }
+        }
+        if = {
+            limit = { has_trait = education_learning }
+            random = {
+                chance = 10
+                modifier = {
+                    culture = {
+                        OR = {
+                            has_cultural_tradition = tradition_fp3_beacon_of_learning
+                            has_cultural_tradition = tradition_philosopher_culture
+                        }
+                    }
+                    add = 15
+                }
+
+                add_trait = scholar
+            }
+        }
+    }
+}

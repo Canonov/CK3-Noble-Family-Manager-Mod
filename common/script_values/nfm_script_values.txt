@@ -1,4 +1,42 @@
-﻿nfm_value_familydestructiontyranny = {
+﻿nfm_familysize_small = 1
+nfm_familysize_medium = 2
+nfm_familysize_large = 3
+
+nfm_familyhead_extrachildcount = {
+    value = 0
+
+    switch = {
+        trigger = scope:family_size
+
+        nfm_familysize_small = { add = { 2 4 } }
+        nfm_familysize_medium = { add = { 1 3 } }
+        nfm_familysize_large = { add = { 2 3 } }
+    }
+}
+
+nfm_familysize_siblingsforcount = {
+    value = 0
+
+    switch = {
+        trigger = scope:family_size
+
+        nfm_familysize_medium = { add = { 1 3 } }
+        nfm_familysize_large = { add = { 2 5 } }
+    }
+}
+
+nfm_value_oneyoungerthanheir = {
+    value = scope:new_heir.age
+    add = -1
+}
+
+nfm_value_new_house_head_age = {
+    value = scope:new_house_head.age
+}
+
+
+# Get Tyranny amount for the Destroy House Decision
+nfm_value_familydestructiontyranny = {
     value = 0
 
     if = {

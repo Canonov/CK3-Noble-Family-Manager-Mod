@@ -1,0 +1,140 @@
+﻿
+
+nfm_script_create_family_stewards = {
+
+    # Generate Parents if it's not a small family
+    if = {
+        limit = {
+            scope:family_size > nfm_familysize_small
+        }
+
+        # Mother and Father
+        create_character = {
+            template = pool_repopulate_stewardship
+            gender = male
+            age = { 60 95 }
+            culture = root.culture
+            faith = root.faith
+            employer = root
+
+            dynasty = generate
+            save_scope_as = head_father
+        }
+        create_character = {
+            template = pool_repopulate_stewardship
+            gender = female
+            age = { 60 80 }
+            culture = root.culture
+            faith = root.faith
+            employer = root
+
+            dynasty = none
+
+            save_scope_as = head_mother
+        }
+
+        scope:head_father = { marry = scope:head_mother }
+
+        # House Head
+        create_character = {
+            template = nfm_character_familyhead_stewardship
+            father = scope:head_father
+            mother = scope:head_father.primary_spouse
+            employer = root
+
+            dynasty = inherit
+
+            save_scope_as = new_house_head
+        }
+    }
+    else = {
+        create_character = {
+            template = nfm_character_familyhead_stewardship
+            employer = root
+
+            dynasty = generate
+
+            save_scope_as = new_house_head
+        }
+    }
+
+    # Generate an Adult Heir
+    create_character = {
+        template = nfm_character_familyhead_stewardship
+        age = { 16 18 }
+        employer = root
+
+        father = scope:new_house_head
+
+        gender_female_chance = {
+            if = {
+                limit = { root.faith = { has_doctrine = doctrine_gender_male_dominated } }
+                add = 0
+            }
+            else_if = {
+                limit = { root.faith = { has_doctrine = doctrine_gender_female_dominated } }
+                add = 100
+            }
+            else = {
+                add = 50
+            }
+        }
+
+        dynasty = inherit
+
+        save_scope_as = new_heir
+    }
+
+    while = {
+        count = nfm_familyhead_extrachildcount
+
+        create_character = {
+            template = nfm_character_child_stewardship
+            employer = root
+
+            age = { 0 nfm_value_oneyoungerthanheir }
+
+            father = scope:new_house_head
+
+            dynasty = inherit
+        }
+    }
+
+
+    # Generate Siblings
+    if = {
+        limit = {
+            scope:family_size > nfm_familysize_small
+        }
+
+        while = {
+            count = nfm_familysize_siblingsforcount
+
+            create_character = {
+                template = nfm_character_familyhead_stewardship
+                age = { 25 nfm_value_new_house_head_age }
+                employer = root
+
+                father = scope:head_father
+                mother = scope:head_mother
+
+                gender_female_chance = {
+                    if = {
+                        limit = { root.faith = { has_doctrine = doctrine_gender_male_dominated } }
+                        add = 0
+                    }
+                    else_if = {
+                        limit = { root.faith = { has_doctrine = doctrine_gender_female_dominated } }
+                        add = 100
+                    }
+                    else = {
+                        add = 50
+                    }
+                }
+
+                dynasty = inherit
+            }
+        }
+    }
+
+}

@@ -5,6 +5,15 @@
  nfm_decision_elevate_local_nobles_tooltip: "tooltip"
  nfm_decision_elevate_local_nobles_confirm: "Send a Summons"
 
+ nfm_decision_elevate_local_nobles_familywillbesmall_tt: "A Small [house|E] will be found, containing only the [house_head|E] and their children"
+ nfm_decision_elevate_local_nobles_familywillbemedium_tt: "A Moderately Sized [house|E] will be found, with some siblings and children"
+ nfm_decision_elevate_local_nobles_familywillbelarge_tt: "A Larger [house|E] will be found, with many siblings and children"
+
+ ## Post Creation Toast
+ nfm_toast_familyelevated: "Family Elevated to Noble Status"
+ nfm_toast_familyelevated_desc: "[new_house_head.GetName] has been elevated as the head of the [new_title.GetNameNoTier]"
+ nfm_toast_familyelevated_tt: "Tooltip"
+
  ## House Types
  # Stewards
  stewardship_house_name: "Capable Stewards"

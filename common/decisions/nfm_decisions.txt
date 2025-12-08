@@ -124,10 +124,73 @@ nfm_decision_elevate_local_nobles = {
     }
 
     effect = {
+        ## Choose a House Size
+        random_list = {
+            20 = {
+                save_scope_value_as  = {
+                    name = family_size
+                    value = nfm_familysize_small
+                }
+                custom_tooltip = nfm_decision_elevate_local_nobles_familywillbesmall_tt
+            }
+            60 = {
+                save_scope_value_as  = {
+                    name = family_size
+                    value = nfm_familysize_medium
+                }
+                custom_tooltip = nfm_decision_elevate_local_nobles_familywillbemedium_tt
+            }
+            20 = {
+                save_scope_value_as  = {
+                    name = family_size
+                    value = nfm_familysize_large
+                }
+                custom_tooltip = nfm_decision_elevate_local_nobles_familywillbelarge_tt
+            }
+        }
+
+        ## Create the Family
+        if = {
+            limit = { scope:stewardship_house = yes }
+            hidden_effect = {
+                nfm_script_create_family_stewards = yes
+            }  
+        }
+        # Else the others, stewardship just to test
+
+        # Create the Noble House
+        hidden_effect = {
+            scope:new_house_head ?= {
+                create_noble_family_effect = { GOVERNMENT_GIVER = root }
+            }
+
+            scope:new_house_head.house ?= {
+                every_house_member = {
+                    limit = { scope:new_house_head != this }
+                    #set_employer = scope:new_house_head
+                }
+            }
+        }
+
+
+        ## Notify the Player
+        send_interface_toast = {
+            type = event_generic_good_with_text
+
+            title = nfm_toast_familyelevated
+            desc = nfm_toast_familyelevated_desc
+            tooltip = nfm_toast_familyelevated_tt
+
+            left_icon = scope:new_house_head
+            right_icon = scope:new_house_head.house
+        }
+        
     }
 
     # Prevent AI from taking this decision
     ai_potential = {
         always = no
     }
+
+    ai_check_interval = 0
 }

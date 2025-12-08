@@ -5,9 +5,13 @@ nfm_decision_elevate_local_nobles = {
     desc = nfm_decision_elevate_local_nobles_desc
     selection_tooltip = nfm_decision_elevate_local_nobles_tooltip
 
-    picture = {
-        reference = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
-    }
+	picture = {
+		trigger = { culture = { has_graphical_east_asia_culture_group_trigger = yes } }
+		reference = "gfx/interface/illustrations/decisions/tgp_scholars.dds"
+	}
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_recruitment.dds"
+	}
 
     decision_group_type = courtier
 

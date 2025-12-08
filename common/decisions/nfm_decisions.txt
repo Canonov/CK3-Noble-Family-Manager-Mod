@@ -162,7 +162,7 @@ nfm_decision_elevate_nobles = {
         }
         # Else the others, stewardship just to test
 
-        # Create the Noble House and add Opinion Modifiers for the new family
+        # Create the Noble Family and Set up opinion and merit stuff
         hidden_effect = {
             scope:new_house_head ?= {
                 create_noble_family_effect = { GOVERNMENT_GIVER = root }
@@ -176,12 +176,19 @@ nfm_decision_elevate_nobles = {
 
             scope:new_house_head.house ?= {
                 every_house_member = {
-                    limit = { scope:new_house_head != this }
-                    
-                    # Other members get lesser bonus
-                    add_opinion = {
-                        target = root
-                        modifier = nfm_op_family_elevated
+                    # Other members get lesser opinion bonus
+                    if = {
+                        limit = { scope:new_house_head = this }
+                        add_opinion = {
+                            target = root
+                            modifier = nfm_op_family_elevated
+                        }
+                    }
+
+                    # Set up Merit and Examinations
+                    if = {
+                        limit = { root = { government_allows = merit } }
+                        nfm_effect_setup_merit_for_member = yes
                     }
                 }
             }

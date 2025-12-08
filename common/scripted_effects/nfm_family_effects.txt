@@ -1,9 +1,85 @@
-﻿
+﻿## nfm_effect_setup_merit_for_member
+# Initializes examination flags for a newly created noble family member based on their age 
+#
+# @scope: character - The character receiving merit flags
+# @input scope:nfm_house_learning [yes/no] - Whether character is from learning house {optional}
+nfm_effect_setup_merit_for_member = {
+    # Flat Modifiers for House Types
+    if = {
+        limit = { scope:nfm_house_learning ?= yes }
+        change_merit = { 1000 1500 }
+    }
+    else_if = {
+        limit = { scope:nfm_house_steward ?= yes }
+        change_merit = { 750 100 }
+    }
+    else_if = {
+        limit = { scope:nfm_house_martial ?= yes }
+        change_merit = { 500 750 }
+    }
+    
+    # Childhood Exams
+    if = {
+        limit = { age >= 8 }
+        random = {
+            chance = 75
+            add_character_flag = passed_child_exam
+            change_merit = { 500 1000 }
+        }
+    }
+    # Provincial Exams
+    if = {
+        limit = { age >= 16 }
+        add_character_flag = passed_provincial_exam
+		add_character_modifier = {
+			modifier = tgp_passed_provincial_exam_modifier
+		}
+        change_merit = { 1250 2500 }
+    }
+
+    # Metropolitan Exams
+    if = {
+        limit = { top_liege ?= { has_government = celestial_government } }
+
+
+        if = {
+            limit = { house.house_head = this }
+
+            add_character_flag = passed_metropolitan_exam
+            add_character_modifier = {
+                modifier = tgp_passed_metropolitan_exam_modifier
+            }
+            change_merit = { 2000 5000 }
+        }
+        else = {
+            random_list = {
+                # Learning Houses are far more likely to have it
+                66 = {
+                    trigger = { scope:nfm_house_learning ?= yes }
+                    add_character_flag = passed_metropolitan_exam
+                    add_character_modifier = {
+                        modifier = tgp_passed_metropolitan_exam_modifier
+                    }
+                    change_merit = { 1000 1500 }
+                }
+                33 = {
+                    add_character_flag = passed_metropolitan_exam
+                    add_character_modifier = {
+                        modifier = tgp_passed_metropolitan_exam_modifier
+                    }
+                    change_merit = 1000
+                }
+            }
+        }
+    }
+}
+
+
 ## nfm_effect_create_house_steward
 # Creates a complete stewardship-focused noble family with parents, house head,
 # heir, and siblings. Family size varies based on the family_size scope value.
 #
-# @scope: character - Must be called from the liege/employer who will hire the family 
+# @scope: character - Must be called from the liege/employer who will hire the family
 # @input scope:family_size [value] - Controls family composition (small/medium/large)
 # @output scope:new_house_head [character] - The generated family head
 # @example:

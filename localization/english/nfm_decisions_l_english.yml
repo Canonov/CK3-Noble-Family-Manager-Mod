@@ -49,10 +49,10 @@
  
  nfm_house_intrigue_name: "Trustworthy Spies"
  nfm_house_intrigue_desc: "A family of cunning operatives and information brokers, their skill in intrigue and espionage has proven invaluable."
- nfm_house_intrigue_tooltip: "Members of this house excel in [intrigue|E] and make effective [spymasters|E] and covert agents"
+ nfm_house_intrigue_tooltip: "Members of this house excel in [intrigue|E] and make effective [Concept('spymaster', 'Spymasters')|E] and covert agents"
  
  ## Foreign/Minority Houses ##
  
  nfm_house_foreign_name: "Talented Minorities"
  nfm_house_foreign_desc: "TBD will write later and make dynamic"
- nfm_house_foreign_tooltip: "Members of this house bring diverse skills and cultural connections, though they may face prejudice from some of your realm's traditionalists"
+ nfm_house_foreign_tooltip: "TBD will write later and make dynamic"

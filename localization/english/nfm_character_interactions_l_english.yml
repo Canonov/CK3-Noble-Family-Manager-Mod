@@ -4,35 +4,35 @@
  # ELEVATE AS NOBLE FAMILY HEAD
  ################################
  
- nfm_interaction_grantnoblehouse: "Elevate as Noble Family Head"
- nfm_interaction_grantnoblehouse_desc: "Elevate [recipient.GetShortUIName] to the position of a [noble_family|E] head, creating a [cadet_branch|E] if necessary"
- nfm_interaction_grantnoblehouse_gaincosts_tt: "Will gain the [prestige|E], [influence|E] and part of the [gold|E] costs"
+ nfm_int_grant_house: "Elevate as Noble Family Head"
+ nfm_int_grant_house_desc: "Elevate [recipient.GetShortUIName] to the position of a [noble_family|E] head, creating a [cadet_branch|E] if necessary"
+ nfm_int_grant_house_costs_tt: "Will gain the [prestige|E], [influence|E] and part of the [gold|E] costs"
  
  ################################
  # REVOKE NOBLE FAMILY STATUS
  ################################
  
- nfm_interaction_destroynoblehouse: "Revoke Noble Family Status"
- nfm_interaction_destroynoblehouse_desc: "For their heinous acts against the realm, the time has come to strip the entire [recipient.GetDynastyHouseName] [house|E] of their [noble_family|E] status!"
- nfm_interaction_destroynoblehouse_options: "Additional Options"
- nfm_interaction_destroynoblehouse_nofamilyrulers_tt: "A member of their house has land in your realm"
- nfm_interaction_destroynoblehouse_musthavereason_tt: "You must have a banishment or execution reason"
+ nfm_int_revoke_house: "Revoke Noble Family Status"
+ nfm_int_revoke_house_desc: "For their heinous acts against the realm, the time has come to strip the entire [recipient.GetDynastyHouseName] [house|E] of their [noble_family|E] status!"
+ nfm_int_revoke_house_options: "Additional Options"
+ nfm_int_revoke_house_no_rulers_tt: "A member of their house has land in your realm"
+ nfm_int_revoke_house_need_reason_tt: "You must have a banishment or execution reason"
 
  ## Revoke Options ##
  
  # Sack Estate
- nfm_interaction_destroynoblehouse_sack_estate: "Sack their Estate"
- nfm_interaction_destroynoblehouse_sack_estate_desc: "You will sack their [estate|E] for more [gold_i] [gold|E], though it may be seen as [tyrannical|E]"
+ nfm_int_revoke_sack: "Sack their Estate"
+ nfm_int_revoke_sack_desc: "You will sack their [estate|E] for more [gold_i] [gold|E], though it may be seen as [tyrannical|E]"
  
  # Mass Imprisonment
- nfm_interaction_destroynoblehouse_imprison_family: "Order Mass Imprisonment"
- nfm_interaction_destroynoblehouse_imprison_family_desc: "$nfm_interaction_destroynoblehouse_imprison_family_tt$"
- nfm_interaction_destroynoblehouse_imprison_family_tt: "Every member of [house|E] [recipient.GetDynastyHouseName] will be imprisoned by you"
- nfm_interaction_destroynoblehouse_imprison_family_cannotalsobanish_tt: "Mutually exclusive with #POE $nfm_interaction_destroynoblehouse_banish_family$#!"
- nfm_interaction_destroynoblehouse_imprison_family_mustsack_tt: "You must also #POE $nfm_interaction_destroynoblehouse_sack_estate$#!"
- nfm_interaction_destroynoblehouse_imprison_family_requirements_tt: "You must have the [GetDynastyPerk('ep3_administrative_legacy_5').GetName] perk or be [GetTrait('vengeful').GetName(GetNullCharacter)], [GetTrait('sadistic').GetName(GetNullCharacter)] or [GetTrait('arbitrary').GetName(GetNullCharacter)]"
+ nfm_int_revoke_imprison: "Order Mass Imprisonment"
+ nfm_int_revoke_imprison_desc: "$nfm_int_revoke_imprison_tt$"
+ nfm_int_revoke_imprison_tt: "Every member of [house|E] [recipient.GetDynastyHouseName] will be imprisoned by you"
+ nfm_int_revoke_imprison_exclusive_tt: "Mutually exclusive with #POE $nfm_int_revoke_banish$#!"
+ nfm_int_revoke_imprison_requires_sack_tt: "You must also #POE $nfm_int_revoke_sack$#!"
+ nfm_int_revoke_imprison_traits_tt: "You must have the [GetDynastyPerk('ep3_administrative_legacy_5').GetName] perk or be [GetTrait('vengeful').GetName(GetNullCharacter)], [GetTrait('sadistic').GetName(GetNullCharacter)] or [GetTrait('arbitrary').GetName(GetNullCharacter)]"
  
  # Exile House
- nfm_interaction_destroynoblehouse_banish_family: "Exile their House"
- nfm_interaction_destroynoblehouse_banish_family_desc: "All members of the [house|E] of [recipient.GetDynastyHouseName] will be [banished|E] from the realm!"
- nfm_interaction_destroynoblehouse_banish_family_cannotalsoimprison_tt: "Mutually exclusive with #POE $nfm_interaction_destroynoblehouse_imprison_family$#!"
+ nfm_int_revoke_banish: "Exile their House"
+ nfm_int_revoke_banish_desc: "All members of the [house|E] of [recipient.GetDynastyHouseName] will be [banished|E] from the realm!"
+ nfm_int_revoke_banish_exclusive_tt: "Mutually exclusive with #POE $nfm_int_revoke_imprison$#!"

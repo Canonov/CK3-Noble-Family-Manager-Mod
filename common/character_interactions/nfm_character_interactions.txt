@@ -1,9 +1,9 @@
-﻿nfm_interaction_grantnoblehouse = {
+﻿nfm_int_grant_house = {
     category = interaction_category_vassal
     common_interaction = no
     icon = icon_shift_privileges
 
-    desc = nfm_interaction_grantnoblehouse_desc
+    desc = nfm_int_grant_house_desc
 
     greeting = positive
 
@@ -96,7 +96,7 @@
             }
 
             custom_tooltip = {
-                text = nfm_interaction_grantnoblehouse_gaincosts_tt
+                text = nfm_int_grant_house_costs_tt
 
                 add_prestige = 250
                 change_influence = 150
@@ -195,13 +195,13 @@
 
 ## Destroy Noble House
 # TODO allow it to be done tyrannically and add a crown auth requirement
-nfm_interaction_destroynoblehouse = {
+nfm_int_revoke_house = {
     category = interaction_category_prison
     common_interaction = yes
     icon = icon_governor_removal
 
-    desc = nfm_interaction_destroynoblehouse_desc
-    options_heading = nfm_interaction_destroynoblehouse_options
+    desc = nfm_int_revoke_house_desc
+    options_heading = nfm_int_revoke_house_options
 
     greeting = negative
 
@@ -238,7 +238,7 @@ nfm_interaction_destroynoblehouse = {
             NOT = { exists = involved_activity }
 
             custom_tooltip = {
-                text = nfm_interaction_destroynoblehouse_musthavereason_tt
+                text = nfm_int_revoke_house_need_reason_tt
 
                 OR = {
                     has_revoke_title_reason = scope:recipient
@@ -256,7 +256,7 @@ nfm_interaction_destroynoblehouse = {
             is_powerful_family = no
 
             custom_tooltip = {
-                text = nfm_interaction_destroynoblehouse_nofamilyrulers_tt
+                text = nfm_int_revoke_house_no_rulers_tt
 
                 NOT = {
                     any_house_member = {
@@ -271,7 +271,7 @@ nfm_interaction_destroynoblehouse = {
 
     # Option: Sack their Estates
     send_option = {
-        localization = nfm_interaction_destroynoblehouse_sack_estate
+        localization = nfm_int_revoke_sack
         flag = sack_estate
 
         is_shown = {
@@ -279,12 +279,12 @@ nfm_interaction_destroynoblehouse = {
         }
 
         # Tooltip
-        current_description = nfm_interaction_destroynoblehouse_sack_estate_desc
+        current_description = nfm_int_revoke_sack_desc
     }
 
     # Option: Imprison their family
     send_option = {
-        localization = nfm_interaction_destroynoblehouse_imprison_family
+        localization = nfm_int_revoke_imprison
         flag = imprison_family
 
         is_shown = {
@@ -296,20 +296,20 @@ nfm_interaction_destroynoblehouse = {
         is_valid = {
             # Incompatible 
             custom_tooltip = {
-                text = nfm_interaction_destroynoblehouse_imprison_family_cannotalsobanish_tt
+                text = nfm_int_revoke_imprison_exclusive_tt
                 scope:banish_family = no
             }
             
 
             # Their estate must also be sacked
             custom_tooltip = {
-                text = nfm_interaction_destroynoblehouse_imprison_family_mustsack_tt
+                text = nfm_int_revoke_imprison_requires_sack_tt
 
                 scope:sack_estate = yes
             }
 
             custom_tooltip = {
-                text = nfm_interaction_destroynoblehouse_imprison_family_requirements_tt
+                text = nfm_int_revoke_imprison_traits_tt
 
                 scope:actor = {
                     OR = {
@@ -323,12 +323,12 @@ nfm_interaction_destroynoblehouse = {
         }
 
         # Tooltip
-        current_description = nfm_interaction_destroynoblehouse_imprison_family_desc
+        current_description = nfm_int_revoke_imprison_desc
     }
 
     # Option: Banish their family
     send_option = {
-        localization = nfm_interaction_destroynoblehouse_banish_family
+        localization = nfm_int_revoke_banish
         flag = banish_family
 
         is_shown = {
@@ -340,13 +340,13 @@ nfm_interaction_destroynoblehouse = {
         is_valid = {
             # Incompatible
             custom_tooltip = {
-                text = nfm_interaction_destroynoblehouse_banish_family_cannotalsoimprison_tt
+                text = nfm_int_revoke_banish_exclusive_tt
                 scope:imprison_family = no
             }
         }
 
         # Tooltip
-        current_description = nfm_interaction_destroynoblehouse_banish_family_desc
+        current_description = nfm_int_revoke_banish_desc
     }
 
 
@@ -439,7 +439,7 @@ nfm_interaction_destroynoblehouse = {
 
             scope:actor = {
                 custom_tooltip = {
-                    text = nfm_interaction_destroynoblehouse_imprison_family_tt
+                    text = nfm_int_revoke_imprison_tt
                 }
             }
             scope:recipient.house ?= {

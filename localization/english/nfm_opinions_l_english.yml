@@ -4,5 +4,5 @@
  # ELEVATION OPINIONS
  ################################
  
- nfm_elevated_to_nobility_opinion: "Elevated to Nobility"
- nfm_family_elevated_opinion: "Family Elevated to Nobility"
+ nfm_op_elevated: "Elevated to Nobility"
+ nfm_op_family_elevated: "Family Elevated to Nobility"

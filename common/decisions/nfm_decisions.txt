@@ -34,13 +34,13 @@ nfm_decision_elevate_local_nobles = {
 
         # House of Administrators
         item = {
-            value = stewardship_house
+            value = nfm_house_steward
             is_shown = {
                 always = yes
             }
 
-            localization = stewardship_house_name
-            current_description = stewardship_house_desc
+            localization = nfm_house_steward_name
+            current_description = nfm_house_steward_desc
 
             icon = "gfx/interface/icons/icon_skill_stewardship.dds"
             is_default = yes
@@ -52,13 +52,13 @@ nfm_decision_elevate_local_nobles = {
     
         # House of Warriors
         item = {
-            value = martial_house
+            value = nfm_house_martial
             is_shown = {
                 always = yes
             }
 
-            localization = martial_house_name
-            current_description = martial_house_desc
+            localization = nfm_house_martial_name
+            current_description = nfm_house_martial_desc
 
             icon = "gfx/interface/icons/icon_knight_acclaimed.dds"
 
@@ -69,13 +69,13 @@ nfm_decision_elevate_local_nobles = {
 
         # House of Scholars
         item = {
-            value = learning_house
+            value = nfm_house_learning
             is_shown = {
                 always = yes
             }
 
-            localization = learning_house_name
-            current_description = learning_house_desc
+            localization = nfm_house_learning_name
+            current_description = nfm_house_learning_desc
 
             icon = "gfx/interface/icons/icon_game_concept_innovation_fascination.dds"
 
@@ -86,13 +86,13 @@ nfm_decision_elevate_local_nobles = {
 
         # House of Spies
         item = {
-            value = intrigue_house
+            value = nfm_house_intrigue
             is_shown = {
                 always = yes
             }
 
-            localization = intrigue_house_name
-            current_description = intrigue_house_desc
+            localization = nfm_house_intrigue_name
+            current_description = nfm_house_intrigue_desc
 
             icon = "gfx/interface/icons/icon_scheme.dds"
 
@@ -103,7 +103,7 @@ nfm_decision_elevate_local_nobles = {
 
         # House of Foreigners
         item = {
-            value = foreign_house
+            value = nfm_house_foreign
             is_shown = {
                 always = yes
             }
@@ -111,8 +111,8 @@ nfm_decision_elevate_local_nobles = {
                 any_realm_county = { culture != root.culture }
             }
 
-            localization = foreign_house_name
-            current_description = foreign_house_desc
+            localization = nfm_house_foreign_name
+            current_description = nfm_house_foreign_desc
 
             icon = "gfx/interface/icons/icon_culture.dds"
 
@@ -151,7 +151,7 @@ nfm_decision_elevate_local_nobles = {
 
         ## Create the Family
         if = {
-            limit = { scope:stewardship_house = yes }
+            limit = { scope:nfm_house_steward = yes }
             hidden_effect = {
                 nfm_script_create_family_stewards = yes
             }  
@@ -166,7 +166,7 @@ nfm_decision_elevate_local_nobles = {
                 # House head gets larger bonus
                 add_opinion = {
                     target = root
-                    modifier = nfm_elevated_to_nobility_opinion
+                    modifier = nfm_op_elevated
                 }
             }
 
@@ -177,7 +177,7 @@ nfm_decision_elevate_local_nobles = {
                     # Other members get lesser bonus
                     add_opinion = {
                         target = root
-                        modifier = nfm_family_elevated_opinion
+                        modifier = nfm_op_family_elevated
                     }
                 }
             }

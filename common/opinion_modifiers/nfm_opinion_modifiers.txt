@@ -1,0 +1,13 @@
+# House head - grateful for elevation to nobility
+nfm_elevated_to_nobility_opinion = {
+    opinion = 30
+    years = 20
+    decaying = yes
+}
+
+# Family members - lesser gratitude
+nfm_family_elevated_opinion = {
+    opinion = 15
+    years = 15
+    decaying = yes
+}

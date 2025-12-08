@@ -158,16 +158,27 @@ nfm_decision_elevate_local_nobles = {
         }
         # Else the others, stewardship just to test
 
-        # Create the Noble House
+        # Create the Noble House and add Opinion Modifiers for the new family
         hidden_effect = {
             scope:new_house_head ?= {
                 create_noble_family_effect = { GOVERNMENT_GIVER = root }
+
+                # House head gets larger bonus
+                add_opinion = {
+                    target = root
+                    modifier = nfm_elevated_to_nobility_opinion
+                }
             }
 
             scope:new_house_head.house ?= {
                 every_house_member = {
                     limit = { scope:new_house_head != this }
-                    #set_employer = scope:new_house_head
+                    
+                    # Other members get lesser bonus
+                    add_opinion = {
+                        target = root
+                        modifier = nfm_family_elevated_opinion
+                    }
                 }
             }
         }

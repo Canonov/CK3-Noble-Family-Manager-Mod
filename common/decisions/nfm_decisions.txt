@@ -198,6 +198,40 @@ nfm_decision_elevate_local_nobles = {
         
     }
 
+    cost = {
+        prestige = {
+            value = 200
+        }
+        
+        # none if you have a treasury, 125 if not
+        gold = {
+            value = 0
+
+            if = {
+                limit = { has_treasury = no }
+                add = medium_gold_value # was 125
+            }
+
+            max = 250
+        }
+
+        treasury = {
+            value = 0
+
+            if = {
+                limit = { has_treasury = yes }
+                add = medium_treasury_value # was 200
+            }
+
+            max = 500
+        }
+
+        influence = {
+            # Will be given to them
+            value = 400
+        }
+    }
+
     # Prevent AI from taking this decision
     ai_potential = {
         always = no

@@ -514,5 +514,34 @@ nfm_int_revoke_house = {
     }
 
     cost = {
+        prestige = {
+            value = 200
+
+            multiply = {
+                value = scope:recipient.dynasty.dynasty_prestige_level
+                multiply = 0.1
+            }
+        }
+
+        # Match half their influence plus a base cost of 50, 100 if they don't have influence
+        influence = {
+            value = 50
+
+            if = {
+                limit = {
+                    scope:recipient = { government_allows = administrative }
+                }
+                add = { 
+                    value = scope:recipient.influence
+                    multiply = 0.5
+                }
+            }
+            else = {
+                add = 50
+            }
+            
+            min = 50
+            max = 600
+        }
     }
 }

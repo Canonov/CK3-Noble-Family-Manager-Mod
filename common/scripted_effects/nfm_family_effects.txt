@@ -66,20 +66,6 @@ nfm_script_create_family_stewards = {
 
         father = scope:new_house_head
 
-        gender_female_chance = {
-            if = {
-                limit = { root.faith = { has_doctrine = doctrine_gender_male_dominated } }
-                add = 0
-            }
-            else_if = {
-                limit = { root.faith = { has_doctrine = doctrine_gender_female_dominated } }
-                add = 100
-            }
-            else = {
-                add = 50
-            }
-        }
-
         dynasty = inherit
 
         save_scope_as = new_heir
@@ -111,26 +97,12 @@ nfm_script_create_family_stewards = {
             count = nfm_familysize_siblingsforcount
 
             create_character = {
-                template = nfm_character_familyhead_stewardship
+                template = nfm_character_sibling_stewardship
                 age = { 25 nfm_value_new_house_head_age }
                 employer = root
 
                 father = scope:head_father
                 mother = scope:head_mother
-
-                gender_female_chance = {
-                    if = {
-                        limit = { root.faith = { has_doctrine = doctrine_gender_male_dominated } }
-                        add = 0
-                    }
-                    else_if = {
-                        limit = { root.faith = { has_doctrine = doctrine_gender_female_dominated } }
-                        add = 100
-                    }
-                    else = {
-                        add = 50
-                    }
-                }
 
                 dynasty = inherit
             }

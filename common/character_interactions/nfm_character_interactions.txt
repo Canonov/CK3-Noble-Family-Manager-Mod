@@ -496,6 +496,24 @@ nfm_int_revoke_house = {
                 # They might become an adventurer
                 release_from_prison = yes
                 banish_effect = { BANISHER = scope:actor }
+
+                # If they are an adventurer afterwards.. EXPEL THEM
+                if = {
+                    limit = { is_landless_ruler = yes }
+                    set_variable = {
+                        name = adventurer_expeller
+                        value = scope:actor
+                        months = 4
+                    }
+                    trigger_event = {
+                        id = ep3_interactions_events.0500
+                        days = 1 
+                    }
+                    trigger_event = {
+                        id = ep3_interactions_events.0501
+                        months = 3
+                    }
+                }
             }
         }
 

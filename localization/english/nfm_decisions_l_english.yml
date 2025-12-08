@@ -7,7 +7,7 @@
  ## Main Decision ##
  
  nfm_decision_elevate_local_nobles: "Elevate a Noble Family"
- nfm_decision_elevate_local_nobles_desc: "The realm grows stronger when capable individuals are granted noble status and responsibility. By elevating a family from among the worthy subjects of your domain, you can create a new noble house to serve your interests and strengthen your court."
+ nfm_decision_elevate_local_nobles_desc: "A well-oiled administration requires skilled nobles. Among the families that serve under me, I find a lack of capable individuals. \n\nI shall send out a summons to the minor nobility that I am looking for suitable candidates to elevate in status to a proper [noble_family|E] capable of receiving [governorship|E] positions."
  nfm_decision_elevate_local_nobles_tooltip: "A new [noble_family|E] will be created and elevated to serve in your court. The size and composition of the family will vary based on your realm's current needs and circumstances."
  nfm_decision_elevate_local_nobles_confirm: "Send a Summons"
 

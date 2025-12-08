@@ -153,7 +153,7 @@ nfm_decision_elevate_local_nobles = {
         if = {
             limit = { scope:nfm_house_steward = yes }
             hidden_effect = {
-                nfm_script_create_family_stewards = yes
+                nfm_effect_create_house_steward = yes
             }  
         }
         # Else the others, stewardship just to test

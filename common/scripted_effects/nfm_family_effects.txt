@@ -1,6 +1,15 @@
 ﻿
-
-nfm_script_create_family_stewards = {
+## nfm_effect_create_house_steward
+# Creates a complete stewardship-focused noble family with parents, house head,
+# heir, and siblings. Family size varies based on the family_size scope value.
+#
+# @scope: character - Must be called from the liege/employer who will hire the family 
+# @input scope:family_size [value] - Controls family composition (small/medium/large)
+# @output scope:new_house_head [character] - The generated family head
+# @example:
+#   scope:family_size = nfm_familysize_medium
+#   root = { nfm_script_create_family_stewards = yes }
+nfm_effect_create_house_steward = {
 
     # Generate Parents if it's not a small family
     if = {

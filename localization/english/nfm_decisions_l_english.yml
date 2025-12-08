@@ -1,38 +1,58 @@
 ﻿l_english:
- ## Main Decision
+
+ ################################
+ # ELEVATE A NOBLE FAMILY
+ ################################
+ 
+ ## Main Decision ##
+ 
  nfm_decision_elevate_local_nobles: "Elevate a Noble Family"
- nfm_decision_elevate_local_nobles_desc: "desc"
- nfm_decision_elevate_local_nobles_tooltip: "tooltip"
+ nfm_decision_elevate_local_nobles_desc: "The realm grows stronger when capable individuals are granted noble status and responsibility. By elevating a family from among the worthy subjects of your domain, you can create a new noble house to serve your interests and strengthen your court."
+ nfm_decision_elevate_local_nobles_tooltip: "A new [noble_family|E] will be created and elevated to serve in your court. The size and composition of the family will vary based on your realm's current needs and circumstances."
  nfm_decision_elevate_local_nobles_confirm: "Send a Summons"
 
+ ## Family Size Tooltips ##
+ 
  nfm_decision_elevate_local_nobles_familywillbesmall_tt: "A Small [house|E] will be found, containing only the [house_head|E] and their children"
  nfm_decision_elevate_local_nobles_familywillbemedium_tt: "A Moderately Sized [house|E] will be found, with some siblings and children"
  nfm_decision_elevate_local_nobles_familywillbelarge_tt: "A Larger [house|E] will be found, with many siblings and children"
 
- ## Post Creation Toast
+ ## Post Creation Toast ##
+ 
  nfm_toast_familyelevated: "Family Elevated to Noble Status"
  nfm_toast_familyelevated_desc: "[new_house_head.GetName] has been elevated as the head of the [new_title.GetNameNoTier]"
- nfm_toast_familyelevated_tt: "Tooltip"
+ nfm_toast_familyelevated_tt: "This new [noble_family|E] will serve your realm and may provide valuable [councillors|E], [governors|E] and [knights|E]"
 
- ## House Types
- # Stewards
- stewardship_house_name: "Capable Stewards"
- stewardship_house_desc: "Desc"
- stewardship_house_tooltip: "Tooltip"
- # Warriors
- martial_house_name: "Soldiers and Commanders"
- martial_house_desc: "Desc"
- martial_house_tooltip: "Tooltip"
- # Scholars
- learning_house_name: "Learned Scholars"
- learning_house_desc: "Desc"
- learning_house_tooltip: "Tooltip"
- # Spies
- intrigue_house_name: "Trustworthy Spies"
- intrigue_house_desc: "Desc"
- intrigue_house_tooltip: "Tooltip"
- # Minority
- foreign_house_name: "Talented Minorities"
- foreign_house_desc: "Desc"
- foreign_house_tooltip: "Tooltip"
+ ################################
+ # NOBLE HOUSE TYPES
+ ################################
  
+ ## Stewardship Houses ##
+ 
+ stewardship_house_name: "Capable Stewards"
+ stewardship_house_desc: "This family has demonstrated exceptional competence in managing lands, collecting taxes, and organizing the affairs of the realm."
+ stewardship_house_tooltip: "Members of this house excel in [stewardship|E] and make excellent [councillors|E] for financial and developmental tasks"
+ 
+ ## Martial Houses ##
+ 
+ martial_house_name: "Soldiers and Commanders"
+ martial_house_desc: "A family of proven warriors and military leaders, their martial prowess has earned them a place among the nobility. They have served with distinction in battle and shown talent for command."
+ martial_house_tooltip: "Members of this house excel in [martial|E] skills and make formidable [knights|E] and [commanders|E]"
+ 
+ ## Learning Houses ##
+ 
+ learning_house_name: "Learned Scholars"
+ learning_house_desc: "A family of intellectuals and scholars has distinguished themselves through their pursuit of knowledge and wisdom."
+ learning_house_tooltip: "Members of this house excel in [learning|E] and make excellent [court_chaplains|E] and cultural advisors"
+ 
+ ## Intrigue Houses ##
+ 
+ intrigue_house_name: "Trustworthy Spies"
+ intrigue_house_desc: "A family of cunning operatives and information brokers, their skill in intrigue and espionage has proven invaluable."
+ intrigue_house_tooltip: "Members of this house excel in [intrigue|E] and make effective [spymasters|E] and covert agents"
+ 
+ ## Foreign/Minority Houses ##
+ 
+ foreign_house_name: "Talented Minorities"
+ foreign_house_desc: "TBD will write later and make dynamic"
+ foreign_house_tooltip: "Members of this house bring diverse skills and cultural connections, though they may face prejudice from some of your realm's traditionalists"

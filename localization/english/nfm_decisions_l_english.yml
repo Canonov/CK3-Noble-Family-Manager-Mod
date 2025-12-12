@@ -10,6 +10,7 @@
  nfm_decision_elevate_nobles_desc: "A well-oiled administration requires skilled nobles. Among the families that serve under me, I find a lack of capable individuals. \n\nI shall send out a summons to the minor nobility that I am looking for suitable candidates to elevate in status to a proper [noble_family|E] capable of receiving [governorship|E] positions."
  nfm_decision_elevate_nobles_tooltip: "A new [noble_family|E] will be created and elevated to serve in your court. The size and composition of the family will vary based on your realm's current needs and circumstances."
  nfm_decision_elevate_nobles_confirm: "Send a Summons"
+ nfm_decision_elevate_nobles_japanese: "Elevate a Minor Clan"
 
  ## Family Size Tooltips ##
  
@@ -38,12 +39,16 @@
  nfm_house_martial_name: "Soldiers and Commanders"
  nfm_house_martial_desc: "A family of proven warriors and military leaders, their martial prowess has earned them a place among the nobility. They have served with distinction in battle and shown talent for command."
  nfm_house_martial_tooltip: "Members of this house excel in [martial|E] skills and make formidable [knights|E] and [commanders|E]"
+ # Samurai for Japanese
+ nfm_house_martial_name_samurai: "Minor Samurai Clan"
  
  ## Learning Houses ##
  
  nfm_house_learning_name: "Learned Scholars"
  nfm_house_learning_desc: "A family of intellectuals and scholars has distinguished themselves through their pursuit of knowledge and wisdom."
  nfm_house_learning_tooltip: "Members of this house excel in [learning|E] and make excellent [court_chaplains|E] and cultural advisors"
+ # Confucian Scholars for Chinese Chars
+ nfm_house_learning_name_confucian: "Confucian Scholars"
  
  ## Intrigue Houses ##
  

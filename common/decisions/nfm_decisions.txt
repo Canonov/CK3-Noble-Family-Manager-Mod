@@ -1,7 +1,16 @@
 ﻿
 # Elevate a Noble Family
 nfm_decision_elevate_nobles = {
-    title = nfm_decision_elevate_nobles
+    title = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { culture = { has_cultural_pillar = heritage_japonic } }
+                desc = nfm_decision_elevate_nobles_japanese
+            }
+            desc = nfm_decision_elevate_nobles
+        }
+    }
+
     desc = nfm_decision_elevate_nobles_desc
     selection_tooltip = nfm_decision_elevate_nobles_tooltip
 
@@ -34,14 +43,11 @@ nfm_decision_elevate_nobles = {
         gui = "decision_view_widget_option_list_generic"
         controller = decision_option_list_controller
         decision_to_second_step_button = "nfm_decision_elevate_nobles_confirm"
-        show_from_start = yes
+        show_from_start = yes # No would make it open the list after
 
         # House of Administrators
         item = {
             value = nfm_house_steward
-            is_shown = {
-                always = yes
-            }
 
             localization = nfm_house_steward_name
             current_description = nfm_house_steward_desc
@@ -57,11 +63,17 @@ nfm_decision_elevate_nobles = {
         # House of Warriors
         item = {
             value = nfm_house_martial
-            is_shown = {
-                always = yes
-            }
 
-            localization = nfm_house_martial_name
+            localization = {
+                first_valid = {
+                    # Japanese - Samurai
+                    triggered_desc = {
+                        trigger = { culture = { has_cultural_pillar = heritage_japonic } }
+                        desc = nfm_house_martial_name_samurai
+                    }
+                    desc = nfm_house_martial_name
+                }
+            }
             current_description = nfm_house_martial_desc
 
             icon = "gfx/interface/icons/icon_knight_acclaimed.dds"
@@ -74,14 +86,27 @@ nfm_decision_elevate_nobles = {
         # House of Scholars
         item = {
             value = nfm_house_learning
-            is_shown = {
-                always = yes
+
+            localization = {
+                first_valid = {
+                    # Chinese - Confucian Scholars
+                    triggered_desc = {
+                        trigger = {
+                            OR = {
+                                culture = { has_cultural_tradition = tradition_scholar_officials }
+                                faith.religion = religion:confucianism_religion
+                            }
+                        }
+                        desc = nfm_house_learning_name_confucian
+                    }
+                    desc = nfm_house_learning_name
+                }
+            }
+            current_description = {
+                desc = nfm_house_learning_desc
             }
 
-            localization = nfm_house_learning_name
-            current_description = nfm_house_learning_desc
-
-            icon = "gfx/interface/icons/icon_game_concept_innovation_fascination.dds"
+            icon = "gfx/interface/icons/icon_skill_learning.dds"
 
             ai_chance = {
                 value = 0
@@ -91,9 +116,6 @@ nfm_decision_elevate_nobles = {
         # House of Spies
         item = {
             value = nfm_house_intrigue
-            is_shown = {
-                always = yes
-            }
 
             localization = nfm_house_intrigue_name
             current_description = nfm_house_intrigue_desc
@@ -108,15 +130,12 @@ nfm_decision_elevate_nobles = {
         # House of Foreigners
         item = {
             value = nfm_house_foreign
-            is_shown = {
-                always = yes
-            }
-            is_valid = {
-                any_realm_county = { culture != root.culture }
-            }
 
             localization = nfm_house_foreign_name
             current_description = nfm_house_foreign_desc
+            is_valid = {
+                any_realm_county = { culture != root.culture }
+            }
 
             icon = "gfx/interface/icons/icon_culture.dds"
 

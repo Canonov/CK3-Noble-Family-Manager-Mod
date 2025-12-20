@@ -16,23 +16,26 @@
  nfm_int_revoke_house_desc: "For their heinous acts against the realm, the time has come to strip the entire [recipient.GetDynastyHouseName] [house|E] of their [noble_family|E] status!"
  nfm_int_revoke_house_options: "Additional Options"
  nfm_int_revoke_house_no_rulers_tt: "A member of their house has land in your realm"
- nfm_int_revoke_house_need_reason_tt: "You must have a banishment or execution reason"
+ nfm_int_revoke_house_auto_accept_reason: "They are powerless to refuse"
+ nfm_int_revoke_no_reason_tyranny_tt: "#N @warning_icon! [tyranny|E] will be doubled for acting without a valid reason!#!"
 
  ## Revoke Options ##
- 
+
  # Sack Estate
- nfm_int_revoke_sack: "Sack their Estate"
- nfm_int_revoke_sack_desc: "You will sack their [estate|E] for more [gold_i] [gold|E], though it may be seen as [tyrannical|E]"
- 
- # Mass Imprisonment
- nfm_int_revoke_imprison: "Order Mass Imprisonment"
- nfm_int_revoke_imprison_desc: "$nfm_int_revoke_imprison_tt$"
- nfm_int_revoke_imprison_tt: "Every member of [house|E] [recipient.GetDynastyHouseName] will be imprisoned by you"
+ nfm_int_revoke_sack: "Raid their Estates"
+ nfm_int_revoke_sack_desc: "You will raid and sack their [estate|E] for more [gold_i] [gold|E], though it may be seen as [tyrannical|E]"
+
+ # Mass Imprisonment and Execution
+ nfm_int_revoke_imprison: "Eradication Order"
+ nfm_int_revoke_imprison_desc: "Adult [house|E] members of the dominant gender who are direct parents or children of [recipient.GetFirstNameNoTooltip] will be [executed|E]. Others will be [imprisoned|E]."
+ nfm_int_revoke_imprison_tt: "Adult [house|E] members will be executed and others imprisoned"
+ nfm_int_revoke_kill_explanation_tt: "#N @warning_icon! Adult members (16-69) of the dominant gender who are direct parents or children will be #bold executed.#!"
+ nfm_int_revoke_banish_explanation_tt: "Elderly (70+), non-dominant gender, and spouses will be #bold imprisoned."
  nfm_int_revoke_imprison_exclusive_tt: "Mutually exclusive with #POE $nfm_int_revoke_banish$#!"
  nfm_int_revoke_imprison_requires_sack_tt: "You must also #POE $nfm_int_revoke_sack$#!"
  nfm_int_revoke_imprison_traits_tt: "You must have the [GetDynastyPerk('ep3_administrative_legacy_5').GetName] perk or be [GetTrait('vengeful').GetName(GetNullCharacter)], [GetTrait('sadistic').GetName(GetNullCharacter)] or [GetTrait('arbitrary').GetName(GetNullCharacter)]"
  
  # Exile House
- nfm_int_revoke_banish: "Exile their House"
+ nfm_int_revoke_banish: "Order Exile"
  nfm_int_revoke_banish_desc: "All members of the [house|E] of [recipient.GetDynastyHouseName] will be [banished|E] from the realm!"
  nfm_int_revoke_banish_exclusive_tt: "Mutually exclusive with #POE $nfm_int_revoke_imprison$#!"

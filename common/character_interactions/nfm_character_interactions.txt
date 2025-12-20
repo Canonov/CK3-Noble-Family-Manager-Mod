@@ -196,16 +196,14 @@
 ## Destroy Noble House
 # TODO allow it to be done tyrannically and add a crown auth requirement
 nfm_int_revoke_house = {
+    icon = icon_governor_removal
     category = interaction_category_prison
     common_interaction = yes
-    icon = icon_governor_removal
-
+	interface_priority = 66
     desc = nfm_int_revoke_house_desc
     options_heading = nfm_int_revoke_house_options
 
     greeting = negative
-
-    auto_accept = yes
     send_options_exclusive = no
 
     is_shown = {
@@ -223,38 +221,42 @@ nfm_int_revoke_house = {
         scope:recipient = {
             top_liege ?= scope:actor
             is_ruler = yes
-            is_imprisoned = yes
+            is_imprisoned_by = scope:actor
 
             any_held_title = {
                 is_noble_family_title = yes
             }
         }
-        NOT = { scope:actor = scope:recipient }
     }
+
+	is_highlighted = {
+		OR = {
+			scope:actor = { has_trait = sadistic }
+			scope:actor = { has_relation_rival = scope:recipient }
+			scope:actor = {
+				OR = {
+					has_execute_reason = scope:recipient
+					has_banish_reason = scope:recipient
+				}
+			}
+		}
+	}
+
+	highlighted_reason = HIGHLIGHTED_HAS_EXECUTION_REASON
 
     is_valid_showing_failures_only = {
         scope:actor = {
             is_imprisoned = no
             NOT = { exists = involved_activity }
-
-            custom_tooltip = {
-                text = nfm_int_revoke_house_need_reason_tt
-
-                OR = {
-                    has_revoke_title_reason = scope:recipient
-                    has_execute_reason = scope:recipient
-                }
-            }
         }
 
+        # They must not be a ceremonial liege and must not have a hook on you.
         scope:recipient = {
             NOT = { has_strong_hook = scope:actor }
             tgp_is_ceremonial_liege_trigger = no
         }
 
         scope:recipient.house = {
-            is_powerful_family = no
-
             custom_tooltip = {
                 text = nfm_int_revoke_house_no_rulers_tt
 
@@ -268,6 +270,17 @@ nfm_int_revoke_house = {
             }
         }
     }
+
+	auto_accept = {
+		custom_description = {
+			text = nfm_int_revoke_house_auto_accept_reason
+			always = yes
+		}
+	}
+
+	on_auto_accept = {
+		# covered by on_accept
+	}
 
     # Option: Sack their Estates
     send_option = {
@@ -367,6 +380,43 @@ nfm_int_revoke_house = {
             }
         }
 
+        # Categorize family into those_to_kill and those_to_banish
+        scope:recipient = {
+            every_house_member = {
+                limit = {
+                    top_liege = scope:actor
+                    house = scope:recipient.house
+                    NOR = {
+                        any_spouse = { house ?= scope:actor.house }
+                        any_parent = { house ?= scope:actor.house }
+                    }
+                }
+                if = {
+                    limit = {
+                        age >= 16
+                        age < 70
+                        is_faith_dominant_gender = yes
+                        OR = {
+                            is_parent_of = scope:recipient
+                            is_child_of = scope:recipient
+                        }
+                    }
+                    add_to_list = those_to_kill
+                }
+                else = {
+                    add_to_list = those_to_banish
+                }
+            }
+            # Add spouses to banish list
+            every_spouse = {
+                limit = {
+                    top_liege = scope:actor
+                    NOT = { any_parent = { house ?= scope:actor.house } }
+                }
+                add_to_list = those_to_banish
+            }
+        }
+
 
         ## Gold
         # Option: Sacking the Estate
@@ -411,62 +461,82 @@ nfm_int_revoke_house = {
 
 
         ## Family Punishment Options
-        # Banish their family
+        # Banish their family (all members)
         if = {
             limit = { scope:banish_family = yes }
 
-            scope:recipient.house ?= {
-                every_house_member = {
-                    custom = custom.every_house_member_recipient
-
-                    limit = {
-                        scope:recipient != this
-                        target_is_liege_or_above = scope:actor
-                    }
-                    banish = yes
-                    add_opinion = {
-                        modifier = banished_me
-                        target = scope:actor
-                    }
+            # Banish those marked to banish
+            every_in_list = {
+                list = those_to_banish
+                limit = {
+                    scope:recipient != this
+                }
+                banish = yes
+                add_opinion = {
+                    modifier = banished_me
+                    target = scope:actor
                 }
             }
-
-
+            # Also banish those marked to kill (since we're not imprisoning)
+            every_in_list = {
+                list = those_to_kill
+                limit = {
+                    scope:recipient != this
+                }
+                banish = yes
+                add_opinion = {
+                    modifier = banished_me
+                    target = scope:actor
+                }
+            }
         }
-        # Imprison their family
+        # Imprison/Execute their family
         else_if = {
             limit = { scope:imprison_family = yes }
 
-            scope:actor = {
-                custom_tooltip = {
-                    text = nfm_int_revoke_imprison_tt
+            # Execute those marked to kill
+            custom_tooltip = {
+                text = nfm_int_revoke_kill_explanation_tt
+            }
+            every_in_list = {
+                list = those_to_kill
+                limit = {
+                    scope:recipient != this
+                    is_alive = yes
+                }
+                hidden_effect = {
+                    death = {
+                        death_reason = death_execution
+                        killer = scope:actor
+                    }
                 }
             }
-            scope:recipient.house ?= {
-                every_house_member = {
-                    #custom = custom.every_house_member_recipient
-                    limit = {
-                        is_imprisoned = no
-                        top_liege = scope:actor
-                    }
 
-                    hidden_effect = {
-                        scope:actor = {
-                            imprison = {
-                                target = PREV
-                                type = house_arrest
-                            }
+            # Imprison those marked to banish
+            custom_tooltip = {
+                text = nfm_int_revoke_banish_explanation_tt
+            }
+            every_in_list = {
+                list = those_to_banish
+                limit = {
+                    is_imprisoned = no
+                }
+                hidden_effect = {
+                    scope:actor = {
+                        imprison = {
+                            target = prev
+                            type = house_arrest
                         }
-                        add_opinion = {
-                            modifier = imprisoned_me
-                            years = 10
-                            target = scope:actor
-                        }
-                        add_opinion = {
-                            target = scope:actor
-                            modifier = imprisoned_family_member
-                            opinion = -50
-                        }
+                    }
+                    add_opinion = {
+                        modifier = imprisoned_me
+                        years = 10
+                        target = scope:actor
+                    }
+                    add_opinion = {
+                        target = scope:actor
+                        modifier = imprisoned_family_member
+                        opinion = -50
                     }
                 }
             }
@@ -528,6 +598,21 @@ nfm_int_revoke_house = {
                 vengeful = medium_stress_impact_loss
             }
             add_tyranny = nfm_value_familydestructiontyranny
+
+            # Extra tyranny when no valid reason (2x total)
+            if = {
+                limit = {
+                    NOR = {
+                        has_revoke_title_reason = scope:recipient
+                        has_banish_reason = scope:recipient
+                        has_execute_reason = scope:recipient
+                    }
+                }
+                custom_tooltip = {
+                    text = nfm_int_revoke_no_reason_tyranny_tt
+                    add_tyranny = nfm_value_familydestructiontyranny
+                }
+            }
         }
 
     }

@@ -113,6 +113,12 @@
                     modifier = tgp_passed_provincial_exam_modifier
                 }
             }
+
+            # Opinion boost towards the granter
+            add_opinion = {
+                modifier = nfm_op_elevated
+                target = scope:actor
+            }
         }
         scope:actor = {
             stress_impact = {

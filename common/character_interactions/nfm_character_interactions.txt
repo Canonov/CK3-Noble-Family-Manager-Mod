@@ -199,7 +199,7 @@ nfm_int_revoke_house = {
     icon = icon_governor_removal
     category = interaction_category_prison
     common_interaction = yes
-	interface_priority = 66
+    interface_priority = 66
     desc = nfm_int_revoke_house_desc
     options_heading = nfm_int_revoke_house_options
 
@@ -229,20 +229,20 @@ nfm_int_revoke_house = {
         }
     }
 
-	is_highlighted = {
-		OR = {
-			scope:actor = { has_trait = sadistic }
-			scope:actor = { has_relation_rival = scope:recipient }
-			scope:actor = {
-				OR = {
-					has_execute_reason = scope:recipient
-					has_banish_reason = scope:recipient
-				}
-			}
-		}
-	}
+    is_highlighted = {
+        OR = {
+            scope:actor = { has_trait = sadistic }
+            scope:actor = { has_relation_rival = scope:recipient }
+            scope:actor = {
+                OR = {
+                    has_execute_reason = scope:recipient
+                    has_banish_reason = scope:recipient
+                }
+            }
+        }
+    }
 
-	highlighted_reason = HIGHLIGHTED_HAS_EXECUTION_REASON
+    highlighted_reason = HIGHLIGHTED_HAS_EXECUTION_REASON
 
     is_valid_showing_failures_only = {
         scope:actor = {
@@ -271,16 +271,16 @@ nfm_int_revoke_house = {
         }
     }
 
-	auto_accept = {
-		custom_description = {
-			text = nfm_int_revoke_house_auto_accept_reason
-			always = yes
-		}
-	}
+    auto_accept = {
+        custom_description = {
+            text = nfm_int_revoke_house_auto_accept_reason
+            always = yes
+        }
+    }
 
-	on_auto_accept = {
-		# covered by on_accept
-	}
+    on_auto_accept = {
+        # covered by on_accept
+    }
 
     # Option: Sack their Estates
     send_option = {
@@ -307,12 +307,12 @@ nfm_int_revoke_house = {
         }
 
         is_valid = {
-            # Incompatible 
+            # Incompatible
             custom_tooltip = {
                 text = nfm_int_revoke_imprison_exclusive_tt
                 scope:banish_family = no
             }
-            
+
 
             # Their estate must also be sacked
             custom_tooltip = {
@@ -578,7 +578,7 @@ nfm_int_revoke_house = {
                     scope:actor = { save_scope_as = expeller }
                     trigger_event = {
                         id = ep3_interactions_events.0500
-                        days = 1 
+                        days = 1
                     }
                     trigger_event = {
                         id = ep3_interactions_events.0501
@@ -639,7 +639,7 @@ nfm_int_revoke_house = {
                 limit = {
                     scope:recipient = { government_allows = administrative }
                 }
-                add = { 
+                add = {
                     value = scope:recipient.influence
                     multiply = 0.5
                 }
@@ -647,7 +647,7 @@ nfm_int_revoke_house = {
             else = {
                 add = 50
             }
-            
+
             min = 50
             max = 600
         }

@@ -16,7 +16,7 @@
  nfm_int_revoke_house_desc: "For their heinous acts against the realm, the time has come to strip the entire [recipient.GetDynastyHouseName] [house|E] of their [noble_family|E] status!"
  nfm_int_revoke_house_options: "Additional Options"
  nfm_int_revoke_house_no_rulers_tt: "A member of their house has land in your realm"
- nfm_int_revoke_house_auto_accept_reason: "They are powerless to refuse"
+ nfm_int_revoke_house_auto_accept_reason: "Being landless and [imprisoned|E], they are naturally powerless to refuse"
  nfm_int_revoke_no_reason_tyranny_tt: "#N @warning_icon! [tyranny|E] will be doubled for acting without a valid reason!#!"
 
  ## Revoke Options ##

@@ -44,7 +44,7 @@ nfm_value_familydestructiontyranny = {
         add = 7
     }
     if = {
-        limit = { scope:imprison_family = yes }
+        limit = { scope:eradicate_family = yes }
         add = 15
     }
     else_if = {

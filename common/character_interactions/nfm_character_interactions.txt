@@ -302,10 +302,10 @@ nfm_int_revoke_house = {
         current_description = nfm_int_revoke_sack_desc
     }
 
-    # Option: Imprison their family
+    # Option: Eradicate their family
     send_option = {
-        localization = nfm_int_revoke_imprison
-        flag = imprison_family
+        localization = nfm_int_revoke_eradicate
+        flag = eradicate_family
 
         is_shown = {
             scope:recipient.house ?= {
@@ -316,20 +316,20 @@ nfm_int_revoke_house = {
         is_valid = {
             # Incompatible
             custom_tooltip = {
-                text = nfm_int_revoke_imprison_exclusive_tt
+                text = nfm_int_revoke_eradicate_exclusive_tt
                 scope:banish_family = no
             }
 
 
             # Their estate must also be sacked
             custom_tooltip = {
-                text = nfm_int_revoke_imprison_requires_sack_tt
+                text = nfm_int_revoke_eradicate_requires_sack_tt
 
                 scope:sack_estate = yes
             }
 
             custom_tooltip = {
-                text = nfm_int_revoke_imprison_traits_tt
+                text = nfm_int_revoke_eradicate_traits_tt
 
                 scope:actor = {
                     OR = {
@@ -343,7 +343,7 @@ nfm_int_revoke_house = {
         }
 
         # Tooltip
-        current_description = nfm_int_revoke_imprison_desc
+        current_description = nfm_int_revoke_eradicate_desc
     }
 
     # Option: Banish their family
@@ -361,7 +361,7 @@ nfm_int_revoke_house = {
             # Incompatible
             custom_tooltip = {
                 text = nfm_int_revoke_banish_exclusive_tt
-                scope:imprison_family = no
+                scope:eradicate_family = no
             }
         }
 
@@ -494,13 +494,13 @@ nfm_int_revoke_house = {
                 }
             }
         }
-        # Imprison/Execute their family
+        # Eradicate their family
         else_if = {
-            limit = { scope:imprison_family = yes }
+            limit = { scope:eradicate_family = yes }
 
             # Execute those marked to kill
             custom_tooltip = {
-                text = nfm_int_revoke_kill_explanation_tt
+                text = nfm_int_revoke_eradicate_kill_tt
             }
             every_in_list = {
                 list = those_to_kill
@@ -525,7 +525,7 @@ nfm_int_revoke_house = {
 
             # Banish those marked to banish
             custom_tooltip = {
-                text = nfm_int_revoke_banish_explanation_tt
+                text = nfm_int_revoke_eradicate_banish_tt
             }
             every_in_list = {
                 list = those_to_banish
@@ -545,7 +545,7 @@ nfm_int_revoke_house = {
         # Banish Them or keep them there
         scope:recipient = {
             if = {
-                limit = { scope:imprison_family = no }
+                limit = { scope:eradicate_family = no }
 
                 # Banish them
                 add_opinion = {

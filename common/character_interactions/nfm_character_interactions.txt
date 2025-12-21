@@ -254,6 +254,7 @@ nfm_int_revoke_house = {
         scope:actor = {
             is_imprisoned = no
             NOT = { exists = involved_activity }
+            NOT = { is_allied_to = scope:recipient }
         }
 
         # They must not be a ceremonial liege and must not have a hook on you.
@@ -388,14 +389,12 @@ nfm_int_revoke_house = {
 
         # Categorize family into those_to_kill and those_to_banish
         scope:recipient = {
-            every_house_member = {
+            every_close_or_extended_family_member = {
                 limit = {
-                    top_liege = scope:actor
-                    house = scope:recipient.house
-                    NOR = {
-                        any_spouse = { house ?= scope:actor.house }
-                        any_parent = { house ?= scope:actor.house }
-                    }
+                    top_liege ?= scope:actor
+                    house ?= scope:recipient.house
+
+                    NOT = { is_close_family_of = scope:actor }
                 }
                 if = {
                     limit = {
@@ -417,7 +416,6 @@ nfm_int_revoke_house = {
             every_spouse = {
                 limit = {
                     top_liege = scope:actor
-                    NOT = { any_parent = { house ?= scope:actor.house } }
                 }
                 add_to_list = those_to_banish
             }
@@ -518,39 +516,26 @@ nfm_int_revoke_house = {
                 }
             }
 
-            # Imprison those marked to banish
+            scope:recipient = {
+                death = {
+                    death_reason = death_execution
+                    killer = scope:actor
+                }
+            }
+
+            # Banish those marked to banish
             custom_tooltip = {
                 text = nfm_int_revoke_banish_explanation_tt
             }
             every_in_list = {
                 list = those_to_banish
                 limit = {
-                    is_imprisoned = no
+                    scope:recipient != this
                 }
-                hidden_effect = {
-                    scope:actor = {
-                        imprison = {
-                            target = prev
-                            type = house_arrest
-                        }
-                    }
-                    add_opinion = {
-                        modifier = imprisoned_me
-                        years = 10
-                        target = scope:actor
-                    }
-                    add_opinion = {
-                        target = scope:actor
-                        modifier = imprisoned_family_member
-                        opinion = -50
-                    }
-                }
-            }
-            scope:recipient = {
+                banish = yes
                 add_opinion = {
+                    modifier = banished_me
                     target = scope:actor
-                    modifier = imprisoned_family_member
-                    opinion = -1000
                 }
             }
         }

@@ -31,9 +31,7 @@ nfm_effect_setup_merit_for_member = {
     if = {
         limit = { age >= 16 }
         add_character_flag = passed_provincial_exam
-		add_character_modifier = {
-			modifier = tgp_passed_provincial_exam_modifier
-		}
+        add_character_modifier = tgp_passed_provincial_exam_modifier
         change_merit = { 1250 2500 }
     }
 
@@ -42,6 +40,7 @@ nfm_effect_setup_merit_for_member = {
         limit = { top_liege ?= { has_government = celestial_government } }
 
 
+        # House heads automatically pass - they've proven their capability
         if = {
             limit = { house.house_head = this }
 
@@ -51,9 +50,10 @@ nfm_effect_setup_merit_for_member = {
             }
             change_merit = { 2000 5000 }
         }
+        # Non-heads have a random chance to pass
         else = {
             random_list = {
-                # Learning Houses are far more likely to have it
+                # Learning Houses are far more likely to pass (66% chance)
                 66 = {
                     trigger = { scope:nfm_house_learning ?= yes }
                     add_character_flag = passed_metropolitan_exam
@@ -62,6 +62,7 @@ nfm_effect_setup_merit_for_member = {
                     }
                     change_merit = { 1000 1500 }
                 }
+                # Other house types have 33% chance
                 33 = {
                     add_character_flag = passed_metropolitan_exam
                     add_character_modifier = {
@@ -132,6 +133,7 @@ nfm_effect_create_house_steward = {
             save_scope_as = new_house_head
         }
     }
+    # Small families have no parents - house head is a new dynasty founder
     else = {
         create_character = {
             template = nfm_character_familyhead_stewardship
@@ -143,7 +145,7 @@ nfm_effect_create_house_steward = {
         }
     }
 
-    # Generate an Adult Heir
+    # Generate an Adult Heir (aged 16-18) as the primary successor
     create_character = {
         template = nfm_character_familyhead_stewardship
         age = { 16 18 }
@@ -156,6 +158,8 @@ nfm_effect_create_house_steward = {
         save_scope_as = new_heir
     }
 
+    # Generate additional children (younger than the heir)
+    # Count determined by nfm_familyhead_extrachildcount script value
     while = {
         count = nfm_familyhead_extrachildcount
 
@@ -172,12 +176,13 @@ nfm_effect_create_house_steward = {
     }
 
 
-    # Generate Siblings
+    # Generate Siblings for the house head (medium/large families only)
     if = {
         limit = {
             scope:family_size > nfm_familysize_small
         }
 
+        # Count based on family_size via nfm_familysize_siblingsforcount
         while = {
             count = nfm_familysize_siblingsforcount
 
@@ -186,6 +191,7 @@ nfm_effect_create_house_steward = {
                 age = { 25 nfm_value_new_house_head_age }
                 employer = root
 
+                # Same parents as the house head
                 father = scope:head_father
                 mother = scope:head_mother
 

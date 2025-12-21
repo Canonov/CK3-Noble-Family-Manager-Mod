@@ -1,0 +1,174 @@
+﻿## nfm_effect_revoke_house_distribute_gold
+# Distributes gold from a revoked family's domicile between actor and recipient.
+# Sacking yields more loot for actor (50%) but less recovery for recipient (20%).
+# Peaceful transfer yields less loot (20%) but more recovery (80%).
+#
+# @scope: any - Effect uses saved scopes for targeting
+# @input $FAMILY_DOMICILE$ [scope] - The domicile to calculate value from
+# @input scope:sack_estate [yes/no] - Whether the estate is being sacked
+# @input scope:actor [character] - The character revoking the house (receives loot)
+# @input scope:recipient [character] - The noble family head (receives remaining value)
+nfm_effect_revoke_house_distribute_gold = {
+    # Set up and Calculate Domicile worth
+    $FAMILY_DOMICILE$ = {
+        save_scope_value_as = {
+            name = domicile_value
+            value = nfm_value_domicileworth
+        }
+    }
+
+    ## Gold
+    # Option: Sacking the Estate
+    if = {
+        limit = { scope:sack_estate = yes }
+
+        # 50% the value as loot
+        scope:actor = {
+            add_gold = {
+                value = scope:domicile_value
+                multiply = 0.5
+            }
+        }
+        # 20% the value recovered
+        scope:recipient = {
+            add_gold = {
+                value = scope:domicile_value
+                multiply = 0.2
+            }
+        }
+    }
+    else = {
+        # 20% the value as loot
+        scope:actor = {
+            add_gold = {
+                value = scope:domicile_value
+                multiply = 0.2
+            }
+        }
+        # 80% the value recovered
+        scope:recipient = {
+            add_gold = {
+                value = scope:domicile_value
+                multiply = 0.8
+            }
+        }
+    }
+}
+
+
+## nfm_effect_revoke_house_punish_family
+# Applies punishment to family members when revoking a noble house.
+# Banishment option: All family members are banished (both lists).
+# Eradication option: Executes those marked for death, banishes the rest.
+# The recipient (family head) is excluded from punishments.
+#
+# @scope: any - Effect uses saved scopes and lists for targeting
+# @input scope:banish_family [yes/no] - Whether to banish all family members
+# @input scope:eradicate_family [yes/no] - Whether to execute some and banish others
+# @input list:those_to_banish [characters] - Family members to be banished
+# @input list:those_to_kill [characters] - Family members to be executed (eradication only)
+nfm_effect_revoke_house_punish_family = {
+    # Banish their family (all members)
+    if = {
+        limit = { scope:banish_family = yes }
+
+        # Banish those marked to banish
+        every_in_list = {
+            list = those_to_banish
+            limit = {
+                scope:recipient != this
+            }
+            banish = yes
+            add_opinion = {
+                modifier = banished_me
+                target = scope:actor
+            }
+        }
+        # Also banish those marked to kill (since we're not imprisoning)
+        every_in_list = {
+            list = those_to_kill
+            limit = {
+                scope:recipient != this
+            }
+            banish = yes
+            add_opinion = {
+                modifier = banished_me
+                target = scope:actor
+            }
+        }
+    }
+    # Eradicate their family
+    else_if = {
+        limit = { scope:eradicate_family = yes }
+
+        # Execute those marked to kill
+        custom_tooltip = {
+            text = nfm_int_revoke_eradicate_kill_tt
+        }
+        every_in_list = {
+            list = those_to_kill
+            limit = {
+                scope:recipient != this
+                is_alive = yes
+            }
+            hidden_effect = {
+                death = {
+                    death_reason = death_execution
+                    killer = scope:actor
+                }
+            }
+        }
+
+        # Banish those marked to banish
+        custom_tooltip = {
+            text = nfm_int_revoke_eradicate_banish_tt
+        }
+        every_in_list = {
+            list = those_to_banish
+            limit = {
+                scope:recipient != this
+            }
+            banish = yes
+            add_opinion = {
+                modifier = banished_me
+                target = scope:actor
+            }
+        }
+    }
+}
+
+
+## nfm_effect_revoke_house_stress_tyranny_impacts
+# Applies stress changes and tyranny for destroying a noble family.
+# Stress: Forgiving/compassionate gain stress, vengeful loses stress.
+# Tyranny: Base amount always applied, doubled if no valid reason exists.
+#
+# @scope: character - The actor performing the revocation
+# @input scope:recipient [character] - The noble family head being revoked
+nfm_effect_revoke_house_stress_tyranny_impacts = {
+
+    stress_impact = {
+        # Stress Gain
+        forgiving = minor_stress_impact_gain
+        compassionate = minor_stress_impact_gain
+        # Stress Loss
+        vengeful = medium_stress_impact_loss
+    }
+    add_tyranny = nfm_value_familydestructiontyranny
+
+    # Extra tyranny when no valid reason (2x total)
+    if = {
+        limit = {
+            NOR = {
+                has_revoke_title_reason = scope:recipient
+                has_banish_reason = scope:recipient
+                has_execute_reason = scope:recipient
+            }
+        }
+        custom_tooltip = {
+            text = nfm_int_revoke_no_reason_tyranny_tt
+            add_tyranny = nfm_value_familydestructiontyranny
+        }
+    }
+
+}

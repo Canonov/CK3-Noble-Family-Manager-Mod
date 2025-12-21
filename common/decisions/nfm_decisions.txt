@@ -14,13 +14,13 @@ nfm_decision_elevate_nobles = {
     desc = nfm_decision_elevate_nobles_desc
     selection_tooltip = nfm_decision_elevate_nobles_tooltip
 
-	picture = {
-		trigger = { culture = { has_graphical_east_asia_culture_group_trigger = yes } }
-		reference = "gfx/interface/illustrations/decisions/tgp_scholars.dds"
-	}
-	picture = {
-		reference = "gfx/interface/illustrations/decisions/decision_recruitment.dds"
-	}
+    picture = {
+        trigger = { culture = { has_graphical_east_asia_culture_group_trigger = yes } }
+        reference = "gfx/interface/illustrations/decisions/tgp_scholars.dds"
+    }
+    picture = {
+        reference = "gfx/interface/illustrations/decisions/decision_recruitment.dds"
+    }
 
     decision_group_type = courtier
 
@@ -59,7 +59,7 @@ nfm_decision_elevate_nobles = {
                 value = 0
             }
         }
-    
+
         # House of Warriors
         item = {
             value = nfm_house_martial
@@ -177,7 +177,7 @@ nfm_decision_elevate_nobles = {
             limit = { scope:nfm_house_steward = yes }
             hidden_effect = {
                 nfm_effect_create_house_steward = yes
-            }  
+            }
         }
         # Else the others, stewardship just to test
 
@@ -225,14 +225,14 @@ nfm_decision_elevate_nobles = {
             left_icon = scope:new_house_head
             right_icon = scope:new_house_head.house
         }
-        
+
     }
 
     cost = {
         prestige = {
             value = 200
         }
-        
+
         # none if you have a treasury, 125 if not
         gold = {
             value = 0

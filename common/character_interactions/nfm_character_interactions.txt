@@ -64,7 +64,7 @@
 
     is_valid_showing_failures_only = {
         scope:recipient = {
-            NOT = {
+            NOR = {
                 has_trait = devoted
                 has_trait = gallivanter
             }
@@ -379,13 +379,6 @@ nfm_int_revoke_house = {
                 save_scope_as = family_title
             }
         }
-        # Set up and Calculate Domicile worth
-        scope:family_title.title_domicile = {
-            save_scope_value_as = {
-                name = domicile_value
-                value = nfm_value_domicileworth
-            }
-        }
 
         # Categorize family into those_to_kill and those_to_banish
         scope:recipient = {
@@ -422,41 +415,10 @@ nfm_int_revoke_house = {
         }
 
 
-        ## Gold
-        # Option: Sacking the Estate
-        if = {
-            limit = { scope:sack_estate = yes }
-
-            # 50% the value as loot
-            scope:actor = {
-                add_gold = {
-                    value = scope:domicile_value
-                    multiply = 0.5
-                }
-            }
-            # 20% the value recovered
-            scope:recipient = {
-                add_gold = {
-                    value = scope:domicile_value
-                    multiply = 0.2
-                }
-            }
-        }
-        else = {
-            # 20% the value as loot
-            scope:actor = {
-                add_gold = {
-                    value = scope:domicile_value
-                    multiply = 0.2
-                }
-            }
-            # 80% the value recovered
-            scope:recipient = {
-                add_gold = {
-                    value = scope:domicile_value
-                    multiply = 0.8
-                }
-            }
+        ## Calculate Domicile Worth & Distribute Gold accordingly
+        ## Sacking Estate grants the Actor more
+        nfm_effect_revoke_house_distribute_gold = {
+            FAMILY_DOMICILE = scope:family_title.title_domicile
         }
 
 
@@ -465,86 +427,20 @@ nfm_int_revoke_house = {
 
 
         ## Family Punishment Options
-        # Banish their family (all members)
-        if = {
-            limit = { scope:banish_family = yes }
+        # Banish or Eradicate their family
+        nfm_effect_revoke_house_punish_family = yes
 
-            # Banish those marked to banish
-            every_in_list = {
-                list = those_to_banish
-                limit = {
-                    scope:recipient != this
-                }
-                banish = yes
-                add_opinion = {
-                    modifier = banished_me
-                    target = scope:actor
-                }
-            }
-            # Also banish those marked to kill (since we're not imprisoning)
-            every_in_list = {
-                list = those_to_kill
-                limit = {
-                    scope:recipient != this
-                }
-                banish = yes
-                add_opinion = {
-                    modifier = banished_me
-                    target = scope:actor
-                }
-            }
-        }
-        # Eradicate their family
-        else_if = {
-            limit = { scope:eradicate_family = yes }
-
-            # Execute those marked to kill
-            custom_tooltip = {
-                text = nfm_int_revoke_eradicate_kill_tt
-            }
-            every_in_list = {
-                list = those_to_kill
-                limit = {
-                    scope:recipient != this
-                    is_alive = yes
-                }
-                hidden_effect = {
-                    death = {
-                        death_reason = death_execution
-                        killer = scope:actor
-                    }
-                }
-            }
-
-            scope:recipient = {
+        ## Post Effects
+        # Execute or Banish them
+        scope:recipient = {
+            if = {
+                limit = { scope:eradicate_family = yes }
                 death = {
                     death_reason = death_execution
                     killer = scope:actor
                 }
             }
-
-            # Banish those marked to banish
-            custom_tooltip = {
-                text = nfm_int_revoke_eradicate_banish_tt
-            }
-            every_in_list = {
-                list = those_to_banish
-                limit = {
-                    scope:recipient != this
-                }
-                banish = yes
-                add_opinion = {
-                    modifier = banished_me
-                    target = scope:actor
-                }
-            }
-        }
-
-
-        ## Post Effects
-        # Banish Them or keep them there
-        scope:recipient = {
-            if = {
+            else = {
                 limit = { scope:eradicate_family = no }
 
                 # Banish them
@@ -581,29 +477,7 @@ nfm_int_revoke_house = {
 
         # Tyranny and Stress Gain
         scope:actor = {
-            stress_impact = {
-                # Stress Gain
-                forgiving = minor_stress_impact_gain
-                compassionate = minor_stress_impact_gain
-                # Stress Loss
-                vengeful = medium_stress_impact_loss
-            }
-            add_tyranny = nfm_value_familydestructiontyranny
-
-            # Extra tyranny when no valid reason (2x total)
-            if = {
-                limit = {
-                    NOR = {
-                        has_revoke_title_reason = scope:recipient
-                        has_banish_reason = scope:recipient
-                        has_execute_reason = scope:recipient
-                    }
-                }
-                custom_tooltip = {
-                    text = nfm_int_revoke_no_reason_tyranny_tt
-                    add_tyranny = nfm_value_familydestructiontyranny
-                }
-            }
+            nfm_effect_revoke_house_stress_tyranny_impacts = yes
         }
 
     }

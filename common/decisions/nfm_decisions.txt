@@ -197,7 +197,7 @@ nfm_decision_elevate_nobles = {
                 every_house_member = {
                     # Other members get lesser opinion bonus
                     if = {
-                        limit = { scope:new_house_head = this }
+                        limit = { scope:new_house_head != this }
                         add_opinion = {
                             target = root
                             modifier = nfm_op_family_elevated

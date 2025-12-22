@@ -1,5 +1,5 @@
 ﻿## nfm_effect_setup_merit_for_member
-# Initializes examination flags for a newly created noble family member based on their age 
+# Initializes examination flags for a newly created noble family member based on their age
 #
 # @scope: character - The character receiving merit flags
 # @input scope:nfm_house_learning [yes/no] - Whether character is from learning house {optional}
@@ -17,7 +17,7 @@ nfm_effect_setup_merit_for_member = {
         limit = { scope:nfm_house_martial ?= yes }
         change_merit = { 500 750 }
     }
-    
+
     # Childhood Exams
     if = {
         limit = { age >= 8 }
@@ -93,16 +93,16 @@ nfm_effect_create_house = {
     $EMPLOYER$ = { save_scope_as = new_employer }
 
     if = {
-        limit = { 
-            NOT = { exists = scope:family_culture } 
+        limit = {
+            NOT = { exists = scope:family_culture }
         }
         scope:new_employer.culture = {
             save_scope_as = family_culture
         }
     }
     if = {
-        limit = { 
-            NOT = { exists = scope:family_faith } 
+        limit = {
+            NOT = { exists = scope:family_faith }
         }
         scope:new_employer.faith = {
             save_scope_as = family_faith
@@ -266,5 +266,40 @@ nfm_effect_create_house_martial = {
         HEAD_TEMPLATE = nfm_character_familyhead_martial
         CHILD_TEMPLATE = nfm_character_child_martial
         SIBLING_TEMPLATE = nfm_character_sibling_martial
+    }
+}
+
+nfm_effect_create_house_minority = {
+    $EMPLOYER$ = { save_scope_as = new_employer }
+
+    random_realm_county = {
+        limit = {
+            culture != scope:new_employer.culture
+        }
+
+        culture = { save_scope_as = family_culture }
+
+        # If their faith is astray or better, use their faith instead
+        if = {
+            limit = {
+                faith = {
+                    faith_hostility_level = {
+                        target = scope:new_employer.faith
+                        value <= faith_astray_level
+                    }
+                }
+            }
+            faith = { save_scope_as = family_faith }
+        }
+
+    }
+
+    nfm_effect_create_house = {
+        EMPLOYER = scope:new_employer
+
+        PARENT_TEMPLATE = pool_repopulate_martial # TODO
+        HEAD_TEMPLATE = nfm_character_familyhead_martial # TODO
+        CHILD_TEMPLATE = nfm_character_child_martial # TODO
+        SIBLING_TEMPLATE = nfm_character_sibling_martial # TODO
     }
 }

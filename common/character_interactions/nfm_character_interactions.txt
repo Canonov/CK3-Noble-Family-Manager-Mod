@@ -200,7 +200,7 @@
 }
 
 ## Destroy Noble House
-# TODO allow it to be done tyrannically and add a crown auth requirement
+# TODO add a crown auth requirement
 nfm_int_revoke_house = {
     icon = icon_governor_removal
     category = interaction_category_prison

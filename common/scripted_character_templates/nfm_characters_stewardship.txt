@@ -29,7 +29,7 @@
     }
     learning = {
         min_template_average_skill
-        man_template_average_skill
+        max_template_average_skill
     }
 
     after_creation = {

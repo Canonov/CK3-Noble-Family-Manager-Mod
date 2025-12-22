@@ -10,13 +10,17 @@
  nfm_decision_elevate_nobles_desc: "A well-oiled administration requires skilled nobles. Among the families that serve under me, I find a lack of capable individuals. \n\nI shall send out a summons to the minor nobility that I am looking for suitable candidates to elevate in status to a proper [noble_family|E] capable of receiving [governorship|E] positions."
  nfm_decision_elevate_nobles_tooltip: "A new [noble_family|E] will be created and elevated to serve in your court. The size and composition of the family will vary based on your realm's current needs and circumstances."
  nfm_decision_elevate_nobles_confirm: "Send a Summons"
- nfm_decision_elevate_nobles_japanese: "Elevate a Minor Clan"
+ # Cultural Titles
+ nfm_decision_elevate_nobles_clan: "Elevate a Minor Clan"
 
  ## Family Size Tooltips ##
  
- nfm_decision_elevate_nobles_small_tt: "A Small [house|E] will be found, containing only the [house_head|E] and their children"
- nfm_decision_elevate_nobles_medium_tt: "A Moderately Sized [house|E] will be found, with some siblings and children"
- nfm_decision_elevate_nobles_large_tt: "A Larger [house|E] will be found, with many siblings and children"
+ nfm_decision_elevate_nobles_small_tt: "A small family will be found, containing only the head and their children"
+ nfm_decision_elevate_nobles_medium_tt: "A moderately sized family will be found, with some siblings and children"
+ nfm_decision_elevate_nobles_large_tt: "A larger family will be found, with many siblings and children"
+
+ nfm_decision_elevate_nobles_getmerit_tt: "#weak Because of your [THIS.Char.GetGovernment.GetNameNoTooltip] Government:#! Members of the new family will be granted @merit_icon![merit|E] and have already passed some @provincial_exam_icon![examinations|E]"
+ nfm_decision_elevate_nobles_tt: "A new [house|E] of the chosen type will be generated and granted a [noble_family|E] [title|E]"
 
  ## Post Creation Toast ##
  
@@ -61,3 +65,4 @@
  nfm_house_foreign_name: "Talented Minorities"
  nfm_house_foreign_desc: "TBD will write later and make dynamic"
  nfm_house_foreign_tooltip: "TBD will write later and make dynamic"
+ nfm_house_foreign_diff_culture_tooltip: "#weak $nfm_house_foreign_name$:#! The house will be chosen from one of your [realm|E] [counties|E] of a different [culture|E], if their [faith|E] is [faith_astray|E] or greater they will be allowed to keep their [faith|E]"

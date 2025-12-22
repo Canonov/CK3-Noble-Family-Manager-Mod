@@ -3,10 +3,26 @@
 nfm_decision_elevate_nobles = {
     title = {
         first_valid = {
+            # Elevate a Minor Clan
             triggered_desc = {
-                trigger = { culture = { has_cultural_pillar = heritage_japonic } }
-                desc = nfm_decision_elevate_nobles_japanese
+                trigger = {
+                    OR = {
+                        culture = {
+                            OR = {
+                                # Japanese
+                                has_cultural_pillar = heritage_japonic
+                                # Other Clan Preferring Cultures
+                                has_cultural_pillar = heritage_arabic
+                                has_cultural_pillar = heritage_iranian
+                                has_cultural_pillar = heritage_turkic
+                            }
+                        }
+                        has_religion = religion:islam_religion
+                    }
+                }
+                desc = nfm_decision_elevate_nobles_clan
             }
+            # Default: Elevate a Noble Family
             desc = nfm_decision_elevate_nobles
         }
     }
@@ -173,29 +189,32 @@ nfm_decision_elevate_nobles = {
         }
 
         ## Create the Family
-        if = {
-            limit = { scope:nfm_house_steward = yes }
-            hidden_effect = {
+        hidden_effect = {
+            if = {
+                limit = { scope:nfm_house_steward = yes }
                 nfm_effect_create_house_steward = { EMPLOYER = root }
             }
-        }
-        else_if = {
-            limit = { scope:nfm_house_learning = yes }
-            hidden_effect = {
+            else_if = {
+                limit = { scope:nfm_house_learning = yes }
                 nfm_effect_create_house_learning = { EMPLOYER = root }
             }
-        }
-        else_if = {
-            limit = { scope:nfm_house_intrigue = yes }
-            hidden_effect = {
+            else_if = {
+                limit = { scope:nfm_house_intrigue = yes }
                 nfm_effect_create_house_intrigue = { EMPLOYER = root }
             }
-        }
-        else_if = {
-            limit = { scope:nfm_house_martial = yes }
-            hidden_effect = {
+            else_if = {
+                limit = { scope:nfm_house_martial = yes }
                 nfm_effect_create_house_martial = { EMPLOYER = root }
             }
+        }
+
+        # Will be created tooltip
+        custom_tooltip = nfm_decision_elevate_nobles_tt
+
+        # Tooltip to explain merit granting
+        if = {
+            limit = { government_allows = merit }
+            custom_tooltip = nfm_decision_elevate_nobles_getmerit_tt
         }
 
         # Create the Noble Family and Set up opinion and merit stuff

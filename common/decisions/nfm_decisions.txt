@@ -176,10 +176,27 @@ nfm_decision_elevate_nobles = {
         if = {
             limit = { scope:nfm_house_steward = yes }
             hidden_effect = {
-                nfm_effect_create_house_steward = yes
+                nfm_effect_create_house_steward = { EMPLOYER = root }
             }
         }
-        # Else the others, stewardship just to test
+        else_if = {
+            limit = { scope:nfm_house_learning = yes }
+            hidden_effect = {
+                nfm_effect_create_house_learning = { EMPLOYER = root }
+            }
+        }
+        else_if = {
+            limit = { scope:nfm_house_intrigue = yes }
+            hidden_effect = {
+                nfm_effect_create_house_intrigue = { EMPLOYER = root }
+            }
+        }
+        else_if = {
+            limit = { scope:nfm_house_martial = yes }
+            hidden_effect = {
+                nfm_effect_create_house_martial = { EMPLOYER = root }
+            }
+        }
 
         # Create the Noble Family and Set up opinion and merit stuff
         hidden_effect = {

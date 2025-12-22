@@ -18,10 +18,10 @@
     }
     random_traits = no
 
-    culture = root.culture
-    faith = root.faith
+    culture = scope:new_employer.culture
+    faith = scope:new_employer.faith
 
-    gender_female_chance = root_faith_dominant_gender_adjusted_female_chance
+    gender_female_chance = new_employer_faith_dominant_gender_adjusted_female_chance
 
     stewardship = {
         min_template_decent_skill
@@ -77,10 +77,10 @@ nfm_character_sibling_stewardship = {
 
     random_traits = yes
 
-    culture = root.culture
-    faith = root.faith
+    culture = scope:new_employer.culture
+    faith = scope:new_employer.faith
 
-    gender_female_chance = root_faith_dominant_gender_adjusted_female_chance
+    gender_female_chance = new_employer_faith_dominant_gender_adjusted_female_chance
 
     stewardship = {
         min_template_decent_skill
@@ -136,10 +136,10 @@ nfm_character_child_stewardship = {
 
     random_traits = yes
 
-    culture = root.culture
-    faith = root.faith
+    culture = scope:new_employer.culture
+    faith = scope:new_employer.faith
 
-    gender_female_chance = root_faith_dominant_gender_adjusted_female_chance
+    gender_female_chance = new_employer_faith_dominant_gender_adjusted_female_chance
 
     stewardship = {
         min_template_decent_skill

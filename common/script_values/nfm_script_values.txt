@@ -34,6 +34,19 @@ nfm_value_new_house_head_age = {
     value = scope:new_house_head.age
 }
 
+new_employer_faith_dominant_gender_adjusted_female_chance = {
+	if = {
+		limit = { scope:new_employer.faith = { has_doctrine = doctrine_gender_male_dominated } }
+		add = 20
+	}
+	else_if = {
+		limit = { scope:new_employer.faith = { has_doctrine = doctrine_gender_female_dominated } }
+		add = 80
+	}
+	else = {
+		add = 50
+	}
+}
 
 # Get Tyranny amount for the Destroy House Decision
 nfm_value_familydestructiontyranny = {

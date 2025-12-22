@@ -18,8 +18,8 @@
 	}
 	random_traits = no
 
-	culture = root.culture
-	faith = root.faith
+	culture = scope:new_employer.culture
+	faith = scope:new_employer.faith
 
 	gender_female_chance = 50
 
@@ -76,8 +76,8 @@ nfm_character_sibling_intrigue = {
 
 	random_traits = yes
 
-	culture = root.culture
-	faith = root.faith
+	culture = scope:new_employer.culture
+	faith = scope:new_employer.faith
 
 	gender_female_chance = 50
 
@@ -135,8 +135,8 @@ nfm_character_child_intrigue = {
 
 	random_traits = yes
 
-	culture = root.culture
-	faith = root.faith
+	culture = scope:new_employer.culture
+	faith = scope:new_employer.faith
 
 	gender_female_chance = 50
 

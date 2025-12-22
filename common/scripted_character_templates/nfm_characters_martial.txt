@@ -18,8 +18,8 @@
 	}
 	random_traits = no
 
-	culture = scope:new_employer.culture
-	faith = scope:new_employer.faith
+	culture = scope:family_culture
+	faith = scope:family_faith
 
 	gender_female_chance = new_employer_faith_dominant_gender_adjusted_female_chance
 
@@ -148,8 +148,8 @@ nfm_character_sibling_martial = {
 
 	random_traits = yes
 
-	culture = scope:new_employer.culture
-	faith = scope:new_employer.faith
+	culture = scope:family_culture
+	faith = scope:family_faith
 
 	gender_female_chance = new_employer_faith_dominant_gender_adjusted_female_chance
 
@@ -279,8 +279,8 @@ nfm_character_child_martial = {
 
 	random_traits = yes
 
-	culture = scope:new_employer.culture
-	faith = scope:new_employer.faith
+	culture = scope:family_culture
+	faith = scope:family_faith
 
 	gender_female_chance = new_employer_faith_dominant_gender_adjusted_female_chance
 

@@ -1,4 +1,4 @@
-nfm_character_familyhead_martial = {
+﻿nfm_character_familyhead_martial = {
 	age = { 34 45 }
 	random_traits_list = {
 		education_martial_3 = { weight = { base = 60 } }

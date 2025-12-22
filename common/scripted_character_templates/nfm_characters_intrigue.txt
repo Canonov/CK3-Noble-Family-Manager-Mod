@@ -1,4 +1,4 @@
-nfm_character_familyhead_intrigue = {
+﻿nfm_character_familyhead_intrigue = {
 	age = { 34 45 }
 	random_traits_list = {
 		education_intrigue_3 = { weight = { base = 60 } }

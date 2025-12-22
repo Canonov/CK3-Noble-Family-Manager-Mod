@@ -1,4 +1,4 @@
-nfm_character_familyhead_learning = {
+﻿nfm_character_familyhead_learning = {
 	age = { 34 45 }
 	random_traits_list = {
 		education_learning_3 = { weight = { base = 60 } }

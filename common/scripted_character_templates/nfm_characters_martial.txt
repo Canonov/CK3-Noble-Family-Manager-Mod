@@ -1,0 +1,308 @@
+nfm_character_familyhead_martial = {
+	age = { 34 45 }
+	random_traits_list = {
+		education_martial_3 = { weight = { base = 60 } }
+		education_martial_4 = { weight = { base = 40 } }
+	}
+	random_traits_list = {
+		count = { 2 3 }
+		# Primary martial traits (high weight)
+		brave = { weight = { base = 40 } }
+		ambitious = { weight = { base = 35 } }
+		diligent = { weight = { base = 35 } }
+		wrathful = { weight = { base = 30 } }
+		# Secondary traits (low weight)
+		stubborn = { weight = { base = 15 } }
+		just = { weight = { base = 10 } }
+		impatient = { weight = { base = 8 } }
+	}
+	random_traits = no
+
+	culture = root.culture
+	faith = root.faith
+
+	gender_female_chance = root_faith_dominant_gender_adjusted_female_chance
+
+	martial = {
+		min_template_decent_skill
+		max_template_decent_skill
+	}
+	prowess = {
+		min_template_average_skill
+		max_template_decent_skill
+	}
+
+	after_creation = {
+		# Weight variation
+		random_list = {
+			200 = { }
+			25 = { change_current_weight = -25 }
+			25 = { change_current_weight = -75 }
+			25 = { change_current_weight = 25 }
+			25 = { change_current_weight = 75 }
+			5 = { change_current_weight = 100 }
+		}
+		# Lifestyle traits (mutually exclusive selection)
+		random_list = {
+			40 = { add_trait = strategist }
+			35 = { add_trait = gallant }
+			15 = { add_trait = overseer }
+			10 = { }
+		}
+		# Blademaster chance (25% for family heads)
+		random = {
+			chance = 25
+			add_trait = lifestyle_blademaster
+		}
+		add_random_tiered_trait_xp_effect = {
+			TRAIT = lifestyle_blademaster
+			LEVEL_1 = yes
+			LEVEL_3 = yes
+		}
+		# Hunter chance (20% for family heads)
+		random = {
+			chance = 20
+			add_trait = lifestyle_hunter
+		}
+		add_random_tiered_trait_track_xp_effect = {
+			TRAIT = lifestyle_hunter
+			TRACK = hunter
+			LEVEL_1 = yes
+			LEVEL_3 = no
+		}
+		# Cultural terrain commander traits
+		if = {
+			limit = {
+				culture = { has_cultural_parameter = winter_soldier_trait_more_common }
+				NOT = { has_trait = winter_soldier }
+			}
+			random = {
+				chance = 15
+				add_trait = winter_soldier
+			}
+		}
+		if = {
+			limit = {
+				culture = { has_cultural_parameter = forest_fighter_trait_more_common }
+				NOT = { has_trait = forest_fighter }
+			}
+			random = {
+				chance = 15
+				add_trait = forest_fighter
+			}
+		}
+		if = {
+			limit = {
+				culture = { has_cultural_parameter = rough_terrain_expert_trait_more_common }
+				NOT = { has_trait = rough_terrain_expert }
+			}
+			random = {
+				chance = 15
+				add_trait = rough_terrain_expert
+			}
+		}
+		if = {
+			limit = {
+				culture = { has_cultural_parameter = desert_warrior_trait_more_common }
+				NOT = { has_trait = desert_warrior }
+			}
+			random = {
+				chance = 15
+				add_trait = desert_warrior
+			}
+		}
+		if = {
+			limit = {
+				culture = { has_cultural_parameter = jungle_stalker_trait_more_common }
+				NOT = { has_trait = jungle_stalker }
+			}
+			random = {
+				chance = 15
+				add_trait = jungle_stalker
+			}
+		}
+		set_interesting_traits_and_modifiers_effect = yes
+	}
+}
+
+nfm_character_sibling_martial = {
+	age = { 25 40 }
+	random_traits_list = {
+		education_martial_1 = { weight = { base = 15 } }
+		education_martial_2 = { weight = { base = 45 } }
+		education_martial_3 = { weight = { base = 35 } }
+		education_martial_4 = { weight = { base = 5 } }
+	}
+	random_traits_list = {
+		count = { 1 3 }
+		# Primary martial traits (high weight)
+		brave = { weight = { base = 35 } }
+		ambitious = { weight = { base = 30 } }
+		diligent = { weight = { base = 30 } }
+		wrathful = { weight = { base = 25 } }
+		# Secondary traits (low weight)
+		stubborn = { weight = { base = 20 } }
+		just = { weight = { base = 15 } }
+		impatient = { weight = { base = 12 } }
+	}
+
+	random_traits = yes
+
+	culture = root.culture
+	faith = root.faith
+
+	gender_female_chance = root_faith_dominant_gender_adjusted_female_chance
+
+	martial = {
+		min_template_decent_skill
+		max_template_decent_skill
+	}
+	prowess = {
+		min_template_average_skill
+		max_template_decent_skill
+	}
+
+	after_creation = {
+		# Weight variation
+		random_list = {
+			200 = { }
+			25 = { change_current_weight = -25 }
+			25 = { change_current_weight = -75 }
+			25 = { change_current_weight = 25 }
+			25 = { change_current_weight = 75 }
+			5 = { change_current_weight = 100 }
+		}
+		# Lifestyle traits for martial-educated siblings
+		if = {
+			limit = {
+				OR = {
+					has_trait = education_martial_1
+					has_trait = education_martial_2
+					has_trait = education_martial_3
+					has_trait = education_martial_4
+				}
+			}
+			random_list = {
+				70 = { }
+				15 = { add_trait = strategist }
+				10 = { add_trait = gallant }
+				5 = { add_trait = overseer }
+			}
+		}
+		# Blademaster chance (15% for siblings)
+		random = {
+			chance = 15
+			add_trait = lifestyle_blademaster
+		}
+		add_random_tiered_trait_xp_effect = {
+			TRAIT = lifestyle_blademaster
+			LEVEL_1 = yes
+			LEVEL_3 = no
+		}
+		# Hunter chance (15% for siblings)
+		random = {
+			chance = 15
+			add_trait = lifestyle_hunter
+		}
+		add_random_tiered_trait_track_xp_effect = {
+			TRAIT = lifestyle_hunter
+			TRACK = hunter
+			LEVEL_1 = yes
+			LEVEL_3 = no
+		}
+		# Cultural terrain commander traits
+		if = {
+			limit = {
+				culture = { has_cultural_parameter = winter_soldier_trait_more_common }
+				NOT = { has_trait = winter_soldier }
+			}
+			random = {
+				chance = 10
+				add_trait = winter_soldier
+			}
+		}
+		if = {
+			limit = {
+				culture = { has_cultural_parameter = forest_fighter_trait_more_common }
+				NOT = { has_trait = forest_fighter }
+			}
+			random = {
+				chance = 10
+				add_trait = forest_fighter
+			}
+		}
+		if = {
+			limit = {
+				culture = { has_cultural_parameter = rough_terrain_expert_trait_more_common }
+				NOT = { has_trait = rough_terrain_expert }
+			}
+			random = {
+				chance = 10
+				add_trait = rough_terrain_expert
+			}
+		}
+		if = {
+			limit = {
+				culture = { has_cultural_parameter = desert_warrior_trait_more_common }
+				NOT = { has_trait = desert_warrior }
+			}
+			random = {
+				chance = 10
+				add_trait = desert_warrior
+			}
+		}
+		if = {
+			limit = {
+				culture = { has_cultural_parameter = jungle_stalker_trait_more_common }
+				NOT = { has_trait = jungle_stalker }
+			}
+			random = {
+				chance = 10
+				add_trait = jungle_stalker
+			}
+		}
+		set_interesting_traits_and_modifiers_effect = yes
+	}
+}
+
+nfm_character_child_martial = {
+	age = { 1 15 }
+	random_traits_list = {
+		count = 1
+		# Childhood traits weighted toward martial-beneficial ones
+		rowdy = { weight = { base = 35 } }
+		bossy = { weight = { base = 30 } }
+		charming = { weight = { base = 20 } }
+		pensive = { weight = { base = 10 } }
+		curious = { weight = { base = 5 } }
+	}
+
+	random_traits = yes
+
+	culture = root.culture
+	faith = root.faith
+
+	gender_female_chance = root_faith_dominant_gender_adjusted_female_chance
+
+	martial = {
+		min_template_decent_skill
+		max_template_decent_skill
+	}
+	prowess = {
+		min_template_average_skill
+		max_template_decent_skill
+	}
+
+	after_creation = {
+		# Weight variation
+		random_list = {
+			200 = { }
+			25 = { change_current_weight = -25 }
+			25 = { change_current_weight = -75 }
+			25 = { change_current_weight = 25 }
+			25 = { change_current_weight = 75 }
+			5 = { change_current_weight = 100 }
+		}
+		set_interesting_traits_and_modifiers_effect = yes
+	}
+}

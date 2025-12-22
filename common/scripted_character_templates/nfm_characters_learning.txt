@@ -1,0 +1,164 @@
+nfm_character_familyhead_learning = {
+	age = { 34 45 }
+	random_traits_list = {
+		education_learning_3 = { weight = { base = 60 } }
+		education_learning_4 = { weight = { base = 40 } }
+	}
+	random_traits_list = {
+		count = { 2 3 }
+		# Primary learning traits (high weight)
+		patient = { weight = { base = 40 } }
+		calm = { weight = { base = 35 } }
+		diligent = { weight = { base = 35 } }
+		humble = { weight = { base = 30 } }
+		# Secondary traits (low weight)
+		cynical = { weight = { base = 15 } }
+		shy = { weight = { base = 10 } }
+		content = { weight = { base = 8 } }
+	}
+	random_traits = no
+
+	culture = root.culture
+	faith = root.faith
+
+	gender_female_chance = 50
+
+	learning = {
+		min_template_decent_skill
+		max_template_decent_skill
+	}
+	diplomacy = {
+		min_template_average_skill
+		max_template_decent_skill
+	}
+
+	after_creation = {
+		# Weight variation
+		random_list = {
+			200 = { }
+			25 = { change_current_weight = -25 }
+			25 = { change_current_weight = -75 }
+			25 = { change_current_weight = 25 }
+			25 = { change_current_weight = 75 }
+			5 = { change_current_weight = 100 }
+		}
+		# Lifestyle traits (mutually exclusive selection)
+		random_list = {
+			40 = { add_trait = scholar }
+			35 = { add_trait = theologian }
+			15 = { add_trait = whole_of_body }
+			10 = { }
+		}
+		set_interesting_traits_and_modifiers_effect = yes
+	}
+}
+
+nfm_character_sibling_learning = {
+	age = { 25 40 }
+	random_traits_list = {
+		education_learning_1 = { weight = { base = 15 } }
+		education_learning_2 = { weight = { base = 45 } }
+		education_learning_3 = { weight = { base = 35 } }
+		education_learning_4 = { weight = { base = 5 } }
+	}
+	random_traits_list = {
+		count = { 1 3 }
+		# Primary learning traits (high weight)
+		patient = { weight = { base = 35 } }
+		calm = { weight = { base = 30 } }
+		diligent = { weight = { base = 30 } }
+		humble = { weight = { base = 25 } }
+		# Secondary traits (low weight)
+		cynical = { weight = { base = 20 } }
+		shy = { weight = { base = 15 } }
+		content = { weight = { base = 12 } }
+	}
+
+	random_traits = yes
+
+	culture = root.culture
+	faith = root.faith
+
+	gender_female_chance = 50
+
+	learning = {
+		min_template_decent_skill
+		max_template_decent_skill
+	}
+	diplomacy = {
+		min_template_average_skill
+		max_template_decent_skill
+	}
+
+	after_creation = {
+		# Weight variation
+		random_list = {
+			200 = { }
+			25 = { change_current_weight = -25 }
+			25 = { change_current_weight = -75 }
+			25 = { change_current_weight = 25 }
+			25 = { change_current_weight = 75 }
+			5 = { change_current_weight = 100 }
+		}
+		# Lifestyle traits for learning-educated siblings
+		if = {
+			limit = {
+				OR = {
+					has_trait = education_learning_1
+					has_trait = education_learning_2
+					has_trait = education_learning_3
+					has_trait = education_learning_4
+				}
+			}
+			random_list = {
+				70 = { }
+				15 = { add_trait = scholar }
+				10 = { add_trait = theologian }
+				5 = { add_trait = whole_of_body }
+			}
+		}
+		set_interesting_traits_and_modifiers_effect = yes
+	}
+}
+
+nfm_character_child_learning = {
+	age = { 1 15 }
+	random_traits_list = {
+		count = 1
+		# Childhood traits weighted toward learning-beneficial ones
+		curious = { weight = { base = 35 } }
+		pensive = { weight = { base = 30 } }
+		shy = { weight = { base = 20 } }
+		charming = { weight = { base = 10 } }
+		bossy = { weight = { base = 5 } }
+	}
+
+	random_traits = yes
+
+	culture = root.culture
+	faith = root.faith
+
+	gender_female_chance = 50
+
+	learning = {
+		min_template_decent_skill
+		max_template_decent_skill
+	}
+	diplomacy = {
+		min_template_average_skill
+		max_template_decent_skill
+	}
+
+	after_creation = {
+		# Weight variation
+		random_list = {
+			200 = { }
+			25 = { change_current_weight = -25 }
+			25 = { change_current_weight = -75 }
+			25 = { change_current_weight = 25 }
+			25 = { change_current_weight = 75 }
+			5 = { change_current_weight = 100 }
+		}
+		set_interesting_traits_and_modifiers_effect = yes
+	}
+}

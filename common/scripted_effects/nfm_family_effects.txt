@@ -201,3 +201,375 @@ nfm_effect_create_house_steward = {
     }
 
 }
+
+
+## nfm_effect_create_house_learning
+# Creates a complete learning-focused noble family with parents, house head,
+# heir, and siblings. Family size varies based on the family_size scope value.
+#
+# @scope: character - Must be called from the liege/employer who will hire the family
+# @input scope:family_size [value] - Controls family composition (small/medium/large)
+# @output scope:new_house_head [character] - The generated family head
+nfm_effect_create_house_learning = {
+
+    # Generate Parents if it's not a small family
+    if = {
+        limit = {
+            scope:family_size > nfm_familysize_small
+        }
+
+        # Mother and Father
+        create_character = {
+            template = pool_repopulate_learning
+            gender = male
+            age = { 60 95 }
+            culture = root.culture
+            faith = root.faith
+            employer = root
+
+            dynasty = generate
+            save_scope_as = head_father
+        }
+        create_character = {
+            template = pool_repopulate_learning
+            gender = female
+            age = { 60 80 }
+            culture = root.culture
+            faith = root.faith
+            employer = root
+
+            dynasty = none
+
+            save_scope_as = head_mother
+        }
+
+        scope:head_father = { marry = scope:head_mother }
+
+        # House Head
+        create_character = {
+            template = nfm_character_familyhead_learning
+            father = scope:head_father
+            mother = scope:head_father.primary_spouse
+            employer = root
+
+            dynasty = inherit
+
+            save_scope_as = new_house_head
+        }
+    }
+    # Small families have no parents - house head is a new dynasty founder
+    else = {
+        create_character = {
+            template = nfm_character_familyhead_learning
+            employer = root
+
+            dynasty = generate
+
+            save_scope_as = new_house_head
+        }
+    }
+
+    # Generate an Adult Heir (aged 16-18) as the primary successor
+    create_character = {
+        template = nfm_character_familyhead_learning
+        age = { 16 18 }
+        employer = root
+
+        father = scope:new_house_head
+
+        dynasty = inherit
+
+        save_scope_as = new_heir
+    }
+
+    # Generate additional children (younger than the heir)
+    # Count determined by nfm_familyhead_extrachildcount script value
+    while = {
+        count = nfm_familyhead_extrachildcount
+
+        create_character = {
+            template = nfm_character_child_learning
+            employer = root
+
+            age = { 0 nfm_value_oneyoungerthanheir }
+
+            father = scope:new_house_head
+
+            dynasty = inherit
+        }
+    }
+
+
+    # Generate Siblings for the house head (medium/large families only)
+    if = {
+        limit = {
+            scope:family_size > nfm_familysize_small
+        }
+
+        # Count based on family_size via nfm_familysize_siblingsforcount
+        while = {
+            count = nfm_familysize_siblingsforcount
+
+            create_character = {
+                template = nfm_character_sibling_learning
+                age = { 25 nfm_value_new_house_head_age }
+                employer = root
+
+                # Same parents as the house head
+                father = scope:head_father
+                mother = scope:head_mother
+
+                dynasty = inherit
+            }
+        }
+    }
+
+}
+
+
+## nfm_effect_create_house_intrigue
+# Creates a complete intrigue-focused noble family with parents, house head,
+# heir, and siblings. Family size varies based on the family_size scope value.
+#
+# @scope: character - Must be called from the liege/employer who will hire the family
+# @input scope:family_size [value] - Controls family composition (small/medium/large)
+# @output scope:new_house_head [character] - The generated family head
+nfm_effect_create_house_intrigue = {
+
+    # Generate Parents if it's not a small family
+    if = {
+        limit = {
+            scope:family_size > nfm_familysize_small
+        }
+
+        # Mother and Father
+        create_character = {
+            template = pool_repopulate_intrigue
+            gender = male
+            age = { 60 95 }
+            culture = root.culture
+            faith = root.faith
+            employer = root
+
+            dynasty = generate
+            save_scope_as = head_father
+        }
+        create_character = {
+            template = pool_repopulate_intrigue
+            gender = female
+            age = { 60 80 }
+            culture = root.culture
+            faith = root.faith
+            employer = root
+
+            dynasty = none
+
+            save_scope_as = head_mother
+        }
+
+        scope:head_father = { marry = scope:head_mother }
+
+        # House Head
+        create_character = {
+            template = nfm_character_familyhead_intrigue
+            father = scope:head_father
+            mother = scope:head_father.primary_spouse
+            employer = root
+
+            dynasty = inherit
+
+            save_scope_as = new_house_head
+        }
+    }
+    # Small families have no parents - house head is a new dynasty founder
+    else = {
+        create_character = {
+            template = nfm_character_familyhead_intrigue
+            employer = root
+
+            dynasty = generate
+
+            save_scope_as = new_house_head
+        }
+    }
+
+    # Generate an Adult Heir (aged 16-18) as the primary successor
+    create_character = {
+        template = nfm_character_familyhead_intrigue
+        age = { 16 18 }
+        employer = root
+
+        father = scope:new_house_head
+
+        dynasty = inherit
+
+        save_scope_as = new_heir
+    }
+
+    # Generate additional children (younger than the heir)
+    # Count determined by nfm_familyhead_extrachildcount script value
+    while = {
+        count = nfm_familyhead_extrachildcount
+
+        create_character = {
+            template = nfm_character_child_intrigue
+            employer = root
+
+            age = { 0 nfm_value_oneyoungerthanheir }
+
+            father = scope:new_house_head
+
+            dynasty = inherit
+        }
+    }
+
+
+    # Generate Siblings for the house head (medium/large families only)
+    if = {
+        limit = {
+            scope:family_size > nfm_familysize_small
+        }
+
+        # Count based on family_size via nfm_familysize_siblingsforcount
+        while = {
+            count = nfm_familysize_siblingsforcount
+
+            create_character = {
+                template = nfm_character_sibling_intrigue
+                age = { 25 nfm_value_new_house_head_age }
+                employer = root
+
+                # Same parents as the house head
+                father = scope:head_father
+                mother = scope:head_mother
+
+                dynasty = inherit
+            }
+        }
+    }
+
+}
+
+
+## nfm_effect_create_house_martial
+# Creates a complete martial-focused noble family with parents, house head,
+# heir, and siblings. Family size varies based on the family_size scope value.
+#
+# @scope: character - Must be called from the liege/employer who will hire the family
+# @input scope:family_size [value] - Controls family composition (small/medium/large)
+# @output scope:new_house_head [character] - The generated family head
+nfm_effect_create_house_martial = {
+
+    # Generate Parents if it's not a small family
+    if = {
+        limit = {
+            scope:family_size > nfm_familysize_small
+        }
+
+        # Mother and Father
+        create_character = {
+            template = pool_repopulate_martial
+            gender = male
+            age = { 60 95 }
+            culture = root.culture
+            faith = root.faith
+            employer = root
+
+            dynasty = generate
+            save_scope_as = head_father
+        }
+        create_character = {
+            template = pool_repopulate_martial
+            gender = female
+            age = { 60 80 }
+            culture = root.culture
+            faith = root.faith
+            employer = root
+
+            dynasty = none
+
+            save_scope_as = head_mother
+        }
+
+        scope:head_father = { marry = scope:head_mother }
+
+        # House Head
+        create_character = {
+            template = nfm_character_familyhead_martial
+            father = scope:head_father
+            mother = scope:head_father.primary_spouse
+            employer = root
+
+            dynasty = inherit
+
+            save_scope_as = new_house_head
+        }
+    }
+    # Small families have no parents - house head is a new dynasty founder
+    else = {
+        create_character = {
+            template = nfm_character_familyhead_martial
+            employer = root
+
+            dynasty = generate
+
+            save_scope_as = new_house_head
+        }
+    }
+
+    # Generate an Adult Heir (aged 16-18) as the primary successor
+    create_character = {
+        template = nfm_character_familyhead_martial
+        age = { 16 18 }
+        employer = root
+
+        father = scope:new_house_head
+
+        dynasty = inherit
+
+        save_scope_as = new_heir
+    }
+
+    # Generate additional children (younger than the heir)
+    # Count determined by nfm_familyhead_extrachildcount script value
+    while = {
+        count = nfm_familyhead_extrachildcount
+
+        create_character = {
+            template = nfm_character_child_martial
+            employer = root
+
+            age = { 0 nfm_value_oneyoungerthanheir }
+
+            father = scope:new_house_head
+
+            dynasty = inherit
+        }
+    }
+
+
+    # Generate Siblings for the house head (medium/large families only)
+    if = {
+        limit = {
+            scope:family_size > nfm_familysize_small
+        }
+
+        # Count based on family_size via nfm_familysize_siblingsforcount
+        while = {
+            count = nfm_familysize_siblingsforcount
+
+            create_character = {
+                template = nfm_character_sibling_martial
+                age = { 25 nfm_value_new_house_head_age }
+                employer = root
+
+                # Same parents as the house head
+                father = scope:head_father
+                mother = scope:head_mother
+
+                dynasty = inherit
+            }
+        }
+    }
+
+}

@@ -164,29 +164,32 @@ nfm_decision_elevate_nobles = {
 
     effect = {
         ## Choose a House Size
-        random_list = {
-            20 = {
-                save_scope_value_as  = {
-                    name = family_size
-                    value = nfm_familysize_small
+        hidden_effect = {
+            random_list = {
+                20 = {
+                    save_scope_value_as  = {
+                        name = family_size
+                        value = nfm_familysize_small
+                    }
+
                 }
-                custom_tooltip = nfm_decision_elevate_nobles_small_tt
-            }
-            60 = {
-                save_scope_value_as  = {
-                    name = family_size
-                    value = nfm_familysize_medium
+                60 = {
+                    save_scope_value_as  = {
+                        name = family_size
+                        value = nfm_familysize_medium
+                    }
                 }
-                custom_tooltip = nfm_decision_elevate_nobles_medium_tt
-            }
-            20 = {
-                save_scope_value_as  = {
-                    name = family_size
-                    value = nfm_familysize_large
+                20 = {
+                    save_scope_value_as  = {
+                        name = family_size
+                        value = nfm_familysize_large
+                    }
+
                 }
-                custom_tooltip = nfm_decision_elevate_nobles_large_tt
             }
         }
+
+        custom_tooltip = nfm_decision_elevate_nobles_sizes_tt
 
         ## Create the Family
         hidden_effect = {

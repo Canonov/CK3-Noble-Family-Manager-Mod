@@ -14,7 +14,7 @@
  nfm_decision_elevate_nobles_clan: "Elevate a Minor Clan"
 
  ## Family Size Tooltips ##
- 
+ nfm_decision_elevate_nobles_sizes_tt: "#S Family Size Chances are as follows:#!\n\t#F #E $EFFECT_LIST_BULLET$ #EMP 20%#!#!: $nfm_decision_elevate_nobles_small_tt$\n\t#E $EFFECT_LIST_BULLET$ #EMP 60%#!#!: $nfm_decision_elevate_nobles_medium_tt$\n\t#E $EFFECT_LIST_BULLET$ #EMP 20%#!#!: $nfm_decision_elevate_nobles_large_tt$\n#!"
  nfm_decision_elevate_nobles_small_tt: "A small family will be found, containing only the head and their children"
  nfm_decision_elevate_nobles_medium_tt: "A moderately sized family will be found, with some siblings and children"
  nfm_decision_elevate_nobles_large_tt: "A larger family will be found, with many siblings and children"

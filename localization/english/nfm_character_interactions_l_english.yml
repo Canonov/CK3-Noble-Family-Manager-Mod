@@ -15,10 +15,13 @@
  nfm_int_revoke_house: "Revoke Noble Family Status"
  nfm_int_revoke_house_desc: "For their heinous acts against the realm, the time has come to strip the entire [recipient.GetDynastyHouseName] [house|E] of their [noble_family|E] status!"
  nfm_int_revoke_house_options: "Additional Options"
- nfm_int_revoke_house_no_rulers_tt: "A member of their house must not have land in your realm"
  nfm_int_revoke_house_not_family_tt: "You cannot revoke the [noble_family|E] status of your own relatives"
  nfm_int_revoke_house_auto_accept_reason: "Being landless and [imprisoned|E], they are naturally powerless to refuse"
  nfm_int_revoke_no_reason_tyranny_tt: "#N @warning_icon! [tyranny|E] will be doubled for acting without a valid reason!#!"
+
+ ## Trigger Loc
+ nfm_loc_house_must_be_unlanded: "No member of [house|E] [DYNASTY_HOUSE.GetName] has [land|E] in your [realm|E]"
+ nfm_loc_house_must_be_unlanded_not: "A member of [house|E] [DYNASTY_HOUSE.GetName] is [landed|E] in your [realm|E]"
 
  ## Revoke Options ##
 
@@ -50,7 +53,14 @@
  nfm_int_dissolve_house_auto_accept_reason: "With no future for their house, they have no choice but to accept the inevitable dissolution"
  nfm_int_dissolve_house_highlighted: "This house meets the criteria for peaceful dissolution"
 
- # Dying house criteria tooltips
- nfm_int_dissolve_house_few_members_tt: "Must have #bold 3 or fewer#! living members"
- nfm_int_dissolve_house_no_fertile_tt: "Must have #bold no members#! likely to produce children"
- nfm_int_dissolve_house_no_dominant_marriages_tt: "Must have #bold no members#! married dominantly (whose children would join this house)"
+ ## Dying house criteria tooltips
+ # Living Members
+ nfm_loc_dissolve_house_few_members: "[DYNASTY_HOUSE.GetName] must have #bold 3 or fewer#! living members"
+ nfm_loc_dissolve_house_few_members_not: "[DYNASTY_HOUSE.GetName] has 3 or fewer living members"
+ # Fertile Members
+ nfm_loc_dissolve_house_no_fertile: "[DYNASTY_HOUSE.GetName] must have #bold no members#! likely to produce children"
+ nfm_loc_dissolve_house_has_fertile: "[DYNASTY_HOUSE.GetName] have no members likely to produce children"
+ # No Dominant Marriages
+ nfm_loc_dissolve_house_no_dominant_marriages: "[DYNASTY_HOUSE.GetName] must have #bold no members#! married dominantly (whose children would join this house)"
+ nfm_loc_dissolve_house_has_dominant_marriages: "[DYNASTY_HOUSE.GetName] have no members married dominantly (whose children would join this house)"
+

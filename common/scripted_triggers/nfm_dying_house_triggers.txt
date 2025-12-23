@@ -9,8 +9,8 @@
 # Scope: dynasty_house
 nfm_trigger_is_dying_house = {
     # Condition 1: Few members (3 or fewer living members)
-    custom_tooltip = {
-        text = nfm_int_dissolve_house_few_members_tt
+    custom_description = {
+        text = nfm_loc_dissolve_house_few_members
         NOT = {
             any_house_member = {
                 count > 3
@@ -21,8 +21,8 @@ nfm_trigger_is_dying_house = {
 
     OR = {
         # Condition 2: No fertile members remaining
-        custom_tooltip = {
-            text = nfm_int_dissolve_house_no_fertile_tt
+        custom_description = {
+            text = nfm_loc_dissolve_house_has_no_fertility
             NOT = {
                 any_house_member = {
                     is_alive = yes
@@ -32,8 +32,8 @@ nfm_trigger_is_dying_house = {
         }
 
         # Condition 3: No members married dominantly (who could produce heirs for this house)
-        custom_tooltip = {
-            text = nfm_int_dissolve_house_no_dominant_marriages_tt
+        custom_description = {
+            text = nfm_loc_dissolve_house_no_dominant_marriages
             NOT = {
                 any_house_member = {
                     is_alive = yes

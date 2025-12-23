@@ -50,31 +50,36 @@ nfm_int_revoke_house = {
 
     highlighted_reason = HIGHLIGHTED_HAS_EXECUTION_REASON
 
-    is_valid_showing_failures_only = {
-        scope:actor = {
-            is_imprisoned = no
-            NOT = { exists = involved_activity }
-            NOT = { is_allied_to = scope:recipient }
-        }
-
-        # They must not be a ceremonial liege and must not have a hook on you.
-        scope:recipient = {
-            NOT = { has_strong_hook = scope:actor }
-            tgp_is_ceremonial_liege_trigger = no
-        }
-
+    is_valid = {
+        # No Member of their house can have Land
         scope:recipient.house = {
-            custom_tooltip = {
-                text = nfm_int_revoke_house_no_rulers_tt
-
+            custom_description = {
+                text = nfm_loc_house_must_be_unlanded
                 NOT = {
                     any_house_member = {
                         is_landed = yes
                         top_liege = scope:actor
                     }
                 }
-
             }
+        }
+        # Not allied to them
+        scope:actor = {
+            NOT = { is_allied_to = scope:recipient }
+        }
+    }
+
+    is_valid_showing_failures_only = {
+        # You must be available
+        scope:actor = {
+            is_imprisoned = no
+            NOT = { exists = involved_activity }
+        }
+
+        # They must not be a ceremonial liege and must not have a hook on you.
+        scope:recipient = {
+            NOT = { has_strong_hook = scope:actor }
+            tgp_is_ceremonial_liege_trigger = no
         }
     }
 
@@ -386,8 +391,8 @@ nfm_int_dissolve_house = {
 
         # No other house members should be landed in the realm
         scope:recipient.house = {
-            custom_tooltip = {
-                text = nfm_int_revoke_house_no_rulers_tt
+            custom_description = {
+                text = nfm_loc_house_must_be_unlanded
                 NOT = {
                     any_house_member = {
                         is_landed = yes

@@ -6,8 +6,8 @@ nfm_loc_house_must_be_unlanded = {
 
 ## House Dissolution
 nfm_loc_dissolve_house_few_members = {
-    third = nfm_loc_dissolve_house_few_members_not
-    third_not = nfm_loc_dissolve_house_few_members
+    third = nfm_loc_dissolve_house_few_members
+    third_not = nfm_loc_dissolve_house_few_members_not
 }
 
 nfm_loc_dissolve_house_has_no_fertility = {
@@ -16,6 +16,6 @@ nfm_loc_dissolve_house_has_no_fertility = {
 }
 
 nfm_loc_dissolve_house_no_dominant_marriages = {
-    third = nfm_loc_dissolve_house_no_dominant_marriages
-    third_not = nfm_loc_dissolve_house_has_dominant_marriages
+    third = nfm_loc_dissolve_house_has_dominant_marriages 
+    third_not = nfm_loc_dissolve_house_no_dominant_marriages
 }

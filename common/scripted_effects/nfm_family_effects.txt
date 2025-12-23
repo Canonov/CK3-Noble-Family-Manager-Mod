@@ -269,7 +269,7 @@ nfm_effect_create_house_martial = {
     }
 }
 
-nfm_effect_create_house_minority = {
+nfm_effect_create_house_foreign = {
     $EMPLOYER$ = { save_scope_as = new_employer }
 
     random_realm_county = {

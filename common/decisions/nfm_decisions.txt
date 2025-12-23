@@ -206,6 +206,10 @@ nfm_decision_elevate_nobles = {
                 limit = { scope:nfm_house_martial = yes }
                 nfm_effect_create_house_martial = { EMPLOYER = root }
             }
+            else_if = {
+                limit = { scope:nfm_house_foreign = yes }
+                nfm_effect_create_house_foreign = { EMPLOYER = root }
+            }
         }
 
         # Will be created tooltip

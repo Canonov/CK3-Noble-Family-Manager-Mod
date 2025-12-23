@@ -1,0 +1,118 @@
+﻿
+## nfm_trigger_is_dying_house
+# Checks if a house qualifies as "dying" for peaceful dissolution
+# All three conditions must be met:
+# 1. Few members (1-3 living)
+# 2. No fertile members remaining
+# 3. No members married dominantly (children would join this house)
+#
+# Scope: dynasty_house
+nfm_trigger_is_dying_house = {
+    # Condition 1: Few members (3 or fewer living members)
+    custom_tooltip = {
+        text = nfm_int_dissolve_house_few_members_tt
+        NOT = {
+            any_house_member = {
+                count > 3
+                is_alive = yes
+            }
+        }
+    }
+
+    OR = {
+        # Condition 2: No fertile members remaining
+        custom_tooltip = {
+            text = nfm_int_dissolve_house_no_fertile_tt
+            NOT = {
+                any_house_member = {
+                    is_alive = yes
+                    nfm_trigger_is_fertile_for_house = yes
+                }
+            }
+        }
+
+        # Condition 3: No members married dominantly (who could produce heirs for this house)
+        custom_tooltip = {
+            text = nfm_int_dissolve_house_no_dominant_marriages_tt
+            NOT = {
+                any_house_member = {
+                    is_alive = yes
+                    nfm_trigger_can_produce_house_heirs = yes
+                }
+            }
+        }
+    }
+}
+
+## nfm_trigger_is_fertile_for_house
+# Checks if a character could potentially produce children for this house
+# Must have no hard blocks, positive fertility, and be of childbearing age
+#
+# Scope: character
+nfm_trigger_is_fertile_for_house = {
+    # no hard blocks from traits like eunuch, celibate, etc.
+    can_have_children = yes
+
+    # Must have above low fertility
+    fertility > low_fertility
+
+    # Age check
+    OR = {
+        AND = {
+            is_female = yes
+            age < 45
+        }
+        AND = {
+            is_male = yes
+            age < 65
+        }
+    }
+}
+
+## nfm_trigger_can_produce_house_heirs
+# Checks if a character is in a position to produce children that would join this house
+#
+# Scope: character
+nfm_trigger_can_produce_house_heirs = {
+    # Must be fertile first
+    nfm_trigger_is_fertile_for_house = yes
+
+    # Must be married to produce heirs of their house, this implicitly excludes children
+    is_married = yes
+
+    OR = {
+        # Male-dominated faith: male in patrilineal (non-matrilineal) marriage = dominant
+        AND = {
+            is_male = yes
+            faith = { has_doctrine = doctrine_gender_male_dominated }
+            matrilinear_marriage = no
+        }
+
+        # Female-dominated faith: female in matrilineal marriage = dominant
+        AND = {
+            is_female = yes
+            faith = { has_doctrine = doctrine_gender_female_dominated }
+            matrilinear_marriage = yes
+        }
+
+        # Equal faith: either gender as head of household
+        AND = {
+            faith = {
+                NOR = {
+                    has_doctrine = doctrine_gender_male_dominated
+                    has_doctrine = doctrine_gender_female_dominated
+                }
+            }
+            OR = {
+                AND = {
+                    is_male = yes
+                    matrilinear_marriage = no
+                }
+                AND = {
+                    is_female = yes
+                    matrilinear_marriage = yes
+                }
+            }
+        }
+    }
+}

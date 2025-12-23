@@ -11,3 +11,10 @@ nfm_op_family_elevated = {
     years = 15
     decaying = yes
 }
+
+# House head whose house was peacefully dissolved
+nfm_op_house_dissolved = {
+    opinion = -25
+    years = 10
+    decaying = yes
+}

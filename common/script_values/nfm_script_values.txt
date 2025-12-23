@@ -48,8 +48,12 @@ new_employer_faith_dominant_gender_adjusted_female_chance = {
 	}
 }
 
+# Get Tyranny amount for Dissolve House (minimal - peaceful action)
+# Much lower than revoke_house since this is a mercy dissolution
+nfm_value_dissolve_house_tyranny_gain = 3
+
 # Get Tyranny amount for the Destroy House Decision
-nfm_value_familydestructiontyranny = {
+nfm_value_revoke_house_tyranny_gain = {
     value = 0
 
     if = {

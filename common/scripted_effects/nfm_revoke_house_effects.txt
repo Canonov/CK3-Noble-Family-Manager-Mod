@@ -154,7 +154,7 @@ nfm_effect_revoke_house_stress_tyranny_impacts = {
         # Stress Loss
         vengeful = medium_stress_impact_loss
     }
-    add_tyranny = nfm_value_familydestructiontyranny
+    add_tyranny = nfm_value_revoke_house_tyranny_gain
 
     # Extra tyranny when no valid reason (2x total)
     if = {
@@ -167,7 +167,7 @@ nfm_effect_revoke_house_stress_tyranny_impacts = {
         }
         custom_tooltip = {
             text = nfm_int_revoke_no_reason_tyranny_tt
-            add_tyranny = nfm_value_familydestructiontyranny
+            add_tyranny = nfm_value_revoke_house_tyranny_gain
         }
     }
 

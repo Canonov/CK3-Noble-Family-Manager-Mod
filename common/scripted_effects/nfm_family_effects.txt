@@ -180,9 +180,9 @@ nfm_effect_create_house = {
     }
 
     # Generate additional children (younger than the heir)
-    # Count determined by nfm_familyhead_extrachildcount script value
+    # Count determined by nfm_familysize_headchildcount script value
     while = {
-        count = nfm_familyhead_extrachildcount
+        count = nfm_familysize_headchildcount
 
         create_character = {
             template = $CHILD_TEMPLATE$

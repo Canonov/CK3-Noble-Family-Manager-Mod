@@ -189,27 +189,38 @@ nfm_decision_elevate_nobles = {
 
         custom_tooltip = nfm_decision_elevate_nobles_sizes_tt
 
+        ## Save the House Type Once
+        save_scope_value_as = {
+            name = house_type
+            value = nfm_value_gethousetype
+        }
+
         ## Create the Family
         hidden_effect = {
-            if = {
-                limit = { scope:nfm_house_steward = yes }
-                nfm_effect_create_house_steward = { EMPLOYER = root }
+            switch = {
+                trigger = scope:house_type
+                nfm_housetype_steward = {
+                    nfm_effect_create_house_steward = { EMPLOYER = root }
+                }
+                nfm_housetype_martial = {
+                    nfm_effect_create_house_martial = { EMPLOYER = root }
+                }
+                nfm_housetype_learning = {
+                    nfm_effect_create_house_learning = { EMPLOYER = root }
+                }
+                nfm_housetype_intrigue = {
+                    nfm_effect_create_house_intrigue = { EMPLOYER = root }
+                }
+                nfm_housetype_foreign = {
+                    nfm_effect_create_house_foreign = { EMPLOYER = root }
+                }
             }
-            else_if = {
-                limit = { scope:nfm_house_learning = yes }
-                nfm_effect_create_house_learning = { EMPLOYER = root }
-            }
-            else_if = {
-                limit = { scope:nfm_house_intrigue = yes }
-                nfm_effect_create_house_intrigue = { EMPLOYER = root }
-            }
-            else_if = {
-                limit = { scope:nfm_house_martial = yes }
-                nfm_effect_create_house_martial = { EMPLOYER = root }
-            }
-            else_if = {
-                limit = { scope:nfm_house_foreign = yes }
-                nfm_effect_create_house_foreign = { EMPLOYER = root }
+
+            scope:new_house_head.house = {
+                set_variable = {
+                    name = nfm_housetype
+                    value = scope:house_type
+                }
             }
         }
 

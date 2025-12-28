@@ -1,0 +1,96 @@
+﻿nfm_loc_house_housetype = {
+	type = all
+
+    ## Steward
+	text = {
+		trigger = {
+            house.var:nfm_housetype = nfm_housetype_steward
+		}
+		localization_key = nfm_house_steward_name
+	}
+    ## Martial
+	text = {
+		trigger = {
+            house.var:nfm_housetype = nfm_housetype_martial
+		}
+		localization_key = nfm_house_martial_name
+	}
+    ## Learning
+	text = {
+		trigger = {
+            house.var:nfm_housetype = nfm_housetype_learning
+		}
+		localization_key = nfm_house_learning_name
+	}
+    ## Intrigue
+	text = {
+		trigger = {
+            house.var:nfm_housetype = nfm_housetype_intrigue
+		}
+		localization_key = nfm_house_intrigue_name
+	}
+    ## Foreign
+	text = {
+		trigger = {
+            house.var:nfm_housetype = nfm_housetype_foreign
+		}
+		localization_key = nfm_house_foreign_name
+	}
+
+	text = {
+		trigger = {
+            always = no
+		}
+		localization_key = nfm_house_unknown
+        fallback = yes
+	}
+}
+
+nfm_loc_house_housetype_event_desc = {
+	type = all
+
+    ## Steward
+	text = {
+		trigger = {
+            house.var:nfm_housetype = nfm_housetype_steward
+		}
+		localization_key = nfm_house_steward_event_desc
+	}
+    ## Martial
+	text = {
+		trigger = {
+            house.var:nfm_housetype = nfm_housetype_martial
+		}
+		localization_key = nfm_house_martial_event_desc
+	}
+    ## Learning
+	text = {
+		trigger = {
+            house.var:nfm_housetype = nfm_housetype_learning
+		}
+		localization_key = nfm_house_learning_event_desc
+	}
+    ## Intrigue
+	text = {
+		trigger = {
+            house.var:nfm_housetype = nfm_housetype_intrigue
+		}
+		localization_key = nfm_house_intrigue_event_desc
+	}
+    ## Foreign
+	text = {
+		trigger = {
+            house.var:nfm_housetype = nfm_housetype_foreign
+		}
+		localization_key = nfm_house_foreign_event_desc
+	}
+
+	text = {
+		trigger = {
+            always = no
+		}
+		localization_key = nfm_house_unknown
+        fallback = yes
+	}
+}
+

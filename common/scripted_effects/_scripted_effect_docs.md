@@ -32,7 +32,7 @@
 # @output scope:head_father [character] - Father of house head (if family_size > small)
 # @output scope:head_mother [character] - Mother of house head (if family_size > small)
 # @var nfm_familysize_small [value] - Threshold for small family generation
-# @var nfm_familyhead_extrachildcount [value] - Number of additional children to generate
+# @var nfm_familysize_headchildcount [value] - Number of additional children to generate
 # @var nfm_familysize_siblingsforcount [value] - Number of siblings to generate
 # @example:
 #   scope:family_size = nfm_familysize_medium

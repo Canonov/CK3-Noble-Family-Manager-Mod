@@ -1,0 +1,61 @@
+﻿nfm_housetype_steward = 1
+nfm_housetype_martial = 2
+nfm_housetype_learning = 3
+nfm_housetype_intrigue = 4
+nfm_housetype_foreign = 6
+
+
+nfm_value_gethousetype = {
+    value = 0
+
+    if = {
+        limit = { scope:nfm_house_steward ?= yes }
+        value = nfm_housetype_steward
+    }
+    else_if = {
+        limit = { scope:nfm_house_martial ?= yes }
+        value = nfm_housetype_martial
+    }
+    else_if = {
+        limit = { scope:nfm_house_learning ?= yes }
+        value = nfm_housetype_learning
+    }
+    else_if = {
+        limit = { scope:nfm_house_intrigue ?= yes }
+        value = nfm_housetype_intrigue
+    }
+    else_if = {
+        limit = { scope:nfm_house_foreign ?= yes }
+        value = nfm_housetype_foreign
+    }
+}
+
+
+
+
+nfm_familysize_small = 1
+nfm_familysize_medium = 2
+nfm_familysize_large = 3
+
+nfm_familysize_headchildcount = {
+    value = 0
+
+    switch = {
+        trigger = scope:family_size
+
+        nfm_familysize_small = { add = { 2 4 } }
+        nfm_familysize_medium = { add = { 1 3 } }
+        nfm_familysize_large = { add = { 2 3 } }
+    }
+}
+
+nfm_familysize_siblingsforcount = {
+    value = 0
+
+    switch = {
+        trigger = scope:family_size
+
+        nfm_familysize_medium = { add = { 1 3 } }
+        nfm_familysize_large = { add = { 2 5 } }
+    }
+}

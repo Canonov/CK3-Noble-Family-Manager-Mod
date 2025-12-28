@@ -68,10 +68,13 @@ nfm_events_elevate_nobles.1 = {
                 custom = nfm_loc_custom.every_house_member
                 limit = { scope:new_house_head != this }
 
-                # Other members get lesser opinion bonus
                 add_opinion = {
                     target = root
                     modifier = nfm_op_family_elevated
+                }
+
+                hidden_effect = {
+                    set_employer = scope:new_house_head
                 }
 
                 # Set up Merit and Examinations

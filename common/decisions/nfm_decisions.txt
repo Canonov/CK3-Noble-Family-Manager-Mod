@@ -227,6 +227,11 @@ nfm_decision_elevate_nobles = {
         # Will be created tooltip
         custom_tooltip = nfm_decision_elevate_nobles_tt
 
+        # Tooltip to explain their culture and faith
+        if = {
+            limit = { scope:house_type = nfm_housetype_foreign }
+            custom_tooltip = nfm_house_foreign_diff_culture_tooltip
+        }
         # Tooltip to explain merit granting
         if = {
             limit = { government_allows = merit }

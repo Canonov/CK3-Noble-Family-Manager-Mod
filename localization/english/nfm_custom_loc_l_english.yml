@@ -1,0 +1,2 @@
+﻿l_english:
+ nfm_custom.every_house_member: "Every Member of [house|E] [THIS.House.GetName]"

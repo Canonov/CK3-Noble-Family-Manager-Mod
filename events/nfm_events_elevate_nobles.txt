@@ -1,0 +1,146 @@
+﻿namespace = nfm_events_elevate_nobles
+
+nfm_events_elevate_nobles.1 = {
+    type = character_event
+    title = nfm_events_elevate_nobles.1.t
+    desc = {
+        desc = nfm_events_elevate_nobles.1.d # Shared Intro
+        desc = newline.desc
+        # House-specific flavor based on selected type
+        triggered_desc = {
+            trigger = { scope:nfm_house_steward ?= yes }
+            desc = nfm_events_elevate_nobles.1.d.steward
+        }
+        triggered_desc = {
+            trigger = { scope:nfm_house_martial ?= yes }
+            desc = nfm_events_elevate_nobles.1.d.martial
+        }
+        triggered_desc = {
+            trigger = { scope:nfm_house_learning ?= yes }
+            desc = nfm_events_elevate_nobles.1.d.learning
+        }
+        triggered_desc = {
+            trigger = { scope:nfm_house_intrigue ?= yes }
+            desc = nfm_events_elevate_nobles.1.d.intrigue
+        }
+        triggered_desc = {
+            trigger = { scope:nfm_house_foreign ?= yes }
+            desc = nfm_events_elevate_nobles.1.d.foreign
+        }
+    }
+
+    # Todo make it so other portrait slots are filled by other family members
+    left_portrait = {
+        character = ROOT
+        animation = personality_rational
+    }
+
+    lower_right_portrait = {
+        character = scope:new_house_head_heir
+    }
+
+    right_portrait = {
+        character = scope:new_house_head
+    }
+
+    immediate = {
+
+    }
+
+    theme = "administrative"
+    override_background = {
+        trigger = { always = yes }
+        reference = courtyard
+    }
+    override_effect_2d = { reference = legend_glow }
+
+    # Option 1: Grant them the Noble Title
+    option = {
+        name = nfm_events_elevate_nobles.1.a
+
+        ## Create the Family Title
+        custom_tooltip = {
+            text = nfm_events_elevate_nobles.1.tt.becomes_head
+            scope:new_house_head = {
+                create_noble_family_effect = { GOVERNMENT_GIVER = root }
+            }
+        }
+
+        ## House Head Opinion Bonus and Merit
+        # Split for Tooltip Reasons
+        scope:new_house_head = {
+            # House head gets larger bonus
+            add_opinion = {
+                target = root
+                modifier = nfm_op_elevated
+            }
+            if = {
+                limit = { root = { government_allows = merit } }
+                hidden_effect = { nfm_effect_setup_merit_for_member = yes }
+            }
+        }
+
+        ## Grant Merit and Opinion Bonuses
+        scope:new_house_head.house = {
+            every_house_member = {
+                custom = nfm_custom.every_house_member
+                limit = { scope:new_house_head != this }
+
+                # Other members get lesser opinion bonus
+                add_opinion = {
+                    target = root
+                    modifier = nfm_op_family_elevated
+                }
+
+                # Set up Merit and Examinations
+                if = {
+                    limit = { root = { government_allows = merit } }
+                    hidden_effect = { nfm_effect_setup_merit_for_member = yes }
+                    custom_tooltip = nfm_events_elevate_nobles.1.tt.gain_merit
+                }
+            }
+        }
+
+        ## Notify the Player
+        send_interface_toast = {
+            type = event_generic_good_with_text
+
+            title = nfm_toast_elevated
+            desc = nfm_toast_elevated_desc
+            tooltip = nfm_toast_elevated_tt
+
+            left_icon = scope:new_house_head
+            right_icon = scope:new_house_head.house
+        }
+    }
+
+    # Option 2: They aren't needed - Partial Refund
+    option = {
+        name = nfm_events_elevate_nobles.1.b
+
+        ## Send them to the retirement fields (totally not just killing them)
+        custom_tooltip = {
+            text = nfm_events_elevate_nobles.1.b.flavor
+
+            scope:new_house_head.house = {
+                every_house_member = {
+                    # Their spouse if they exist, because they're not house members
+                    primary_spouse ?= {
+                        if = {
+                            limit = {
+                                is_lowborn = yes
+                            }
+                            death = {
+                                death_reason = death_disappearance
+                            }
+                        }
+                    }
+                    # Poof
+                    death = {
+                        death_reason = death_disappearance
+                    }
+                }
+            }
+        }
+    }
+}

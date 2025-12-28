@@ -1,0 +1,40 @@
+﻿l_english:
+
+ ################################
+ # NOBLE HOUSE TYPES
+ ################################
+
+ ## Stewardship Houses ##
+
+ nfm_house_steward_name: "Capable Stewards"
+ nfm_house_steward_desc: "This family has demonstrated exceptional competence in managing lands, collecting taxes, and organizing the affairs of the realm."
+ nfm_house_steward_tooltip: "Members of this house excel in [stewardship|E] and make excellent [councillors|E] for financial and developmental tasks"
+
+ ## Martial Houses ##
+
+ nfm_house_martial_name: "Soldiers and Commanders"
+ nfm_house_martial_desc: "A family of proven warriors and military leaders, their martial prowess has earned them a place among the nobility. They have served with distinction in battle and shown talent for command."
+ nfm_house_martial_tooltip: "Members of this house excel in [martial|E] skills and make formidable [knights|E] and [commanders|E]"
+ # Samurai for Japanese
+ nfm_house_martial_name_samurai: "Minor Samurai Clan"
+
+ ## Learning Houses ##
+
+ nfm_house_learning_name: "Learned Scholars"
+ nfm_house_learning_desc: "A family of intellectuals and scholars has distinguished themselves through their pursuit of knowledge and wisdom."
+ nfm_house_learning_tooltip: "Members of this house excel in [learning|E] and make excellent [court_chaplains|E] and cultural advisors"
+ # Confucian Scholars for Chinese Chars
+ nfm_house_learning_name_confucian: "Confucian Scholars"
+
+ ## Intrigue Houses ##
+
+ nfm_house_intrigue_name: "Trustworthy Spies"
+ nfm_house_intrigue_desc: "A family of cunning operatives and information brokers, their skill in intrigue and espionage has proven invaluable."
+ nfm_house_intrigue_tooltip: "Members of this house excel in [intrigue|E] and make effective [Concept('spymaster', 'Spymasters')|E] and covert agents"
+
+ ## Foreign/Minority Houses ##
+
+ nfm_house_foreign_name: "Talented Minorities"
+ nfm_house_foreign_desc: "From the far corners of the realm, a family of different heritage has proven their worth through service and skill. They bring fresh perspectives and unique talents to the court."
+ nfm_house_foreign_tooltip: "Members of this house bring diverse perspectives and may have unique cultural skills"
+ nfm_house_foreign_diff_culture_tooltip: "#weak $nfm_house_foreign_name$:#! The house will be chosen from one of your [realm|E] [counties|E] of a different [culture|E], if their [faith|E] is [faith_astray|E] or greater they will be allowed to keep their [faith|E]"

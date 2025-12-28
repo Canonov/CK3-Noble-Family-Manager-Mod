@@ -1,0 +1,24 @@
+﻿l_english:
+
+ ################################
+ # ELEVATE NOBLES EVENT
+ ################################
+
+ nfm_events_elevate_nobles.1.t: "A Family Rises"
+ nfm_events_elevate_nobles.1.d: "My summons has been answered. From among the minor nobility of my realm, a family has come forward seeking elevation to proper noble status. They stand before me now, awaiting my judgment."
+
+ ## House Type Flavor Descriptions ##
+ nfm_events_elevate_nobles.1.d.steward: "The [new_house_head.GetDynastyHouseName] have proven themselves capable administrators. Their ledgers are immaculate, their estates well-managed, and their reputation for financial acumen precedes them."
+ nfm_events_elevate_nobles.1.d.martial: "[new_house_head.GetName] and [new_house_head.GetHerHis] kin have shed blood in service to the realm. They carry themselves with the discipline of seasoned warriors, their martial prowess evident in every movement."
+ nfm_events_elevate_nobles.1.d.learning: "The [new_house_head.GetDynastyHouseName] are known for their scholarly pursuits and wisdom. [new_house_head.GetName] speaks with the measured confidence of one who has devoted [new_house_head.GetHerHis] life to knowledge."
+ nfm_events_elevate_nobles.1.d.intrigue: "Little is known of the [new_house_head.GetDynastyHouseName] publicly, which is perhaps their greatest asset. They have served in the shadows, their loyalty proven through discretion and results."
+ nfm_events_elevate_nobles.1.d.foreign: "The [new_house_head.GetDynastyHouseName] hail from distant lands, bringing with them foreign customs and perspectives. Their talents have caught my attention, and diversity strengthens a realm."
+
+ ## Options ##
+ nfm_events_elevate_nobles.1.a: "The [new_house_head.GetDynastyHouseName] will make a fine addition to the realm."
+ nfm_events_elevate_nobles.1.b: "These [new_house_head.Custom2('InsultNounPlural', ROOT.Char)] are of no use to me!"
+ nfm_events_elevate_nobles.1.b.flavor: "The [new_house_head.GetDynastyHouseName] will never be heard from again."
+
+ ## Tooltips ##
+ nfm_events_elevate_nobles.1.tt.becomes_head: "[new_house_head.GetName] will become head of a new [noble_family|E]"
+ nfm_events_elevate_nobles.1.tt.gain_merit: "Gains @merit_icon![merit|E] and may pass some @provincial_exam_icon![examinations|E]"

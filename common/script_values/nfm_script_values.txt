@@ -26,7 +26,7 @@ nfm_familysize_siblingsforcount = {
 }
 
 nfm_value_oneyoungerthanheir = {
-    value = scope:new_heir.age
+    value = scope:new_house_head_heir.age
     add = -1
 }
 

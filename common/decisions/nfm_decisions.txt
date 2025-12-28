@@ -222,51 +222,10 @@ nfm_decision_elevate_nobles = {
             custom_tooltip = nfm_decision_elevate_nobles_getmerit_tt
         }
 
-        # Create the Noble Family and Set up opinion and merit stuff
-        hidden_effect = {
-            scope:new_house_head ?= {
-                create_noble_family_effect = { GOVERNMENT_GIVER = root }
-
-                # House head gets larger bonus
-                add_opinion = {
-                    target = root
-                    modifier = nfm_op_elevated
-                }
-            }
-
-            scope:new_house_head.house ?= {
-                every_house_member = {
-                    # Other members get lesser opinion bonus
-                    if = {
-                        limit = { scope:new_house_head != this }
-                        add_opinion = {
-                            target = root
-                            modifier = nfm_op_family_elevated
-                        }
-                    }
-
-                    # Set up Merit and Examinations
-                    if = {
-                        limit = { root = { government_allows = merit } }
-                        nfm_effect_setup_merit_for_member = yes
-                    }
-                }
-            }
+        # Trigger the event of their arrival
+        trigger_event = {
+            id = nfm_events_elevate_nobles.1
         }
-
-
-        ## Notify the Player
-        send_interface_toast = {
-            type = event_generic_good_with_text
-
-            title = nfm_toast_elevated
-            desc = nfm_toast_elevated_desc
-            tooltip = nfm_toast_elevated_tt
-
-            left_icon = scope:new_house_head
-            right_icon = scope:new_house_head.house
-        }
-
     }
 
     cost = {

@@ -96,8 +96,8 @@
 
             ## Vassalize them since creating a new house doesn't anymore apparently
             nfm_effect_vassalize = {
-                LIEGE = root
-                VASSAL = scope:new_house_head
+                LIEGE = scope:actor
+                VASSAL = scope:recipient
             }
 
             custom_tooltip = {

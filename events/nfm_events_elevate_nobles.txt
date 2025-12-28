@@ -10,7 +10,6 @@ nfm_events_elevate_nobles.1 = {
         desc = nfm_events_elevate_nobles.1.d.house_desc
     }
 
-    # Todo make it so other portrait slots are filled by other family members
     left_portrait = {
         character = root
         animation = personality_rational

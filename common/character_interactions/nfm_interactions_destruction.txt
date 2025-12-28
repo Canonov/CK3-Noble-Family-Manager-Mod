@@ -1,6 +1,5 @@
 ﻿
 ## Destroy Noble House
-# TODO add a crown auth requirement
 nfm_int_revoke_house = {
     icon = icon_governor_removal
     category = interaction_category_prison
@@ -66,6 +65,10 @@ nfm_int_revoke_house = {
         # Not allied to them
         scope:actor = {
             NOT = { is_allied_to = scope:recipient }
+        }
+        # Requires at least Limited Crown Authority (or Equivalent)
+        scope:actor = {
+            nfm_trigger_has_authority_for_destruction = yes
         }
     }
 
@@ -254,7 +257,6 @@ nfm_int_revoke_house = {
                     target = scope:actor
                 }
 
-                # TODO maybe guarantee it and give them a boost
                 # They might become an adventurer
                 release_from_prison = yes
                 banish_effect = { BANISHER = scope:actor }

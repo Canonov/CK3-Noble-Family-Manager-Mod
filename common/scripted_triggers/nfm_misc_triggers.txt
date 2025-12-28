@@ -1,0 +1,48 @@
+﻿nfm_trigger_has_authority_for_destruction = {
+    trigger_if = {
+        limit = {
+            has_realm_law_in_group = crown_authority
+        }
+        OR = {
+            has_realm_law = crown_authority_1
+            has_realm_law = crown_authority_2
+            has_realm_law = crown_authority_3
+        }
+    }
+    trigger_if = {
+        limit = {
+            has_realm_law_in_group = imperial_bureaucracy
+        }
+        OR = {
+            has_realm_law = imperial_bureaucracy_1
+            has_realm_law = imperial_bureaucracy_2
+            has_realm_law = imperial_bureaucracy_3
+        }
+    }
+    trigger_if = {
+        limit = {
+            has_realm_law_in_group = celestial_bureaucracy
+        }
+        # Celestial can always do it
+    }
+    trigger_if = {
+        limit = {
+            has_realm_law_in_group = meritocratic_bureaucracy
+        }
+        OR = {
+            has_realm_law = meritocratic_bureaucracy_1
+            has_realm_law = meritocratic_bureaucracy_2
+            has_realm_law = meritocratic_bureaucracy_3
+        }
+    }
+    trigger_if = {
+        limit = {
+            has_realm_law_in_group = japanese_bureaucracy
+        }
+        OR = {
+            has_realm_law = japanese_bureaucracy_1
+            has_realm_law = japanese_bureaucracy_2
+            has_realm_law = japanese_bureaucracy_3
+        }
+    }
+}

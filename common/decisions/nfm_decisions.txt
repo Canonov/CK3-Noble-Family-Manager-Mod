@@ -171,7 +171,6 @@ nfm_decision_elevate_nobles = {
                         name = family_size
                         value = nfm_familysize_small
                     }
-
                 }
                 60 = {
                     save_scope_value_as  = {
@@ -184,7 +183,6 @@ nfm_decision_elevate_nobles = {
                         name = family_size
                         value = nfm_familysize_large
                     }
-
                 }
             }
         }

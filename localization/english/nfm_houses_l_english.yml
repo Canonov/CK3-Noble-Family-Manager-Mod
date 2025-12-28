@@ -43,7 +43,7 @@
  nfm_house_foreign_name_dyn: "Talented [ROOT.Char.GetCulture.GetCollectiveNounNoTooltip]"
  nfm_house_foreign_desc: "From the far corners of the realm, a family of different heritage has proven their worth through service and skill. They bring unique talents to the [ROOT.Char.Custom('GetRealmRank')] court."
  nfm_house_foreign_tooltip: "Members of this house bring various educations and may have unique cultural skills"
- nfm_house_foreign_diff_culture_tooltip: "#weak $nfm_house_foreign_name$:#! The house will be chosen from one of your [realm|E] [counties|E] of a different [culture|E], if their [faith|E] is [faith_astray|E] or greater they will be allowed to keep their [faith|E]"
+ nfm_house_foreign_diff_culture_tooltip: "#weak $nfm_house_foreign_name$:#! The house will be chosen from one of your [realm|E] [counties|E] of a different [culture|E], if their [faith|E] is [faith_astray|E] or [faith_righteous|E] they will be allowed to keep their [faith|E]"
 
 
  ################################

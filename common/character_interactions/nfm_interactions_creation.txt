@@ -91,13 +91,17 @@
         scope:recipient = {
             custom_tooltip = {
                 text = create_noble_family_tt
-
                 create_noble_family_effect = { GOVERNMENT_GIVER = scope:actor }
+            }
+
+            ## Vassalize them since creating a new house doesn't anymore apparently
+            nfm_effect_vassalize = {
+                LIEGE = root
+                VASSAL = scope:new_house_head
             }
 
             custom_tooltip = {
                 text = nfm_int_grant_house_costs_tt
-
                 add_prestige = 250
                 change_influence = 150
                 add_gold = 50

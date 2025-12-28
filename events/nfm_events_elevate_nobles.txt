@@ -12,7 +12,7 @@ nfm_events_elevate_nobles.1 = {
 
     # Todo make it so other portrait slots are filled by other family members
     left_portrait = {
-        character = ROOT
+        character = root
         animation = personality_rational
     }
 
@@ -41,6 +41,12 @@ nfm_events_elevate_nobles.1 = {
             scope:new_house_head = {
                 create_noble_family_effect = { GOVERNMENT_GIVER = root }
             }
+        }
+
+        ## Vassalize them since creating a new house doesn't anymore apparently
+        nfm_effect_vassalize = {
+            LIEGE = root
+            VASSAL = scope:new_house_head
         }
 
         ## House Head Opinion Bonus and Merit

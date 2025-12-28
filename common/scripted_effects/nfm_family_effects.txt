@@ -292,6 +292,7 @@ nfm_effect_create_house_foreign = {
             faith = { save_scope_as = family_faith }
         }
 
+        save_scope_as = origin_county
     }
 
     nfm_effect_create_house = {
@@ -301,5 +302,12 @@ nfm_effect_create_house_foreign = {
         HEAD_TEMPLATE = nfm_character_familyhead_martial # TODO
         CHILD_TEMPLATE = nfm_character_child_martial # TODO
         SIBLING_TEMPLATE = nfm_character_sibling_martial # TODO
+    }
+
+    scope:new_house_head = {
+        set_variable = {
+            name = nfm_origin_county
+            value = scope:origin_county
+        }
     }
 }

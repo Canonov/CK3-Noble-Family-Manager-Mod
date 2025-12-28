@@ -24,7 +24,7 @@
     ## Foreign
 	text = {
 		trigger = { house.var:nfm_housetype = nfm_housetype_foreign }
-		localization_key = nfm_house_foreign_name
+		localization_key = nfm_house_foreign_name_dyn
 	}
 
     # Fallback

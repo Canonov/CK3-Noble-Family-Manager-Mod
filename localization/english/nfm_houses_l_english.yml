@@ -40,7 +40,8 @@
  ## [6] Foreign/Minority Houses ##
 
  nfm_house_foreign_name: "Talented Minorities"
- nfm_house_foreign_desc: "From the far corners of the realm, a family of different heritage has proven their worth through service and skill. They bring fresh perspectives and unique talents to the court."
+ nfm_house_foreign_name_dyn: "Talented [ROOT.Char.GetCulture.GetCollectiveNounNoTooltip]"
+ nfm_house_foreign_desc: "From the far corners of the realm, a family of different heritage has proven their worth through service and skill. They bring unique talents to the court."
  nfm_house_foreign_tooltip: "Members of this house bring diverse perspectives and may have unique cultural skills"
  nfm_house_foreign_diff_culture_tooltip: "#weak $nfm_house_foreign_name$:#! The house will be chosen from one of your [realm|E] [counties|E] of a different [culture|E], if their [faith|E] is [faith_astray|E] or greater they will be allowed to keep their [faith|E]"
 
@@ -52,4 +53,4 @@
  nfm_house_martial_event_desc: "[ROOT.Char.GetName] and [ROOT.Char.GetHerHis] kin have shed blood in service to the realm. They carry themselves with the discipline of seasoned warriors, their martial prowess evident in every movement."
  nfm_house_learning_event_desc: "The [ROOT.Char.GetDynastyHouseName] are known for their scholarly pursuits and wisdom. [ROOT.Char.GetName] speaks with the measured confidence of one who has devoted [ROOT.Char.GetHerHis] life to knowledge."
  nfm_house_intrigue_event_desc: "Little is known of the [ROOT.Char.GetDynastyHouseName] publicly, which is perhaps their greatest asset. They have served in the shadows, their loyalty proven through discretion and results."
- nfm_house_foreign_event_desc: "The [ROOT.Char.GetDynastyHouseName] hail from distant lands, bringing with them foreign customs and perspectives. Their talents have caught my attention, and diversity strengthens a realm."
+ nfm_house_foreign_event_desc: "The [ROOT.Char.GetDynastyHouseName] hail from the [ROOT.Char.MakeScope.Var('nfm_origin_county').Title.GetName], bringing with them their [ROOT.Char.GetCulture.GetCollectiveNoun] customs and [ROOT.Char.GetFaith.GetName] faith. Their talents have caught my attention."

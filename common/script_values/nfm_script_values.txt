@@ -1,4 +1,24 @@
-﻿nfm_value_oneyoungerthanheir = {
+﻿# Elevate Noble Family - Gold Cost (for non-treasury holders)
+nfm_value_elevate_cost_gold = {
+    value = 0
+    if = {
+        limit = { has_treasury = no }
+        add = medium_gold_value
+    }
+    max = 300
+}
+
+# Elevate Noble Family - Treasury Cost (for treasury holders)
+nfm_value_elevate_cost_treasury = {
+    value = 0
+    if = {
+        limit = { has_treasury = yes }
+        add = medium_treasury_value
+    }
+    max = 600
+}
+
+nfm_value_oneyoungerthanheir = {
     value = scope:new_house_head_heir.age
     add = -1
 }

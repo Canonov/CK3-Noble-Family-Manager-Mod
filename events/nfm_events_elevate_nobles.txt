@@ -127,5 +127,32 @@ nfm_events_elevate_nobles.1 = {
                 }
             }
         }
+
+        ## Partial Cost Refunds (50%)
+        # Prestige Cost
+        add_prestige_no_experience = 100
+
+        # Gold cost
+        if = {
+            limit = { has_treasury = no }
+            add_gold = {
+                value = nfm_value_elevate_cost_gold
+                multiply = 0.5
+            }
+        }
+        # Treasury cost
+        if = {
+            limit = { has_treasury = yes }
+            add_treasury = {
+                value = nfm_value_elevate_cost_treasury
+                multiply = 0.5
+            }
+        }
+
+        # Influence Cost
+        change_influence_no_experience = 200
+
+        ## Remove the Decision Cooldown
+        remove_decision_cooldown = nfm_decision_elevate_nobles
     }
 }

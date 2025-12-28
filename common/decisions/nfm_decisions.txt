@@ -222,6 +222,11 @@ nfm_decision_elevate_nobles = {
                     value = scope:house_type
                 }
             }
+
+            # Grant portion of influence cost to new family head
+            scope:new_house_head = {
+                add_influence = 200
+            }
         }
 
         # Will be created tooltip
@@ -249,31 +254,15 @@ nfm_decision_elevate_nobles = {
             value = 200
         }
 
-        # none if you have a treasury, 125 if not
         gold = {
-            value = 0
-
-            if = {
-                limit = { has_treasury = no }
-                add = medium_gold_value # was 125
-            }
-
-            max = 250
+            value = nfm_value_elevate_cost_gold
         }
 
         treasury = {
-            value = 0
-
-            if = {
-                limit = { has_treasury = yes }
-                add = medium_treasury_value # was 200
-            }
-
-            max = 500
+            value = nfm_value_elevate_cost_treasury
         }
 
         influence = {
-            # Will be given to them
             value = 400
         }
     }

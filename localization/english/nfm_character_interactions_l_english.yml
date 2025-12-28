@@ -19,10 +19,6 @@
  nfm_int_revoke_house_auto_accept_reason: "Being landless and [imprisoned|E], they are naturally powerless to refuse"
  nfm_int_revoke_no_reason_tyranny_tt: "#N @warning_icon! [tyranny|E] will be doubled for acting without a valid reason!#!"
 
- ## Trigger Loc
- nfm_loc_house_must_be_unlanded: "No member of [house|E] [DYNASTY_HOUSE.GetName] has [land|E] in your [realm|E]"
- nfm_loc_house_must_be_unlanded_not: "A member of [house|E] [DYNASTY_HOUSE.GetName] is [landed|E] in your [realm|E]"
-
  ## Revoke Options ##
 
  # Sack Estate

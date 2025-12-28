@@ -1,2 +1,6 @@
 ﻿l_english:
- nfm_custom.every_house_member: "Every Member of [house|E] [THIS.House.GetName]"
+ nfm_loc_custom.every_house_member: "Every Member of [house|E] [THIS.House.GetName]"
+
+ ## Trigger Loc
+ nfm_loc_house_must_be_unlanded: "No member of [house|E] [DYNASTY_HOUSE.GetName] has [land|E] in your [realm|E]"
+ nfm_loc_house_must_be_unlanded_not: "A member of [house|E] [DYNASTY_HOUSE.GetName] is [landed|E] in your [realm|E]"

@@ -66,7 +66,7 @@ nfm_events_elevate_nobles.1 = {
         ## Grant Merit and Opinion Bonuses
         scope:new_house_head.house = {
             every_house_member = {
-                custom = nfm_custom.every_house_member
+                custom = nfm_loc_custom.every_house_member
                 limit = { scope:new_house_head != this }
 
                 # Other members get lesser opinion bonus

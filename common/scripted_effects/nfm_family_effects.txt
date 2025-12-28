@@ -321,10 +321,10 @@ nfm_effect_create_house_foreign = {
     nfm_effect_create_house = {
         EMPLOYER = scope:new_employer
 
-        PARENT_TEMPLATE = pool_repopulate_martial # TODO
-        HEAD_TEMPLATE = nfm_character_familyhead_martial # TODO
-        CHILD_TEMPLATE = nfm_character_child_martial # TODO
-        SIBLING_TEMPLATE = nfm_character_sibling_martial # TODO
+        PARENT_TEMPLATE = pool_repopulate_diplomacy
+        HEAD_TEMPLATE = nfm_character_familyhead_foreign
+        CHILD_TEMPLATE = nfm_character_child_foreign
+        SIBLING_TEMPLATE = nfm_character_sibling_foreign
     }
 
     scope:new_house_head = {

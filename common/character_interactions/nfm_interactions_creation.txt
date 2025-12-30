@@ -23,8 +23,10 @@
             government_allows = administrative
         }
         scope:recipient = {
-            is_courtier_of = scope:actor
-            is_ruler = no
+            AND = {
+                is_courtier = yes
+                employer.top_liege ?= scope:actor
+            }
             is_lowborn = no
             is_adult = yes
             is_imprisoned = no

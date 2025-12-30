@@ -71,3 +71,30 @@ nfm_loc_house_housetype_event_desc = {
         fallback = yes
 	}
 }
+
+nfm_loc_familysize_event_desc = {
+	type = all
+
+    ## Small
+	text = {
+		trigger = { house.var:nfm_familysize = nfm_familysize_small }
+		localization_key = nfm_familysize_small_event_desc
+	}
+    ## Medium
+	text = {
+		trigger = { house.var:nfm_familysize = nfm_familysize_medium }
+		localization_key = nfm_familysize_medium_event_desc
+	}
+    ## Large
+	text = {
+		trigger = { house.var:nfm_familysize = nfm_familysize_large }
+		localization_key = nfm_familysize_large_event_desc
+	}
+
+    # Fallback
+	text = {
+		trigger = { always = no }
+		localization_key = nfm_house_unknown
+        fallback = yes
+	}
+}

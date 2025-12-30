@@ -221,6 +221,10 @@ nfm_decision_elevate_nobles = {
                     name = nfm_housetype
                     value = scope:house_type
                 }
+                set_variable = {
+                    name = nfm_familysize
+                    value = scope:family_size
+                }
             }
 
             # Grant portion of influence cost to new family head

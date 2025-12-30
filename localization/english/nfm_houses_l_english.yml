@@ -49,8 +49,13 @@
  ################################
  # EVENT DESCRIPTIONS
  ################################
+ ## House Type Descriptions ##
  nfm_house_steward_event_desc: "The [ROOT.Char.GetDynastyHouseName] have proven themselves capable administrators. Their ledgers are immaculate, their estates well-managed, and their reputation for financial acumen precedes them."
  nfm_house_martial_event_desc: "[ROOT.Char.GetName] and [ROOT.Char.GetHerHis] kin have shed blood in service to the realm. They carry themselves with the discipline of seasoned warriors, their martial prowess evident in every movement."
- nfm_house_learning_event_desc: "The [ROOT.Char.GetDynastyHouseName] are known for their scholarly pursuits and wisdom. [ROOT.Char.GetName] speaks with the measured confidence of one who has devoted [ROOT.Char.GetHerHis] life to knowledge."
+ nfm_house_learning_event_desc: "The [ROOT.Char.GetDynastyHouseName] are known for their scholarly pursuits and wisdom. [ROOT.Char.GetShortUIName] speaks with the measured confidence of one who has devoted [ROOT.Char.GetHerHis] life to knowledge."
  nfm_house_intrigue_event_desc: "Little is known of the [ROOT.Char.GetDynastyHouseName] publicly, which is perhaps their greatest asset. They have served in the shadows, their loyalty proven through discretion and results."
- nfm_house_foreign_event_desc: "The [ROOT.Char.GetDynastyHouseName] hail from the [ROOT.Char.MakeScope.Var('nfm_origin_county').Title.GetName], bringing with them their [ROOT.Char.GetCulture.GetCollectiveNoun] customs and [ROOT.Char.GetFaith.GetName] faith. Their talents have caught my attention."
+ nfm_house_foreign_event_desc: "The [ROOT.Char.GetDynastyHouseName] hail from the [ROOT.Char.MakeScope.Var('nfm_origin_county').Title.GetName], bringing their [ROOT.Char.GetCulture.GetCollectiveNoun] customs and [ROOT.Char.GetFaith.GetName] faith. Outsiders, perhaps, but their talents speak for themselves."
+ ## Family Size Descriptions ##
+ nfm_familysize_small_event_desc: "#high [ROOT.Char.GetFirstName]#! stands with only [ROOT.Char.GetHerHis] children at [ROOT.Char.GetHerHis] side. A small household, but sometimes the mightiest oaks grow from a single acorn."
+ nfm_familysize_medium_event_desc: "Behind #high [ROOT.Char.GetFirstName]#! stand [ROOT.Char.GetHerHis] aging parents, siblings, and a gaggle of children. A respectable household of perhaps a dozen souls."
+ nfm_familysize_large_event_desc: "The [ROOT.Char.GetDynastyHouseName] have come in force. Parents, siblings, children, cousins — a veritable clan fills the chamber, each eager to share in the family's rising fortunes."

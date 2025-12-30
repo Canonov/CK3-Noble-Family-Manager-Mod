@@ -11,7 +11,7 @@ nfm_effect_setup_merit_for_member = {
     }
     else_if = {
         limit = { scope:nfm_house_steward ?= yes }
-        change_merit = { 750 100 }
+        change_merit = { 750 1000 }
     }
     else_if = {
         limit = { scope:nfm_house_martial ?= yes }

@@ -36,11 +36,8 @@
 		# Weight variation
 		random_list = {
 			200 = { }
-			25 = { change_current_weight = -25 }
-			25 = { change_current_weight = -75 }
-			25 = { change_current_weight = 25 }
-			25 = { change_current_weight = 75 }
-			5 = { change_current_weight = 100 }
+			100 = { change_current_weight = -25 }
+			100 = { change_current_weight = 25 }
 		}
 		# Lifestyle traits (mutually exclusive selection)
 		random_list = {
@@ -94,11 +91,8 @@ nfm_character_sibling_learning = {
 		# Weight variation
 		random_list = {
 			200 = { }
-			25 = { change_current_weight = -25 }
-			25 = { change_current_weight = -75 }
-			25 = { change_current_weight = 25 }
-			25 = { change_current_weight = 75 }
-			5 = { change_current_weight = 100 }
+			100 = { change_current_weight = -25 }
+			100 = { change_current_weight = 25 }
 		}
 		# Lifestyle traits for learning-educated siblings
 		if = {
@@ -153,11 +147,8 @@ nfm_character_child_learning = {
 		# Weight variation
 		random_list = {
 			200 = { }
-			25 = { change_current_weight = -25 }
-			25 = { change_current_weight = -75 }
-			25 = { change_current_weight = 25 }
-			25 = { change_current_weight = 75 }
-			5 = { change_current_weight = 100 }
+			100 = { change_current_weight = -25 }
+			100 = { change_current_weight = 25 }
 		}
 		set_interesting_traits_and_modifiers_effect = yes
 	}

@@ -77,11 +77,8 @@
 		# Weight variation
 		random_list = {
 			200 = { }
-			25 = { change_current_weight = -25 }
-			25 = { change_current_weight = -75 }
-			25 = { change_current_weight = 25 }
-			25 = { change_current_weight = 75 }
-			5 = { change_current_weight = 100 }
+			100 = { change_current_weight = -25 }
+			100 = { change_current_weight = 25 }
 		}
 		# Mixed lifestyle traits from all categories
 		random_list = {
@@ -261,11 +258,8 @@ nfm_character_sibling_foreign = {
 		# Weight variation
 		random_list = {
 			200 = { }
-			25 = { change_current_weight = -25 }
-			25 = { change_current_weight = -75 }
-			25 = { change_current_weight = 25 }
-			25 = { change_current_weight = 75 }
-			5 = { change_current_weight = 100 }
+			100 = { change_current_weight = -25 }
+			100 = { change_current_weight = 25 }
 		}
 		# Mixed lifestyle traits from all categories (lower chance for siblings)
 		random_list = {
@@ -413,11 +407,8 @@ nfm_character_child_foreign = {
 		# Weight variation
 		random_list = {
 			200 = { }
-			25 = { change_current_weight = -25 }
-			25 = { change_current_weight = -75 }
-			25 = { change_current_weight = 25 }
-			25 = { change_current_weight = 75 }
-			5 = { change_current_weight = 100 }
+			100 = { change_current_weight = -25 }
+			100 = { change_current_weight = 25 }
 		}
 		set_interesting_traits_and_modifiers_effect = yes
 	}

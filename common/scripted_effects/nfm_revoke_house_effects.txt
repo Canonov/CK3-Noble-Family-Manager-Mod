@@ -165,10 +165,19 @@ nfm_effect_revoke_house_stress_tyranny_impacts = {
                 has_execute_reason = scope:recipient
             }
         }
-        custom_tooltip = {
-            text = nfm_int_revoke_no_reason_tyranny_tt
-            add_tyranny = nfm_value_revoke_house_tyranny_gain
+        if = {
+            limit = {
+                nfm_value_revoke_house_tyranny_gain > 0
+            }
+            custom_tooltip = {
+                text = nfm_int_revoke_no_reason_tyranny_tt
+                add_tyranny = nfm_value_revoke_house_tyranny_gain
+            }
         }
+        else = {
+            add_tyranny = medium_tyranny_gain
+        }
+
     }
 
 }

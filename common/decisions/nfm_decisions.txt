@@ -229,7 +229,7 @@ nfm_decision_elevate_nobles = {
 
             # Grant portion of influence cost to new family head
             scope:new_house_head = {
-                add_influence = 200
+                change_influence = 200
             }
         }
 

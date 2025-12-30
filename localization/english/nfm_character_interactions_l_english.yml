@@ -1,6 +1,15 @@
 ﻿l_english:
 
  ################################
+ # GRANT NOBILITY TO LOWBORN
+ ################################
+
+ nfm_int_elevate_lowborn: "Grant Nobility"
+ nfm_int_elevate_lowborn_desc: "Raise [recipient.GetShortUIName] from [lowborn|E] obscurity to the ranks of the [nobility|E]. A name, a lineage, a [dynasty|E], From the word of a [actor.GetTitleAsNameNoTooltip] alone."
+ nfm_elevate_lowborn_tt: "[recipient.GetFirstName] will found [recipient.GetHerHis] own [dynasty|E], entering the ranks of the [nobility|E]"
+ nfm_lowborn_grant_title_name: "[recipient.GetFirstNamePossessive] Grant of Nobility"
+
+ ################################
  # ELEVATE AS NOBLE FAMILY HEAD
  ################################
  
@@ -47,7 +56,6 @@
  nfm_int_dissolve_house: "Dissolve Dying House"
  nfm_int_dissolve_house_desc: "The [recipient.GetDynastyHouseName] [house|E] has reached the end of its line. With it unlikely to carry on the family name, we can peacefully dissolve their [noble_family|E] status and allow the remaining members to live out their days in peace."
  nfm_int_dissolve_house_auto_accept_reason: "With no future for their house, they have no choice but to accept the inevitable dissolution"
- nfm_int_dissolve_house_highlighted: "This house meets the criteria for peaceful dissolution"
 
  ## Dying house criteria tooltips
  # Living Members

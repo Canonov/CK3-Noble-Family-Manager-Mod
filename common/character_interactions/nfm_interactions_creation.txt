@@ -1,4 +1,76 @@
-﻿nfm_int_grant_house = {
+﻿################################
+# Grant Nobility to Lowborn
+################################
+nfm_int_elevate_lowborn = {
+    category = interaction_category_vassal
+    common_interaction = no
+    icon = icon_dynasty
+
+    desc = nfm_int_elevate_lowborn_desc
+
+    greeting = positive
+
+	interface_priority = 50
+
+    auto_accept = yes
+    
+    is_shown = {
+        scope:actor = {
+            is_ai = no
+            is_landed = yes
+        }
+        scope:recipient = {
+            is_lowborn = yes
+            is_adult = yes
+            is_imprisoned = no
+            OR = {
+                is_courtier_of = scope:actor
+                AND = {
+                    exists = employer
+                    employer = {
+                        OR = {
+                            this = scope:actor
+                            any_liege_or_above = { this = scope:actor }
+                        }
+                    }
+                }
+            }
+        }
+        NOT = { scope:actor = scope:recipient }
+    }
+
+    is_valid_showing_failures_only = {
+        scope:recipient = {
+            NOT = { has_trait = devoted }
+        }
+    }
+
+    on_accept = {
+        nfm_effect_elevate_lowborn = {
+            GIVER = scope:actor
+            TARGET = scope:recipient
+        }
+
+        scope:actor = {
+            stress_impact = {
+                arrogant = minor_stress_impact_gain
+                greedy = minor_stress_impact_gain
+                generous = minor_stress_impact_loss
+                compassionate = minor_stress_impact_loss
+            }
+        }
+    }
+
+    cost = {
+        prestige = 100
+    }
+}
+
+
+################################
+# Grant Noble Family Status
+################################
+nfm_int_grant_house = {
     category = interaction_category_vassal
     common_interaction = no
     icon = icon_shift_privileges
@@ -6,6 +78,8 @@
     desc = nfm_int_grant_house_desc
 
     greeting = positive
+
+	interface_priority = 50
 
     auto_accept = yes
 

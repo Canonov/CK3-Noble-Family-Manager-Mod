@@ -18,3 +18,10 @@ nfm_op_house_dissolved = {
     years = 10
     decaying = yes
 }
+
+# Lowborn character granted nobility
+nfm_op_granted_nobility = {
+    opinion = 20
+    years = 15
+    decaying = yes
+}

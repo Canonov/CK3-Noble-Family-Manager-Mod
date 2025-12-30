@@ -370,14 +370,6 @@ nfm_int_dissolve_house = {
         NOT = { scope:actor = scope:recipient }
     }
 
-    is_highlighted = {
-        scope:recipient.house ?= {
-            nfm_trigger_is_dying_house = yes
-        }
-    }
-
-    highlighted_reason = nfm_int_dissolve_house_highlighted
-
     is_valid_showing_failures_only = {
         scope:actor = {
             is_imprisoned = no

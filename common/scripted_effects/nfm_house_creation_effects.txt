@@ -1,0 +1,313 @@
+﻿## nfm_effect_setup_merit_for_member
+# Initializes examination flags for a newly created noble family member based on their age
+#
+# @scope: character - The character receiving merit flags
+# @input scope:nfm_house_learning [yes/no] - Whether character is from learning house {optional}
+nfm_effect_setup_merit_for_member = {
+    # Flat Modifiers for House Types
+    if = {
+        limit = { scope:nfm_house_learning ?= yes }
+        change_merit = { 1000 1500 }
+    }
+    else_if = {
+        limit = { scope:nfm_house_steward ?= yes }
+        change_merit = { 750 1000 }
+    }
+    else_if = {
+        limit = { scope:nfm_house_martial ?= yes }
+        change_merit = { 500 750 }
+    }
+
+    # Childhood Exams
+    if = {
+        limit = { age >= 8 }
+        random = {
+            chance = 75
+            add_character_flag = passed_child_exam
+            change_merit = { 500 1000 }
+        }
+    }
+    # Provincial Exams
+    if = {
+        limit = { age >= 16 }
+        add_character_flag = passed_provincial_exam
+        add_character_modifier = tgp_passed_provincial_exam_modifier
+        change_merit = { 1250 2500 }
+    }
+
+    # Metropolitan Exams
+    if = {
+        limit = { top_liege ?= { has_government = celestial_government } }
+
+
+        # House heads automatically pass - they've proven their capability
+        if = {
+            limit = { house.house_head = this }
+
+            add_character_flag = passed_metropolitan_exam
+            add_character_modifier = {
+                modifier = tgp_passed_metropolitan_exam_modifier
+            }
+            change_merit = { 2000 5000 }
+        }
+        # Non-heads have a random chance to pass
+        else = {
+            random_list = {
+                # Learning Houses are far more likely to pass (66% chance)
+                66 = {
+                    trigger = { scope:nfm_house_learning ?= yes }
+                    add_character_flag = passed_metropolitan_exam
+                    add_character_modifier = {
+                        modifier = tgp_passed_metropolitan_exam_modifier
+                    }
+                    change_merit = { 1000 1500 }
+                }
+                # Other house types have 33% chance
+                33 = {
+                    add_character_flag = passed_metropolitan_exam
+                    add_character_modifier = {
+                        modifier = tgp_passed_metropolitan_exam_modifier
+                    }
+                    change_merit = 1000
+                }
+            }
+        }
+    }
+}
+
+
+## nfm_effect_create_house
+# Generic effect to create a complete noble family with parents, house head,
+# heir, and siblings. Uses template substitution for different family types.
+#
+# @input scope:family_size [value] - Controls family composition (small/medium/large)
+# @input scope:family_culture [value] - Controls family culture, defaults to employer's {optional}
+# @input scope:family_faith [value] - Controls family faith, defaults to employer's {optional}
+# @input $EMPLOYER$ - The Character who is employing them.
+# @input $PARENT_TEMPLATE$ - Template for elderly parents (e.g., pool_repopulate_stewardship)
+# @input $HEAD_TEMPLATE$ - Template for family head (e.g., nfm_character_familyhead_stewardship)
+# @input $CHILD_TEMPLATE$ - Template for children (e.g., nfm_character_child_stewardship)
+# @input $SIBLING_TEMPLATE$ - Template for siblings (e.g., nfm_character_sibling_stewardship)
+# @output scope:new_house_head [character] - The generated family head
+nfm_effect_create_house = {
+    $EMPLOYER$ = { save_scope_as = new_employer }
+
+    if = {
+        limit = {
+            NOT = { exists = scope:family_culture }
+        }
+        scope:new_employer.culture = {
+            save_scope_as = family_culture
+        }
+    }
+    if = {
+        limit = {
+            NOT = { exists = scope:family_faith }
+        }
+        scope:new_employer.faith = {
+            save_scope_as = family_faith
+        }
+    }
+
+    # Generate Parents if it's not a small family
+    if = {
+        limit = {
+            scope:family_size > nfm_familysize_small
+        }
+
+        # Mother and Father
+        create_character = {
+            template = $PARENT_TEMPLATE$
+            gender = male
+            age = { 60 95 }
+            culture = scope:family_culture
+            faith = scope:family_faith
+            employer = scope:new_employer
+
+            dynasty = generate
+            save_scope_as = head_father
+        }
+        create_character = {
+            template = $PARENT_TEMPLATE$
+            gender = female
+            age = { 60 80 }
+            culture = scope:family_culture
+            faith = scope:family_faith
+            employer = scope:new_employer
+
+            dynasty = none
+
+            save_scope_as = head_mother
+        }
+
+        scope:head_father = { marry = scope:head_mother }
+
+        # House Head
+        create_character = {
+            template = $HEAD_TEMPLATE$
+            father = scope:head_father
+            mother = scope:head_father.primary_spouse
+            employer = scope:new_employer
+
+            dynasty = inherit
+
+            save_scope_as = new_house_head
+        }
+    }
+    # Small families have no parents - house head is a new dynasty founder
+    else = {
+        create_character = {
+            template = $HEAD_TEMPLATE$
+            employer = scope:new_employer
+
+            dynasty = generate
+
+            save_scope_as = new_house_head
+        }
+    }
+
+    # Generate an Adult Heir (aged 16-18) as the primary successor
+    create_character = {
+        template = $HEAD_TEMPLATE$
+        age = { 16 18 }
+        employer = scope:new_employer
+
+        father = scope:new_house_head
+
+        dynasty = inherit
+
+        save_scope_as = new_house_head_heir
+    }
+
+    # Generate additional children (younger than the heir)
+    # Count determined by nfm_familysize_headchildcount script value
+    while = {
+        count = nfm_familysize_headchildcount
+
+        create_character = {
+            template = $CHILD_TEMPLATE$
+            employer = scope:new_employer
+
+            age = { 0 nfm_value_oneyoungerthanheir }
+
+            father = scope:new_house_head
+
+            dynasty = inherit
+        }
+    }
+
+
+    # Generate Siblings for the house head (medium/large families only)
+    if = {
+        limit = {
+            scope:family_size > nfm_familysize_small
+        }
+
+        # Count based on family_size via nfm_familysize_siblingsforcount
+        while = {
+            count = nfm_familysize_siblingsforcount
+
+            create_character = {
+                template = $SIBLING_TEMPLATE$
+                age = { 25 nfm_value_new_house_head_age }
+                employer = scope:new_employer
+
+                # Same parents as the house head
+                father = scope:head_father
+                mother = scope:head_mother
+
+                dynasty = inherit
+            }
+        }
+    }
+
+}
+
+
+## House Types
+nfm_effect_create_house_steward = {
+    nfm_effect_create_house = {
+        EMPLOYER = $EMPLOYER$
+
+        PARENT_TEMPLATE = pool_repopulate_stewardship
+        HEAD_TEMPLATE = nfm_character_familyhead_stewardship
+        CHILD_TEMPLATE = nfm_character_child_stewardship
+        SIBLING_TEMPLATE = nfm_character_sibling_stewardship
+    }
+}
+
+nfm_effect_create_house_learning = {
+    nfm_effect_create_house = {
+        EMPLOYER = $EMPLOYER$
+
+        PARENT_TEMPLATE = pool_repopulate_learning
+        HEAD_TEMPLATE = nfm_character_familyhead_learning
+        CHILD_TEMPLATE = nfm_character_child_learning
+        SIBLING_TEMPLATE = nfm_character_sibling_learning
+    }
+}
+
+nfm_effect_create_house_intrigue = {
+    nfm_effect_create_house = {
+        EMPLOYER = $EMPLOYER$
+
+        PARENT_TEMPLATE = pool_repopulate_intrigue
+        HEAD_TEMPLATE = nfm_character_familyhead_intrigue
+        CHILD_TEMPLATE = nfm_character_child_intrigue
+        SIBLING_TEMPLATE = nfm_character_sibling_intrigue
+    }
+}
+
+nfm_effect_create_house_martial = {
+    nfm_effect_create_house = {
+        EMPLOYER = $EMPLOYER$
+
+        PARENT_TEMPLATE = pool_repopulate_martial
+        HEAD_TEMPLATE = nfm_character_familyhead_martial
+        CHILD_TEMPLATE = nfm_character_child_martial
+        SIBLING_TEMPLATE = nfm_character_sibling_martial
+    }
+}
+
+nfm_effect_create_house_foreign = {
+    $EMPLOYER$ = { save_scope_as = new_employer }
+
+    random_realm_county = {
+        limit = {
+            culture != scope:new_employer.culture
+        }
+
+        culture = { save_scope_as = family_culture }
+
+        # If their faith is astray or better, use their faith instead
+        if = {
+            limit = {
+                faith = {
+                    faith_hostility_level = {
+                        target = scope:new_employer.faith
+                        value <= faith_astray_level
+                    }
+                }
+            }
+            faith = { save_scope_as = family_faith }
+        }
+
+        save_scope_as = origin_county
+    }
+
+    nfm_effect_create_house = {
+        EMPLOYER = scope:new_employer
+
+        PARENT_TEMPLATE = pool_repopulate_diplomacy
+        HEAD_TEMPLATE = nfm_character_familyhead_foreign
+        CHILD_TEMPLATE = nfm_character_child_foreign
+        SIBLING_TEMPLATE = nfm_character_sibling_foreign
+    }
+
+    scope:new_house_head = {
+        set_variable = {
+            name = nfm_origin_county
+            value = scope:origin_county
+        }
+    }
+}

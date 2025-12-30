@@ -72,16 +72,19 @@ nfm_effect_revoke_house_punish_family = {
     if = {
         limit = { scope:banish_family = yes }
 
+        scope:actor ?= { custom_tooltip = nfm_int_revoke_banish_desc }
         # Banish those marked to banish
         every_in_list = {
             list = those_to_banish
             limit = {
                 scope:recipient != this
             }
-            banish = yes
-            add_opinion = {
-                modifier = banished_me
-                target = scope:actor
+            hidden_effect = {
+                banish = yes
+                add_opinion = {
+                    modifier = banished_me
+                    target = scope:actor
+                }
             }
         }
         # Also banish those marked to kill (since we're not imprisoning)
@@ -90,10 +93,12 @@ nfm_effect_revoke_house_punish_family = {
             limit = {
                 scope:recipient != this
             }
-            banish = yes
-            add_opinion = {
-                modifier = banished_me
-                target = scope:actor
+            hidden_effect = {
+                banish = yes
+                add_opinion = {
+                    modifier = banished_me
+                    target = scope:actor
+                }
             }
         }
     }
@@ -154,7 +159,6 @@ nfm_effect_revoke_house_stress_tyranny_impacts = {
         # Stress Loss
         vengeful = medium_stress_impact_loss
     }
-    add_tyranny = nfm_value_revoke_house_tyranny_gain
 
     # Extra tyranny when no valid reason (2x total)
     if = {
@@ -165,19 +169,25 @@ nfm_effect_revoke_house_stress_tyranny_impacts = {
                 has_execute_reason = scope:recipient
             }
         }
+
+        # Double the usual
         if = {
             limit = {
                 nfm_value_revoke_house_tyranny_gain > 0
             }
-            custom_tooltip = {
-                text = nfm_int_revoke_no_reason_tyranny_tt
-                add_tyranny = nfm_value_revoke_house_tyranny_gain
+            add_tyranny = {
+                value = nfm_value_revoke_house_tyranny_gain
+                multiply = 2.0
             }
+            custom_tooltip = nfm_int_revoke_no_reason_tyranny_tt
         }
+        # There will still be some tyranny even if no options are set
         else = {
             add_tyranny = medium_tyranny_gain
         }
-
+    }
+    else = {
+        add_tyranny = nfm_value_revoke_house_tyranny_gain
     }
 
 }

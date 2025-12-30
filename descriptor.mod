@@ -4,5 +4,5 @@ tags={
 	"Gameplay"
 	"Character Interactions"
 }
-name="Canon's Elevate Noble Family"
+name="Better Noble Family Management"
 supported_version="1.18.2"

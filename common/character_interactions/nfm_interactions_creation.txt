@@ -10,10 +10,10 @@ nfm_int_elevate_lowborn = {
 
     greeting = positive
 
-	interface_priority = 50
+    interface_priority = 50
 
     auto_accept = yes
-    
+
     is_shown = {
         scope:actor = {
             is_ai = no
@@ -79,7 +79,7 @@ nfm_int_grant_house = {
 
     greeting = positive
 
-	interface_priority = 50
+    interface_priority = 50
 
     auto_accept = yes
 

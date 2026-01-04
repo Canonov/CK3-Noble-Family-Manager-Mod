@@ -18,6 +18,33 @@ nfm_value_elevate_cost_treasury = {
     max = 600
 }
 
+# Elevate Noble Family - Cooldown Time (Days)
+nfm_value_elevate_nobles_cooldown_days = {
+    value = 365
+
+    if = {
+        limit = {
+            has_variable = nfm_recently_founded_administration
+        }
+        value = 30
+    }
+    else_if = {
+        limit = {
+            any_noble_family = { count <= 5 }
+        }
+        multiply = 0.25
+    }
+    else_if = {
+        limit = {
+            any_noble_family = { count <= 10 }
+        }
+        multiply = 0.5
+    }
+
+    round = yes
+    floor = yes
+}
+
 nfm_value_oneyoungerthanheir = {
     value = scope:new_house_head_heir.age
     add = -1

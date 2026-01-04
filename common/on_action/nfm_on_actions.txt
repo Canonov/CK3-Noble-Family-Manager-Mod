@@ -1,0 +1,18 @@
+﻿## ON GOVERNMENT CHANGE
+on_government_change = {
+    on_actions = { nfm_on_government_change }
+}
+
+# On Government Change - Add Recently Founded Administration flag to decrease cooldowns
+nfm_on_government_change = {
+    trigger = {
+        government_allows = administrative
+    }
+
+    effect = {
+        set_variable = {
+            name = nfm_recently_founded_administration
+            years = 1
+        }
+    }
+}

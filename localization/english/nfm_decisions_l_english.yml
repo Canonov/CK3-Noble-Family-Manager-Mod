@@ -8,6 +8,7 @@
  
  nfm_decision_elevate_nobles: "Elevate a Noble Family"
  nfm_decision_elevate_nobles_desc: "A well-oiled administration requires skilled nobles. Among the families that serve under me, I find a lack of capable individuals. \n\nI shall send out a summons to the minor nobility that I am looking for suitable candidates to elevate in status to a proper [noble_family|E] capable of receiving [governorship|E] positions."
+ nfm_decision_elevate_nobles_desc.recently_founded_admin_cooldown: "#weak \n\n(Because you've recently founded your [ROOT.Char.GetGovernment.GetName] Government, the cooldown will only be #V [SCOPE.ScriptValue('nfm_value_elevate_nobles_cooldown_days')|0]#! days)#!"
  nfm_decision_elevate_nobles_tooltip: "A new [noble_family|E] will be created and elevated to serve in your court. The composition of the family will vary based on your needs."
  nfm_decision_elevate_nobles_confirm: "Send a Summons"
  # Cultural Titles

@@ -27,7 +27,16 @@ nfm_decision_elevate_nobles = {
         }
     }
 
-    desc = nfm_decision_elevate_nobles_desc
+    desc = {
+        desc = nfm_decision_elevate_nobles_desc
+        
+        triggered_desc = {
+            trigger = {
+                has_variable = nfm_recently_founded_administration
+            }
+            desc = nfm_decision_elevate_nobles_desc.recently_founded_admin_cooldown
+        }
+    }
     selection_tooltip = nfm_decision_elevate_nobles_tooltip
 
     picture = {
@@ -38,7 +47,7 @@ nfm_decision_elevate_nobles = {
         reference = "gfx/interface/illustrations/decisions/decision_recruitment.dds"
     }
 
-    cooldown = { years = 1 } # TODO make it so recently founded governments have no cooldown
+    cooldown = { days = nfm_value_elevate_nobles_cooldown_days }
     decision_group_type = courtier
 
     is_shown = {

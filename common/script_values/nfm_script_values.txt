@@ -42,7 +42,6 @@ nfm_value_elevate_nobles_cooldown_days = {
     }
 
     round = yes
-    floor = yes
 }
 
 nfm_value_oneyoungerthanheir = {

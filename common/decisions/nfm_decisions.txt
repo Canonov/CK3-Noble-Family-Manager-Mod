@@ -29,7 +29,7 @@ nfm_decision_elevate_nobles = {
 
     desc = {
         desc = nfm_decision_elevate_nobles_desc
-        
+
         triggered_desc = {
             trigger = {
                 has_variable = nfm_recently_founded_administration
@@ -265,7 +265,7 @@ nfm_decision_elevate_nobles = {
 
     cost = {
         prestige = {
-            value = 200
+            value = nfm_value_elevate_cost_prestige
         }
 
         gold = {
@@ -277,7 +277,7 @@ nfm_decision_elevate_nobles = {
         }
 
         influence = {
-            value = 400
+            value = nfm_value_elevate_cost_influence
         }
     }
 

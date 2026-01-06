@@ -18,6 +18,9 @@ nfm_value_elevate_cost_treasury = {
     max = 600
 }
 
+nfm_value_elevate_cost_prestige = 200
+nfm_value_elevate_cost_influence = 300
+
 # Elevate Noble Family - Cooldown Time (Days)
 nfm_value_elevate_nobles_cooldown_days = {
     value = 365
@@ -54,17 +57,17 @@ nfm_value_new_house_head_age = {
 }
 
 new_employer_faith_dominant_gender_adjusted_female_chance = {
-	if = {
-		limit = { scope:family_faith = { has_doctrine = doctrine_gender_male_dominated } }
-		add = 15
-	}
-	else_if = {
-		limit = { scope:family_faith = { has_doctrine = doctrine_gender_female_dominated } }
-		add = 85
-	}
-	else = {
-		add = 50
-	}
+    if = {
+        limit = { scope:family_faith = { has_doctrine = doctrine_gender_male_dominated } }
+        add = 15
+    }
+    else_if = {
+        limit = { scope:family_faith = { has_doctrine = doctrine_gender_female_dominated } }
+        add = 85
+    }
+    else = {
+        add = 50
+    }
 }
 
 # Get Tyranny amount for Dissolve House (minimal - peaceful action)

@@ -1,100 +1,100 @@
 ﻿nfm_loc_house_housetype = {
-	type = all
+    type = all
 
     ## Steward
-	text = {
-		trigger = { house.var:nfm_housetype = nfm_housetype_steward }
-		localization_key = nfm_house_steward_name
-	}
+    text = {
+        trigger = { house.var:nfm_housetype = nfm_housetype_steward }
+        localization_key = nfm_house_steward_name
+    }
     ## Martial
-	text = {
-		trigger = { house.var:nfm_housetype = nfm_housetype_martial }
-		localization_key = nfm_house_martial_name
-	}
+    text = {
+        trigger = { house.var:nfm_housetype = nfm_housetype_martial }
+        localization_key = nfm_house_martial_name
+    }
     ## Learning
-	text = {
-		trigger = { house.var:nfm_housetype = nfm_housetype_learning }
-		localization_key = nfm_house_learning_name
-	}
+    text = {
+        trigger = { house.var:nfm_housetype = nfm_housetype_learning }
+        localization_key = nfm_house_learning_name
+    }
     ## Intrigue
-	text = {
-		trigger = { house.var:nfm_housetype = nfm_housetype_intrigue }
-		localization_key = nfm_house_intrigue_name
-	}
+    text = {
+        trigger = { house.var:nfm_housetype = nfm_housetype_intrigue }
+        localization_key = nfm_house_intrigue_name
+    }
     ## Foreign
-	text = {
-		trigger = { house.var:nfm_housetype = nfm_housetype_foreign }
-		localization_key = nfm_house_foreign_name_dyn
-	}
+    text = {
+        trigger = { house.var:nfm_housetype = nfm_housetype_foreign }
+        localization_key = nfm_house_foreign_name_dyn
+    }
 
     # Fallback
-	text = {
-		trigger = { always = no }
-		localization_key = nfm_house_unknown
+    text = {
+        trigger = { always = no }
+        localization_key = nfm_house_unknown
         fallback = yes
-	}
+    }
 }
 
 nfm_loc_house_housetype_event_desc = {
-	type = all
+    type = all
 
     ## Steward
-	text = {
-		trigger = { house.var:nfm_housetype = nfm_housetype_steward }
-		localization_key = nfm_house_steward_event_desc
-	}
+    text = {
+        trigger = { house.var:nfm_housetype = nfm_housetype_steward }
+        localization_key = nfm_house_steward_event_desc
+    }
     ## Martial
-	text = {
-		trigger = { house.var:nfm_housetype = nfm_housetype_martial }
-		localization_key = nfm_house_martial_event_desc
-	}
+    text = {
+        trigger = { house.var:nfm_housetype = nfm_housetype_martial }
+        localization_key = nfm_house_martial_event_desc
+    }
     ## Learning
-	text = {
-		trigger = { house.var:nfm_housetype = nfm_housetype_learning }
-		localization_key = nfm_house_learning_event_desc
-	}
+    text = {
+        trigger = { house.var:nfm_housetype = nfm_housetype_learning }
+        localization_key = nfm_house_learning_event_desc
+    }
     ## Intrigue
-	text = {
-		trigger = { house.var:nfm_housetype = nfm_housetype_intrigue }
-		localization_key = nfm_house_intrigue_event_desc
-	}
+    text = {
+        trigger = { house.var:nfm_housetype = nfm_housetype_intrigue }
+        localization_key = nfm_house_intrigue_event_desc
+    }
     ## Foreign
-	text = {
-		trigger = { house.var:nfm_housetype = nfm_housetype_foreign }
-		localization_key = nfm_house_foreign_event_desc
-	}
+    text = {
+        trigger = { house.var:nfm_housetype = nfm_housetype_foreign }
+        localization_key = nfm_house_foreign_event_desc
+    }
 
     # Fallback
-	text = {
-		trigger = { always = no }
-		localization_key = nfm_house_unknown
+    text = {
+        trigger = { always = no }
+        localization_key = nfm_house_unknown
         fallback = yes
-	}
+    }
 }
 
 nfm_loc_familysize_event_desc = {
-	type = all
+    type = all
 
     ## Small
-	text = {
-		trigger = { house.var:nfm_familysize = nfm_familysize_small }
-		localization_key = nfm_familysize_small_event_desc
-	}
+    text = {
+        trigger = { house.var:nfm_familysize = nfm_familysize_small }
+        localization_key = nfm_familysize_small_event_desc
+    }
     ## Medium
-	text = {
-		trigger = { house.var:nfm_familysize = nfm_familysize_medium }
-		localization_key = nfm_familysize_medium_event_desc
-	}
+    text = {
+        trigger = { house.var:nfm_familysize = nfm_familysize_medium }
+        localization_key = nfm_familysize_medium_event_desc
+    }
     ## Large
-	text = {
-		trigger = { house.var:nfm_familysize = nfm_familysize_large }
-		localization_key = nfm_familysize_large_event_desc
-	}
+    text = {
+        trigger = { house.var:nfm_familysize = nfm_familysize_large }
+        localization_key = nfm_familysize_large_event_desc
+    }
 
     # Fallback
-	text = {
-		trigger = { always = no }
-		localization_key = nfm_house_unknown
+    text = {
+        trigger = { always = no }
+        localization_key = nfm_house_unknown
         fallback = yes
-	}
+    }
 }

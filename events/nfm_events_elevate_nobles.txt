@@ -22,9 +22,7 @@ nfm_events_elevate_nobles.1 = {
         character = scope:new_house_head
     }
 
-    immediate = {
-
-    }
+    immediate = {}
 
     theme = "administrative"
     override_background = {
@@ -133,7 +131,10 @@ nfm_events_elevate_nobles.1 = {
 
         ## Partial Cost Refunds (50%)
         # Prestige Cost
-        add_prestige_no_experience = 100
+        add_prestige_no_experience = {
+            value = nfm_value_elevate_cost_prestige
+            multiply = 0.5
+        }
 
         # Gold cost
         if = {
@@ -153,7 +154,10 @@ nfm_events_elevate_nobles.1 = {
         }
 
         # Influence Cost
-        change_influence_no_experience = 200
+        change_influence_no_experience = { 
+            value = nfm_value_elevate_cost_influence
+            multiply = 0.5
+        }
 
         ## Remove the Decision Cooldown
         remove_decision_cooldown = nfm_decision_elevate_nobles

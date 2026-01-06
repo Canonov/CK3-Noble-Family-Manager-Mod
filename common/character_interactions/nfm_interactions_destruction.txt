@@ -258,7 +258,7 @@ nfm_int_revoke_house = {
                 }
 
                 # They might become an adventurer
-                hidden_effect = { release_from_prison = yes } 
+                hidden_effect = { release_from_prison = yes }
                 banish_effect = { BANISHER = scope:actor }
 
                 # If they are an adventurer afterwards.. EXPEL THEM

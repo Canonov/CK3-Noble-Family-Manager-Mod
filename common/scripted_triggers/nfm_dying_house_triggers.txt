@@ -13,7 +13,7 @@ nfm_trigger_is_dying_house = {
         text = nfm_loc_dissolve_house_few_members
         NOT = {
             any_house_member = {
-                count > 3
+                count > 5
                 is_alive = yes
             }
         }

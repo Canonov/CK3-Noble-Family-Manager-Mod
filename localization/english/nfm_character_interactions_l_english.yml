@@ -59,8 +59,8 @@
 
  ## Dying house criteria tooltips
  # Living Members
- nfm_loc_dissolve_house_few_members: "[DYNASTY_HOUSE.GetName] must have #bold 3 or fewer#! living members"
- nfm_loc_dissolve_house_few_members_not: "[DYNASTY_HOUSE.GetName] has 3 or fewer living members"
+ nfm_loc_dissolve_house_few_members: "[DYNASTY_HOUSE.GetName] must have #bold 5 or fewer#! living members"
+ nfm_loc_dissolve_house_few_members_not: "[DYNASTY_HOUSE.GetName] has 5 or fewer living members"
  # Fertile Members
  nfm_loc_dissolve_house_no_fertile: "[DYNASTY_HOUSE.GetName] must have #bold no members#! likely to produce children"
  nfm_loc_dissolve_house_has_fertile: "[DYNASTY_HOUSE.GetName] have no members likely to produce children"

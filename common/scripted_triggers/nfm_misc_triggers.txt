@@ -33,12 +33,6 @@ nfm_trigger_has_authority_for_destruction_vanilla = {
     }
     trigger_else_if = {
         limit = {
-            has_realm_law_in_group = celestial_bureaucracy
-        }
-        # Celestial can always do it
-    }
-    trigger_else_if = {
-        limit = {
             has_realm_law_in_group = meritocratic_bureaucracy
         }
         OR = {
@@ -56,5 +50,14 @@ nfm_trigger_has_authority_for_destruction_vanilla = {
             has_realm_law = japanese_bureaucracy_2
             has_realm_law = japanese_bureaucracy_3
         }
+    }
+    trigger_else_if = {
+        limit = {
+            has_realm_law_in_group = celestial_bureaucracy
+        }
+        # Celestial can always do it
+    }
+    trigger_else = {
+        # Just let them do it
     }
 }

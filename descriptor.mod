@@ -1,4 +1,4 @@
-version="1.0-1.18.2"
+version="1.0.1-1.18"
 tags={
 	"1.18 'Crane'"
 	"Gameplay"

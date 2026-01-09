@@ -3,6 +3,11 @@
 nfm_decision_elevate_nobles = {
     title = {
         first_valid = {
+            # Agot Fallback
+            triggered_desc = {
+                trigger = { has_global_variable = AGOT_is_loaded }
+                desc = nfm_decision_elevate_nobles
+            }
             # Elevate a Minor Clan
             triggered_desc = {
                 trigger = {
@@ -40,7 +45,10 @@ nfm_decision_elevate_nobles = {
     selection_tooltip = nfm_decision_elevate_nobles_tooltip
 
     picture = {
-        trigger = { culture = { has_graphical_east_asia_culture_group_trigger = yes } }
+        trigger = { 
+            NOT = { has_global_variable = AGOT_is_loaded }
+            culture = { has_graphical_east_asia_culture_group_trigger = yes }
+        }
         reference = "gfx/interface/illustrations/decisions/tgp_scholars.dds"
     }
     picture = {
@@ -92,6 +100,11 @@ nfm_decision_elevate_nobles = {
 
             localization = {
                 first_valid = {
+                    # AGOT Fallback
+                    triggered_desc = {
+                        trigger = { has_global_variable = AGOT_is_loaded }
+                        desc = nfm_house_martial_name
+                    }
                     # Japanese - Samurai
                     triggered_desc = {
                         trigger = { culture = { has_cultural_pillar = heritage_japonic } }
@@ -118,6 +131,7 @@ nfm_decision_elevate_nobles = {
                     # Chinese - Confucian Scholars
                     triggered_desc = {
                         trigger = {
+                            NOT = { has_global_variable = AGOT_is_loaded } # AGOT Fallback
                             OR = {
                                 culture = { has_cultural_tradition = tradition_scholar_officials }
                                 faith.religion = religion:confucianism_religion

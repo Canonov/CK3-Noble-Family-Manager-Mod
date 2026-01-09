@@ -102,6 +102,22 @@ nfm_value_revoke_house_tyranny_gain = {
 
 # Scope: Domicile
 nfm_value_domicileworth = {
+    if = {
+        limit = { has_global_variable = AGOT_is_loaded }
+        value = nfm_value_domicileworth_agot
+    }
+    else = {
+        value = nfm_value_domicileworth_vanilla
+    }
+}
+
+# Scope: Domicile
+nfm_value_domicileworth_agot = {
+    value = 100 # TODO figure this out, use a base amount for now
+}
+
+# Scope: Domicile
+nfm_value_domicileworth_vanilla = {
     value = 10 # Base value for having any domicile
 
 

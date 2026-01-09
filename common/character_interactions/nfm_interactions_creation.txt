@@ -46,9 +46,11 @@ nfm_int_elevate_lowborn = {
     }
 
     on_accept = {
-        nfm_effect_elevate_lowborn = {
-            GIVER = scope:actor
-            TARGET = scope:recipient
+        scope:recipient = {
+            custom_tooltip = {
+                text = nfm_elevate_lowborn_tt
+                create_dynasty = { save_scope_as = new_dynasty }
+            }
         }
 
         scope:actor = {

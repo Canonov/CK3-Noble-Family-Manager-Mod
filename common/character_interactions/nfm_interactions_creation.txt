@@ -58,6 +58,18 @@ nfm_int_elevate_lowborn = {
                 generous = minor_stress_impact_loss
                 compassionate = minor_stress_impact_loss
             }
+
+            # Notify the Player
+            send_interface_toast = {
+                type = event_generic_good_with_text
+
+                title = nfm_toast_elevated_lowborn
+                desc = nfm_toast_elevated_lowborn_desc
+                tooltip = nfm_toast_elevated_lowborn_tt
+
+                left_icon = scope:recipient
+                right_icon = scope:new_dynasty
+            }
         }
     }
 

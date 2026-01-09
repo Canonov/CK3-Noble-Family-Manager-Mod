@@ -9,6 +9,11 @@
  nfm_elevate_lowborn_tt: "[recipient.GetFirstName] will found [recipient.GetHerHis] own [dynasty|E], entering the ranks of the [nobility|E]"
  nfm_lowborn_grant_title_name: "[recipient.GetFirstNamePossessive] Grant of Nobility"
 
+ ## Post Elevate Toast
+ nfm_toast_elevated_lowborn: "Lowborn Elevated to Nobility"
+ nfm_toast_elevated_lowborn_desc: "[recipient.GetName] has been elevated as the head of the [new_dynasty.GetName] [dynasty|E]"
+ nfm_toast_elevated_lowborn_tt: "An oath has been sworn and they are officially now [nobility|E]"
+
  ################################
  # ELEVATE AS NOBLE FAMILY HEAD
  ################################

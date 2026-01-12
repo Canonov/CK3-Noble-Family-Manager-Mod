@@ -79,6 +79,7 @@
 
  nfm_int_invite_foreign_house_head: "Invite Foreign Noble House"
  nfm_int_invite_foreign_house_head_desc: "Extend an invitation to [recipient.GetShortUIName], the head of [recipient.GetDynastyHouseName], to bring [recipient.GetHerHis] [house|E] to our realm and become a [noble_family|E]."
+ nfm_int_invite_foreign_house_head_extra_icon: "$hook_extra_icon$"
 
  ## Send Options
  nfm_int_invite_generous_offer: "Generous Compensation"
@@ -136,7 +137,7 @@
  ## Messages
  nfm_msg_invited_house_head: "Foreign House Recruited"
  nfm_msg_house_head_left_realm: "House Head Departed"
- nfm_msg_house_head_left_realm_desc: "[recipient.GetName] of [recipient.GetDynastyHouseName] has left your realm to join [actor.GetName]"
+ nfm_msg_house_head_left_realm_desc: "[recipient.GetName] has left your realm to join [actor.GetName]"
  nfm_msg_invite_declined: "Invitation Declined"
  nfm_msg_invite_declined_desc: "[recipient.GetName] has declined your invitation to join your realm"
 

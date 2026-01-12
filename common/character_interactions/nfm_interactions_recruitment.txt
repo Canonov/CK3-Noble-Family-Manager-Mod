@@ -116,6 +116,20 @@ nfm_int_invite_foreign_house_head = {
         current_description = nfm_int_invite_generous_offer_desc
     }
 
+    # Option: Use a hook
+    send_option = {
+        is_valid = {
+            scope:actor = { has_usable_hook = scope:recipient }
+        }
+        flag = hook
+        localization = GENERIC_SPEND_A_HOOK
+    }
+    
+    should_use_extra_icon = {
+        scope:actor = { has_usable_hook = scope:recipient }
+    }
+    extra_icon = "gfx/interface/icons/character_interactions/hook_icon.dds"
+
     cost = {
         gold = {
             value = nfm_value_invite_house_gold_cost
@@ -131,7 +145,6 @@ nfm_int_invite_foreign_house_head = {
 
         influence = { value = nfm_value_invite_house_influence_cost}
     }
-
 
     ai_accept = {
         # ==========================================
@@ -194,6 +207,23 @@ nfm_int_invite_foreign_house_head = {
             add = true_ruler_value
             desc = offer_vassalization_true_ruler_perk_tt
         }
+
+        # HOOK
+        modifier = {
+            add = 40
+            scope:hook = yes
+            scope:actor = { NOT = { has_strong_hook = scope:recipient } }
+            desc = SCHEME_WEAK_HOOK_USED
+        }
+
+        # STRONG HOOK
+        modifier = {
+            add = 100
+            scope:hook = yes
+            scope:actor = { has_strong_hook = scope:recipient }
+            desc = SCHEME_STRONG_HOOK_USED
+        }
+
 
         # ==========================================
         # RANK MODIFIERS

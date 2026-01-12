@@ -4,7 +4,7 @@
 nfm_int_invite_foreign_house_head = {
     category = interaction_category_vassal
     common_interaction = yes
-    icon = icon_dynasty
+    icon = invite_foreign_house_head
 
     desc = nfm_int_invite_foreign_house_head_desc
 

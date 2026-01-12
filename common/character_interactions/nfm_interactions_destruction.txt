@@ -336,7 +336,7 @@ nfm_int_revoke_house = {
 ############################################
 
 nfm_int_dissolve_house = {
-    icon = icon_governor_removal
+    icon = dissolve_house
     category = interaction_category_vassal
     common_interaction = yes
     interface_priority = 65

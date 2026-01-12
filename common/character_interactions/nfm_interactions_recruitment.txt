@@ -134,7 +134,11 @@ nfm_int_invite_foreign_house_head = {
 
 
     ai_accept = {
-        base = -20
+        # ==========================================
+        # BASE & OPINION
+        # ==========================================
+
+        base = -30
 
         # Opinion of actor
         opinion_modifier = {
@@ -155,6 +159,10 @@ nfm_int_invite_foreign_house_head = {
             max = 15
         }
 
+        # ==========================================
+        # OFFER MODIFIERS
+        # ==========================================
+
         # House head bonus - they're being recruited as a house head (Freebie for flavour)
         modifier = {
             add = 5
@@ -164,91 +172,79 @@ nfm_int_invite_foreign_house_head = {
         # Generous offer bonus
         modifier = {
             scope:generous_offer = yes
-            add = 30
+            add = {
+                value = 30
 
-            if = {
-                limit = { has_trait = greedy }
-                add = 20
+                if = {
+                    limit = { has_trait = greedy }
+                    add = 20
+                }
+                else_if = {
+                    limit = { has_trait = generous }
+                    subtract = 20
+                }
             }
-            else_if = {
-                limit = { has_trait = generous }
-                subtract = 20
-            }            
 
             desc = nfm_ai_generous_offer
         }
 
+        # True Ruler perk boost
+        modifier = {
+            scope:actor = { has_perk = true_ruler_perk }
+            add = true_ruler_value
+            desc = offer_vassalization_true_ruler_perk_tt
+        }
+
+        # ==========================================
+        # RANK MODIFIERS
+        # ==========================================
+
         # Actor is higher/lower tier ruler
-		modifier = {
-			add = 10
-			scope:actor = {
-				tier_difference = {
-					target = scope:recipient.top_liege
-					value = 1
-				}
-			}
-			desc = nfm_ai_liege_rank_diff
-		}
-		modifier = {
-			add = 20
-			scope:actor = {
-				tier_difference = {
-					target = scope:recipient.top_liege
-					value = 2
-				}
-			}
-			desc = nfm_ai_liege_rank_diff
-		}
-
-		modifier = {
-			add = -10
-			scope:actor = {
-				tier_difference = {
-					target = scope:recipient.top_liege
-					value = -1
-				}
-			}
-			desc = nfm_ai_liege_rank_diff
-		}
-		modifier = {
-			add = -20
-			scope:actor = {
-				tier_difference = {
-					target = scope:recipient.top_liege
-					value = -2
-				}
-			}
-			desc = nfm_ai_liege_rank_diff
-		}
-
-        # Same dynasty connection
         modifier = {
-            dynasty = scope:actor.dynasty
-            house != scope:actor.house
+            add = 10
+            scope:actor = {
+                tier_difference = {
+                    target = scope:recipient.top_liege
+                    value = 1
+                }
+            }
+            desc = nfm_ai_liege_rank_diff
+        }
+        modifier = {
             add = 20
-            desc = AI_SAME_DYNASTY_REASON
-        }
-
-        # Same house - even stronger
-        modifier = {
-            house = scope:actor.house
-            add = 30
-            desc = AI_SAME_HOUSE_REASON
-        }
-
-        # Family ties with actor
-        modifier = {
-            is_close_family_of = scope:actor
-            add = 15
-            desc = AI_YOUR_RELATIVE
+            scope:actor = {
+                tier_difference = {
+                    target = scope:recipient.top_liege
+                    value = 2
+                }
+            }
+            desc = nfm_ai_liege_rank_diff
         }
 
         modifier = {
-            is_extended_family_of = scope:actor
-            NOT = { is_close_family_of = scope:actor }
-            add = 5
-            desc = AI_YOUR_RELATIVE
+            add = -10
+            scope:actor = {
+                tier_difference = {
+                    target = scope:recipient.top_liege
+                    value = -1
+                }
+            }
+            desc = nfm_ai_liege_rank_diff
         }
+        modifier = {
+            add = -20
+            scope:actor = {
+                tier_difference = {
+                    target = scope:recipient.top_liege
+                    value = -2
+                }
+            }
+            desc = nfm_ai_liege_rank_diff
+        }
+
+        # ==========================================
+        # CULTURE MODIFIERS
+        # ==========================================
 
         # Cultural compatibility - base modifiers
         modifier = {
@@ -296,6 +292,10 @@ nfm_int_invite_foreign_house_head = {
             desc = nfm_ai_liege_similar_culture
         }
 
+        # ==========================================
+        # FAITH MODIFIERS
+        # ==========================================
+
         # Faith comparative - pull factors (actor shares, liege doesn't)
         modifier = {
             faith = scope:actor.faith
@@ -323,6 +323,10 @@ nfm_int_invite_foreign_house_head = {
             add = -25
             desc = AI_RELIGION
         }
+
+        # ==========================================
+        # PRESTIGE & STATUS MODIFIERS
+        # ==========================================
 
         # Their house prestige - higher prestige houses expect better offers
         modifier = {
@@ -355,6 +359,7 @@ nfm_int_invite_foreign_house_head = {
         modifier = {
             NOR = {
                 has_trait = ambitious
+                has_trait = disloyal
                 opinion = {
                     target = liege
                     value < -35
@@ -362,20 +367,6 @@ nfm_int_invite_foreign_house_head = {
             }
             add = -10
             desc = nfm_ai_seen_as_disloyal
-        }
-
-        # Content trait
-        modifier = {
-            has_trait = content
-            add = -25
-            desc = INTERACTION_CONTENT
-        }
-
-        # Ambitious trait
-        modifier = {
-            has_trait = ambitious
-            add = 15
-            desc = INTERACTION_AMBITIOUS
         }
 
         # Liege is more prestigious - stay factor
@@ -390,6 +381,39 @@ nfm_int_invite_foreign_house_head = {
             scope:actor.prestige_level > liege.prestige_level
             add = 10
             desc = nfm_ai_actor_more_prestigious
+        }
+
+        # ==========================================
+        # RELATION MODIFIERS
+        # ==========================================
+
+        # Same dynasty connection
+        modifier = {
+            dynasty = scope:actor.dynasty
+            house != scope:actor.house
+            add = 20
+            desc = AI_SAME_DYNASTY_REASON
+        }
+
+        # Same house - even stronger
+        modifier = {
+            house = scope:actor.house
+            add = 30
+            desc = AI_SAME_HOUSE_REASON
+        }
+
+        # Family ties with actor
+        modifier = {
+            is_close_family_of = scope:actor
+            add = 15
+            desc = AI_YOUR_RELATIVE
+        }
+
+        modifier = {
+            is_extended_family_of = scope:actor
+            NOT = { is_close_family_of = scope:actor }
+            add = 5
+            desc = AI_YOUR_RELATIVE
         }
 
         # Rivalry with actor
@@ -411,6 +435,166 @@ nfm_int_invite_foreign_house_head = {
             has_relation_lover = scope:actor
             add = 20
             desc = AI_YOUR_LOVER
+        }
+
+        # ==========================================
+        # PERSONALITY & SITUATION MODIFIERS
+        # ==========================================
+
+        # Liege is arbitrary (and actor isn't) - bonus to leave
+        modifier = {
+            liege = { has_trait = arbitrary }
+            NOT = { scope:actor = { has_trait = arbitrary } }
+            add = 15
+            desc = nfm_ai_liege_arbitrary
+        }
+
+        # Content trait
+        modifier = {
+            has_trait = content
+            add = -25
+            desc = INTERACTION_CONTENT
+        }
+
+        # Ambitious trait
+        modifier = {
+            has_trait = ambitious
+            add = 15
+            desc = INTERACTION_AMBITIOUS
+        }
+
+        # Recipient is just - values honorable dealings
+        modifier = {
+            has_trait = just
+            add = 10
+            desc = nfm_ai_recipient_just
+        }
+
+        # Both are just - shared values bonus
+        modifier = {
+            has_trait = just
+            scope:actor = { has_trait = just }
+            add = 10
+            desc = nfm_ai_both_just
+        }
+
+        # Liege has tyranny - push factor (three tiers: 10/20/40)
+        modifier = {
+            liege = { tyranny >= 10 }
+            add = 10
+            desc = nfm_ai_liege_tyrannical
+        }
+
+        modifier = {
+            liege = { tyranny >= 20 }
+            add = 10
+            desc = nfm_ai_liege_tyrannical
+        }
+
+        modifier = {
+            liege = { tyranny >= 40 }
+            add = 10
+            desc = nfm_ai_liege_tyrannical
+        }
+
+        # Actor is tyrannical - deterrent (three tiers: 10/20/40)
+        modifier = {
+            scope:actor = { tyranny >= 10 }
+            add = -10
+            desc = nfm_ai_actor_tyrannical
+        }
+
+        modifier = {
+            scope:actor = { tyranny >= 20 }
+            add = -10
+            desc = nfm_ai_actor_tyrannical
+        }
+
+        modifier = {
+            scope:actor = { tyranny >= 40 }
+            add = -10
+            desc = nfm_ai_actor_tyrannical
+        }
+
+        # Escaping punishment - liege has imprisonment reason and dislikes them
+        modifier = {
+            liege = {
+                has_imprisonment_reason = prev
+                opinion = {
+                    target = prev
+                    value < 0
+                }
+            }
+            add = 25
+            desc = nfm_ai_escaping_punishment
+        }
+
+        # Additional for execution/banishment reasons
+        modifier = {
+            liege = {
+                OR = {
+                    has_execute_reason = prev
+                    has_banish_reason = prev
+                }
+            }
+            add = 15
+            desc = nfm_ai_escaping_punishment
+        }
+
+        # Legitimacy - Actor has higher legitimacy
+        modifier = {
+            scope:actor.legitimacy_level > liege.legitimacy_level
+            add = 10
+            desc = nfm_ai_actor_more_legitimate
+        }
+
+        # Legitimacy - Liege has higher legitimacy (stay factor)
+        modifier = {
+            liege.legitimacy_level > scope:actor.legitimacy_level
+            add = -10
+            desc = nfm_ai_liege_more_legitimate
+        }
+
+        # Loyal trait - major penalty to leaving
+        modifier = {
+            has_trait = loyal
+            add = -35
+            desc = nfm_ai_loyal_to_liege
+        }
+
+        # Disloyal trait - bonus to leaving
+        modifier = {
+            has_trait = disloyal
+            add = 10
+            desc = nfm_ai_disloyal
+        }
+
+        # ==========================================
+        # DEBT MODIFIERS
+        # ==========================================
+
+        # Liege in debt - unstable realm
+        modifier = {
+            liege = { is_in_debt = yes }
+            add = 10
+            desc = nfm_ai_liege_in_debt
+        }
+
+        # Liege in severe debt (debt level 2+)
+        modifier = {
+            liege = { debt_level >= 2 }
+            add = 10
+            desc = nfm_ai_liege_in_debt
+        }
+
+        # Treasury-specific debt (if liege uses treasury system)
+        modifier = {
+            liege = {
+                has_treasury = yes
+                treasury_debt_level >= 1
+            }
+            add = 10
+            desc = nfm_ai_liege_treasury_debt
         }
     }
 

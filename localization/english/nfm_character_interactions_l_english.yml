@@ -82,7 +82,7 @@
 
  ## Send Options
  nfm_int_invite_generous_offer: "Generous Compensation"
- nfm_int_invite_generous_offer_desc: "Offer additional [gold|E] to sweeten the deal"
+ nfm_int_invite_generous_offer_desc: "Offer additional [gold_i][gold|E] to sweeten the deal"
 
  ## Validity Tooltips
  nfm_int_invite_house_not_landed_your_realm_tt: "[recipient.GetDynastyHouseName] must not already have landed members in your realm"
@@ -110,6 +110,28 @@
  nfm_ai_seen_as_disloyal: "Would be seen as disloyal: $VALUE|=+0$ "
  nfm_ai_liege_more_prestigious: "My liege is more prestigious: $VALUE|=+0$ "
  nfm_ai_actor_more_prestigious: "You are more prestigious: $VALUE|=+0$ "
+
+ # Personality/Traits
+ nfm_ai_liege_arbitrary: "My liege is [GetTrait('arbitrary').GetName(GetNullCharacter)]: $VALUE|=+0$ "
+ nfm_ai_recipient_just: "I value fairness: $VALUE|=+0$ "
+ nfm_ai_both_just: "We both value justice: $VALUE|=+0$ "
+ nfm_ai_loyal_to_liege: "I am loyal to my current liege: $VALUE|=+0$ "
+ nfm_ai_disloyal: "I have no loyalty to my current liege: $VALUE|=+0$ "
+
+ # Tyranny
+ nfm_ai_liege_tyrannical: "My liege rules with [tyranny|E]: $VALUE|=+0$ "
+ nfm_ai_actor_tyrannical: "You rule with [tyranny|E]: $VALUE|=+0$ "
+
+ # Punishment
+ nfm_ai_escaping_punishment: "Escaping potential punishment: $VALUE|=+0$ "
+
+ # Legitimacy
+ nfm_ai_actor_more_legitimate: "You are more [legitimate|E] than my liege: $VALUE|=+0$ "
+ nfm_ai_liege_more_legitimate: "My liege is more [legitimate|E]: $VALUE|=+0$ "
+
+ # Financial
+ nfm_ai_liege_in_debt: "My liege's realm is in [debt|E]: $VALUE|=+0$ "
+ nfm_ai_liege_treasury_debt: "My liege's [treasury|E] is in [debt|E]: $VALUE|=+0$ "
 
  ## Messages
  nfm_msg_invited_house_head: "Foreign House Recruited"

@@ -480,39 +480,39 @@ nfm_int_invite_foreign_house_head = {
 
         # Liege has tyranny - push factor (three tiers: 10/20/40)
         modifier = {
-            liege = { tyranny >= 10 }
-            add = 10
-            desc = nfm_ai_liege_tyrannical
-        }
+            liege.tyranny >= 10
 
-        modifier = {
-            liege = { tyranny >= 20 }
-            add = 10
-            desc = nfm_ai_liege_tyrannical
-        }
-
-        modifier = {
-            liege = { tyranny >= 40 }
-            add = 10
+            add = {
+                value = 10
+                
+                if = {
+                    limit = { liege.tyranny >= 20 }
+                    add = 10
+                }
+                if = {
+                    limit = { liege.tyranny >= 40 }
+                    add = 20
+                }
+            }
             desc = nfm_ai_liege_tyrannical
         }
 
         # Actor is tyrannical - deterrent (three tiers: 10/20/40)
         modifier = {
-            scope:actor = { tyranny >= 10 }
-            add = -10
-            desc = nfm_ai_actor_tyrannical
-        }
+            scope:actor.tyranny >= 10
 
-        modifier = {
-            scope:actor = { tyranny >= 20 }
-            add = -10
-            desc = nfm_ai_actor_tyrannical
-        }
-
-        modifier = {
-            scope:actor = { tyranny >= 40 }
-            add = -10
+            add = {
+                value = -10
+                
+                if = {
+                    limit = { scope:actor.tyranny >= 20 }
+                    add = -10
+                }
+                if = {      
+                    limit = { scope:actor.tyranny >= 40 }
+                    add = -20
+                }
+            }
             desc = nfm_ai_actor_tyrannical
         }
 

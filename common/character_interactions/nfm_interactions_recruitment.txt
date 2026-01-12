@@ -246,82 +246,83 @@ nfm_int_invite_foreign_house_head = {
         # CULTURE MODIFIERS
         # ==========================================
 
-        # Cultural compatibility - base modifiers
+        # Cultural acceptance penalties (tiered)
         modifier = {
-            culture = scope:actor.culture
-            add = 15
-            desc = nfm_ai_actor_shares_culture
-        }
-
-        modifier = {
-            culture = { has_same_culture_heritage = scope:actor.culture }
-            NOT = { culture = scope:actor.culture }
-            add = 8
-            desc = nfm_ai_actor_similar_culture
-        }
-
-        # Culture comparative - pull factors (actor shares, liege doesn't)
-        modifier = {
-            culture = scope:actor.culture
-            culture != liege.culture
-            add = 20
-            desc = nfm_ai_actor_shares_culture
-        }
-
-        modifier = {
-            culture = { has_same_culture_heritage = scope:actor.culture }
-            NOT = { culture = scope:actor.culture }
-            NOT = { culture = { has_same_culture_heritage = scope:recipient.liege.culture } }
-            add = 10
-            desc = nfm_ai_actor_similar_culture
-        }
-
-        # Culture comparative - stay factors (liege shares, actor doesn't)
-        modifier = {
-            culture = liege.culture
-            NOT = { culture = scope:actor.culture }
-            add = -10
-            desc = nfm_ai_liege_shares_culture
-        }
-
-        modifier = {
-            culture = { has_same_culture_heritage = scope:recipient.liege.culture }
-            culture != liege.culture
-            NOT = { culture = { has_same_culture_heritage = scope:actor.culture } }
+            culture = {
+                NOT = { this = scope:actor.culture }
+                cultural_acceptance = { target = scope:actor.culture value < 75 }
+                cultural_acceptance = { target = scope:actor.culture value >= 50 }
+            }
             add = -5
-            desc = nfm_ai_liege_similar_culture
+            desc = HOSTAGE_CULTURAL_ACCEPTANCE_REASON
+        }
+
+        modifier = {
+            culture = {
+                NOT = { this = scope:actor.culture }
+                cultural_acceptance = { target = scope:actor.culture value < 50 }
+                cultural_acceptance = { target = scope:actor.culture value >= 25 }
+            }
+            add = -10
+            desc = HOSTAGE_CULTURAL_ACCEPTANCE_REASON
+        }
+
+        modifier = {
+            culture = {
+                NOT = { this = scope:actor.culture }
+                cultural_acceptance = { target = scope:actor.culture value < 25 }
+            }
+            add = -15
+            desc = HOSTAGE_CULTURAL_ACCEPTANCE_REASON
         }
 
         # ==========================================
         # FAITH MODIFIERS
         # ==========================================
 
-        # Faith comparative - pull factors (actor shares, liege doesn't)
+        # Faith hostility toward actor (tiered)
         modifier = {
-            faith = scope:actor.faith
-            faith != liege.faith
-            add = 20
-            desc = nfm_ai_actor_shares_faith
+            faith = {
+                NOT = { this = scope:actor.faith }
+                faith_hostility_level = {
+                    target = scope:actor.faith
+                    value = faith_evil_level
+                }
+            }
+            add = -15
+            desc = HOSTAGE_FAITH_EVIL
         }
 
-        # Faith comparative - stay factors (liege shares, actor doesn't)
+        modifier = {
+            faith = {
+                NOT = { this = scope:actor.faith }
+                faith_hostility_level = {
+                    target = scope:actor.faith
+                    value = faith_hostile_level
+                }
+            }
+            add = -10
+            desc = HOSTAGE_FAITH_HOSTILE
+        }
+
+        modifier = {
+            faith = {
+                NOT = { this = scope:actor.faith }
+                faith_hostility_level = {
+                    target = scope:actor.faith
+                    value = faith_astray_level
+                }
+            }
+            add = -5
+            desc = HOSTAGE_FAITH_ASTRAY
+        }
+
+        # Faith comparative - stay factor (liege shares, actor doesn't)
         modifier = {
             faith = liege.faith
             faith != scope:actor.faith
             add = -5
             desc = nfm_ai_liege_shares_faith
-        }
-
-        # Faith hostility toward actor
-        modifier = {
-            faith = {
-                faith_hostility_level = {
-                    target = scope:actor.faith
-                    value >= faith_hostile_level
-                }
-            }
-            add = -25
-            desc = AI_RELIGION
         }
 
         # ==========================================

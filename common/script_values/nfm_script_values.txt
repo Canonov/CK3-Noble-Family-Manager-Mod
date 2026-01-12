@@ -100,6 +100,57 @@ nfm_value_revoke_house_tyranny_gain = {
     }
 }
 
+################################
+# Invite Foreign House Head
+################################
+
+# Gold cost for inviting a foreign house head (paid to recipient)
+# Scope: actor (the one inviting)
+nfm_value_invite_house_gold_cost = {
+    value = 0
+    scope:actor = {
+        add = minor_gold_value
+    }
+
+    # Scale with their dynasty prestige
+    add = {
+        value = scope:recipient.dynasty.dynasty_prestige_level
+        multiply = 25
+    }
+
+    min = 50
+    max = 500
+}
+
+# Influence cost for inviting a foreign house head
+# Returns 0 for non-administrative governments (Japan feudal)
+nfm_value_invite_house_influence_cost = {
+    value = 0
+
+    if = {
+        limit = {
+            scope:actor = { government_allows = administrative }
+        }
+        value = 200
+    }
+}
+
+# Influence granted to recipient (only for administrative)
+nfm_value_invite_house_influence_grant = {
+    value = 0
+
+    if = {
+        limit = {
+            scope:actor = { government_allows = administrative }
+        }
+        value = 150
+    }
+}
+
+################################
+# Domicile Worth
+################################
+
 # Scope: Domicile
 nfm_value_domicileworth = {
     if = {

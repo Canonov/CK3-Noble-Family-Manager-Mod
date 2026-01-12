@@ -1,0 +1,532 @@
+﻿################################
+# Invite Foreign House Head
+################################
+nfm_int_invite_foreign_house_head = {
+    category = interaction_category_vassal
+    common_interaction = yes
+    icon = icon_dynasty
+
+    desc = nfm_int_invite_foreign_house_head_desc
+
+    greeting = positive
+
+    interface_priority = 55
+
+    use_diplomatic_range = yes
+
+    is_shown = {
+        scope:actor = {
+            # Player only
+            is_ai = no
+
+            is_landed = yes
+
+            # Must be at least a King
+            highest_held_title_tier >= tier_kingdom
+
+            # Check Government - administrative or Japan feudal
+            OR = {
+                government_allows = administrative
+                has_government = japan_feudal_government
+            }
+        }
+        scope:recipient = {
+            nfm_trigger_is_foreign_landless_house_head = yes
+        }
+
+        NOT = { scope:actor = scope:recipient }
+    }
+
+    is_valid_showing_failures_only = {
+        scope:actor = {
+            is_imprisoned = no
+            is_at_war = no
+            NOT = { exists = involved_activity }
+        }
+
+        scope:recipient = {
+            # Not already at actor's court
+            NOR = {
+                is_courtier_of = scope:actor
+                is_pool_guest_of = scope:actor
+                host ?= scope:actor
+            }
+
+            # No house members already landed in your or their realm (Maybe merge these?)
+            custom_tooltip = {
+                text = nfm_int_invite_house_not_landed_your_realm_tt
+                NOT = {
+                    house = {
+                        any_house_member = {
+                            top_liege = scope:actor.top_liege
+                            is_landed = yes
+                        }
+                    }
+                }
+            }
+            custom_tooltip = {
+                text = nfm_int_invite_house_not_landed_their_realm_tt
+                NOT = {
+                    house = {
+                        any_house_member = {
+                            top_liege = scope:recipient.top_liege
+                            is_landed = yes
+                        }
+                    }
+                }
+            }
+
+            # Not doing an activity
+            NOT = { exists = involved_activity }
+
+            is_imprisoned = no
+        }
+    }
+
+    is_valid = {
+        # Only hard block for state faith that considers recipient's faith "evil"
+        # Other faith conflicts are handled via AI acceptance modifiers
+        trigger_if = {
+            limit = {
+                scope:actor = {
+                    government_allows = state_faith
+                }
+            }
+            scope:recipient.faith = {
+                faith_hostility_level = {
+                    target = scope:actor.primary_title.state_faith
+                    value >= faith_evil_level
+                }
+            }
+        }
+    }
+
+    # Send options
+    send_options_exclusive = no
+
+    # Option: Offer generous compensation (increases acceptance)
+    send_option = {
+        flag = generous_offer
+        localization = nfm_int_invite_generous_offer
+
+        is_shown = {
+            always = yes
+        }
+
+        current_description = nfm_int_invite_generous_offer_desc
+    }
+
+    cost = {
+        gold = {
+            value = nfm_value_invite_house_gold_cost
+
+            # Generous offer doubles it
+            if = {
+                limit = { scope:generous_offer = yes }
+                multiply = 2
+            }
+        }
+
+        prestige = 250
+
+        influence = { value = nfm_value_invite_house_influence_cost}
+    }
+
+
+    ai_accept = {
+        base = -20
+
+        # Opinion of actor
+        opinion_modifier = {
+            opinion_target = scope:actor
+            multiplier = 0.5
+            step = 5
+            max = 25
+        }
+
+        # Negative opinion of current liege makes them more willing to leave
+        opinion_modifier = {
+            trigger = {
+                exists = liege
+            }
+            opinion_target = liege
+            multiplier = -0.3
+            step = 5
+            max = 15
+        }
+
+        # House head bonus - they're being recruited as a house head (Freebie for flavour)
+        modifier = {
+            add = 5
+            desc = nfm_ai_will_retain_noble_family
+        }
+
+        # Generous offer bonus
+        modifier = {
+            scope:generous_offer = yes
+            add = 30
+
+            if = {
+                limit = { has_trait = greedy }
+                add = 20
+            }
+            else_if = {
+                limit = { has_trait = generous }
+                subtract = 20
+            }            
+
+            desc = nfm_ai_generous_offer
+        }
+
+        # Actor is higher/lower tier ruler
+		modifier = {
+			add = 10
+			scope:actor = {
+				tier_difference = {
+					target = scope:recipient.top_liege
+					value = 1
+				}
+			}
+			desc = nfm_ai_liege_rank_diff
+		}
+		modifier = {
+			add = 20
+			scope:actor = {
+				tier_difference = {
+					target = scope:recipient.top_liege
+					value = 2
+				}
+			}
+			desc = nfm_ai_liege_rank_diff
+		}
+
+		modifier = {
+			add = -10
+			scope:actor = {
+				tier_difference = {
+					target = scope:recipient.top_liege
+					value = -1
+				}
+			}
+			desc = nfm_ai_liege_rank_diff
+		}
+		modifier = {
+			add = -20
+			scope:actor = {
+				tier_difference = {
+					target = scope:recipient.top_liege
+					value = -2
+				}
+			}
+			desc = nfm_ai_liege_rank_diff
+		}
+
+        # Same dynasty connection
+        modifier = {
+            dynasty = scope:actor.dynasty
+            house != scope:actor.house
+            add = 20
+            desc = AI_SAME_DYNASTY_REASON
+        }
+
+        # Same house - even stronger
+        modifier = {
+            house = scope:actor.house
+            add = 30
+            desc = AI_SAME_HOUSE_REASON
+        }
+
+        # Family ties with actor
+        modifier = {
+            is_close_family_of = scope:actor
+            add = 15
+            desc = AI_YOUR_RELATIVE
+        }
+
+        modifier = {
+            is_extended_family_of = scope:actor
+            NOT = { is_close_family_of = scope:actor }
+            add = 5
+            desc = AI_YOUR_RELATIVE
+        }
+
+        # Cultural compatibility - base modifiers
+        modifier = {
+            culture = scope:actor.culture
+            add = 15
+            desc = nfm_ai_actor_shares_culture
+        }
+
+        modifier = {
+            culture = { has_same_culture_heritage = scope:actor.culture }
+            NOT = { culture = scope:actor.culture }
+            add = 8
+            desc = nfm_ai_actor_similar_culture
+        }
+
+        # Culture comparative - pull factors (actor shares, liege doesn't)
+        modifier = {
+            culture = scope:actor.culture
+            culture != liege.culture
+            add = 20
+            desc = nfm_ai_actor_shares_culture
+        }
+
+        modifier = {
+            culture = { has_same_culture_heritage = scope:actor.culture }
+            NOT = { culture = scope:actor.culture }
+            NOT = { culture = { has_same_culture_heritage = scope:recipient.liege.culture } }
+            add = 10
+            desc = nfm_ai_actor_similar_culture
+        }
+
+        # Culture comparative - stay factors (liege shares, actor doesn't)
+        modifier = {
+            culture = liege.culture
+            NOT = { culture = scope:actor.culture }
+            add = -10
+            desc = nfm_ai_liege_shares_culture
+        }
+
+        modifier = {
+            culture = { has_same_culture_heritage = scope:recipient.liege.culture }
+            culture != liege.culture
+            NOT = { culture = { has_same_culture_heritage = scope:actor.culture } }
+            add = -5
+            desc = nfm_ai_liege_similar_culture
+        }
+
+        # Faith comparative - pull factors (actor shares, liege doesn't)
+        modifier = {
+            faith = scope:actor.faith
+            faith != liege.faith
+            add = 20
+            desc = nfm_ai_actor_shares_faith
+        }
+
+        # Faith comparative - stay factors (liege shares, actor doesn't)
+        modifier = {
+            faith = liege.faith
+            faith != scope:actor.faith
+            add = -5
+            desc = nfm_ai_liege_shares_faith
+        }
+
+        # Faith hostility toward actor
+        modifier = {
+            faith = {
+                faith_hostility_level = {
+                    target = scope:actor.faith
+                    value >= faith_hostile_level
+                }
+            }
+            add = -25
+            desc = AI_RELIGION
+        }
+
+        # Their house prestige - higher prestige houses expect better offers
+        modifier = {
+            dynasty.dynasty_prestige_level >= 3
+            add = -20
+            desc = nfm_ai_high_prestige_house
+        }
+
+        modifier = {
+            dynasty.dynasty_prestige_level >= 5
+            add = -20  # Additional penalty for illustrious houses
+            desc = nfm_ai_high_prestige_house
+        }
+
+        # Liege at war - don't leave during crisis
+        modifier = {
+            liege = { is_at_war = yes }
+            add = -30
+            desc = nfm_ai_liege_at_war
+        }
+
+        # Recipient at war themselves - NEVER accept
+        modifier = {
+            is_at_war = yes
+            add = -1000
+            desc = nfm_ai_at_war
+        }
+
+        # Disloyalty concerns - unless ambitious or already dislikes liege
+        modifier = {
+            NOR = {
+                has_trait = ambitious
+                opinion = {
+                    target = liege
+                    value < -35
+                }
+            }
+            add = -10
+            desc = nfm_ai_seen_as_disloyal
+        }
+
+        # Content trait
+        modifier = {
+            has_trait = content
+            add = -25
+            desc = INTERACTION_CONTENT
+        }
+
+        # Ambitious trait
+        modifier = {
+            has_trait = ambitious
+            add = 15
+            desc = INTERACTION_AMBITIOUS
+        }
+
+        # Liege is more prestigious - stay factor
+        modifier = {
+            liege.prestige_level > scope:actor.prestige_level
+            add = -15
+            desc = nfm_ai_liege_more_prestigious
+        }
+
+        # Actor is more prestigious - pull factor
+        modifier = {
+            scope:actor.prestige_level > liege.prestige_level
+            add = 10
+            desc = nfm_ai_actor_more_prestigious
+        }
+
+        # Rivalry with actor
+        modifier = {
+            has_relation_rival = scope:actor
+            add = -200
+            desc = AI_YOUR_RIVAL
+        }
+
+        # Friendship with actor
+        modifier = {
+            has_relation_friend = scope:actor
+            add = 20
+            desc = AI_YOUR_FRIEND
+        }
+
+        # Lover
+        modifier = {
+            has_relation_lover = scope:actor
+            add = 20
+            desc = AI_YOUR_LOVER
+        }
+    }
+
+    on_accept = {
+        scope:recipient.liege = { save_scope_as = old_liege }
+
+        # Destroy their old title
+        scope:recipient = {
+            destroy_title = primary_title
+        }
+
+        # Add them as courtier
+        hidden_effect = {
+            scope:actor = { add_courtier = scope:recipient }
+        }
+
+        scope:recipient = {
+            # Create new family and vassalize them
+            custom_tooltip = {
+                text = create_noble_family_tt
+                create_noble_family_effect = { GOVERNMENT_GIVER = scope:actor }
+            }
+
+            nfm_effect_vassalize = {
+                LIEGE = scope:actor
+                VASSAL = scope:recipient
+            }
+
+            # Grant them resources
+            custom_tooltip = {
+                text = nfm_int_invite_resources_tt
+                add_prestige = 200
+                change_influence = nfm_value_invite_house_influence_grant
+            }
+        }
+
+        # Pay gold to recipient
+        scope:actor = {
+            show_as_tooltip = {
+                pay_short_term_gold = {
+                    target = scope:recipient
+                    gold = {
+                        value = nfm_value_invite_house_gold_cost
+                        if = {
+                            limit = { scope:generous_offer = yes }
+                            multiply = 2
+                        }
+                    }
+                }
+            }
+            hidden_effect = {
+                scope:recipient = {
+                    add_short_term_gold = {
+                        value = nfm_value_invite_house_gold_cost
+                        if = {
+                            limit = { scope:generous_offer = yes }
+                            multiply = 2
+                        }
+                    }
+                }
+            }
+        }
+
+        # Notify former liege
+        scope:old_liege = {
+            send_interface_message = {
+                type = event_generic_neutral
+                title = nfm_msg_house_head_left_realm
+                right_icon = scope:recipient
+
+                custom_tooltip = nfm_msg_house_head_left_realm_desc
+
+                # Opinion penalty toward the poacher
+                add_opinion = {
+                    modifier = nfm_op_poached_house_head
+                    target = scope:actor
+                }
+
+                # Opinion penalty toward the traitorous vassal
+                add_opinion = {
+                    modifier = nfm_op_abandoned_liege
+                    target = scope:recipient
+                }
+            }
+        }
+
+        # Notification & Stress
+        scope:actor = {
+            send_interface_message = {
+                type = event_generic_good
+                title = nfm_msg_invited_house_head
+                right_icon = scope:recipient
+            }
+
+            stress_impact = {
+                shy = minor_stress_impact_gain
+                paranoid = minor_stress_impact_gain
+                gregarious = minor_stress_impact_loss
+                ambitious = minor_stress_impact_loss
+            }
+        }
+    }
+
+    on_decline = {
+        scope:actor = {
+            send_interface_message = {
+                type = event_generic_bad
+                title = nfm_msg_invite_declined
+                right_icon = scope:recipient
+
+                custom_tooltip = nfm_msg_invite_declined_desc
+            }
+        }
+    }
+
+    ai_will_do = {
+        base = 0
+    }
+}

@@ -25,3 +25,15 @@ nfm_op_granted_nobility = {
     years = 15
     decaying = yes
 }
+
+# Former liege - angry that house head was poached from their realm
+nfm_op_poached_house_head = {
+    opinion = -20
+    years = 10
+}
+
+# Former liege's opinion of the vassal who abandoned them
+nfm_op_abandoned_liege = {
+    opinion = -50
+    years = 15
+}

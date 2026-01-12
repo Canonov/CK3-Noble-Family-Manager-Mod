@@ -8,3 +8,5 @@
  nfm_op_family_elevated: "Elevated my Family to Nobility"
  nfm_op_house_dissolved: "Dissolved my Noble Family"
  nfm_op_granted_nobility: "Granted me Nobility"
+ nfm_op_poached_house_head: "Poached my Vassal"
+ nfm_op_abandoned_liege: "Betrayed the Realm"

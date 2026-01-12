@@ -1,0 +1,37 @@
+﻿################################
+# Recruitment Triggers
+################################
+
+## nfm_trigger_is_foreign_landless_house_head
+# Checks if character is a landless house head in a foreign realm
+# Scope: character
+# Input: scope:actor - the ruler doing the checking
+nfm_trigger_is_foreign_landless_house_head = {
+    is_adult = yes
+    is_landless_ruler = yes
+
+    OR = {
+        house.house_head = this
+        house.house_head = scope:actor
+    }
+
+    # Must have a liege
+    liege != this
+
+    # Their title must be a noble family type
+    any_held_title = {
+        is_noble_family_title = yes
+    }
+
+    # Must be in a foreign realm (different top liege)
+    trigger_if = {
+        limit = { exists = scope:actor }
+        top_liege != scope:actor.top_liege
+    }
+
+    NOR = {
+        has_trait = devoted
+        has_trait = order_member
+        has_trait = gallivanter
+    }
+}

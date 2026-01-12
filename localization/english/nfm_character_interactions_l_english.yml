@@ -6,8 +6,8 @@
 
  nfm_int_elevate_lowborn: "Grant Nobility"
  nfm_int_elevate_lowborn_desc: "Raise [recipient.GetShortUIName] from [lowborn|E] obscurity to the ranks of the [nobility|E]. A name, a lineage, a [dynasty|E], From the word of a [actor.GetTitleAsNameNoTooltip] alone."
- nfm_elevate_lowborn_tt: "[recipient.GetFirstName] will found [recipient.GetHerHis] own [dynasty|E], entering the ranks of the [nobility|E]"
- nfm_lowborn_grant_title_name: "[recipient.GetFirstNamePossessive] Grant of Nobility"
+ nfm_elevate_lowborn_tt: "[recipient.GetShortUIName] will found [recipient.GetHerHis] own [dynasty|E], entering the ranks of the [nobility|E]"
+ nfm_lowborn_grant_title_name: "[recipient.GetShortUINamePossessive] Grant of Nobility"
 
  ## Post Elevate Toast
  nfm_toast_elevated_lowborn: "Lowborn Elevated to Nobility"
@@ -41,7 +41,7 @@
 
  # Eradication Order
  nfm_int_revoke_eradicate: "Eradication Order"
- nfm_int_revoke_eradicate_desc: "Adult [house|E] members of the dominant gender who are direct parents or children of [recipient.GetFirstNameNoTooltip] will be [executed|E]. Others will be [banished|E]."
+ nfm_int_revoke_eradicate_desc: "Adult [house|E] members of the dominant gender who are direct parents or children of [recipient.GetShortUINameNoTooltip] will be [executed|E]. Others will be [banished|E]."
  nfm_int_revoke_eradicate_tt: "Adult [house|E] members will be executed and others banished"
  nfm_int_revoke_eradicate_kill_tt: "#N @warning_icon! Adult members (16-69) of the dominant gender who are direct parents or children will be #bold executed.#!"
  nfm_int_revoke_eradicate_banish_tt: "Elderly (70+), non-dominant gender, and spouses will be #bold banished."
@@ -72,4 +72,49 @@
  # No Dominant Marriages
  nfm_loc_dissolve_house_no_dominant_marriages: "[DYNASTY_HOUSE.GetName] must have #bold no members#! married dominantly (whose children would join this house)"
  nfm_loc_dissolve_house_has_dominant_marriages: "[DYNASTY_HOUSE.GetName] have no members married dominantly (whose children would join this house)"
+
+ ################################
+ # INVITE FOREIGN HOUSE HEAD
+ ################################
+
+ nfm_int_invite_foreign_house_head: "Invite Foreign Noble House"
+ nfm_int_invite_foreign_house_head_desc: "Extend an invitation to [recipient.GetShortUIName], the head of [recipient.GetDynastyHouseName], to bring [recipient.GetHerHis] [house|E] to our realm and become a [noble_family|E]."
+
+ ## Send Options
+ nfm_int_invite_generous_offer: "Generous Compensation"
+ nfm_int_invite_generous_offer_desc: "Offer additional [gold|E] to sweeten the deal"
+
+ ## Validity Tooltips
+ nfm_int_invite_house_not_landed_your_realm_tt: "[recipient.GetDynastyHouseName] must not already have landed members in your realm"
+ nfm_int_invite_house_not_landed_their_realm_tt: "[recipient.GetDynastyHouseName] must not already have landed members in their realm"
+ nfm_int_invite_resources_tt: "Will the receive [prestige|E] and [influence|E] costs to establish themselves"
+ nfm_int_invite_gold_requirement_tt: "Requires [gold_i]#V [actor.MakeScope.ScriptValue('nfm_value_invite_house_gold_cost')|0]#! [gold|E] #weak (Paid to [recipient.GetFirstNameNoTooltip])#!"
+
+ ## AI Acceptance Reasons
+ nfm_ai_generous_offer: "Generous Compensation: $VALUE|=+0$ "
+ nfm_ai_will_retain_noble_family: "Will retain a [noble_family|E] [title|E]: $VALUE|=+0$ "
+ nfm_ai_liege_rank_diff: "Rank Difference to my [liege|E]: $VALUE|=+0$ "
+ nfm_ai_high_prestige_house: "High prestige house expects better terms: $VALUE|=+0$ "
+ nfm_ai_liege_at_war: "Current liege is at war: $VALUE|=+0$ "
+
+ # Faith/Culture comparative
+ nfm_ai_actor_shares_faith: "You share my [faith|E]: $VALUE|=+0$ "
+ nfm_ai_liege_shares_faith: "Liege shares my [faith|E]: $VALUE|=+0$ "
+ nfm_ai_actor_shares_culture: "You share my [culture|E] while my liege doesn't: $VALUE|=+0$ "
+ nfm_ai_actor_similar_culture: "Your [culture|E] is closer to mine than my liege: $VALUE|=+0$ "
+ nfm_ai_liege_shares_culture: "My liege shares my [culture|E]: $VALUE|=+0$ "
+ nfm_ai_liege_similar_culture: "My liege has a similar [culture|E]: $VALUE|=+0$ "
+
+ # Personal/Situational
+ nfm_ai_at_war: "Currently at war: $VALUE|=+0$ "
+ nfm_ai_seen_as_disloyal: "Would be seen as disloyal: $VALUE|=+0$ "
+ nfm_ai_liege_more_prestigious: "My liege is more prestigious: $VALUE|=+0$ "
+ nfm_ai_actor_more_prestigious: "You are more prestigious: $VALUE|=+0$ "
+
+ ## Messages
+ nfm_msg_invited_house_head: "Foreign House Recruited"
+ nfm_msg_house_head_left_realm: "House Head Departed"
+ nfm_msg_house_head_left_realm_desc: "[recipient.GetName] of [recipient.GetDynastyHouseName] has left your realm to join [actor.GetName]"
+ nfm_msg_invite_declined: "Invitation Declined"
+ nfm_msg_invite_declined_desc: "[recipient.GetName] has declined your invitation to join your realm"
 

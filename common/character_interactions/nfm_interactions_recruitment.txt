@@ -192,10 +192,6 @@ nfm_int_invite_foreign_house_head = {
                     limit = { has_trait = greedy }
                     add = 20
                 }
-                else_if = {
-                    limit = { has_trait = generous }
-                    subtract = 20
-                }
             }
 
             desc = nfm_ai_generous_offer

@@ -7,7 +7,7 @@
  nfm_int_elevate_lowborn: "Grant Nobility"
  nfm_int_elevate_lowborn_desc: "Raise [recipient.GetShortUIName] from [lowborn|E] obscurity to the ranks of the [nobility|E]. A name, a lineage, a [dynasty|E], From the word of a [actor.GetTitleAsNameNoTooltip] alone."
  nfm_elevate_lowborn_tt: "[recipient.GetShortUIName] will found [recipient.GetHerHis] own [dynasty|E], entering the ranks of the [nobility|E]"
- 
+
  ## Post Elevate Toast
  nfm_toast_elevated_lowborn: "Lowborn Elevated to Nobility"
  nfm_toast_elevated_lowborn_desc: "[recipient.GetName] has been elevated as the head of the [new_dynasty.GetName] [dynasty|E]"
@@ -84,9 +84,10 @@
  nfm_int_invite_generous_offer: "Generous Compensation"
  nfm_int_invite_generous_offer_desc: "Offer additional [gold_i][gold|E] to sweeten the deal"
 
- ## Validity Tooltips
+ ## Tooltips
  nfm_int_invite_house_not_landed_your_realm_tt: "[recipient.GetDynastyHouseName] must not already have landed members in your realm"
  nfm_int_invite_house_not_landed_their_realm_tt: "[recipient.GetDynastyHouseName] must not already have landed members in their realm"
+ nfm_int_invite_house_head_move_noble_family_tt: "Recreates their [noble_family|E] [title|E] in your [realm|E]"
 
  ## AI Acceptance Reasons
  nfm_ai_generous_offer: "Generous Compensation: $VALUE|=+0$ "
@@ -129,6 +130,7 @@
 
  ## Messages
  nfm_msg_invited_house_head: "Foreign House Recruited"
+ nfm_msg_invited_house_head_desc: "[recipient.GetName] of [recipient.GetDynastyHouseName] has accepted your invitation and will soon arrive to join your realm."
  nfm_msg_house_head_left_realm: "House Head Departed"
  nfm_msg_house_head_left_realm_desc: "[recipient.GetName] has left your realm to join [actor.GetName]"
  nfm_msg_invite_declined: "Invitation Declined"

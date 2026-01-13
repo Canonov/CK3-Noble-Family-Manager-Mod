@@ -628,34 +628,26 @@ nfm_int_invite_foreign_house_head = {
     on_accept = {
         scope:recipient.liege = { save_scope_as = old_liege }
 
-        # Destroy their old title
-        scope:recipient = {
-            destroy_title = primary_title
-        }
-
-        # Add them as courtier
+        # Add them as courtier and destroy their old title
         hidden_effect = {
+            scope:recipient = { destroy_title = primary_title }
             scope:actor = { add_courtier = scope:recipient }
         }
 
         scope:recipient = {
             # Create new family and vassalize them
             custom_tooltip = {
-                text = create_noble_family_tt
+                text = nfm_int_invite_house_head_move_noble_family_tt
                 create_noble_family_effect = { GOVERNMENT_GIVER = scope:actor }
-            }
-
-            nfm_effect_vassalize = {
-                LIEGE = scope:actor
-                VASSAL = scope:recipient
+                nfm_effect_vassalize = {
+                    LIEGE = scope:actor
+                    VASSAL = scope:recipient
+                }
             }
 
             # Grant them resources
-            custom_tooltip = {
-                text = nfm_int_invite_resources_tt
-                add_prestige = 200
-                change_influence = nfm_value_invite_house_influence_grant
-            }
+            add_prestige = 200
+            change_influence = nfm_value_invite_house_influence_grant
         }
 
         # Pay gold to recipient
@@ -713,6 +705,7 @@ nfm_int_invite_foreign_house_head = {
             send_interface_message = {
                 type = event_generic_good
                 title = nfm_msg_invited_house_head
+                desc = nfm_msg_invited_house_head_desc
                 right_icon = scope:recipient
             }
 

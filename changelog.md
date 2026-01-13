@@ -1,5 +1,16 @@
 # Changelog
 
+## v1.1.0 - 2026/01/13
+
+### Added
+- New "Invite Foreign House Head" interaction to recruit heads of existing noble families from other realms
+- New icon for "Dissolve Dying House" interaction
+- New icon for "Invite Foreign House Head" interaction
+
+### Fixed
+- Removed unused localization keys
+
+
 ## v1.0.2 - 2026/01/10
 
 ### Added or Changed

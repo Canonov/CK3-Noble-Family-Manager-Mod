@@ -1,5 +1,15 @@
 # Changelog
 
+## v1.2.0 - 2026/01/14
+
+### Added
+- Added Diplomatic House Type
+- Added House Modifiers, each house type has a house wide modifier applied to it on creation.
+- This ranges from the Steward's Governor XP gain, domain tax mult, and build cost, to the Martial House's levy size, prowess, and control bonuses, each house modifier will also have at least 2 main skill points.
+
+### Fixed
+- Removed unused localization keys
+
 ## v1.1.0 - 2026/01/13
 
 ### Added

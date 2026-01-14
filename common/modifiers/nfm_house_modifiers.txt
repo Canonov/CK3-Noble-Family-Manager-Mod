@@ -48,6 +48,7 @@ nfm_modifier_housetype_diplomatic = {
 nfm_modifier_housetype_foreign = {
     icon = goods_positive
     diplomacy = 1
+    learning = 1
     different_culture_opinion = 10
     different_faith_opinion = 10
     cultural_acceptance_gain_mult = 0.15

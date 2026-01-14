@@ -3,3 +3,5 @@
   and equivalent error for set_employer issue
 
 - Add House Modifiers based on type
+
+- Go over Diplomatic house type again to make sure it's consistent with others

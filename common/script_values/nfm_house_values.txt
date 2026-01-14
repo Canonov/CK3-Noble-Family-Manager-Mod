@@ -2,6 +2,7 @@
 nfm_housetype_martial = 2
 nfm_housetype_learning = 3
 nfm_housetype_intrigue = 4
+nfm_housetype_diplomatic = 5
 nfm_housetype_foreign = 6
 
 
@@ -23,6 +24,10 @@ nfm_value_gethousetype = {
     else_if = {
         limit = { scope:nfm_house_intrigue ?= yes }
         value = nfm_housetype_intrigue
+    }
+    else_if = {
+        limit = { scope:nfm_house_diplomatic ?= yes }
+        value = nfm_housetype_diplomatic
     }
     else_if = {
         limit = { scope:nfm_house_foreign ?= yes }

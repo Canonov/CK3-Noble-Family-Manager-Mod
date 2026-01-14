@@ -167,6 +167,20 @@ nfm_decision_elevate_nobles = {
             }
         }
 
+        # House of Diplomats
+        item = {
+            value = nfm_house_diplomatic
+
+            localization = nfm_house_diplomatic_name
+            current_description = nfm_house_diplomatic_desc
+
+            icon = "gfx/interface/icons/scheme_types/diplomacy.dds"
+
+            ai_chance = {
+                value = 0
+            }
+        }
+
         # House of Foreigners
         item = {
             value = nfm_house_foreign
@@ -234,6 +248,9 @@ nfm_decision_elevate_nobles = {
                 }
                 nfm_housetype_intrigue = {
                     nfm_effect_create_house_intrigue = { EMPLOYER = root }
+                }
+                nfm_housetype_diplomatic = {
+                    nfm_effect_create_house_diplomatic = { EMPLOYER = root }
                 }
                 nfm_housetype_foreign = {
                     nfm_effect_create_house_foreign = { EMPLOYER = root }

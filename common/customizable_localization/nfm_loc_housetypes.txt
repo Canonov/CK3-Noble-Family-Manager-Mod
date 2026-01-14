@@ -21,6 +21,11 @@
         trigger = { house.var:nfm_housetype = nfm_housetype_intrigue }
         localization_key = nfm_house_intrigue_name
     }
+    ## Diplomatic
+    text = {
+        trigger = { house.var:nfm_housetype = nfm_housetype_diplomatic }
+        localization_key = nfm_house_diplomatic_name
+    }
     ## Foreign
     text = {
         trigger = { house.var:nfm_housetype = nfm_housetype_foreign }
@@ -57,6 +62,11 @@ nfm_loc_house_housetype_event_desc = {
     text = {
         trigger = { house.var:nfm_housetype = nfm_housetype_intrigue }
         localization_key = nfm_house_intrigue_event_desc
+    }
+    ## Diplomatic
+    text = {
+        trigger = { house.var:nfm_housetype = nfm_housetype_diplomatic }
+        localization_key = nfm_house_diplomatic_event_desc
     }
     ## Foreign
     text = {

@@ -258,6 +258,17 @@ nfm_effect_create_house_intrigue = {
     }
 }
 
+nfm_effect_create_house_diplomatic = {
+    nfm_effect_create_house = {
+        EMPLOYER = $EMPLOYER$
+
+        PARENT_TEMPLATE = pool_repopulate_diplomacy
+        HEAD_TEMPLATE = nfm_character_familyhead_diplomatic
+        CHILD_TEMPLATE = nfm_character_child_diplomatic
+        SIBLING_TEMPLATE = nfm_character_sibling_diplomatic
+    }
+}
+
 nfm_effect_create_house_martial = {
     nfm_effect_create_house = {
         EMPLOYER = $EMPLOYER$

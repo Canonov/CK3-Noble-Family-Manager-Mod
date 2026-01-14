@@ -35,7 +35,11 @@
  nfm_house_intrigue_desc: "A family of cunning operatives and information brokers, their skill in intrigue and espionage has proven invaluable."
  nfm_house_intrigue_tooltip: "Members of this house excel in [intrigue|E] and make effective [Concept('spymaster', 'Spymasters')|E] and covert agents"
 
- ## [5] Reserved for Diplomatic ##
+ ## [5] Diplomatic Houses ##
+
+ nfm_house_diplomatic_name: "Diplomatic Envoys"
+ nfm_house_diplomatic_desc: "A family of skilled diplomats and envoys, their talent for negotiation and statecraft has earned them recognition. They excel at chancellory roles and making allies around the realm."
+ nfm_house_diplomatic_tooltip: "Members of this house excel in [diplomacy|E] and make excellent [chancellors|E] and ambassadors"
 
  ## [6] Foreign/Minority Houses ##
 
@@ -54,6 +58,7 @@
  nfm_house_martial_event_desc: "[ROOT.Char.GetName] and [ROOT.Char.GetHerHis] kin have shed blood in service to the realm. They carry themselves with the discipline of seasoned warriors, their martial prowess evident in every movement."
  nfm_house_learning_event_desc: "The [ROOT.Char.GetDynastyHouseName] are known for their scholarly pursuits and wisdom. [ROOT.Char.GetShortUIName] speaks with the measured confidence of one who has devoted [ROOT.Char.GetHerHis] life to knowledge."
  nfm_house_intrigue_event_desc: "Little is known of the [ROOT.Char.GetDynastyHouseName] publicly, which is perhaps their greatest asset. They have served in the shadows, their loyalty proven through discretion and results."
+ nfm_house_diplomatic_event_desc: "The [ROOT.Char.GetDynastyHouseName] are masters of negotiation and statecraft. [ROOT.Char.GetFirstName] speaks with the eloquence of a seasoned diplomat."
  nfm_house_foreign_event_desc: "The [ROOT.Char.GetDynastyHouseName] hail from the [ROOT.Char.MakeScope.Var('nfm_origin_county').Title.GetName], bringing their [ROOT.Char.GetCulture.GetCollectiveNoun] customs and [ROOT.Char.GetFaith.GetName] faith. Outsiders, perhaps, but their talents speak for themselves."
  ## Family Size Descriptions ##
  nfm_familysize_small_event_desc: "[ROOT.Char.GetFirstName] stands with only [ROOT.Char.GetHerHis] children at [ROOT.Char.GetHerHis] side. A small household, but sometimes the mightiest oaks grow from a single acorn."

@@ -1,0 +1,25 @@
+﻿l_english:
+ ## HOUSE MODIFIERS
+ # Steward
+ nfm_modifier_housetype_steward: "Administrative Excellence"
+ nfm_modifier_housetype_steward_desc: "This [house|e] is renowned for meticulous record-keeping and efficient governance. From the counting-house to the council chamber, careful stewardship runs in the blood."
+
+ # Martial
+ nfm_modifier_housetype_martial: "Military Tradition"
+ nfm_modifier_housetype_martial_desc: "This [house|e] has a warrior lineage, all members are trained in the arts of war since childhood."
+
+ # Learning
+ nfm_modifier_housetype_learning: "House of Scholars"
+ nfm_modifier_housetype_learning_desc: "This [house|e] has long cultivated wisdom and scholarly pursuit."
+
+ # Intrigue
+ nfm_modifier_housetype_intrigue: "Masters of Intrigue"
+ nfm_modifier_housetype_intrigue_desc: "Secrets are currency in this [house|e]. Raised among schemers and shadow-brokers, this character knows that power lies not in what is said, but in what is known."
+
+ # Diplomatic
+ nfm_modifier_housetype_diplomatic: "Courtly Grace"
+ nfm_modifier_housetype_diplomatic_desc: "This is a [house|e] where words are wielded as skillfully as blades. Every feast is a negotiation, every smile a calculated gesture—and the family excels at both."
+
+ # Foreign
+ nfm_modifier_housetype_foreign: "Adaptive Heritage"
+ nfm_modifier_housetype_foreign_desc: "This [house|e] knows what it is to be a small part of the realm, so they have the ability to adapt cultures and faiths."

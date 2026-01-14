@@ -43,6 +43,11 @@ nfm_events_elevate_nobles.1 = {
             }
         }
 
+        ## Tooltip for House Modifier
+        show_as_tooltip = {
+            scope:new_house_head.house ?= { nfm_effect_add_house_modifier = yes }
+        }
+
         ## Vassalize them since creating a new house doesn't anymore apparently
         nfm_effect_vassalize = {
             LIEGE = root

@@ -1,4 +1,32 @@
-﻿## nfm_effect_setup_merit_for_member
+﻿# Adds the appropriate modifier to a house based on its type
+#
+# @scope: house - The character receiving merit flags
+# @input var:nfm_housetype [HouseType] - House Type 
+nfm_effect_add_house_modifier = {
+    switch = {
+        trigger = var:nfm_housetype
+        nfm_housetype_steward = {
+            add_house_modifier = { modifier = nfm_modifier_housetype_steward }
+        }
+        nfm_housetype_martial = {
+            add_house_modifier = { modifier = nfm_modifier_housetype_martial }
+        }
+        nfm_housetype_learning = {
+            add_house_modifier = { modifier = nfm_modifier_housetype_learning }
+        }
+        nfm_housetype_intrigue = {
+            add_house_modifier = { modifier = nfm_modifier_housetype_intrigue }
+        }
+        nfm_housetype_diplomatic = {
+            add_house_modifier = { modifier = nfm_modifier_housetype_diplomatic }
+        }
+        nfm_housetype_foreign = {
+            add_house_modifier = { modifier = nfm_modifier_housetype_foreign }
+        }
+    }
+}
+
+## nfm_effect_setup_merit_for_member
 # Initializes examination flags for a newly created noble family member based on their age
 #
 # @scope: character - The character receiving merit flags

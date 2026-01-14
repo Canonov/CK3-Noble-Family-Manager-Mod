@@ -257,7 +257,7 @@ nfm_decision_elevate_nobles = {
                 }
             }
 
-            scope:new_house_head.house = {
+            scope:new_house_head.house ?= {
                 set_variable = {
                     name = nfm_housetype
                     value = scope:house_type
@@ -266,6 +266,9 @@ nfm_decision_elevate_nobles = {
                     name = nfm_familysize
                     value = scope:family_size
                 }
+
+                # Add the appropriate House Type modifier
+                nfm_effect_add_house_modifier = yes
             }
 
             # Grant portion of influence cost to new family head
@@ -276,6 +279,9 @@ nfm_decision_elevate_nobles = {
 
         # Will be created tooltip
         custom_tooltip = nfm_decision_elevate_nobles_tt
+
+        # Will gain modifier tooltip
+        custom_tooltip = nfm_decision_elevate_nobles_modifier_tt
 
         # Tooltip to explain their culture and faith
         if = {

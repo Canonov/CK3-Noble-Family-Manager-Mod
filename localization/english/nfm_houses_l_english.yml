@@ -56,6 +56,6 @@
  nfm_house_intrigue_event_desc: "Little is known of the [ROOT.Char.GetDynastyHouseName] publicly, which is perhaps their greatest asset. They have served in the shadows, their loyalty proven through discretion and results."
  nfm_house_foreign_event_desc: "The [ROOT.Char.GetDynastyHouseName] hail from the [ROOT.Char.MakeScope.Var('nfm_origin_county').Title.GetName], bringing their [ROOT.Char.GetCulture.GetCollectiveNoun] customs and [ROOT.Char.GetFaith.GetName] faith. Outsiders, perhaps, but their talents speak for themselves."
  ## Family Size Descriptions ##
- nfm_familysize_small_event_desc: "#high [ROOT.Char.GetFirstName]#! stands with only [ROOT.Char.GetHerHis] children at [ROOT.Char.GetHerHis] side. A small household, but sometimes the mightiest oaks grow from a single acorn."
- nfm_familysize_medium_event_desc: "Behind #high [ROOT.Char.GetFirstName]#! stand [ROOT.Char.GetHerHis] aging parents, siblings, and a gaggle of children. A respectable household of perhaps a dozen souls."
+ nfm_familysize_small_event_desc: "[ROOT.Char.GetFirstName] stands with only [ROOT.Char.GetHerHis] children at [ROOT.Char.GetHerHis] side. A small household, but sometimes the mightiest oaks grow from a single acorn."
+ nfm_familysize_medium_event_desc: "Behind [ROOT.Char.GetFirstName] stand [ROOT.Char.GetHerHis] aging parents, siblings, and a gaggle of children. A respectable household of perhaps a dozen souls."
  nfm_familysize_large_event_desc: "The [ROOT.Char.GetDynastyHouseName] have come in force. Parents, siblings, children, cousins — a veritable clan fills the chamber, each eager to share in the family's rising fortunes."

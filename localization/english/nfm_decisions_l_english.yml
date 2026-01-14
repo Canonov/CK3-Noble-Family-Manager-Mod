@@ -26,5 +26,5 @@
  ## Post Creation Toast ##
  
  nfm_toast_elevated: "Family Elevated to Noble Status"
- nfm_toast_elevated_desc: "[new_house_head.GetName] has been elevated as the head of the [new_title.GetNameNoTier]"
+ nfm_toast_elevated_desc: "[new_house_head.GetFirstName] has been elevated as the head of the [new_title.GetNameNoTier]"
  nfm_toast_elevated_tt: "This new [noble_family|E] will serve your realm and may provide valuable [councillors|E], [governors|E] and [knights|E]"

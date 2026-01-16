@@ -1,6 +1,48 @@
 ﻿l_english:
 
  ################################
+ # GAME CONCEPTS
+ ################################
+
+ ## House Types Concept ##
+ game_concept_nfm_house_types: "Noble House Types"
+ game_concept_nfm_house_type: "House Type"
+ game_concept_nfm_house_types_desc: "Each [noble_family|E] belongs to one of six types, reflecting their area of expertise.\n\nEvery type comes with an associated [modifier|E].\n#weak (For example the [GetStaticModifier('nfm_modifier_housetype_steward').GetNameWithTooltip] modifier of the $game_concept_nfm_steward_house$)#! \n\n#S Available House Types:#!\n$EFFECT_LIST_BULLET$[nfm_steward_house|E]\n$EFFECT_LIST_BULLET$[nfm_martial_house|E]\n$EFFECT_LIST_BULLET$[nfm_learning_house|E]\n$EFFECT_LIST_BULLET$[nfm_intrigue_house|E]\n$EFFECT_LIST_BULLET$[nfm_diplomatic_house|E]\n$EFFECT_LIST_BULLET$[nfm_foreign_house|E]"
+
+ ## Family Sizes Concept ##
+ game_concept_nfm_family_sizes: "Family Sizes"
+ game_concept_nfm_family_size: "Family Size"
+ game_concept_nfm_family_sizes_desc: "When elevating a new [noble_family|E], they will arrive in one of three $game_concept_nfm_family_sizes$:\n\n#bold Small Family (20% chance):#! Only the head and their children arrive.\n\n#bold Medium Family (60% chance):#! The head, aging parents, siblings, and children — about a dozen family members.\n\n#bold Large Family (20% chance):#! An extended clan including parents, siblings, children, and cousins.\n\nLarger families provide more potential [councillors|E], [governors|E], and [knights|E]."
+
+ ################################
+ # HOUSE TYPE CONCEPTS
+ ################################
+
+ ## Steward House Concept ##
+ game_concept_nfm_steward_house: "Steward House"
+ game_concept_nfm_steward_house_desc: "A family of capable administrators, skilled in managing lands and collecting taxes.\n\nMembers excel in [stewardship|E] and make excellent [councillors|E] for financial tasks.\n#weak \n- They will gain the $nfm_modifier_housetype_steward_tt$ [modifier|E].#!"
+
+ ## Martial House Concept ##
+ game_concept_nfm_martial_house: "Martial House"
+ game_concept_nfm_martial_house_desc: "A family of proven warriors and military leaders with talent for command.\n\nMembers excel in [martial|E] and make formidable [knights|E] and [commanders|E].\n#weak \n- They will gain the $nfm_modifier_housetype_martial_tt$ [modifier|E].#!"
+
+ ## Learning House Concept ##
+ game_concept_nfm_learning_house: "Learning House"
+ game_concept_nfm_learning_house_desc: "A family of intellectuals and scholars devoted to the pursuit of knowledge.\n\nMembers excel in [learning|E] and make excellent [court_chaplains|E] and advisors.\n#weak \n- They will gain the $nfm_modifier_housetype_learning_tt$ [modifier|E].#!"
+
+ ## Intrigue House Concept ##
+ game_concept_nfm_intrigue_house: "Intrigue House"
+ game_concept_nfm_intrigue_house_desc: "A family of cunning operatives skilled in espionage and information gathering.\n\nMembers excel in [intrigue|E] and make effective [Concept('spymaster', 'Spymasters')|E] and covert [agents|E].\n#weak \n- They will gain the $nfm_modifier_housetype_intrigue_tt$ [modifier|E].#!"
+
+ ## Diplomatic House Concept ##
+ game_concept_nfm_diplomatic_house: "Diplomatic House"
+ game_concept_nfm_diplomatic_house_desc: "A family of skilled diplomats with talent for negotiation and statecraft.\n\nMembers excel in [diplomacy|E] and make excellent [chancellors|E] and ambassadors.\n#weak \n- They will gain the $nfm_modifier_housetype_diplomatic_tt$ [modifier|E].#!"
+
+ ## Foreign House Concept ##
+ game_concept_nfm_foreign_house: "Foreign House"
+ game_concept_nfm_foreign_house_desc: "A family of different heritage, bringing unique talents from distant lands.\n\nMembers bring various [educations|E] and may have unique cultural skills.\n#weak \n- They will gain the $nfm_modifier_housetype_foreign_tt$ [modifier|E].#!"
+
+ ################################
  # NOBLE HOUSE TYPES
  ################################
 
@@ -11,13 +53,13 @@
 
  nfm_house_steward_name: "Capable Stewards"
  nfm_house_steward_desc: "This family has demonstrated exceptional competence in managing lands, collecting taxes, and organizing the affairs of the realm."
- nfm_house_steward_tooltip: "Members of this house excel in [stewardship|E] and make excellent [councillors|E] for financial and developmental tasks"
+ nfm_house_steward_tooltip: "#T $game_concept_nfm_steward_house$#!\n$game_concept_nfm_steward_house_desc$"
 
  ## [2] Martial Houses ##
 
  nfm_house_martial_name: "Soldiers and Commanders"
  nfm_house_martial_desc: "A family of proven warriors and military leaders, their martial prowess has earned them a place among the nobility. They have served with distinction in battle and shown talent for command."
- nfm_house_martial_tooltip: "Members of this house excel in [martial|E] skills and make formidable [knights|E] and [commanders|E]"
+ nfm_house_martial_tooltip: "#T $game_concept_nfm_martial_house$#!\n$game_concept_nfm_martial_house_desc$"
  # Samurai for Japanese
  nfm_house_martial_name_samurai: "Minor Samurai"
 
@@ -25,7 +67,7 @@
 
  nfm_house_learning_name: "Learned Scholars"
  nfm_house_learning_desc: "A family of intellectuals and scholars has distinguished themselves through their pursuit of knowledge and wisdom."
- nfm_house_learning_tooltip: "Members of this house excel in [learning|E] and make excellent [court_chaplains|E] and cultural advisors"
+ nfm_house_learning_tooltip: "#T $game_concept_nfm_learning_house$#!\n$game_concept_nfm_learning_house_desc$"
  # Confucian Scholars for Chinese Chars
  nfm_house_learning_name_confucian: "Confucian Scholars"
 
@@ -33,21 +75,21 @@
 
  nfm_house_intrigue_name: "Trustworthy Spies"
  nfm_house_intrigue_desc: "A family of cunning operatives and information brokers, their skill in intrigue and espionage has proven invaluable."
- nfm_house_intrigue_tooltip: "Members of this house excel in [intrigue|E] and make effective [Concept('spymaster', 'Spymasters')|E] and covert agents"
+ nfm_house_intrigue_tooltip: "#T $game_concept_nfm_intrigue_house$#!\n$game_concept_nfm_intrigue_house_desc$"
 
  ## [5] Diplomatic Houses ##
 
  nfm_house_diplomatic_name: "Diplomatic Envoys"
  nfm_house_diplomatic_desc: "A family of skilled diplomats and envoys, their talent for negotiation and statecraft has earned them recognition. They excel at chancellory roles and making allies around the realm."
- nfm_house_diplomatic_tooltip: "Members of this house excel in [diplomacy|E] and make excellent [chancellors|E] and ambassadors"
+ nfm_house_diplomatic_tooltip: "#T $game_concept_nfm_diplomatic_house$#!\n$game_concept_nfm_diplomatic_house_desc$"
 
  ## [6] Foreign/Minority Houses ##
 
  nfm_house_foreign_name: "Talented Minorities"
  nfm_house_foreign_name_dyn: "Talented [ROOT.Char.GetCulture.GetCollectiveNounNoTooltip]"
  nfm_house_foreign_desc: "From the far corners of the realm, a family of different heritage has proven their worth through service and skill. They bring unique talents to the [ROOT.Char.Custom('GetRealmRank')] court."
- nfm_house_foreign_tooltip: "Members of this house bring various educations and may have unique cultural skills"
- nfm_house_foreign_diff_culture_tooltip: "#weak $nfm_house_foreign_name$:#! The house will be chosen from one of your [realm|E] [counties|E] of a different [culture|E], if their [faith|E] is [faith_astray|E] or [faith_righteous|E] they will be allowed to keep their [faith|E]"
+ nfm_house_foreign_tooltip: "#T $game_concept_nfm_foreign_house$#!\n$game_concept_nfm_foreign_house_desc$"
+ nfm_house_foreign_diff_culture_tooltip: "#weak $nfm_house_foreign_name$:#! The house will be chosen from one of your [realm|E] [counties|E] of a different [culture|E], if their [faith|E] is [faith_astray|E] or [faith_righteous|E] they will be allowed to keep their [faith|E]."
 
 
  ################################

@@ -4,3 +4,12 @@
  ## Trigger Loc
  nfm_loc_house_must_be_unlanded: "No member of [house|E] [DYNASTY_HOUSE.GetName] has [land|E] in your [realm|E]"
  nfm_loc_house_must_be_unlanded_not: "A member of [house|E] [DYNASTY_HOUSE.GetName] is [landed|E] in your [realm|E]"
+ 
+ ## HOUSE TYPE CONCEPT REFERENCES
+ nfm_loc_concept_steward: "[nfm_steward_house|E]"
+ nfm_loc_concept_martial: "[nfm_martial_house|E]"
+ nfm_loc_concept_learning: "[nfm_learning_house|E]"
+ nfm_loc_concept_intrigue: "[nfm_intrigue_house|E]"
+ nfm_loc_concept_diplomatic: "[nfm_diplomatic_house|E]"
+ nfm_loc_concept_foreign: "[nfm_foreign_house|E]"
+ 

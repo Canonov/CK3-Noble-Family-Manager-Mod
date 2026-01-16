@@ -1,0 +1,47 @@
+﻿
+nfm_house_types = {
+    texture = "gfx/interface/icons/message_feed/dynasty.dds"
+    alias = { nfm_house_type  }
+}
+
+nfm_family_sizes = {
+    texture = "gfx/interface/icons/message_feed/dynasty.dds"
+    alias = { nfm_family_size }
+}
+
+# Individual House Type Concepts
+nfm_steward_house = {
+    texture = "gfx/interface/icons/icon_skills.dds"
+    framesize = { 60 60 }
+    frame = 3
+    parent = nfm_house_type
+}
+
+nfm_martial_house = {
+    texture = "gfx/interface/icons/icon_skills.dds"
+    framesize = { 60 60 }	frame = 2
+    parent = nfm_house_type
+}
+
+nfm_learning_house = {
+    texture = "gfx/interface/icons/icon_skills.dds"
+    framesize = { 60 60 }	frame = 5
+    parent = nfm_house_type
+}
+
+nfm_intrigue_house = {
+    texture = "gfx/interface/icons/icon_skills.dds"
+    framesize = { 60 60 }	frame = 4
+    parent = nfm_house_type
+}
+
+nfm_diplomatic_house = {
+    texture = "gfx/interface/icons/icon_skills.dds"
+    framesize = { 60 60 }	frame = 1
+    parent = nfm_house_type
+}
+
+nfm_foreign_house = {
+    texture = "gfx/interface/icons/message_feed/culture.dds"
+    parent = nfm_house_type
+}

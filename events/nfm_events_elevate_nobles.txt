@@ -8,9 +8,12 @@ nfm_events_elevate_nobles.1 = {
         desc = newline.desc
         # House-specific flavor based on selected type
         desc = nfm_events_elevate_nobles.1.d.house_desc
-        desc = newline.desc
         # Family size flavor
+        desc = newline.desc
         desc = nfm_events_elevate_nobles.1.d.familysize_desc
+        # Family Type
+        desc = newline.desc
+        desc = nfm_events_elevate_nobles.1.d.housetype_desc
     }
 
     left_portrait = {

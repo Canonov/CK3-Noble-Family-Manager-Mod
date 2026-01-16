@@ -108,3 +108,89 @@ nfm_loc_familysize_event_desc = {
         fallback = yes
     }
 }
+
+# Returns the game concept key for the house type (e.g., nfm_loc_concept_steward, equivalent of [nfm_steward_house|E])
+nfm_loc_house_type_concept = {
+    type = all
+
+    ## Steward
+    text = {
+        trigger = { house.var:nfm_housetype = nfm_housetype_steward }
+        localization_key = nfm_loc_concept_steward
+    }
+    ## Martial
+    text = {
+        trigger = { house.var:nfm_housetype = nfm_housetype_martial }
+        localization_key = nfm_loc_concept_martial
+    }
+    ## Learning
+    text = {
+        trigger = { house.var:nfm_housetype = nfm_housetype_learning }
+        localization_key = nfm_loc_concept_learning
+    }
+    ## Intrigue
+    text = {
+        trigger = { house.var:nfm_housetype = nfm_housetype_intrigue }
+        localization_key = nfm_loc_concept_intrigue
+    }
+    ## Diplomatic
+    text = {
+        trigger = { house.var:nfm_housetype = nfm_housetype_diplomatic }
+        localization_key = nfm_loc_concept_diplomatic
+    }
+    ## Foreign
+    text = {
+        trigger = { house.var:nfm_housetype = nfm_housetype_foreign }
+        localization_key = nfm_loc_concept_foreign
+    }
+
+    # Fallback
+    text = {
+        trigger = { always = no }
+        localization_key = nfm_house_unknown
+        fallback = yes
+    }
+}
+
+# Returns the modifier tooltip for the house type (e.g., nfm_modifier_housetype_steward_tt)
+nfm_loc_house_type_modifier_tt = {
+    type = all
+
+    ## Steward
+    text = {
+        trigger = { house.var:nfm_housetype = nfm_housetype_steward }
+        localization_key = nfm_modifier_housetype_steward_tt
+    }
+    ## Martial
+    text = {
+        trigger = { house.var:nfm_housetype = nfm_housetype_martial }
+        localization_key = nfm_modifier_housetype_martial_tt
+    }
+    ## Learning
+    text = {
+        trigger = { house.var:nfm_housetype = nfm_housetype_learning }
+        localization_key = nfm_modifier_housetype_learning_tt
+    }
+    ## Intrigue
+    text = {
+        trigger = { house.var:nfm_housetype = nfm_housetype_intrigue }
+        localization_key = nfm_modifier_housetype_intrigue_tt
+    }
+    ## Diplomatic
+    text = {
+        trigger = { house.var:nfm_housetype = nfm_housetype_diplomatic }
+        localization_key = nfm_modifier_housetype_diplomatic_tt
+    }
+    ## Foreign
+    text = {
+        trigger = { house.var:nfm_housetype = nfm_housetype_foreign }
+        localization_key = nfm_modifier_housetype_foreign_tt
+    }
+
+    # Fallback
+    text = {
+        trigger = { always = no }
+        localization_key = nfm_house_unknown
+        fallback = yes
+    }
+}

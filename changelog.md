@@ -1,5 +1,18 @@
 # Changelog
 
+## v1.3.0 - 2026/01/17
+
+### Added
+- Added "Recently Founded House" modifier - newly created noble houses now receive a modifier for 10 years boosting fertility at the cost of stress gain and fellow vassal opinion
+- Added game concepts explaining House Types with tooltips for each house type
+- Added custom localization for displaying House Type names and descriptions
+
+### Changed
+- House type modifiers are now displayed in the event description alongside a hint of the house type, rather than the option text
+- Reorganized localization files (moved toast localization to events file)
+- Changed foreign house type modifier from raw opninion boosts to ignore_negative_culture_opinion.
+
+
 ## v1.2.0 - 2026/01/14
 
 ### Added

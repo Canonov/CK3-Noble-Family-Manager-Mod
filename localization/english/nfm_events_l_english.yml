@@ -8,7 +8,7 @@
  nfm_events_elevate_nobles.1.d: "My summons has been answered. From among the minor nobility of my realm, a family has come forward seeking elevation to proper noble status. They stand before me now, awaiting my judgment."
  nfm_events_elevate_nobles.1.d.house_desc: "[new_house_head.Custom('nfm_loc_house_housetype_event_desc')]"
  nfm_events_elevate_nobles.1.d.familysize_desc: "[new_house_head.Custom('nfm_loc_familysize_event_desc')]"
- nfm_events_elevate_nobles.1.d.housetype_desc: "#V House Type:#! [new_house_head.Custom('nfm_loc_house_type_concept')]"
+ nfm_events_elevate_nobles.1.d.type_and_modifier_desc: "#V House Type:#! [new_house_head.Custom('nfm_loc_house_type_concept')]\n#V Modifier:#! [new_house_head.Custom('nfm_loc_house_type_modifier_tt')]"
 
  ## Options ##
  nfm_events_elevate_nobles.1.a: "The [new_house_head.GetDynastyHouseName] will make a fine addition to the realm."

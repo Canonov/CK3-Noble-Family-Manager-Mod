@@ -13,7 +13,7 @@ nfm_events_elevate_nobles.1 = {
         desc = nfm_events_elevate_nobles.1.d.familysize_desc
         # Family Type
         desc = newline.desc
-        desc = nfm_events_elevate_nobles.1.d.housetype_desc
+        desc = nfm_events_elevate_nobles.1.d.type_and_modifier_desc
     }
 
     left_portrait = {
@@ -44,11 +44,6 @@ nfm_events_elevate_nobles.1 = {
             scope:new_house_head = {
                 create_noble_family_effect = { GOVERNMENT_GIVER = root }
             }
-        }
-
-        ## Tooltip for House Modifier, actually added in the decision.
-        show_as_tooltip = {
-            scope:new_house_head.house ?= { nfm_effect_add_house_modifier = yes }
         }
 
         ## Add recently founded house modifier

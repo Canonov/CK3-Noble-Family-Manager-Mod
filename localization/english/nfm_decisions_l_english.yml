@@ -23,9 +23,4 @@
  nfm_decision_elevate_nobles_modifier_tt: "This [house|E] will gain a special [modifier|E] depending on their [nfm_house_type|E]"
  nfm_decision_elevate_nobles_getmerit_tt: "#weak Because of your [THIS.Char.GetGovernment.GetNameNoTooltip] Government:#! Members of the new family will be granted @merit_icon![merit|E] and have already passed some @provincial_exam_icon![examinations|E]"
  nfm_decision_elevate_nobles_tt: "A new [house|E] with a specific [nfm_house_type|E] will be generated and granted a [noble_family|E] [title|E]"
-
- ## Post Creation Toast ##
  
- nfm_toast_elevated: "Family Elevated to Noble Status"
- nfm_toast_elevated_desc: "[new_house_head.GetFirstName] has been elevated as the head of the [new_title.GetNameNoTier]"
- nfm_toast_elevated_tt: "This new [noble_family|E] will serve your realm and may provide valuable [councillors|E], [governors|E] and [knights|E]"

@@ -18,3 +18,8 @@
  ## Tooltips ##
  nfm_events_elevate_nobles.1.tt.becomes_head: "[new_house_head.GetName] will become head of a new [noble_family|E]"
  nfm_events_elevate_nobles.1.tt.gain_merit: "Gains @merit_icon![merit|E] and may pass some @provincial_exam_icon![examinations|E]"
+
+ ## Post Creation Toast ##
+ nfm_toast_elevated: "Family Elevated to Noble Status"
+ nfm_toast_elevated_desc: "[new_house_head.GetFirstName] has been elevated as the head of the [new_title.GetNameNoTier]"
+ nfm_toast_elevated_tt: "This new [noble_family|E] will serve your realm and may provide valuable [councillors|E], [governors|E] and [knights|E]"

@@ -1,5 +1,9 @@
 ﻿l_english:
  ## HOUSE MODIFIERS
+ nfm_modifier_house_recently_founded: "Recently Founded House"
+ nfm_modifier_house_recently_founded_desc: "This [house|E] was founded recently and is under pressure to grow quickly and establish a name for themselves in the [realm|E]."
+
+ ## HOUSE TYPE MODIFIERS
  # Steward
  nfm_modifier_housetype_steward: "Administrative Excellence"
  nfm_modifier_housetype_steward_desc: "This [nfm_steward_house|e] is renowned for meticulous record-keeping and efficient governance. From the counting-house to the council chamber, careful stewardship runs in the blood."

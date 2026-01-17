@@ -46,9 +46,17 @@ nfm_events_elevate_nobles.1 = {
             }
         }
 
-        ## Tooltip for House Modifier
+        ## Tooltip for House Modifier, actually added in the decision.
         show_as_tooltip = {
             scope:new_house_head.house ?= { nfm_effect_add_house_modifier = yes }
+        }
+
+        ## Add recently founded house modifier
+        scope:new_house_head.house ?= { 
+            add_house_modifier = {
+                modifier = nfm_modifier_house_recently_founded
+                years = 10
+            }
         }
 
         ## Vassalize them since creating a new house doesn't anymore apparently

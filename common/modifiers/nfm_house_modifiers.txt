@@ -1,4 +1,14 @@
-﻿# Steward House
+﻿
+# Recently Founded House
+nfm_modifier_house_recently_founded = {
+    icon = family_mixed
+    fertility = 0.2
+    stress_gain_mult = 0.15
+    fellow_vassal_opinion = -5
+}
+
+## House Type Bonuses
+# Steward House
 nfm_modifier_housetype_steward = {
     icon = stewardship_positive
     stewardship = 2

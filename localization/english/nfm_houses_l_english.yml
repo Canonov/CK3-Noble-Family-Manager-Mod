@@ -40,7 +40,7 @@
 
  ## Foreign House Concept ##
  game_concept_nfm_foreign_house: "Foreign House"
- game_concept_nfm_foreign_house_desc: "A family of different heritage, bringing unique talents from distant lands.\n\nMembers bring various [educations|E] and may have unique cultural skills.\n#weak \n- They will gain the $nfm_modifier_housetype_foreign_tt$ [modifier|E].#!"
+ game_concept_nfm_foreign_house_desc: "A family from the fringes of the [realm|E], bringing unique talents.\n\nMembers bring various [educations|E] and will be content under a [liege|E] of differing culture.\n#weak \n- They will gain the $nfm_modifier_housetype_foreign_tt$ [modifier|E].#!"
 
  ################################
  # NOBLE HOUSE TYPES

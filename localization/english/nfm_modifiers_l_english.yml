@@ -2,30 +2,30 @@
  ## HOUSE MODIFIERS
  # Steward
  nfm_modifier_housetype_steward: "Administrative Excellence"
- nfm_modifier_housetype_steward_desc: "This [house|e] is renowned for meticulous record-keeping and efficient governance. From the counting-house to the council chamber, careful stewardship runs in the blood."
+ nfm_modifier_housetype_steward_desc: "This [nfm_steward_house|e] is renowned for meticulous record-keeping and efficient governance. From the counting-house to the council chamber, careful stewardship runs in the blood."
  nfm_modifier_housetype_steward_tt: "[GetStaticModifier('nfm_modifier_housetype_steward').GetNameWithTooltip]"
 
  # Martial
  nfm_modifier_housetype_martial: "Military Tradition"
- nfm_modifier_housetype_martial_desc: "This [house|e] has a warrior lineage, all members are trained in the arts of war since childhood."
+ nfm_modifier_housetype_martial_desc: "This [nfm_martial_house|e] has a warrior lineage, all members are trained in the arts of war since childhood."
  nfm_modifier_housetype_martial_tt: "[GetStaticModifier('nfm_modifier_housetype_martial').GetNameWithTooltip]"
 
  # Learning
  nfm_modifier_housetype_learning: "House of Scholars"
- nfm_modifier_housetype_learning_desc: "This [house|e] has long cultivated wisdom and scholarly pursuit."
+ nfm_modifier_housetype_learning_desc: "This [nfm_learning_house|e] has long cultivated wisdom and scholarly pursuit."
  nfm_modifier_housetype_learning_tt: "[GetStaticModifier('nfm_modifier_housetype_learning').GetNameWithTooltip]"
 
  # Intrigue
  nfm_modifier_housetype_intrigue: "Masters of Intrigue"
- nfm_modifier_housetype_intrigue_desc: "Secrets are currency in this [house|e]. Raised among schemers and shadow-brokers, this character knows that power lies not in what is said, but in what is known."
+ nfm_modifier_housetype_intrigue_desc: "Secrets are currency in this [nfm_intrigue_house|e]. Raised among schemers and shadow-brokers, this character knows that power lies not in what is said, but in what is known."
  nfm_modifier_housetype_intrigue_tt: "[GetStaticModifier('nfm_modifier_housetype_intrigue').GetNameWithTooltip]"
 
  # Diplomatic
  nfm_modifier_housetype_diplomatic: "Courtly Grace"
- nfm_modifier_housetype_diplomatic_desc: "This is a [house|e] where words are wielded as skillfully as blades. Every feast is a negotiation, every smile a calculated gesture—and the family excels at both."
+ nfm_modifier_housetype_diplomatic_desc: "This is a [nfm_diplomatic_house|e] where words are wielded as skillfully as blades. Every feast is a negotiation, every smile a calculated gesture—and the family excels at both."
  nfm_modifier_housetype_diplomatic_tt: "[GetStaticModifier('nfm_modifier_housetype_diplomatic').GetNameWithTooltip]"
 
  # Foreign
  nfm_modifier_housetype_foreign: "Adaptive Heritage"
- nfm_modifier_housetype_foreign_desc: "This [house|e] knows what it is to be a small part of the realm, so they have the ability to adapt cultures and faiths."
+ nfm_modifier_housetype_foreign_desc: "This [nfm_foreign_house|e] knows what it is to be a small part of the realm, so they have the ability to adapt cultures and faiths."
  nfm_modifier_housetype_foreign_tt: "[GetStaticModifier('nfm_modifier_housetype_foreign').GetNameWithTooltip]"

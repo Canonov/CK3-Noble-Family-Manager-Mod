@@ -75,8 +75,11 @@ nfm_int_revoke_house = {
     is_valid_showing_failures_only = {
         # You must be available
         scope:actor = {
-            is_imprisoned = no
-            NOT = { exists = involved_activity }
+            is_available_quick = {
+                at_war = no
+                imprisoned = no
+                travel = no
+            }
         }
 
         # They must not be a ceremonial liege and must not have a hook on you.
@@ -371,10 +374,7 @@ nfm_int_dissolve_house = {
     }
 
     is_valid_showing_failures_only = {
-        scope:actor = {
-            is_imprisoned = no
-            NOT = { exists = involved_activity }
-        }
+        scope:actor = { is_available = yes }
     }
 
     is_valid = {

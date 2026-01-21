@@ -70,7 +70,13 @@ nfm_decision_elevate_nobles = {
         government_allows = administrative
     }
 
-    is_valid = {
+    is_valid_showing_failures_only = {
+        is_available_quick = {
+            imprisoned = no
+            activity = no
+            travel = no
+            in_army = no
+        }
     }
 
     widget = {

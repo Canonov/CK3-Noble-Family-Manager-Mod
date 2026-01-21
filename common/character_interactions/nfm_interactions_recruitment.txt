@@ -16,9 +16,8 @@ nfm_int_invite_foreign_house_head = {
 
     is_shown = {
         scope:actor = {
-            # Player only
+            # Landed Player only
             is_ai = no
-
             is_landed = yes
 
             # Must be at least a King
@@ -39,9 +38,12 @@ nfm_int_invite_foreign_house_head = {
 
     is_valid_showing_failures_only = {
         scope:actor = {
-            is_imprisoned = no
-            is_at_war = no
-            NOT = { exists = involved_activity }
+            is_available_quick = {
+                imprisoned = no
+                activity = no
+                travel = no
+                at_war = no
+            }
         }
 
         scope:recipient = {
@@ -76,10 +78,11 @@ nfm_int_invite_foreign_house_head = {
                 }
             }
 
-            # Not doing an activity
-            NOT = { exists = involved_activity }
-
-            is_imprisoned = no
+            # Not doing travelling, imprisoned, or otherwise unavailable
+            is_available_quick = {
+                travel = no
+                imprisoned = no
+            }
         }
     }
 

@@ -202,10 +202,10 @@ nfm_int_grant_house = {
                 limit = {
                     scope:actor = { government_allows = merit }
                 }
-                change_merit_level = 3
                 add_character_modifier = {
                     modifier = tgp_passed_provincial_exam_modifier
                 }
+                change_merit_level = 3
             }
 
             # Opinion boost towards the granter

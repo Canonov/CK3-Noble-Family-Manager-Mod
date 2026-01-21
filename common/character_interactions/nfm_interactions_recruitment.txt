@@ -683,6 +683,11 @@ nfm_int_invite_foreign_house_head = {
                 }
             }
 
+            add_character_modifier = {
+                modifier = nfm_modifier_house_head_poached_disloyalty
+                years = 15
+            }
+
             # Grant them resources
             add_prestige = 200
             change_influence = nfm_value_invite_house_influence_grant

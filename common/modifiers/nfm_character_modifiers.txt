@@ -1,0 +1,8 @@
+﻿
+# Poached from their previous realm
+nfm_modifier_house_head_poached_disloyalty = {
+    icon = social_negative
+    monthly_dynasty_prestige_mult = -0.5
+    monthly_prestige_gain_mult = -0.2
+    general_opinion = -5
+}

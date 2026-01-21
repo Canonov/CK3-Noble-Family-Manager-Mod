@@ -1,4 +1,8 @@
 ﻿l_english:
+ ## CHARACTER MODIFIERS
+ nfm_modifier_house_head_poached_disloyalty: "Poached Family Head"
+ nfm_modifier_house_head_poached_disloyalty_desc: "This [character|E] is viewed as a disloyal opportunist by some due to their willingness to pack up their [noble_family|E] and swear fealty to a new [liege|E]"
+
  ## HOUSE MODIFIERS
  nfm_modifier_house_recently_founded: "Recently Founded House"
  nfm_modifier_house_recently_founded_desc: "This [house|E] was founded recently and is under pressure to grow quickly and establish a name for themselves in the [realm|E]."

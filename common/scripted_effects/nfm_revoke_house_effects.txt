@@ -191,3 +191,49 @@ nfm_effect_revoke_house_stress_tyranny_impacts = {
     }
 
 }
+
+#todo comment
+nfm_effect_revoke_house_do_house_relations = {
+    scope:actor.house = {
+        # Worst: Eradicate family
+        if = {
+            limit = { scope:eradicate_family = yes }
+            change_house_relation_effect = {
+                HOUSE = scope:recipient.house
+                VALUE = house_relation_damage_massive_value
+                REASON = nfm_eradicated_house
+                CHAR = scope:actor
+                TARGET_CHAR = scope:recipient
+                TITLE = scope:family_title
+            }
+        }
+        # Medium: Sack estate and/or banish
+        else_if = {
+            limit = {
+                OR = {
+                    scope:sack_estate = yes
+                    scope:banish_family = yes
+                }
+            }
+            change_house_relation_effect = {
+                HOUSE = scope:recipient.house
+                VALUE = house_relation_damage_major_value
+                REASON = nfm_revoked_house
+                CHAR = scope:actor
+                TARGET_CHAR = scope:recipient
+                TITLE = scope:family_title
+            }
+        }
+        # Base: Just revoke
+        else = {
+            change_house_relation_effect = {
+                HOUSE = scope:recipient.house
+                VALUE = house_relation_damage_medium_value
+                REASON = nfm_revoked_house
+                CHAR = scope:actor
+                TARGET_CHAR = scope:recipient
+                TITLE = scope:family_title
+            }
+        }
+    }
+}

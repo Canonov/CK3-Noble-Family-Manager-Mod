@@ -1,8 +1,8 @@
 ﻿
 # Recently Founded House
 nfm_modifier_house_recently_founded = {
-    icon = family_mixed
-    fertility = 0.2
+    icon = fertility_mixed
+    fertility = 0.3
     stress_gain_mult = 0.15
     fellow_vassal_opinion = -5
 }

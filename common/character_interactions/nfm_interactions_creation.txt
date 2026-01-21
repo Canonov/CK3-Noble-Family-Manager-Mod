@@ -214,6 +214,19 @@ nfm_int_grant_house = {
                 target = scope:actor
             }
         }
+
+        # Improve house relation with newly created noble house
+        scope:actor.house = {
+            change_house_relation_effect = {
+                HOUSE = scope:recipient.house
+                VALUE = house_relation_improve_medium_value
+                REASON = nfm_granted_house
+                CHAR = scope:actor
+                TARGET_CHAR = scope:recipient
+                TITLE = scope:new_title
+            }
+        }
+
         scope:actor = {
             stress_impact = {
                 paranoid = minor_stress_impact_gain

@@ -128,6 +128,9 @@
  nfm_ai_liege_in_debt: "My liege's realm is in [debt|E]: $VALUE|=+0$ "
  nfm_ai_liege_treasury_debt: "My liege's [treasury|E] is in [debt|E]: $VALUE|=+0$ "
 
+ # House Relations
+ nfm_ai_house_relation: "[actor.GetDynastyHouseName]-[recipient.GetDynastyHouseName] [house_relation|E]: $VALUE|=+0$ "
+
  ## Messages
  nfm_msg_invited_house_head: "Foreign House Recruited"
  nfm_msg_invited_house_head_desc: "[recipient.GetName] of [recipient.GetDynastyHouseName] has accepted your invitation and will soon arrive to join your realm."
@@ -135,4 +138,15 @@
  nfm_msg_house_head_left_realm_desc: "[recipient.GetName] has left your realm to join [actor.GetName]"
  nfm_msg_invite_declined: "Invitation Declined"
  nfm_msg_invite_declined_desc: "[recipient.GetName] has declined your invitation to join your realm"
+
+ ################################
+ # HOUSE RELATION REASONS
+ ################################
+
+ house_relation_reason_nfm_invited_house_desc: "[char.GetShortUIName|U] invited [target_char.GetShortUINamePossessive] [house|E] to the realm"
+ house_relation_reason_nfm_granted_house_desc: "[char.GetShortUIName|U] granted [noble_family|E] status to [target_char.GetShortUIName]"
+ house_relation_reason_nfm_revoked_house_desc: "[char.GetShortUIName|U] revoked [target_char.GetShortUINamePossessive] [noble_family|E] status"
+ house_relation_reason_nfm_eradicated_house_desc: "[char.GetShortUIName|U] eradicated [target_char.GetShortUINamePossessive] [house|E]"
+ house_relation_reason_nfm_dissolved_house_desc: "[char.GetShortUIName|U] dissolved [target_char.GetShortUINamePossessive] dying [house|E]"
+ house_relation_reason_nfm_elevated_house_desc: "[char.GetShortUIName|U] elevated [target_char.GetShortUINamePossessive] [house|E] to [noble_family|E] status"
 

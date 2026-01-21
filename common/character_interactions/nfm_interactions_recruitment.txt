@@ -703,6 +703,24 @@ nfm_int_invite_foreign_house_head = {
             }
         }
 
+        # House Relations
+        # Improve relation with invited house
+        if = {
+            limit = {
+                scope:actor.house != scope:recipient.house
+            }
+            scope:actor.house = {
+                change_house_relation_effect = {
+                    HOUSE = scope:recipient.house
+                    VALUE = house_relation_improve_medium_value
+                    REASON = nfm_invited_house
+                    CHAR = scope:actor
+                    TARGET_CHAR = scope:recipient
+                    TITLE = scope:new_title
+                }
+            }
+        }
+
         # Notification & Stress
         scope:actor = {
             send_interface_message = {

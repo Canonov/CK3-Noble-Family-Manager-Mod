@@ -232,6 +232,51 @@ nfm_int_revoke_house = {
             FAMILY_DOMICILE = scope:family_title.title_domicile
         }
 
+        ## House Relations - Damage relation with the house being destroyed
+        if = {
+            scope:actor.house = {
+                # Worst: Eradicate family
+                if = {
+                    limit = { scope:eradicate_family = yes }
+                    change_house_relation_effect = {
+                        HOUSE = scope:recipient.house
+                        VALUE = house_relation_damage_massive_value
+                        REASON = nfm_eradicated_house
+                        CHAR = scope:actor
+                        TARGET_CHAR = scope:recipient
+                        TITLE = scope:family_title
+                    }
+                }
+                # Medium: Sack estate and/or banish
+                else_if = {
+                    limit = {
+                        OR = {
+                            scope:sack_estate = yes
+                            scope:banish_family = yes
+                        }
+                    }
+                    change_house_relation_effect = {
+                        HOUSE = scope:recipient.house
+                        VALUE = house_relation_damage_major_value
+                        REASON = nfm_revoked_house
+                        CHAR = scope:actor
+                        TARGET_CHAR = scope:recipient
+                        TITLE = scope:family_title
+                    }
+                }
+                # Base: Just revoke
+                else = {
+                    change_house_relation_effect = {
+                        HOUSE = scope:recipient.house
+                        VALUE = house_relation_damage_medium_value
+                        REASON = nfm_revoked_house
+                        CHAR = scope:actor
+                        TARGET_CHAR = scope:recipient
+                        TITLE = scope:family_title
+                    }
+                }
+            }
+        }
 
         ## Destroy the Title
         scope:actor = { destroy_title = scope:family_title }
@@ -441,6 +486,18 @@ nfm_int_dissolve_house = {
             add_gold = {
                 value = scope:domicile_value
                 multiply = 0.9
+            }
+        }
+
+        ## House Relations - Minor damage for peaceful dissolution
+        scope:actor.house = {
+            change_house_relation_effect = {
+                HOUSE = scope:recipient.house
+                VALUE = house_relation_damage_minor_value
+                REASON = nfm_dissolved_house
+                CHAR = scope:actor
+                TARGET_CHAR = scope:recipient
+                TITLE = scope:family_title
             }
         }
 

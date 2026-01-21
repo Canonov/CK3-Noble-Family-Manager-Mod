@@ -98,6 +98,18 @@ nfm_events_elevate_nobles.1 = {
             }
         }
 
+        ## House Relations - Improve relation with newly elevated house
+        house = {
+            change_house_relation_effect = {
+                HOUSE = scope:new_house_head.house
+                VALUE = house_relation_improve_medium_value
+                REASON = nfm_elevated_house
+                CHAR = root
+                TARGET_CHAR = scope:new_house_head
+                TITLE = scope:new_house_head.primary_title
+            }
+        }
+
         ## Notify the Player
         send_interface_toast = {
             type = event_generic_good_with_text

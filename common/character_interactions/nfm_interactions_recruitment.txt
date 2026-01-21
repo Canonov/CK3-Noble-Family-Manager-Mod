@@ -23,11 +23,8 @@ nfm_int_invite_foreign_house_head = {
             # Must be at least a King
             highest_held_title_tier >= tier_kingdom
 
-            # Check Government - administrative or Japan feudal
-            OR = {
-                government_allows = administrative
-                has_government = japan_feudal_government
-            }
+            # Check Government
+            government_allows = noble_families
         }
         scope:recipient = {
             nfm_trigger_is_foreign_landless_house_head = yes

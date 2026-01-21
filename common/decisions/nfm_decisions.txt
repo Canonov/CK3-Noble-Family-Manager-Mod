@@ -67,7 +67,7 @@ nfm_decision_elevate_nobles = {
         highest_held_title_tier >= tier_kingdom
 
         # Check Government
-        government_allows = administrative
+        government_allows = noble_families
     }
 
     is_valid_showing_failures_only = {

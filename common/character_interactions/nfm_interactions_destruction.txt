@@ -17,10 +17,7 @@ nfm_int_revoke_house = {
             top_liege = this
 
             # Check Government
-            OR = {
-                government_allows = administrative
-                has_government = japan_feudal_government
-            }
+            government_allows = noble_families
         }
 
         scope:recipient = {
@@ -357,7 +354,7 @@ nfm_int_revoke_house = {
 
             if = {
                 limit = {
-                    scope:recipient = { government_allows = administrative }
+                    scope:recipient = { government_has_flag = government_has_influence }
                 }
                 add = {
                     value = scope:recipient.influence
@@ -398,10 +395,7 @@ nfm_int_dissolve_house = {
             top_liege = this
 
             # Check Government
-            OR = {
-                government_allows = administrative
-                has_government = japan_feudal_government
-            }
+            government_allows = noble_families
         }
 
         scope:recipient = {

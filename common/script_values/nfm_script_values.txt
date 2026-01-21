@@ -129,7 +129,7 @@ nfm_value_invite_house_influence_cost = {
 
     if = {
         limit = {
-            scope:actor = { government_allows = administrative }
+            scope:actor = { government_has_flag = government_has_influence }
         }
         value = 200
     }
@@ -141,7 +141,7 @@ nfm_value_invite_house_influence_grant = {
 
     if = {
         limit = {
-            scope:actor = { government_allows = administrative }
+            scope:actor = { government_has_flag = government_has_influence }
         }
         value = 150
     }

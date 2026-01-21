@@ -108,7 +108,7 @@ nfm_int_grant_house = {
             highest_held_title_tier >= tier_kingdom
 
             # Check Government
-            government_allows = administrative
+            government_allows = noble_families
         }
         scope:recipient = {
             AND = {

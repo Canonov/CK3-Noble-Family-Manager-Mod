@@ -1,5 +1,21 @@
 # Changelog
 
+## v1.4.0 - 2026/01/21
+
+### Added
+- Added "Poached Family Head" modifier to house head recruited via "Invite Foreign House Head" interaction
+- Added house relation checks to "Invite Foreign House Head" interaction
+- Added house relation changes for interactions and the decision
+
+### Changed
+- Inviting a house head now copies their existing family's title history.
+- Buffed "Recently Founded House" fertility bonus from 20% to 30%
+- Changed government checks to use direct influence/has noble family checks rather than just a general administrative type check
+
+### Fixed
+- Fixed availability conditions for all interactions and decisions (You won't be unable for seemingly no reason to do the interaction if they/you are travelling)
+
+
 ## v1.3.0 - 2026/01/17
 
 ### Added

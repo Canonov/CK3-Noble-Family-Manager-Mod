@@ -1,7 +1,9 @@
-version="1.3.0-1.18"
+version="1.4.0-1.18"
 tags={
 	"1.18 'Crane'"
 	"Gameplay"
+	"Utilities"
+	"Decisions"
 	"Character Interactions"
 }
 name="Better Noble Family Management"

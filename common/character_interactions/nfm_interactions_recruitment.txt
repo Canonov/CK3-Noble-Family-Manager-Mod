@@ -665,6 +665,7 @@ nfm_int_invite_foreign_house_head = {
 
     on_accept = {
         scope:recipient.liege = { save_scope_as = old_liege }
+        scope:recipient.primary_title = { save_scope_as = old_nf_title }
 
         # Add them as courtier and destroy their old title
         hidden_effect = {
@@ -677,6 +678,10 @@ nfm_int_invite_foreign_house_head = {
             custom_tooltip = {
                 text = nfm_int_invite_house_head_move_noble_family_tt
                 create_noble_family_effect = { GOVERNMENT_GIVER = scope:actor }
+
+                # Copy title history from old title to new title
+                scope:new_title = { copy_title_history = scope:old_nf_title }
+
                 nfm_effect_vassalize = {
                     LIEGE = scope:actor
                     VASSAL = scope:recipient

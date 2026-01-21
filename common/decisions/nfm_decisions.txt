@@ -45,7 +45,7 @@ nfm_decision_elevate_nobles = {
     selection_tooltip = nfm_decision_elevate_nobles_tooltip
 
     picture = {
-        trigger = { 
+        trigger = {
             NOT = { has_global_variable = AGOT_is_loaded }
             culture = { has_graphical_east_asia_culture_group_trigger = yes }
         }

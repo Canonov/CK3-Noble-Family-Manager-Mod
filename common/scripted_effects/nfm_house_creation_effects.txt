@@ -1,7 +1,7 @@
 ﻿# Adds the appropriate modifier to a house based on its type
 #
 # @scope: house - The character receiving merit flags
-# @input var:nfm_housetype [HouseType] - House Type 
+# @input var:nfm_housetype [HouseType] - House Type
 nfm_effect_add_house_modifier = {
     switch = {
         trigger = var:nfm_housetype

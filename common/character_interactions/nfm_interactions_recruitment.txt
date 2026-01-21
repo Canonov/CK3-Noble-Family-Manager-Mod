@@ -124,7 +124,7 @@ nfm_int_invite_foreign_house_head = {
         flag = hook
         localization = GENERIC_SPEND_A_HOOK
     }
-    
+
     should_use_extra_icon = {
         scope:actor = { has_usable_hook = scope:recipient }
     }
@@ -511,7 +511,7 @@ nfm_int_invite_foreign_house_head = {
 
             add = {
                 value = 10
-                
+
                 if = {
                     limit = { liege.tyranny >= 20 }
                     add = 10
@@ -530,12 +530,12 @@ nfm_int_invite_foreign_house_head = {
 
             add = {
                 value = -10
-                
+
                 if = {
                     limit = { scope:actor.tyranny >= 20 }
                     add = -10
                 }
-                if = {      
+                if = {
                     limit = { scope:actor.tyranny >= 40 }
                     add = -20
                 }

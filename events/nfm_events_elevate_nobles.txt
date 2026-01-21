@@ -47,7 +47,7 @@ nfm_events_elevate_nobles.1 = {
         }
 
         ## Add recently founded house modifier
-        scope:new_house_head.house ?= { 
+        scope:new_house_head.house ?= {
             add_house_modifier = {
                 modifier = nfm_modifier_house_recently_founded
                 years = 10
@@ -177,7 +177,7 @@ nfm_events_elevate_nobles.1 = {
         }
 
         # Influence Cost
-        change_influence_no_experience = { 
+        change_influence_no_experience = {
             value = nfm_value_elevate_cost_influence
             multiply = 0.5
         }

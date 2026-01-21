@@ -600,6 +600,44 @@ nfm_int_invite_foreign_house_head = {
         }
 
         # ==========================================
+        # HOUSE RELATION MODIFIERS
+        # ==========================================
+
+        # Positive house relation with actor's house
+        modifier = {
+            house ?= {
+                has_house_relation_with = scope:actor.house
+                any_house_relation = {
+                    any_relation_house = { this = scope:actor.house }
+                    OR = {
+                        has_house_relation_level = cordial
+                        has_house_relation_level = friendly
+                        has_house_relation_level = amity
+                    }
+                }
+            }
+            add = 15
+            desc = nfm_ai_house_relation
+        }
+
+        # Negative house relation with actor's house
+        modifier = {
+            house ?= {
+                has_house_relation_with = scope:actor.house
+                any_house_relation = {
+                    any_relation_house = { this = scope:actor.house }
+                    OR = {
+                        has_house_relation_level = quarrel
+                        has_house_relation_level = rivalry
+                        has_house_relation_level = feud
+                    }
+                }
+            }
+            add = -20
+            desc = nfm_ai_house_relation
+        }
+
+        # ==========================================
         # DEBT MODIFIERS
         # ==========================================
 

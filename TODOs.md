@@ -3,3 +3,5 @@
   and equivalent error for set_employer issue
 
 - Go over Diplomatic house type again to make sure it's consistent with others
+
+- Save and pay gold amounts on family creation

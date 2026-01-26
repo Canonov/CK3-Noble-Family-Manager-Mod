@@ -277,9 +277,10 @@ nfm_decision_elevate_nobles = {
                 nfm_effect_add_house_modifier = yes
             }
 
-            # Grant portion of influence cost to new family head
+            # Grant prestige and influence cost to new family head
             scope:new_house_head = {
-                change_influence = 200
+                change_influence = nfm_value_elevate_cost_influence
+                add_prestige = nfm_value_elevate_cost_prestige
             }
         }
 

@@ -3,9 +3,8 @@ nfm_value_elevate_cost_gold = {
     value = 0
     if = {
         limit = { has_treasury = no }
-        add = medium_gold_value
+        add = minor_gold_value
     }
-    max = 300
 }
 
 # Elevate Noble Family - Treasury Cost (for treasury holders)
@@ -13,13 +12,12 @@ nfm_value_elevate_cost_treasury = {
     value = 0
     if = {
         limit = { has_treasury = yes }
-        add = medium_treasury_value
+        add = minor_treasury_value
     }
-    max = 600
 }
 
-nfm_value_elevate_cost_prestige = 200
-nfm_value_elevate_cost_influence = 300
+nfm_value_elevate_cost_prestige = 250
+nfm_value_elevate_cost_influence = 150
 
 # Elevate Noble Family - Cooldown Time (Days)
 nfm_value_elevate_nobles_cooldown_days = {

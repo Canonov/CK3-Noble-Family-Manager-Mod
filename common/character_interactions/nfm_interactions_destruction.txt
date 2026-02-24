@@ -249,7 +249,7 @@ nfm_int_revoke_house = {
                     killer = scope:actor
                 }
             }
-            else = {
+            else_if = {
                 limit = { scope:eradicate_family = no }
 
                 # Banish them

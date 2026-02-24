@@ -16,15 +16,7 @@ nfm_int_invite_foreign_house_head = {
 
     is_shown = {
         scope:actor = {
-            # Landed Player only
-            is_ai = no
-            is_landed = yes
-
-            # Must be at least a King
-            highest_held_title_tier >= tier_kingdom
-
-            # Check Government
-            government_allows = noble_families
+            nfm_trigger_can_use_nfm_interactions = yes
         }
         scope:recipient = {
             nfm_trigger_is_foreign_landless_house_head = yes

@@ -1,4 +1,17 @@
-﻿nfm_trigger_has_authority_for_destruction = {
+﻿nfm_trigger_can_use_nfm_interactions = {
+    # for now, maybe
+    is_ai = no
+
+    is_landed = yes
+
+    # Must be at least a King
+    highest_held_title_tier >= tier_kingdom
+
+    # Check Government
+    government_allows = noble_families
+}
+
+nfm_trigger_has_authority_for_destruction = {
     # Agot Quick Fallback
     trigger_if = {
         limit = {

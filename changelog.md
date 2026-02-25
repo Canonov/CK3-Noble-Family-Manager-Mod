@@ -1,5 +1,16 @@
 # Changelog
 
+## v1.4.1 - 2026/02/24
+
+### Changed
+- Change required tier to duchy for county-level family governments
+- Rebalance costs
+- Move common triggers to can_use_nfm_interactions custom trigger
+
+### Fixed
+- Fix minor else using limit
+
+
 ## v1.4.0 - 2026/01/21
 
 ### Added

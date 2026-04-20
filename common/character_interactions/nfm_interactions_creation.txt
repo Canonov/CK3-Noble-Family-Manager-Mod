@@ -104,7 +104,10 @@ nfm_int_grant_house = {
         scope:recipient = {
             AND = {
                 is_courtier = yes
-                employer.top_liege ?= scope:actor
+                OR = {
+                    employer.top_liege ?= scope:actor
+                    employer ?= scope:actor
+                }
             }
             is_lowborn = no
             is_adult = yes

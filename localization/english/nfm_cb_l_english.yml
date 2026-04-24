@@ -1,0 +1,77 @@
+﻿l_english:
+
+ ################################
+ # DECISIONS
+ ################################
+
+ ## Ban or Unban Dynasty from Cadet Branches
+ nfm_cb_decision_toggledyncadetban: "Ban further Cadet Branches"
+ nfm_cb_decision_toggledyncadetban_disclaimer: "\n\nNote that this may not work if you have any other mods that modify cadet branch creation."
+ nfm_cb_decision_toggledyncadetban_desc: "There is no need for further divisions of our dynasty. $nfm_cb_decision_toggledyncadetban_disclaimer$"
+ nfm_cb_decision_toggledyncadetban_confirm: "Ban Cadet Branches"
+ nfm_cb_decision_toggledyncadetban_tooltip: "[dynasty|E] members will no longer be allowed to create [cadet_branches|E]"
+
+ nfm_cb_decision_toggledyncadetban_unban: "Allow the creation of Cadet Branches"
+ nfm_cb_decision_toggledyncadetban_unban_desc: "Our dynasty should be free to create [cadet_branches|E] once more! $nfm_cb_decision_toggledyncadetban_disclaimer$"
+ nfm_cb_decision_toggledyncadetban_unban_confirm: "Unban Cadet Branches"
+ nfm_cb_decision_toggledyncadetban_unban_tooltip: "[dynasty|E] members will be allowed to create [cadet_branches|E] again"
+
+ ## For the Vanilla Create Branch
+ #nfm_loc_cadet_branches_banned_dynasty: "The [CHARACTER.GetDynasty.GetBaseName] [dynasty|E] has banned creating any more [cadet_branches|E]"
+ nfm_loc_cadet_branches_banned_dynasty_not: "The [CHARACTER.GetDynasty.GetBaseName] [dynasty|E] has not banned creating any more [cadet_branches|E]"
+ #nfm_loc_cadet_branches_banned_house: "[house|E] [CHARACTER.GetHouse.GetBaseName] is barred from creating [cadet_branches|E]"
+ nfm_loc_cadet_branches_banned_house_not: "[house|E] [CHARACTER.GetHouse.GetBaseName] is not barred from creating [cadet_branches|E]" 
+
+ ################################
+ # INTERACTIONS
+ ################################
+
+ ## Ban or Unban Character's House from Cadet Branches
+ nfm_cb_int_ban_house: "Ban House from Cadet Branches"
+ nfm_cb_int_ban_house_desc: "There is no need for further divisions of the [recipient.GetDynastyHouseName]."
+ nfm_cb_int_unban_house: "Unban House from Cadet Branches"
+ nfm_cb_int_unban_house_desc: "The [recipient.GetDynastyHouseName] should be free to create [cadet_branches|E] once more!"
+
+ ################################
+ # MODIFIERS
+ ################################
+
+ nfm_cb_modifier_forbidcadetbranches_dynasty: "Dynastic Unity Enforced"
+ nfm_cb_modifier_forbidcadetbranches_dynasty_desc: "This [dynasty|E] has banned the creation of any further [cadet_branches|E] without express permission from the [dynast|E]"
+ nfm_cb_modifier_forbidcadetbranches_house: "House Unity Enforced"
+ nfm_cb_modifier_forbidcadetbranches_house_desc: "The members of this [house|E] are no longer allowed to create [cadet_branches|E], each must don the arms of the House unless they have permission from the [dynast|E]."
+
+ ################################
+ # GAME RULES
+ ################################
+
+ game_rule_category_nfm_cb_gamerule_category: "NFM: Cadet Branches"
+ rule_nfm_cb_gamerule_cadetbranches_minrank: "@dynasty_icon! Cadet Formation: Minimum Rank (NFM)"
+ setting_nfm_cb_gamerule_cadetbranches_minrank_county: "County"
+ setting_nfm_cb_gamerule_cadetbranches_minrank_county_desc: "[cadet_branch|E] founders must hold at least a [county|E] [title|E]"
+ setting_nfm_cb_gamerule_cadetbranches_minrank_duchy: "Duchy"
+ setting_nfm_cb_gamerule_cadetbranches_minrank_duchy_desc: "[cadet_branch|E] founders must hold at least a [duchy|E] [title|E]"
+ setting_nfm_cb_gamerule_cadetbranches_minrank_kingdom: "Kingdom"
+ setting_nfm_cb_gamerule_cadetbranches_minrank_kingdom_desc: "[cadet_branch|E] founders must hold at least a [kingdom|E] [title|E]"
+ setting_nfm_cb_gamerule_cadetbranches_minrank_empire: "Empire"
+ setting_nfm_cb_gamerule_cadetbranches_minrank_empire_desc: "[cadet_branch|E] founders must hold at least a [empire|E] [title|E]"
+ 
+ rule_nfm_cb_gamerule_prestige_level: "@dynasty_icon! Cadet Formation: Minimum Prestige Level (NFM)"
+ setting_nfm_cb_gamerule_prestige_level_one: "[GetModifier('prestige_level_1').GetName]"
+ setting_nfm_cb_gamerule_prestige_level_one_desc: "[cadet_branch|E] founders require a [prestige_level|E] of at least @prestige_level_1_icon! [GetModifier('prestige_level_1').GetNameWithTooltip|L]."
+ setting_nfm_cb_gamerule_prestige_level_two: "[GetModifier('prestige_level_2').GetName]"
+ setting_nfm_cb_gamerule_prestige_level_two_desc: "[cadet_branch|E] founders require a [prestige_level|E] of at least @prestige_level_2_icon! [GetModifier('prestige_level_2').GetNameWithTooltip|L]."
+ setting_nfm_cb_gamerule_prestige_level_three: "[GetModifier('prestige_level_3').GetName]"
+ setting_nfm_cb_gamerule_prestige_level_three_desc: "[cadet_branch|E] founders require a [prestige_level|E] of at least @prestige_level_3_icon! [GetModifier('prestige_level_3').GetNameWithTooltip|L]."
+ setting_nfm_cb_gamerule_prestige_level_four: "[GetModifier('prestige_level_4').GetName]"
+ setting_nfm_cb_gamerule_prestige_level_four_desc: "[cadet_branch|E] founders require a [prestige_level|E] of at least @prestige_level_4_icon! [GetModifier('prestige_level_4').GetNameWithTooltip|L]."
+ setting_nfm_cb_gamerule_prestige_level_five: "[GetModifier('prestige_level_5').GetName]"
+ setting_nfm_cb_gamerule_prestige_level_five_desc: "[cadet_branch|E] founders require a [prestige_level|E] of at least @prestige_level_5_icon! [GetModifier('prestige_level_5').GetNameWithTooltip|L]."
+
+ rule_nfm_cb_gamerule_children_requirements: "@dynasty_icon! Cadet Formation: Child Count (NFM)"
+ setting_nfm_cb_gamerule_children_requirements_vanilla: "Vanilla+"
+ setting_nfm_cb_gamerule_children_requirements_vanilla_desc: "Requires only #V 1#! child (of dominant gender)"
+ setting_nfm_cb_gamerule_children_requirements_stricter: "Strict"
+ setting_nfm_cb_gamerule_children_requirements_stricter_desc: "Requires at least #V 2#! valid [heirs|E] and #V 3#! children total"
+ setting_nfm_cb_gamerule_children_requirements_strictest: "Stricter"
+ setting_nfm_cb_gamerule_children_requirements_strictest_desc: "Requires at least #V 3#! valid [heirs|E] and #V 5#! children total"

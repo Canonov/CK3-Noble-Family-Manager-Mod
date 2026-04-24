@@ -1,0 +1,39 @@
+﻿nfm_cb_gamerule_cadetbranches_minrank = {
+
+    categories = { nfm_cb_gamerule_category tweaks }
+
+    default = nfm_cb_gamerule_cadetbranches_minrank_duchy
+
+    nfm_cb_gamerule_cadetbranches_minrank_county = {}
+
+    nfm_cb_gamerule_cadetbranches_minrank_duchy = {}
+
+    nfm_cb_gamerule_cadetbranches_minrank_kingdom = {}
+
+    nfm_cb_gamerule_cadetbranches_minrank_empire = {}
+}
+
+nfm_cb_gamerule_prestige_level = {
+
+    categories = { nfm_cb_gamerule_category tweaks }
+
+    default = nfm_cb_gamerule_prestige_level_two
+
+    nfm_cb_gamerule_prestige_level_one = {}
+    nfm_cb_gamerule_prestige_level_two = {}
+    nfm_cb_gamerule_prestige_level_three = {}
+    nfm_cb_gamerule_prestige_level_four = {}
+    nfm_cb_gamerule_prestige_level_five = {}
+}
+
+nfm_cb_gamerule_children_requirements = {
+
+    categories = { nfm_cb_gamerule_category tweaks }
+
+    default = nfm_cb_gamerule_children_requirements_stricter
+
+    nfm_cb_gamerule_children_requirements_vanilla = {} # One Child
+    nfm_cb_gamerule_children_requirements_stricter = {} # 3+ Children, at least two heirs
+    nfm_cb_gamerule_children_requirements_strictest = {} # 5+ Children, at least three heirs
+
+}

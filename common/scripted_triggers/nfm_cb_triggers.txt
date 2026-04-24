@@ -1,0 +1,64 @@
+﻿################################
+# Cadet Branches
+################################
+
+# Checks if character is forbidden by the mod from making a cadet branch
+# Scope: character
+nfm_cb_trigger_cadets_forbidden = {
+    OR = {
+        dynasty = {
+            has_dynasty_modifier = nfm_cb_modifier_forbidcadetbranches_dynasty
+        }
+        house = {
+            has_house_modifier = nfm_cb_modifier_forbidcadetbranches_house
+        }
+    }
+}
+
+# Checks if character meets the game rule title requirement
+# Scope: character
+nfm_cb_trigger_has_gamerule_min_title = {
+    trigger_if = {
+        limit = { has_game_rule = nfm_cb_gamerule_cadetbranches_minrank_county }
+        highest_held_title_tier >= tier_county
+    }
+    trigger_else_if = {
+        limit = { has_game_rule = nfm_cb_gamerule_cadetbranches_minrank_duchy }
+        highest_held_title_tier >= tier_duchy
+    }
+    trigger_else_if = {
+        limit = { has_game_rule = nfm_cb_gamerule_cadetbranches_minrank_kingdom }
+        highest_held_title_tier >= tier_kingdom
+    }
+    trigger_else_if = {
+        limit = { has_game_rule = nfm_cb_gamerule_cadetbranches_minrank_empire }
+        highest_held_title_tier >= tier_empire
+    }
+    trigger_else = {}
+}
+
+# Checks if character meets the prestige requirement
+# Scope: character
+nfm_cb_trigger_has_gamerule_required_prestige = {
+    trigger_if = {
+        limit = { has_game_rule = nfm_cb_gamerule_prestige_level_one }
+        prestige_level >= 1
+    }
+    trigger_else_if = {
+        limit = { has_game_rule = nfm_cb_gamerule_prestige_level_two }
+        prestige_level >= 2
+    }
+    trigger_else_if = {
+        limit = { has_game_rule = nfm_cb_gamerule_prestige_level_three }
+        prestige_level >= 3
+    }
+    trigger_else_if = {
+        limit = { has_game_rule = nfm_cb_gamerule_prestige_level_four }
+        prestige_level >= 4
+    }
+    trigger_else_if = {
+        limit = { has_game_rule = nfm_cb_gamerule_prestige_level_five }
+        prestige_level >= 5
+    }
+    trigger_else = {}
+}

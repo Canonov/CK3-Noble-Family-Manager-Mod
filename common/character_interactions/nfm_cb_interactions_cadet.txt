@@ -1,0 +1,68 @@
+﻿
+################################
+# Ban House from Creating Cadet Branches
+################################
+nfm_cb_int_ban_house = {
+    category = interaction_category_diplomacy
+    common_interaction = no
+
+    desc = nfm_cb_int_ban_house_desc
+
+    greeting = negative
+    use_diplomatic_range = no
+    auto_accept = yes
+
+    is_available = {
+        is_ai = no
+    }
+
+    is_shown = {
+        exists = scope:recipient.house
+        scope:actor.dynasty = scope:recipient.dynasty
+
+        scope:recipient.house = {
+            NOT = { has_house_modifier = nfm_cb_modifier_forbidcadetbranches_house }
+        }
+    }
+
+    on_accept = {
+        scope:recipient.house = {
+            add_house_modifier = nfm_cb_modifier_forbidcadetbranches_house
+        }
+    }
+
+}
+
+################################
+# Unban House from Creating Cadet Branches
+################################
+nfm_cb_int_unban_house = {
+    category = interaction_category_diplomacy
+    common_interaction = no
+
+    desc = nfm_cb_int_unban_house_desc
+
+    greeting = positive
+    use_diplomatic_range = no
+    auto_accept = yes
+
+    is_available = {
+        is_ai = no
+    }
+
+    is_shown = {
+        exists = scope:recipient.house
+        scope:actor.dynasty = scope:recipient.dynasty
+
+        scope:recipient.house = {
+            has_house_modifier = nfm_cb_modifier_forbidcadetbranches_house
+        }
+    }
+
+    on_accept = {
+        scope:recipient.house = {
+            remove_house_modifier = nfm_cb_modifier_forbidcadetbranches_house
+        }
+    }
+
+}

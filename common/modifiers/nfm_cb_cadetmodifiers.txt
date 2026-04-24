@@ -1,0 +1,9 @@
+﻿
+## Modifiers for Dynasties and Houses banning it from making a cadet branch
+nfm_cb_modifier_forbidcadetbranches_dynasty = {
+    icon = legitimacy_mixed
+}
+
+nfm_cb_modifier_forbidcadetbranches_house = {
+    icon = legitimacy_mixed
+}

@@ -1,0 +1,71 @@
+﻿
+# Ban/Unban Dynasty from making cadet branches
+nfm_cb_decision_toggledyncadetban = {
+
+    title = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { dynasty = { has_dynasty_modifier = nfm_cb_modifier_forbidcadetbranches_dynasty } }
+                desc = nfm_cb_decision_toggledyncadetban_unban
+            }
+            desc = nfm_cb_decision_toggledyncadetban
+        }
+    }
+
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { dynasty = { has_dynasty_modifier = nfm_cb_modifier_forbidcadetbranches_dynasty } }
+                desc = nfm_cb_decision_toggledyncadetban_unban_desc
+            }
+            desc = nfm_cb_decision_toggledyncadetban_desc
+        }
+    }
+
+    confirm_text = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { dynasty = { has_dynasty_modifier = nfm_cb_modifier_forbidcadetbranches_dynasty } }
+                desc = nfm_cb_decision_toggledyncadetban_unban_confirm
+            }
+            desc = nfm_cb_decision_toggledyncadetban_confirm
+        }
+    }
+
+    selection_tooltip = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { dynasty = { has_dynasty_modifier = nfm_cb_modifier_forbidcadetbranches_dynasty } }
+                desc = nfm_cb_decision_toggledyncadetban_unban_tooltip
+            }
+            desc = nfm_cb_decision_toggledyncadetban_tooltip
+        }
+    }
+
+    picture = {
+        reference = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
+    }
+    sort_order = 0
+    ai_check_interval = 0
+
+    is_shown = {
+        is_ai = no
+    }
+
+    effect = {
+        if = {
+            limit = {
+                dynasty = { has_dynasty_modifier = nfm_cb_modifier_forbidcadetbranches_dynasty }
+            }
+            dynasty = {
+                remove_dynasty_modifier = nfm_cb_modifier_forbidcadetbranches_dynasty
+            }
+        }
+        else = {
+            dynasty = {
+                add_dynasty_modifier = nfm_cb_modifier_forbidcadetbranches_dynasty
+            }
+        }
+    }
+}
+

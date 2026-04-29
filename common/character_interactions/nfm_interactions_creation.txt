@@ -76,7 +76,7 @@ nfm_int_elevate_lowborn = {
     }
 
     cost = {
-        prestige = 100
+        prestige = 50
     }
 }
 

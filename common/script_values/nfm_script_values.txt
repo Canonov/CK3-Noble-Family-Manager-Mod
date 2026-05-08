@@ -1,50 +1,4 @@
-﻿# Elevate Noble Family - Gold Cost (for non-treasury holders)
-nfm_value_elevate_cost_gold = {
-    value = 0
-    if = {
-        limit = { has_treasury = no }
-        add = minor_gold_value
-    }
-}
-
-# Elevate Noble Family - Treasury Cost (for treasury holders)
-nfm_value_elevate_cost_treasury = {
-    value = 0
-    if = {
-        limit = { has_treasury = yes }
-        add = minor_treasury_value
-    }
-}
-
-nfm_value_elevate_cost_prestige = 250
-nfm_value_elevate_cost_influence = 150
-
-# Elevate Noble Family - Cooldown Time (Days)
-nfm_value_elevate_nobles_cooldown_days = {
-    value = 365
-
-    if = {
-        limit = {
-            has_variable = nfm_recently_founded_administration
-        }
-        value = 30
-    }
-    else_if = {
-        limit = {
-            any_noble_family = { count <= 5 }
-        }
-        multiply = 0.25
-    }
-    else_if = {
-        limit = {
-            any_noble_family = { count <= 10 }
-        }
-        multiply = 0.5
-    }
-
-    round = yes
-}
-
+﻿
 nfm_value_oneyoungerthanheir = {
     value = scope:new_house_head_heir.age
     add = -1
@@ -97,6 +51,77 @@ nfm_value_revoke_house_tyranny_gain = {
         multiply = 0.5
     }
 }
+
+################################
+# Elevate Noble Family
+################################
+
+# Gold Cost (for non-treasury holders)
+nfm_value_elevate_cost_gold = {
+    value = 0
+    if = {
+        limit = { has_treasury = no }
+        add = minor_gold_value
+    }
+}
+
+# Treasury Cost (for treasury holders)
+nfm_value_elevate_cost_treasury = {
+    value = 0
+    if = {
+        limit = { has_treasury = yes }
+        add = minor_treasury_value
+    }
+}
+
+# Prestige Cost
+nfm_value_elevate_cost_prestige = 250
+
+# Influence Cost (for Influence Govs)
+nfm_value_elevate_cost_influence = {
+    value = 0
+
+    if = {
+        limit = {
+            government_has_flag = government_has_influence
+        }
+        value = 100
+
+        if = {
+            limit = { 
+                highest_held_title_tier > tier_kingdom
+            }
+            add = 50
+        }
+    }
+}
+
+# Cooldown Time (Days)
+nfm_value_elevate_nobles_cooldown_days = {
+    value = 365
+
+    if = {
+        limit = {
+            has_variable = nfm_recently_founded_administration
+        }
+        value = 30
+    }
+    else_if = {
+        limit = {
+            any_noble_family = { count <= 5 }
+        }
+        multiply = 0.25
+    }
+    else_if = {
+        limit = {
+            any_noble_family = { count <= 10 }
+        }
+        multiply = 0.5
+    }
+
+    round = yes
+}
+
 
 ################################
 # Invite Foreign House Head

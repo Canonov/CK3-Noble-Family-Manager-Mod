@@ -18,23 +18,12 @@ nfm_int_elevate_lowborn = {
         scope:actor = {
             is_ai = no
             is_landed = yes
+            is_liege_or_above_of = scope:recipient
         }
         scope:recipient = {
             is_lowborn = yes
             is_adult = yes
             is_imprisoned = no
-            OR = {
-                is_courtier_of = scope:actor
-                AND = {
-                    exists = employer
-                    employer = {
-                        OR = {
-                            this = scope:actor
-                            any_liege_or_above = { this = scope:actor }
-                        }
-                    }
-                }
-            }
         }
         NOT = { scope:actor = scope:recipient }
     }
@@ -100,18 +89,17 @@ nfm_int_grant_house = {
     is_shown = {
         scope:actor = {
             nfm_trigger_can_use_nfm_interactions = yes
+            is_liege_or_above_of = scope:recipient
         }
         scope:recipient = {
-            AND = {
-                is_courtier = yes
-                OR = {
-                    employer.top_liege ?= scope:actor
-                    employer ?= scope:actor
-                }
-            }
             is_lowborn = no
             is_adult = yes
             is_imprisoned = no
+
+            OR = {
+                is_ruler = no
+                house.house_head != this
+            }
 
             # Check Marriage Type
             OR = {

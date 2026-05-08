@@ -3,6 +3,7 @@
 # Ban House from Creating Cadet Branches
 ################################
 nfm_cb_int_ban_house = {
+	icon = icon_dynasty # TODO Custom
     category = interaction_category_diplomacy
     common_interaction = no
 
@@ -37,6 +38,7 @@ nfm_cb_int_ban_house = {
 # Unban House from Creating Cadet Branches
 ################################
 nfm_cb_int_unban_house = {
+	icon = icon_dynasty # TODO Custom
     category = interaction_category_diplomacy
     common_interaction = no
 

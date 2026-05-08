@@ -148,10 +148,12 @@ nfm_int_grant_house = {
 
     is_valid_showing_failures_only = {
         scope:recipient = {
+            # Ineligible Traits (eg. Monk)
             NOR = {
                 has_trait = devoted
                 has_trait = gallivanter
             }
+            # Must not be a theocrat
             custom_description = {
                 text = is_not_theocratic_court_chaplain
                 subject = scope:recipient
@@ -168,6 +170,8 @@ nfm_int_grant_house = {
                     scope:actor.faith.religious_head != scope:recipient
                 }
             }
+            # Must not be heir to the house
+            NOT = { is_player_heir_of = house.house_head }
         }
     }
 

@@ -98,6 +98,11 @@ nfm_events_elevate_nobles.1 = {
             }
         }
 
+        ## House Aspirations
+        scope:new_house_head.house = {
+            nfm_effect_add_fitting_house_aspiration = yes
+        }
+
         ## House Relations - Improve relation with newly elevated house
         house = {
             change_house_relation_effect = {

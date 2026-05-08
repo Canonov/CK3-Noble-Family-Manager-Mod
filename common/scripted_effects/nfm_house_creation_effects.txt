@@ -1,6 +1,6 @@
 ﻿# Adds the appropriate modifier to a house based on its type
 #
-# @scope: house - The character receiving merit flags
+# @scope: house
 # @input var:nfm_housetype [HouseType] - House Type
 nfm_effect_add_house_modifier = {
     switch = {
@@ -22,6 +22,86 @@ nfm_effect_add_house_modifier = {
         }
         nfm_housetype_foreign = {
             add_house_modifier = { modifier = nfm_modifier_housetype_foreign }
+        }
+    }
+}
+
+# Adds the appropriate aspiration to a house based on its type
+#
+# @scope: house
+# @input var:nfm_housetype [HouseType] - House Type
+nfm_effect_add_fitting_house_aspiration = {
+    # TODO
+    # Add an inclination to lean towards the liege's aspiration especially in japan
+    # Service is always a choice?
+    # Add the regular admin government ones (there's a lot)
+
+    # Figure out the correct one
+    switch = {
+        trigger = var:nfm_housetype
+        nfm_housetype_steward = {
+            if = {
+                limit = { house_head = { government_has_flag = government_uses_merit_family_aspirations } }
+                set_house_aspiration = { type = celestial_governor }
+            }
+            else_if = {
+                limit = { house_head ?= { government_is_japanese_trigger = yes } }
+                random_list = {
+                    66 = { set_house_aspiration = { type = prosperity } }
+                    33 = { set_house_aspiration = { type = service } }
+                }
+            }
+            else = {}
+        }
+        nfm_housetype_martial = {
+            if = {
+                limit = { house_head = { government_has_flag = government_uses_merit_family_aspirations } }
+                set_house_aspiration = { type = celestial_warlord }
+            }
+            else_if = {
+                limit = { house_head ?= { government_is_japanese_trigger = yes } }
+                set_house_aspiration = { type = strength }
+            }
+            else = {}
+        }
+        nfm_housetype_learning = {
+            if = {
+                limit = { house_head = { government_has_flag = government_uses_merit_family_aspirations } }
+                random_list = {
+                    50 = { set_house_aspiration = { type = celestial_governor } }
+                    50 = { set_house_aspiration = { type = celestial_traditional } }
+                }
+            }
+            else_if = {
+                limit = { house_head ?= { government_is_japanese_trigger = yes } }
+                set_house_aspiration = { type = humility }
+            }
+            else = {}
+        }
+        nfm_housetype_intrigue = {
+            # None related for celestial
+            if = {
+                limit = { house_head ?= { government_is_japanese_trigger = yes } }
+                set_house_aspiration = { type = determination }
+            }
+            else = {}
+        }
+        nfm_housetype_diplomatic = {
+            if = {
+                limit = { house_head = { government_has_flag = government_uses_merit_family_aspirations } }
+                set_house_aspiration = { type = celestial_family }
+            }
+            else_if = {
+                limit = { house_head ?= { government_is_japanese_trigger = yes } }
+                random_list = {
+                    66 = { set_house_aspiration = { type = ceremony } }
+                    33 = { set_house_aspiration = { type = service } }
+                }
+            }
+            else = {}
+        }
+        nfm_housetype_foreign = {
+            # None really relate
         }
     }
 }

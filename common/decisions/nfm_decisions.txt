@@ -56,7 +56,8 @@ nfm_decision_elevate_nobles = {
     }
 
     cooldown = { days = nfm_value_elevate_nobles_cooldown_days }
-    decision_group_type = courtier
+    sort_order = 100
+    decision_group_type = nfm_decision_group
 
     is_shown = {
         # for now, maybe

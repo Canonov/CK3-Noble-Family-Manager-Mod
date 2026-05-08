@@ -1,0 +1,3 @@
+﻿nfm_decision_group = {
+	sort_order = 2
+}

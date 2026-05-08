@@ -24,3 +24,7 @@
  nfm_decision_elevate_nobles_getmerit_tt: "#weak Because of your [THIS.Char.GetGovernment.GetNameNoTooltip] Government:#! Members of the new family will be granted @merit_icon![merit|E] and have already passed some @provincial_exam_icon![examinations|E]"
  nfm_decision_elevate_nobles_tt: "A new [house|E] with a specific [nfm_house_type|E] will be generated and granted a [noble_family|E] [title|E]"
  
+ ################################
+ # MISC
+ ################################
+ decision_group_type_nfm_decision_group: "Noble Family Management Decisions"

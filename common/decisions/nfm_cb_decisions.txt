@@ -1,6 +1,7 @@
 ﻿
 # Ban/Unban Dynasty from making cadet branches
 nfm_cb_decision_toggledyncadetban = {
+    decision_group_type = nfm_decision_group
 
     title = {
         first_valid = {

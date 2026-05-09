@@ -69,30 +69,52 @@ nfm_value_elevate_cost_gold = {
 nfm_value_elevate_cost_treasury = {
     value = 0
     if = {
-        limit = { has_treasury = yes }
+        limit = {
+            has_treasury = yes
+            NOT = { has_variable = nfm_debug_enabled }
+        }
         add = minor_treasury_value
     }
 }
 
 # Prestige Cost
-nfm_value_elevate_cost_prestige = 250
-
-# Influence Cost (for Influence Govs)
-nfm_value_elevate_cost_influence = {
-    value = 0
+nfm_value_elevate_cost_prestige = {
+    value = 200
 
     if = {
         limit = {
-            government_has_flag = government_has_influence
+            highest_held_title_tier >= tier_empire
         }
-        value = 100
+        add = 50
+    }
 
-        if = {
-            limit = { 
-                highest_held_title_tier > tier_kingdom
-            }
-            add = 50
+    # Debug Negation
+    if = {
+        limit = { has_variable = nfm_debug_enabled }
+        value = 0
+    }
+}
+
+# Influence Cost (for Influence Govs)
+nfm_value_elevate_cost_influence = {
+    value = 100
+
+    if = {
+        limit = {
+            highest_held_title_tier >= tier_empire
         }
+        add = 50
+    }
+
+    # Debug or doesn't use Influence
+    if = {
+        limit = {
+            OR = {
+                NOT = { government_has_flag = government_has_influence }
+                has_variable = nfm_debug_enabled
+            }
+        }
+        value = 0
     }
 }
 
@@ -119,6 +141,11 @@ nfm_value_elevate_nobles_cooldown_days = {
         multiply = 0.5
     }
 
+    # Debug Negation
+    if = {
+        limit = { has_variable = nfm_debug_enabled }
+        value = 0
+    }
     round = yes
 }
 
@@ -143,6 +170,12 @@ nfm_value_invite_house_gold_cost = {
 
     min = 50
     max = 500
+
+    # Debug Negation
+    if = {
+        limit = { has_variable = nfm_debug_enabled }
+        value = 0
+    }
 }
 
 # Influence cost for inviting a foreign house head
@@ -152,7 +185,10 @@ nfm_value_invite_house_influence_cost = {
 
     if = {
         limit = {
-            scope:actor = { government_has_flag = government_has_influence }
+            scope:actor = { 
+                government_has_flag = government_has_influence
+                NOT = { has_variable = nfm_debug_enabled }
+            }
         }
         value = 200
     }
@@ -164,7 +200,10 @@ nfm_value_invite_house_influence_grant = {
 
     if = {
         limit = {
-            scope:actor = { government_has_flag = government_has_influence }
+            scope:actor = { 
+                government_has_flag = government_has_influence
+                NOT = { has_variable = nfm_debug_enabled }
+            }
         }
         value = 150
     }

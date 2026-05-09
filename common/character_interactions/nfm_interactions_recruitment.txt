@@ -135,7 +135,7 @@ nfm_int_invite_foreign_house_head = {
 
         prestige = 250
 
-        influence = { value = nfm_value_invite_house_influence_cost}
+        influence = { value = nfm_value_invite_house_influence_cost }
     }
 
     ai_accept = {

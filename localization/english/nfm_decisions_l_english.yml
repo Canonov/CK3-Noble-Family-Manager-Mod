@@ -27,4 +27,12 @@
  ################################
  # MISC
  ################################
+
+ nfm_decision_toggle_debug: "#D (Debug)#! Unrestricted Decisions: [Select_CString(ROOT.Var('nfm_debug_enabled').IsSet, 'Disable', 'Enable')]"
+ nfm_decision_toggle_debug_desc: "This decision will remove costs and restrictions from some NFM decisions for the current character."
+ nfm_decision_toggle_debug_tooltip: "This decision will remove costs and restrictions from some NFM decisions for the current character."
+ nfm_decision_toggle_debug_enable_tt: "#D Debug Mode will be #bold enabled#!#!"
+ nfm_decision_toggle_debug_disable_tt: "#D Debug Mode will be #bold disabled#!#!"
+ nfm_decision_toggle_debug_confirm: "Toggle Debug [Select_CString(ROOT.Var('nfm_debug_enabled').IsSet, 'Off', 'On')]"
+ 
  decision_group_type_nfm_decision_group: "Noble Family Management Decisions"

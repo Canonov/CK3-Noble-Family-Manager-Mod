@@ -291,6 +291,7 @@ nfm_int_revoke_house = {
     }
 
     cost = {
+        # TODO Extract these to script values too 
         # 200-800, base of 100 and 50 per dynasty level
         prestige = {
             value = 100
@@ -302,6 +303,12 @@ nfm_int_revoke_house = {
 
             min = 200
             max = 800
+
+            # Debug Negation
+            if = {
+                limit = { has_variable = nfm_debug_enabled }
+                value = 0
+            }
         }
 
         # Match half their influence plus a base cost of 50, 100 if they don't have influence
@@ -323,6 +330,17 @@ nfm_int_revoke_house = {
 
             min = 50
             max = 600
+
+            # Debug / No Influence Negation
+            if = {
+                limit = { 
+                    OR = {
+                        has_variable = nfm_debug_enabled
+                        NOT = { scope:actor = { government_has_flag = government_has_influence } }
+                    }    
+                }
+                value = 0
+            }
         }
     }
 }
@@ -482,6 +500,12 @@ nfm_int_dissolve_house = {
 
             min = 50
             max = 400
+
+            # Debug Negation
+            if = {
+                limit = { has_variable = nfm_debug_enabled }
+                value = 0
+            }
         }
     }
 }

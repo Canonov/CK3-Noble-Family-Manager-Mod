@@ -1,0 +1,30 @@
+﻿
+# Toggle Debug Flag to remove costs and restrictions
+nfm_decision_toggle_debug = {
+    sort_order = 0
+    decision_group_type = nfm_decision_group
+
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_major_religion.dds"
+	}
+	is_shown = {
+		debug_only = yes
+        is_ai = no
+	}
+
+    effect = {
+        if = {
+            limit = {
+                has_variable = nfm_debug_enabled
+            }
+            remove_variable = nfm_debug_enabled
+            custom_tooltip = nfm_decision_toggle_debug_disable_tt
+        }
+        else = {
+            set_variable = nfm_debug_enabled
+            custom_tooltip = nfm_decision_toggle_debug_enable_tt
+        }
+    }
+
+    ai_check_interval = 0
+}

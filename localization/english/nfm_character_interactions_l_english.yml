@@ -14,6 +14,13 @@
  nfm_toast_elevated_lowborn_tt: "An oath has been sworn and they are officially now [nobility|E]"
 
  ################################
+ # GRANT NOBILITY TO LOWBORN
+ ################################
+
+ nfm_int_grant_cadet_branch: "Establish Cadet Branch"
+ nfm_int_grant_cadet_branch_desc: "Grant [recipient.GetShortUIName] to the right to their own Heraldry of [nobility|E], establishing a [cadet_branch|E] with approval of their [actor.GetTitleAsNameNoTooltip]."
+
+ ################################
  # ELEVATE AS NOBLE FAMILY HEAD
  ################################
  

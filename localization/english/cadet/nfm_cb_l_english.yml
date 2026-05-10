@@ -10,11 +10,14 @@
  nfm_cb_decision_toggledyncadetban_desc: "There is no need for further needless divisions of our dynasty. $nfm_cb_decision_toggledyncadetban_disclaimer$"
  nfm_cb_decision_toggledyncadetban_confirm: "Restrict Cadet Branches"
  nfm_cb_decision_toggledyncadetban_tooltip: "[dynasty|E] members will no longer be allowed to create [cadet_branches|E] $nfm_cb_decision_toggledyncadetban_disclaimer$"
+ nfm_cb_decision_toggledyncadetban_effect_tt: "#help As long as the [dynasty|E] has this [modifier|E], the [GetDecisionWithKey('create_cadet_branch_decision').GetName] [decision|E] cannot be taken until you take the #game_link Unrestrict Cadet Branches#! [decision|E].#!"
 
  nfm_cb_decision_toggledyncadetban_unban: "Unrestrict [ROOT.Char.GetDynasty.GetNameNoTooltip] Cadet Branches"
  nfm_cb_decision_toggledyncadetban_unban_desc: "Our dynasty should be free to create [cadet_branches|E] once more! $nfm_cb_decision_toggledyncadetban_disclaimer$"
  nfm_cb_decision_toggledyncadetban_unban_confirm: "Unrestrict Cadet Branches"
  nfm_cb_decision_toggledyncadetban_unban_tooltip: "[dynasty|E] members will be allowed to create [cadet_branches|E] again $nfm_cb_decision_toggledyncadetban_disclaimer$"
+ nfm_cb_decision_toggledyncadetban_unban_effect_tt: "#help Members of the [dynasty|E] will be able to take the [GetDecisionWithKey('create_cadet_branch_decision').GetName] [decision|E] once more.#!"
+ 
 
  ## For the Vanilla Create Branch
  #nfm_loc_cadet_branches_banned_dynasty: "The [CHARACTER.GetDynasty.GetBaseName] [dynasty|E] has banned creating any more [cadet_branches|E]"

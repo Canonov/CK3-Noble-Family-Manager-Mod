@@ -46,7 +46,8 @@ nfm_cb_decision_toggledyncadetban = {
     picture = {
         reference = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
     }
-    sort_order = 0
+    
+    sort_order = 1
     ai_check_interval = 0
 
     is_shown = {
@@ -61,11 +62,13 @@ nfm_cb_decision_toggledyncadetban = {
             dynasty = {
                 remove_dynasty_modifier = nfm_cb_modifier_forbidcadetbranches_dynasty
             }
+            custom_tooltip = nfm_cb_decision_toggledyncadetban_unban_effect_tt
         }
         else = {
             dynasty = {
                 add_dynasty_modifier = nfm_cb_modifier_forbidcadetbranches_dynasty
             }
+            custom_tooltip = nfm_cb_decision_toggledyncadetban_effect_tt
         }
     }
 }

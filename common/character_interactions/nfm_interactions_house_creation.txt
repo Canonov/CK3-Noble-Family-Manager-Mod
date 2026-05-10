@@ -1,0 +1,179 @@
+﻿################################
+# Grant Nobility to Lowborn
+################################
+nfm_int_elevate_lowborn = {
+    category = interaction_category_vassal
+    common_interaction = no
+    icon = icon_dynasty
+
+    desc = nfm_int_elevate_lowborn_desc
+
+    greeting = positive
+
+    interface_priority = 50
+
+    auto_accept = yes
+
+    is_shown = {
+        scope:actor = {
+            is_ai = no
+            is_landed = yes
+            is_liege_or_above_of = scope:recipient
+        }
+        scope:recipient = {
+            is_lowborn = yes
+            is_adult = yes
+            is_imprisoned = no
+        }
+        NOT = { scope:actor = scope:recipient }
+    }
+
+    is_valid_showing_failures_only = {
+        scope:recipient = {
+            NOT = { has_trait = devoted }
+        }
+    }
+
+    on_accept = {
+        scope:recipient = {
+            custom_tooltip = {
+                text = nfm_elevate_lowborn_tt
+                create_dynasty = { save_scope_as = new_dynasty }
+            }
+        }
+
+        scope:actor = {
+            stress_impact = {
+                arrogant = minor_stress_impact_gain
+                greedy = minor_stress_impact_gain
+                generous = minor_stress_impact_loss
+                compassionate = minor_stress_impact_loss
+            }
+
+            # Notify the Player
+            send_interface_toast = {
+                type = event_generic_good_with_text
+
+                title = nfm_toast_elevated_lowborn
+                desc = nfm_toast_elevated_lowborn_desc
+                tooltip = nfm_toast_elevated_lowborn_tt
+
+                left_icon = scope:recipient
+                right_icon = scope:new_dynasty
+            }
+        }
+    }
+
+    cost = {
+        prestige = 50
+    }
+}
+
+################################
+# Grant Cadet Branch
+################################
+nfm_int_grant_cadet_branch = {
+    category = interaction_category_vassal
+    common_interaction = no
+    icon = icon_dynasty
+
+    desc = nfm_int_grant_cadet_branch_desc
+
+    greeting = positive
+
+    interface_priority = 51
+
+    # Todo AI might not always accept it.
+    auto_accept = yes
+
+    is_shown = {
+        scope:recipient = {
+            is_lowborn = no
+            house.house_head != this
+            NOT = {
+                is_player_heir_of = house.house_head
+            }
+
+            NOT = { government_allows = noble_families }
+        }
+        scope:actor = {
+            is_ai = no
+
+            OR = {
+                is_liege_or_above_of = scope:recipient
+                AND = {
+                    scope:recipient.dynasty ?= dynasty
+                    scope:recipient.dynast ?= this
+                }
+                AND = {
+                    scope:recipient.house ?= house
+                    scope:recipient.house.house_head ?= this
+                }
+            }
+
+            NOT = { government_allows = noble_families }
+        }
+        NOT = { scope:actor = scope:recipient }
+    }
+
+    is_valid = {
+        scope:recipient = {
+            # Ineligible Traits (eg. Monk)
+            NOR = {
+                has_trait = devoted
+                has_trait = gallivanter
+            }
+            # Marriage restrictions
+            trigger_if = {
+                limit = { is_male = yes }
+                trigger_if = {
+                    limit = {
+                        OR = {
+                            is_married = yes
+                            faith = { has_doctrine = doctrine_gender_female_dominated }
+                        }
+                    }
+                    patrilinear_marriage = yes
+                }
+            }
+            trigger_else = {
+                trigger_if = {
+                    limit = {
+                        OR = {
+                            is_married = yes
+                            faith = { has_doctrine = doctrine_gender_male_dominated }
+                        }
+                    }
+                    matrilinear_marriage = yes
+                }
+            }
+        }
+    }
+
+    on_accept = {
+        scope:recipient = {
+            custom_tooltip = nfm_int_grant_cadet_branch_tt
+            found_cadet_house_decision_effect = {
+                CHARACTER = scope:recipient
+                PRESTIGE = major_prestige_gain
+            }
+        }
+
+        # TODO Opinion bonuses
+        # TODO if they're a bastard, legitimize them, but disinherit
+        # TODO maybe transfer the nfm modifiers from the old house
+    }
+
+    cost = {
+        prestige = {
+            value = 250
+
+            # Debug Negation
+            if = {
+                limit = { scope:actor = { has_variable = nfm_debug_enabled } }
+                value = 0
+            }
+        }
+    }
+}
+

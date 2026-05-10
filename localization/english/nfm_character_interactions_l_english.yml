@@ -19,6 +19,7 @@
 
  nfm_int_grant_cadet_branch: "Establish Cadet Branch"
  nfm_int_grant_cadet_branch_desc: "Grant [recipient.GetShortUIName] to the right to their own Heraldry of [nobility|E], establishing a [cadet_branch|E] with approval of their [actor.GetTitleAsNameNoTooltip]."
+ nfm_int_grant_cadet_branch_tt: "Founds a new [house|E]"
 
  ################################
  # ELEVATE AS NOBLE FAMILY HEAD

@@ -1,75 +1,4 @@
-﻿################################
-# Grant Nobility to Lowborn
-################################
-nfm_int_elevate_lowborn = {
-    category = interaction_category_vassal
-    common_interaction = no
-    icon = icon_dynasty
-
-    desc = nfm_int_elevate_lowborn_desc
-
-    greeting = positive
-
-    interface_priority = 50
-
-    auto_accept = yes
-
-    is_shown = {
-        scope:actor = {
-            is_ai = no
-            is_landed = yes
-            is_liege_or_above_of = scope:recipient
-        }
-        scope:recipient = {
-            is_lowborn = yes
-            is_adult = yes
-            is_imprisoned = no
-        }
-        NOT = { scope:actor = scope:recipient }
-    }
-
-    is_valid_showing_failures_only = {
-        scope:recipient = {
-            NOT = { has_trait = devoted }
-        }
-    }
-
-    on_accept = {
-        scope:recipient = {
-            custom_tooltip = {
-                text = nfm_elevate_lowborn_tt
-                create_dynasty = { save_scope_as = new_dynasty }
-            }
-        }
-
-        scope:actor = {
-            stress_impact = {
-                arrogant = minor_stress_impact_gain
-                greedy = minor_stress_impact_gain
-                generous = minor_stress_impact_loss
-                compassionate = minor_stress_impact_loss
-            }
-
-            # Notify the Player
-            send_interface_toast = {
-                type = event_generic_good_with_text
-
-                title = nfm_toast_elevated_lowborn
-                desc = nfm_toast_elevated_lowborn_desc
-                tooltip = nfm_toast_elevated_lowborn_tt
-
-                left_icon = scope:recipient
-                right_icon = scope:new_dynasty
-            }
-        }
-    }
-
-    cost = {
-        prestige = 50
-    }
-}
-
-
+﻿
 ################################
 # Grant Noble Family Status
 ################################
@@ -101,6 +30,7 @@ nfm_int_grant_house = {
                 house.house_head != this
             }
 
+            # TODO use the one from nfm_int_grant_cadet_branch and make it a reusable scripted trigger
             # Check Marriage Type
             OR = {
                 # are unmarried
@@ -246,6 +176,8 @@ nfm_int_grant_house = {
     }
 
     cost = {
+        # TODO Extract these to script values 
+
         prestige = {
             value = 250
 
@@ -253,6 +185,11 @@ nfm_int_grant_house = {
             if = {
                 limit = { scope:actor = { is_independent_ruler = no } }
                 multiply = 2
+            }
+            # Debug Negation
+            if = {
+                limit = { scope:actor = { has_variable = nfm_debug_enabled } }
+                value = 0
             }
         }
         gold = {
@@ -264,6 +201,11 @@ nfm_int_grant_house = {
                     scope:actor = { has_treasury = yes }
                 }
                 value = 25
+            }
+            # Debug Negation
+            if = {
+                limit = { scope:actor = { has_variable = nfm_debug_enabled } }
+                value = 0
             }
         }
 
@@ -277,15 +219,25 @@ nfm_int_grant_house = {
                 }
                 value = 50
             }
+            # Debug Negation
+            if = {
+                limit = { scope:actor = { has_variable = nfm_debug_enabled } }
+                value = 0
+            }
         }
 
         influence = {
-            value = 150
+            value = 125
 
             # Vassals pay double
             if = {
                 limit = { scope:actor = { is_independent_ruler = no } }
                 multiply = 2
+            }
+            # Debug Negation
+            if = {
+                limit = { scope:actor = { has_variable = nfm_debug_enabled } }
+                value = 0
             }
         }
 

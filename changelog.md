@@ -1,5 +1,29 @@
 # Changelog
 
+## v1.5.0 - 2026/05/10
+### Added
+- Added **Cadet Branch Control** system:
+  - New game rules to configure minimum title rank, prestige level, and child count requirements for cadet branch formation
+  - New decision to toggle cadet branch restrictions for your dynasty (ban/unban)
+  - New interactions to forbid or restore cadet branch rights for specific houses
+  - Based on my old mod "Ban Cadet Branch Tools & Rebalance"
+
+- Added **Grant Cadet Branch** interaction where a liege, dynasty head, or house head can establish a cadet branch for a dynasty member (Available to non-Admin type governments, admin type governments now have a discount for Grant Noble Family Status for same dynasty members)
+- Added **Debug Toggle Decision**, available in debug mode only, removes costs and restrictions from NFM decisions for the current character
+- House aspirations will sometimes be assigned on creation based on house type, with support for Celestial and Japanese government types, base admin powerful family types to come.
+
+### Changed
+- NFM decisions now appear under their own group
+- Grant Noble Family Status interaction now requires actor to be liege or above of recipient (no longer restricted to courtiers only)
+- Grant Noble Family Status now offers a 50% prestige and influence discount when granting to a same-dynasty member
+- Grant Noble Family Status base influence cost reduced from 150 to 125
+- Elevate Lowborn cost reduced from 100 to 50 prestige; interaction now requires actor to be liege or above rather than checking courtier status
+- All major costs now zero when debug toggle is enabled
+
+### Fixed
+- Grant Noble Family Status no longer targets ruling house heads or player heirs to a house head
+- Updated descriptor to support CK3 1.19 'Scribe'
+
 ## v1.4.1 - 2026/02/24
 
 ### Changed

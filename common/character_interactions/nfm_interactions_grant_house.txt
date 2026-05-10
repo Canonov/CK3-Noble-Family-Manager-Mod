@@ -108,6 +108,7 @@ nfm_int_grant_house = {
 
             custom_tooltip = {
                 text = nfm_int_grant_house_costs_tt
+                # Todo update these to use the same cost calculation the grant house will
                 add_prestige = 250
                 change_influence = 150
                 add_gold = 50
@@ -186,6 +187,11 @@ nfm_int_grant_house = {
                 limit = { scope:actor = { is_independent_ruler = no } }
                 multiply = 2
             }
+            # Same Dynasty Discount
+            if = {
+                limit = { scope:actor.dynasty ?= scope:recipient.dynasty }
+                multiply = 0.5
+            }
             # Debug Negation
             if = {
                 limit = { scope:actor = { has_variable = nfm_debug_enabled } }
@@ -234,11 +240,17 @@ nfm_int_grant_house = {
                 limit = { scope:actor = { is_independent_ruler = no } }
                 multiply = 2
             }
+            # Same Dynasty Discount
+            if = {
+                limit = { scope:actor.dynasty ?= scope:recipient.dynasty }
+                multiply = 0.5
+            }
             # Debug Negation
             if = {
                 limit = { scope:actor = { has_variable = nfm_debug_enabled } }
                 value = 0
             }
+            
         }
 
     }

@@ -1,4 +1,4 @@
-version="1.5.0-1.19"
+version="1.5.1-1.19"
 tags={
 	"1.19 'Scribe'"
 	"Gameplay"

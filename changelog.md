@@ -1,5 +1,13 @@
 # Changelog
 
+## v1.5.1 - 2026/05/11
+### Changed
+- Non-Admin Rulers are now able to use the **Elevate a Noble Family** decision, it will be cheaper due to no admin house needing to be made.
+
+### Fixed
+- **Elevate a Noble Family** refunds should be more accurate and the new house head should get the costs now.
+
+
 ## v1.5.0 - 2026/05/10
 ### Added
 - Added **Cadet Branch Control** system:
@@ -23,6 +31,7 @@
 ### Fixed
 - Grant Noble Family Status no longer targets ruling house heads or player heirs to a house head
 - Updated descriptor to support CK3 1.19 'Scribe'
+
 
 ## v1.4.1 - 2026/02/24
 

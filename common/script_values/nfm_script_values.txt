@@ -60,9 +60,15 @@ nfm_value_revoke_house_tyranny_gain = {
 nfm_value_elevate_cost_gold = {
     value = 0
     if = {
-        limit = { has_treasury = no }
+        limit = { root = { has_treasury = no } }
         add = minor_gold_value
     }
+    if = {
+        limit = { root = { has_variable = nfm_debug_enabled } }
+        value = 0
+    }
+
+    max = 500
 }
 
 # Treasury Cost (for treasury holders)
@@ -70,8 +76,10 @@ nfm_value_elevate_cost_treasury = {
     value = 0
     if = {
         limit = {
-            has_treasury = yes
-            NOT = { has_variable = nfm_debug_enabled }
+            root = { 
+                has_treasury = yes
+                NOT = { has_variable = nfm_debug_enabled }
+            }
         }
         add = minor_treasury_value
     }

@@ -39,10 +39,13 @@ nfm_events_elevate_nobles.1 = {
         name = nfm_events_elevate_nobles.1.a
 
         ## Create the Family Title
-        custom_tooltip = {
-            text = nfm_events_elevate_nobles.1.tt.becomes_head
-            scope:new_house_head = {
-                create_noble_family_effect = { GOVERNMENT_GIVER = root }
+        if = {
+            limit = { government_allows = noble_families }
+            custom_tooltip = {
+                text = nfm_events_elevate_nobles.1.tt.becomes_head
+                scope:new_house_head = {
+                    create_noble_family_effect = { GOVERNMENT_GIVER = root }
+                }
             }
         }
 
@@ -55,9 +58,12 @@ nfm_events_elevate_nobles.1 = {
         }
 
         ## Vassalize them since creating a new house doesn't anymore apparently
-        nfm_effect_vassalize = {
-            LIEGE = root
-            VASSAL = scope:new_house_head
+        if = {
+            limit = { government_allows = noble_families }
+            nfm_effect_vassalize = {
+                LIEGE = root
+                VASSAL = scope:new_house_head
+            }
         }
 
         ## House Head Opinion Bonus and Merit
@@ -86,7 +92,13 @@ nfm_events_elevate_nobles.1 = {
                 }
 
                 hidden_effect = {
-                    set_employer = scope:new_house_head
+                    if = {
+                        limit = { root = { government_allows = noble_families }}
+                        set_employer = scope:new_house_head
+                    }
+                    else = {
+                        set_employer = root
+                    }  
                 }
 
                 # Set up Merit and Examinations
@@ -160,7 +172,7 @@ nfm_events_elevate_nobles.1 = {
         ## Partial Cost Refunds (50%)
         # Prestige Cost
         add_prestige_no_experience = {
-            value = nfm_value_elevate_cost_prestige
+            value = scope:cost_prestige
             multiply = 0.5
         }
 
@@ -168,7 +180,7 @@ nfm_events_elevate_nobles.1 = {
         if = {
             limit = { has_treasury = no }
             add_gold = {
-                value = nfm_value_elevate_cost_gold
+                value = scope:cost_gold
                 multiply = 0.5
             }
         }
@@ -176,15 +188,18 @@ nfm_events_elevate_nobles.1 = {
         if = {
             limit = { has_treasury = yes }
             add_treasury = {
-                value = nfm_value_elevate_cost_treasury
+                value = scope:cost_treasury
                 multiply = 0.5
             }
         }
 
         # Influence Cost
-        change_influence_no_experience = {
-            value = nfm_value_elevate_cost_influence
-            multiply = 0.5
+        if = {
+            limit = { government_has_flag = government_has_influence }
+            change_influence_no_experience = {
+                value = scope:cost_influence
+                multiply = 0.5
+            }
         }
 
         ## Remove the Decision Cooldown

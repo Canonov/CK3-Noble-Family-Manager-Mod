@@ -7,7 +7,13 @@
  ## Main Decision ##
  
  nfm_decision_elevate_nobles: "Elevate a Noble Family"
- nfm_decision_elevate_nobles_desc: "A well-oiled administration requires skilled nobles. Among the families that serve under me, I find a lack of capable individuals.\n\nI shall send out a summons to the minor nobility that I am looking for suitable candidates to elevate in status to a proper [noble_family|E] capable of receiving [governorship|E] positions.\n\nThe new family will have a specific [Concept('nfm_house_type', 'House Type')|E] and [Concept('nfm_family_size', 'Family Size')|E]."
+ nfm_decision_elevate_nobles_desc.preamble_feudal: "A well-maintained [ROOT.Char.GetGovernment.GetName] realm requires skilled families among the ranks of nobility. "
+ nfm_decision_elevate_nobles_desc.preamble_admin: "A well-oiled administration requires skilled nobles. "
+ nfm_decision_elevate_nobles_desc.main: "Among the families that serve under me, I find a lack of capable individuals.\n\nI shall send out a summons to the minor nobility that I am looking for suitable candidates"
+ nfm_decision_elevate_nobles_desc.status_feudal: "to elevate in status to a proper [noble|E] [house|E] capable of receiving [titles|E]."
+ nfm_decision_elevate_nobles_desc.status_admin: "to elevate in status to a proper [noble_family|E] capable of receiving [governorship|E] positions."
+ nfm_decision_elevate_nobles_desc.end: "\n\nThe new family will have a specific [Concept('nfm_house_type', 'House Type')|E] and [Concept('nfm_family_size', 'Family Size')|E]."
+
  nfm_decision_elevate_nobles_desc.recently_founded_admin_cooldown: "#weak \n\n(Because you've recently founded your [ROOT.Char.GetGovernment.GetName] Government, the cooldown will only be #V [SCOPE.ScriptValue('nfm_value_elevate_nobles_cooldown_days')|0]#! days)#!"
  nfm_decision_elevate_nobles_tooltip: "A new [noble_family|E] will be created and elevated to serve in your court. The composition of the family will vary based on your needs."
  nfm_decision_elevate_nobles_confirm: "Send a Summons"
@@ -22,7 +28,8 @@
 
  nfm_decision_elevate_nobles_modifier_tt: "This [house|E] will gain a special [modifier|E] depending on their [nfm_house_type|E]"
  nfm_decision_elevate_nobles_getmerit_tt: "#weak Because of your [THIS.Char.GetGovernment.GetNameNoTooltip] Government:#! Members of the new family will be granted @merit_icon![merit|E] and have already passed some @provincial_exam_icon![examinations|E]"
- nfm_decision_elevate_nobles_tt: "A new [house|E] with a specific [nfm_house_type|E] will be generated and granted a [noble_family|E] [title|E]"
+ nfm_decision_elevate_nobles_tt: "A new [house|E] with a specific [nfm_house_type|E] will be generated"
+ nfm_decision_elevate_nobles_tt.admin: "$nfm_decision_elevate_nobles_tt$ and granted a [noble_family|E] [title|E]"
  
  ################################
  # MISC

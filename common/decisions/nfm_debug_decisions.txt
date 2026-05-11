@@ -23,6 +23,7 @@ nfm_decision_toggle_debug = {
         else = {
             set_variable = nfm_debug_enabled
             custom_tooltip = nfm_decision_toggle_debug_enable_tt
+            remove_decision_cooldown = nfm_decision_elevate_nobles
         }
     }
 

@@ -33,15 +33,32 @@ nfm_decision_elevate_nobles = {
     }
 
     desc = {
-        desc = nfm_decision_elevate_nobles_desc
+        first_valid = {
+            triggered_desc = { 
+                trigger = { government_allows = noble_families }
+                desc = nfm_decision_elevate_nobles_desc.preamble_admin
+            }
+            desc = nfm_decision_elevate_nobles_desc.preamble_feudal
+        }
+
+        desc = nfm_decision_elevate_nobles_desc.main
+
+        first_valid = {
+            triggered_desc = { 
+                trigger = { government_allows = noble_families }
+                desc = nfm_decision_elevate_nobles_desc.status_admin
+            }
+            desc = nfm_decision_elevate_nobles_desc.status_feudal
+        }
+
+        desc = nfm_decision_elevate_nobles_desc.end
 
         triggered_desc = {
-            trigger = {
-                has_variable = nfm_recently_founded_administration
-            }
+            trigger = { has_variable = nfm_recently_founded_administration }
             desc = nfm_decision_elevate_nobles_desc.recently_founded_admin_cooldown
         }
     }
+
     selection_tooltip = nfm_decision_elevate_nobles_tooltip
 
     picture = {
@@ -66,9 +83,6 @@ nfm_decision_elevate_nobles = {
         # Must be at least a King
         is_landed = yes
         highest_held_title_tier >= tier_kingdom
-
-        # Check Government
-        government_allows = noble_families
     }
 
     is_valid_showing_failures_only = {
@@ -208,6 +222,24 @@ nfm_decision_elevate_nobles = {
     }
 
     effect = {
+        ## Save Costs
+        save_scope_value_as = {
+            name = cost_gold
+            value = nfm_value_elevate_cost_gold
+        }
+        save_scope_value_as = {
+            name = cost_treasury
+            value = nfm_value_elevate_cost_treasury
+        }
+        save_scope_value_as = {
+            name = cost_prestige
+            value = nfm_value_elevate_cost_prestige
+        }
+        save_scope_value_as = {
+            name = cost_influence
+            value = nfm_value_elevate_cost_influence
+        }
+
         ## Choose a House Size
         hidden_effect = {
             random_list = {
@@ -280,13 +312,19 @@ nfm_decision_elevate_nobles = {
 
             # Grant prestige and influence cost to new family head
             scope:new_house_head = {
-                change_influence = nfm_value_elevate_cost_influence
-                add_prestige = nfm_value_elevate_cost_prestige
+                change_influence = scope:cost_influence
+                add_prestige = scope:cost_prestige
             }
         }
 
         # Will be created tooltip
-        custom_tooltip = nfm_decision_elevate_nobles_tt
+        if = {
+            limit = { government_allows = noble_families }
+            custom_tooltip = nfm_decision_elevate_nobles_tt.admin
+        }
+        else = {
+            custom_tooltip = nfm_decision_elevate_nobles_tt
+        }
 
         # Will gain modifier tooltip
         custom_tooltip = nfm_decision_elevate_nobles_modifier_tt

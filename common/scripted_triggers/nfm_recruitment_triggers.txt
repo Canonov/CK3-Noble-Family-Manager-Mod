@@ -29,6 +29,10 @@ nfm_trigger_is_foreign_landless_house_head = {
         top_liege != scope:actor.top_liege
     }
 
+    # Must not be the ceremonial house
+    tgp_is_in_ceremonial_house_trigger = no
+
+    # Incompatible Traits
     NOR = {
         has_trait = devoted
         has_trait = order_member

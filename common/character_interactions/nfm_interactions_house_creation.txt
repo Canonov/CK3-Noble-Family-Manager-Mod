@@ -95,6 +95,7 @@ nfm_int_grant_cadet_branch = {
             }
 
             NOT = { government_allows = noble_families }
+            tgp_is_ceremonial_liege_trigger = no
         }
         scope:actor = {
             is_ai = no

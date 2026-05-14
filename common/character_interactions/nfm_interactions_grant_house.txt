@@ -90,6 +90,8 @@ nfm_int_grant_house = {
             }
             # Must not be heir to the house
             NOT = { is_player_heir_of = house.house_head }
+            # Must not be the ceremonial liege
+            tgp_is_ceremonial_liege_trigger = no
         }
     }
 

@@ -82,7 +82,8 @@ nfm_int_revoke_house = {
         # They must not be a ceremonial liege and must not have a hook on you.
         scope:recipient = {
             NOT = { has_strong_hook = scope:actor }
-            tgp_is_ceremonial_liege_trigger = no
+            #tgp_is_ceremonial_liege_trigger = no
+            tgp_is_in_ceremonial_house_trigger = no
         }
     }
 

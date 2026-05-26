@@ -1,0 +1,126 @@
+﻿nfm_decision_child_exam_automation = {
+    sort_order = 10
+    decision_group_type = nfm_decision_group
+
+    picture = {
+        reference = "gfx/interface/illustrations/decisions/tgp_scholars.dds"
+    }
+
+    is_shown = {
+        is_ai = no
+        has_tgp_dlc_trigger = yes
+        government_allows = merit
+    }
+
+    desc = nfm_decision_child_exam_automation_desc
+    selection_tooltip = nfm_decision_child_exam_automation_tooltip
+
+    widget = {
+        gui = "decision_view_widget_option_list_generic"
+        controller = decision_option_list_controller
+        decision_to_second_step_button = "nfm_decision_child_exam_automation_confirm"
+        show_from_start = yes
+
+        item = {
+            value = nfm_child_exam_auto_none
+            localization = nfm_child_exam_auto_none
+            icon = "gfx/interface/icons/character_interactions/tgp_send_to_childrens_examination_interaction.dds"
+            is_default = yes
+            ai_chance = { value = 0 }
+            is_valid = {
+                exists = var:nfm_child_exam_automation_threshold
+            }
+        }
+
+        item = {
+            value = nfm_child_exam_auto_25
+            localization = nfm_child_exam_auto_25
+            icon = "gfx/interface/icons/character_interactions/tgp_send_to_childrens_examination_interaction.dds"
+            ai_chance = { value = 0 }
+            is_valid = {
+                NOT = { var:nfm_child_exam_automation_threshold ?= 25 }
+            }
+        }
+
+        item = {
+            value = nfm_child_exam_auto_50
+            localization = nfm_child_exam_auto_50
+            icon = "gfx/interface/icons/character_interactions/tgp_send_to_childrens_examination_interaction.dds"
+            ai_chance = { value = 0 }
+            is_valid = {
+                NOT = { var:nfm_child_exam_automation_threshold ?= 50 }
+            }
+        }
+
+        item = {
+            value = nfm_child_exam_auto_60
+            localization = nfm_child_exam_auto_60
+            icon = "gfx/interface/icons/character_interactions/tgp_send_to_childrens_examination_interaction.dds"
+            ai_chance = { value = 0 }
+            is_valid = {
+                NOT = { var:nfm_child_exam_automation_threshold ?= 60 }
+            }
+        }
+
+        item = {
+            value = nfm_child_exam_auto_70
+            localization = nfm_child_exam_auto_70
+            icon = "gfx/interface/icons/character_interactions/tgp_send_to_childrens_examination_interaction.dds"
+            ai_chance = { value = 0 }
+            is_valid = {
+                NOT = { var:nfm_child_exam_automation_threshold ?= 70 }
+            }
+        }
+
+        item = {
+            value = nfm_child_exam_auto_80
+            localization = nfm_child_exam_auto_80
+            icon = "gfx/interface/icons/character_interactions/tgp_send_to_childrens_examination_interaction.dds"
+            ai_chance = { value = 0 }
+            is_valid = {
+                NOT = { var:nfm_child_exam_automation_threshold ?= 80 }
+            }
+        }
+    }
+
+    effect = {
+        hidden_effect = { nfm_effect_clear_child_exam_automation = yes }
+
+        # 25%
+        if = {
+            limit = { scope:nfm_child_exam_auto_25 ?= yes }
+            set_variable = { name = nfm_child_exam_automation_threshold value = 25 }
+            custom_tooltip = nfm_child_exam_automation_set_25_tt
+        }
+        # 50%
+        else_if = {
+            limit = { scope:nfm_child_exam_auto_50 ?= yes }
+            set_variable = { name = nfm_child_exam_automation_threshold value = 50 }
+            custom_tooltip = nfm_child_exam_automation_set_50_tt
+        }
+        # 60%
+        else_if = {
+            limit = { scope:nfm_child_exam_auto_60 ?= yes }
+            set_variable = { name = nfm_child_exam_automation_threshold value = 60 }
+            custom_tooltip = nfm_child_exam_automation_set_60_tt
+        }
+        # 70%
+        else_if = {
+            limit = { scope:nfm_child_exam_auto_70 ?= yes }
+            set_variable = { name = nfm_child_exam_automation_threshold value = 70 }
+            custom_tooltip = nfm_child_exam_automation_set_70_tt
+        }
+        # 80%
+        else_if = {
+            limit = { scope:nfm_child_exam_auto_80 ?= yes }
+            set_variable = { name = nfm_child_exam_automation_threshold value = 80 }
+            custom_tooltip = nfm_child_exam_automation_set_80_tt
+        }
+        # Vanilla
+        else = {
+            custom_tooltip = nfm_child_exam_automation_set_none_tt
+        }
+    }
+
+    ai_check_interval = 0
+}

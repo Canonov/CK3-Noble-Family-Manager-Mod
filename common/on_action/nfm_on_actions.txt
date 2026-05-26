@@ -16,3 +16,30 @@ nfm_on_government_change = {
         }
     }
 }
+
+## 15th Birthday
+on_15th_birthday = {
+    on_actions = { nfm_on_15th_birthday_child_exam_automation }
+}
+
+# Last valid birthday for the vanilla Children's Examination interaction (it requires age < 16).
+nfm_on_15th_birthday_child_exam_automation = {
+    trigger = {
+        age = 15
+    }
+
+    effect = {
+        every_player = {
+            limit = {
+                nfm_trigger_has_child_exam_automation = yes
+                is_character_interaction_valid = {
+                    recipient = root
+                    interaction = send_child_to_examination_interaction
+                }
+            }
+            nfm_effect_run_child_exam_automation = {
+                CANDIDATE = root
+            }
+        }
+    }
+}

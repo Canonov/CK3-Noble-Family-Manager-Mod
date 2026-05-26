@@ -1,0 +1,34 @@
+action_can_send_to_childrens_examination = {
+	priority = 300
+	combine_into_one = yes
+	
+	check_create_action = {
+		# only for close family members for now, might get too much for big families
+
+		every_close_family_member = {
+			limit = {
+				root = {
+					is_character_interaction_valid = {
+						recipient = prev
+						interaction = send_child_to_examination_interaction
+					}
+				}
+			}
+			try_create_important_action = {
+				important_action_type = action_can_send_to_childrens_examination
+				actor = root
+				recipient = this
+				secondary_recipient = this
+			}
+		}
+	}
+
+	effect = {
+		open_interaction_window = {
+			interaction = send_child_to_examination_interaction
+			actor = scope:actor
+			recipient = scope:recipient
+			secondary_recipient = scope:secondary_recipient
+		}
+	}
+}

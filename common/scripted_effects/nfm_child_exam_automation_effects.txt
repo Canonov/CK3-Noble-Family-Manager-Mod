@@ -1,0 +1,25 @@
+﻿nfm_effect_clear_child_exam_automation = {
+    if = {
+        limit = { exists = var:nfm_child_exam_automation_threshold }
+        remove_variable = nfm_child_exam_automation_threshold
+    }
+}
+
+nfm_effect_run_child_exam_automation = {
+    $CANDIDATE$ = { save_scope_as = candidate }
+
+    if = {
+        limit = {
+            exists = scope:candidate
+            exists = var:nfm_child_exam_automation_threshold
+            nfm_value_child_exam_pass_chance >= var:nfm_child_exam_automation_threshold
+        }
+        run_interaction = {
+            interaction = send_child_to_examination_interaction
+            actor = this
+            recipient = scope:candidate
+            secondary_recipient = scope:candidate
+            execute_threshold = accept
+        }
+    }
+}

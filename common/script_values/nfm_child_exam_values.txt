@@ -1,0 +1,53 @@
+﻿# Approximation of the percentage chances since they're a duel normally
+
+nfm_value_child_exam_success_weight = {
+    value = 40
+
+    add = {
+        value = scope:candidate.learning
+        subtract = medium_skill_rating
+        multiply = 3.5
+        min = -49
+    }
+
+    if = {
+        limit = { employs_court_position = court_tutor_court_position }
+        add = 20
+    }
+
+    if = {
+        limit = {
+            scope:candidate.house ?= {
+                has_house_aspiration_parameter = examination_success_bonus
+            }
+        }
+        add = 10
+    }
+
+    if = {
+        limit = { scope:candidate.learning >= 10 }
+        add = scope:candidate.learning
+    }
+
+    min = 5
+}
+
+nfm_value_child_exam_failure_weight = {
+    value = 60
+
+    add = {
+        value = scope:candidate.learning
+        subtract = medium_skill_rating
+        multiply = -0.5
+    }
+}
+
+nfm_value_child_exam_pass_chance = {
+    value = nfm_value_child_exam_success_weight
+    divide = {
+        value = nfm_value_child_exam_success_weight
+        add = nfm_value_child_exam_failure_weight
+        min = 1
+    }
+    multiply = 100
+}

@@ -82,3 +82,7 @@ nfm_trigger_has_authority_for_destruction_vanilla = {
         # Just let them do it
     }
 }
+
+nfm_trigger_has_child_exam_automation = {
+    exists = var:nfm_child_exam_automation_threshold
+}

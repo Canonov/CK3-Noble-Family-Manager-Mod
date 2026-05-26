@@ -1,0 +1,12 @@
+namespace = nfm_events_debug
+
+nfm_events_debug.1 = {
+    type = character_event
+    hidden = yes
+    orphan = yes
+
+    immediate = {
+        nfm_silence_CK3_error_log_effect = { ERROR = nfm_origin_county }
+        nfm_silence_CK3_error_log_effect = { ERROR = AGOT_is_loaded }
+    }
+}

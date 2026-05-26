@@ -1,4 +1,4 @@
-﻿# Approximation of the percentage chances since they're a duel normally
+﻿# Approximation of send_child_to_examination_interaction's duel weights.
 
 nfm_value_child_exam_success_weight = {
     value = 40
@@ -11,7 +11,16 @@ nfm_value_child_exam_success_weight = {
     }
 
     if = {
-        limit = { employs_court_position = court_tutor_court_position }
+        limit = {
+            OR = {
+                scope:nfm_child_exam_actor ?= {
+                    employs_court_position = court_tutor_court_position
+                }
+                liege ?= {
+                    employs_court_position = court_tutor_court_position
+                }
+            }
+        }
         add = 20
     }
 

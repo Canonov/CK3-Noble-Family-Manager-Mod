@@ -1,4 +1,4 @@
-namespace = nfm_events_debug
+﻿namespace = nfm_events_debug
 
 nfm_events_debug.1 = {
     type = character_event

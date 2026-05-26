@@ -29,6 +29,13 @@ This ranges from the Steward's Governor XP gain, domain tax mult, and build cost
 
   Additionally there will be a lesser cooldown period if you have a low amount of families or have recently founded the administration.
 [/quote]
+[quote]
+  [H2]Children's Examination Automation[/H2]
+  Merit based governments can automate Children's Examination attempts for eligible extended family members on their 15th birthday.
+  
+  • You can choose to always send them, or require an estimated pass chance of 25%, 30%, 50%, 60%, or 70%. 
+  • The vanilla reminder is supressed while automation is active. If automation is enabled without a Court Tutor, NFM will show a Current Situation warning because the tutor improves exam chances.
+[/quote]
 
 [img]https://i.ibb.co/C5PQCVZv/interactions.png[/img]
 [quote]
@@ -53,9 +60,11 @@ This ranges from the Steward's Governor XP gain, domain tax mult, and build cost
 [img]https://i.ibb.co/sJgzLY8X/compat.png[/img]
 [quote]
   ✅ Works with existing saves
-  ✅ Only modifies one vanilla file (00_dynasty_decisions.txt)
   ✅ Safe to add/remove mid-game
   ✅ Reported as Achievement Compatible
+  ✅ Only modifies a few vanilla files 
+     - (00_dynasty_decisions.txt) for Cadet Branch Control
+     - (action_can_send_to_childrens_examination from common/important_actions/tgp_actions.txt) for Children's Exam Automation
   🟨 Partially AGOT Compatible (Mostly untested, but seems to work but leaves some localization errors in the error log)
 [/quote]
 

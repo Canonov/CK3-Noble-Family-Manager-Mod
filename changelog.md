@@ -1,5 +1,18 @@
 # Changelog
 
+## v1.6.0
+### Added
+- Added ***Children's Examination Automation*** decision for Meritocratic/Celestial government. Which can automatically send children to a children's examination at age 15, you're able to restrict it to estimated pass chance of 25%, 30%, 50%, 60%, or 70%.
+- Override the `action_can_send_to_childrens_examination` situation (Can send children to examination) warning to hide it when automation is on
+- Added a situation warning when exam automation is enabled but you do not have a Court Tutor, since the Court Tutor improves the expected exam chance.
+
+### Changed
+- Added extra ceremonial house protections
+
+### Other
+- I'm Planning to add the option to also send them at age 12 and then 15 if they fail, also considering adding other ways to affect the outcome but that would require overriding the base interaction.
+- Also changed the way I upload the mod, shaved 2mb off the download size
+
 ## v1.5.1 - 2026/05/11
 ### Changed
 - Non-Admin Rulers are now able to use the **Elevate a Noble Family** decision, it will be cheaper due to no admin house needing to be made.

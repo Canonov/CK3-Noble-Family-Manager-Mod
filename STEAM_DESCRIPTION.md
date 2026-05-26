@@ -66,6 +66,8 @@ This ranges from the Steward's Governor XP gain, domain tax mult, and build cost
      - (00_dynasty_decisions.txt) for Cadet Branch Control
      - (action_can_send_to_childrens_examination from common/important_actions/tgp_actions.txt) for Children's Exam Automation
   🟨 Partially AGOT Compatible (Mostly untested, but seems to work but leaves some localization errors in the error log)
+  [H3]Cadet Branch Priority Patch[/H3]
+  If another mod (for example, ChatGPT Flavor Pack) is overriding dynasty decisions after this one and breaking Cadet Branch Control, use the [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3733140489]Cadet Branch Priority Patch[/url].
 [/quote]
 
 [img]https://i.ibb.co/kVRf8wsQ/translation.png[/img]

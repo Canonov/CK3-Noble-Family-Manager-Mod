@@ -4,7 +4,7 @@ nfm_value_child_exam_success_weight = {
     value = 40
 
     add = {
-        value = scope:candidate.learning
+        value = learning
         subtract = medium_skill_rating
         multiply = 3.5
         min = -49
@@ -17,7 +17,7 @@ nfm_value_child_exam_success_weight = {
 
     if = {
         limit = {
-            scope:candidate.house ?= {
+            house ?= {
                 has_house_aspiration_parameter = examination_success_bonus
             }
         }
@@ -25,8 +25,8 @@ nfm_value_child_exam_success_weight = {
     }
 
     if = {
-        limit = { scope:candidate.learning >= 10 }
-        add = scope:candidate.learning
+        limit = { learning >= 10 }
+        add = learning
     }
 
     min = 5
@@ -36,7 +36,7 @@ nfm_value_child_exam_failure_weight = {
     value = 60
 
     add = {
-        value = scope:candidate.learning
+        value = learning
         subtract = medium_skill_rating
         multiply = -0.5
     }

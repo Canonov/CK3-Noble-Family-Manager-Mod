@@ -59,6 +59,8 @@
  nfm_child_exam_automation_set_60_tt: "[childrens_examination|E] automation requires at least #V 60%#! expected pass chance. The vanilla reminder is disabled."
  nfm_child_exam_automation_set_70_tt: "[childrens_examination|E] automation requires at least #V 70%#! expected pass chance. The vanilla reminder is disabled."
  nfm_child_exam_automation_set_80_tt: "[childrens_examination|E] automation requires at least #V 80%#! expected pass chance. The vanilla reminder is disabled."
+ nfm_debug_child_exam_pass_chances_header: "NFM child exam pass chances for [THIS.Char.GetShortUINameNoTooltip]"
+ nfm_debug_child_exam_pass_chance_entry: "[THIS.Char.GetNameNoTooltip]: success weight [THIS.ScriptValue('nfm_value_child_exam_success_weight')|0], failure weight [THIS.ScriptValue('nfm_value_child_exam_failure_weight')|0], pass chance [THIS.ScriptValue('nfm_value_child_exam_pass_chance')|1]%"
 
  ################################
  # MISC

@@ -10,9 +10,10 @@ nfm_effect_run_child_exam_automation = {
 
     if = {
         limit = {
-            exists = scope:candidate
             exists = var:nfm_child_exam_automation_threshold
-            nfm_value_child_exam_pass_chance >= var:nfm_child_exam_automation_threshold
+            scope:candidate ?= {
+                nfm_value_child_exam_pass_chance >= var:nfm_child_exam_automation_threshold
+            }
         }
         run_interaction = {
             interaction = send_child_to_examination_interaction
@@ -20,6 +21,30 @@ nfm_effect_run_child_exam_automation = {
             recipient = scope:candidate
             secondary_recipient = scope:candidate
             execute_threshold = accept
+        }
+    }
+}
+
+nfm_debug_effect_log_child_exam_pass_chances = {
+    save_scope_as = nfm_child_exam_debug_actor
+
+    debug_log = nfm_debug_child_exam_pass_chances_header
+
+    every_close_or_extended_family_member = {
+        save_scope_as = candidate
+
+        scope:nfm_child_exam_debug_actor = {
+            if = {
+                limit = {
+                    is_character_interaction_valid = {
+                        recipient = scope:candidate
+                        interaction = send_child_to_examination_interaction
+                    }
+                }
+                scope:candidate = {
+                    debug_log = nfm_debug_child_exam_pass_chance_entry
+                }
+            }
         }
     }
 }

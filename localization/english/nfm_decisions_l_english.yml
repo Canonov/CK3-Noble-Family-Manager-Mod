@@ -36,8 +36,8 @@
  ################################
 
  nfm_decision_child_exam_automation: "Children's Examination Automation"
- nfm_decision_child_exam_automation_desc: "Not every child of my [house|E] needs direct micromanagement.\n\nSet the minimum pass chance required before eligible [extended_family|E] members are sent to a @child_exam_icon![childrens_examination|E] automatically on their 15th birthday. Any automated setting disables the vanilla reminder."
- nfm_decision_child_exam_automation_tooltip: "Choose the minimum expected pass chance required for automatic [childrens_examination|E] attempts on their 15th birthday."
+ nfm_decision_child_exam_automation_desc: "Not every child of my [house|E] needs direct micromanagement.\n\nSet the minimum pass chance required before eligible [extended_family|E] members are sent to a @child_exam_icon![childrens_examination|E] automatically on their 15th birthday. Any automated setting disables the vanilla reminder.\n\n#weak Because employing a [GetCourtPositionType( 'court_tutor_court_position' ).CalcTriggeredNameNoTooltip(GetPlayer.Self)] increases the success chance, you will be notified if automation is active without one.#!"
+ nfm_decision_child_exam_automation_tooltip: "Choose the minimum expected pass chance required for automatic [childrens_examination|E] attempts on their 15th birthday. A [GetCourtPositionType( 'court_tutor_court_position' ).CalcTriggeredNameNoTooltip(GetPlayer.Self)] improves the success chance."
  nfm_decision_child_exam_automation_confirm: "Set Automation"
 
  nfm_child_exam_auto_none: "Disable Automation"

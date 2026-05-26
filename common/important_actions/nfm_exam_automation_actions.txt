@@ -1,0 +1,22 @@
+﻿
+action_nfm_child_exam_automation_needs_court_tutor = {
+    priority = 650
+
+    check_create_action = {
+        if = {
+            limit = {
+                nfm_trigger_has_child_exam_automation = yes
+                can_employ_court_position_type = court_tutor_court_position
+                NOT = { employs_court_position = court_tutor_court_position }
+            }
+            try_create_important_action = {
+                important_action_type = action_nfm_child_exam_automation_needs_court_tutor
+                actor = root
+            }
+        }
+    }
+
+    effect = {
+        open_appoint_court_position_window = court_tutor_court_position
+    }
+}

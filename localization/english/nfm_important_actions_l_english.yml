@@ -1,0 +1,5 @@
+﻿l_english:
+ action_nfm_child_exam_automation_needs_court_tutor: "@child_exam_icon! Employ a [GetCourtPositionType('court_tutor_court_position').GetName()]"
+ action_nfm_child_exam_automation_needs_court_tutor_label: "@child_exam_icon! Child Examination automation has no $court_tutor_court_position$"
+ action_nfm_child_exam_automation_needs_court_tutor_desc: "Your [childrens_examination|E] automation is active, but you are not employing a [GetCourtPositionType('court_tutor_court_position').GetName()].\n\n#help $tutor_needed_for_exam_chances_tt$#!"
+ action_nfm_child_exam_automation_needs_court_tutor_click: "#I Click to appoint a [GetCourtPositionType('court_tutor_court_position').GetName()].#!"

@@ -92,7 +92,7 @@ create_cadet_branch_decision = {
                     count >= 3
                     is_alive = yes
                     house ?= root.house
-                OR = {
+                    OR = {
                         AND = {
                             is_male = yes
                             scope:actor = { faith_dominant_gender_male_or_equal = yes }
@@ -120,15 +120,15 @@ create_cadet_branch_decision = {
                     is_alive = yes
                     house ?= root.house
                     OR = {
-                            AND = {
-                                is_male = yes
-                                scope:actor = { faith_dominant_gender_male_or_equal = yes }
-                            }
-                            AND = {
-                                is_female = yes
-                                scope:actor = { faith_dominant_gender_female_or_equal = yes }
-                            }
+                        AND = {
+                            is_male = yes
+                            scope:actor = { faith_dominant_gender_male_or_equal = yes }
                         }
+                        AND = {
+                            is_female = yes
+                            scope:actor = { faith_dominant_gender_female_or_equal = yes }
+                        }
+                    }
                 }
             }
         }
@@ -140,7 +140,7 @@ create_cadet_branch_decision = {
                     count >= 1
                     is_alive = yes
                     house ?= root.house
-                OR = {
+                    OR = {
                         AND = {
                             is_male = yes
                             scope:actor = { faith_dominant_gender_male_or_equal = yes }

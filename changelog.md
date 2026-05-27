@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.6.1
+### Fixed
+- Fixed Cadet Branch Control child requirement checks using the wrong scope to check dominant faith gender
+- Fixed the Grant Cadet Branch interaction's dynasty head check to use the recipient's dynasty head properly
+- Fixed Grant Cadet Branch error log spam from previewing the full vanilla cadet branch creation effect.
+
 ## v1.6.0
 ### Added
 - Added ***Children's Examination Automation*** decision for Meritocratic/Celestial government. Which can automatically send children to a children's examination at age 15, you're able to restrict it to estimated pass chance of 25%, 30%, 50%, 60%, or 70%.

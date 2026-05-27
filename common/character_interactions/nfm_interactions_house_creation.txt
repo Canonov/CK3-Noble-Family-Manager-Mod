@@ -104,7 +104,7 @@ nfm_int_grant_cadet_branch = {
                 is_liege_or_above_of = scope:recipient
                 AND = {
                     scope:recipient.dynasty ?= dynasty
-                    scope:recipient.dynast ?= this
+                    scope:recipient.dynasty.dynast ?= this
                 }
                 AND = {
                     scope:recipient.house ?= house
@@ -154,9 +154,11 @@ nfm_int_grant_cadet_branch = {
     on_accept = {
         scope:recipient = {
             custom_tooltip = nfm_int_grant_cadet_branch_tt
-            found_cadet_house_decision_effect = {
-                CHARACTER = scope:recipient
-                PRESTIGE = major_prestige_gain
+            hidden_effect = {
+                found_cadet_house_decision_effect = {
+                    CHARACTER = scope:recipient
+                    PRESTIGE = major_prestige_gain
+                }
             }
         }
 
@@ -177,4 +179,3 @@ nfm_int_grant_cadet_branch = {
         }
     }
 }
-

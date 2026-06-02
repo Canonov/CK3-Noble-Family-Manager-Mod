@@ -1,5 +1,4 @@
 ﻿
-## nfm_trigger_is_dying_house
 # Checks if a house qualifies as "dying" for peaceful dissolution
 # All three conditions must be met:
 # 1. Few members (1-3 living)
@@ -44,10 +43,8 @@ nfm_trigger_is_dying_house = {
     }
 }
 
-## nfm_trigger_is_fertile_for_house
 # Checks if a character could potentially produce children for this house
 # Must have no hard blocks, positive fertility, and be of childbearing age
-#
 # Scope: character
 nfm_trigger_is_fertile_for_house = {
     # no hard blocks from traits like eunuch, celibate, etc.
@@ -69,9 +66,7 @@ nfm_trigger_is_fertile_for_house = {
     }
 }
 
-## nfm_trigger_can_produce_house_heirs
 # Checks if a character is in a position to produce children that would join this house
-#
 # Scope: character
 nfm_trigger_can_produce_house_heirs = {
     # Must be fertile first
@@ -81,38 +76,18 @@ nfm_trigger_can_produce_house_heirs = {
     is_married = yes
 
     OR = {
-        # Male-dominated faith: male in patrilineal (non-matrilineal) marriage = dominant
+        # Patrilineal marriage keeps children in the father's house.
         AND = {
             is_male = yes
-            faith = { has_doctrine = doctrine_gender_male_dominated }
+            faith_dominant_gender_male_or_equal = yes
             matrilinear_marriage = no
         }
 
-        # Female-dominated faith: female in matrilineal marriage = dominant
+        # Matrilineal marriage keeps children in the mother's house.
         AND = {
             is_female = yes
-            faith = { has_doctrine = doctrine_gender_female_dominated }
+            faith_dominant_gender_female_or_equal = yes
             matrilinear_marriage = yes
-        }
-
-        # Equal faith: either gender as head of household
-        AND = {
-            faith = {
-                NOR = {
-                    has_doctrine = doctrine_gender_male_dominated
-                    has_doctrine = doctrine_gender_female_dominated
-                }
-            }
-            OR = {
-                AND = {
-                    is_male = yes
-                    matrilinear_marriage = no
-                }
-                AND = {
-                    is_female = yes
-                    matrilinear_marriage = yes
-                }
-            }
         }
     }
 }

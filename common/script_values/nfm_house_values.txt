@@ -40,7 +40,205 @@ nfm_value_gethousetype = {
     }
 }
 
+nfm_court_position_house_head_salary = {
+    value = minor_court_position_salary
+}
 
+nfm_court_position_house_head_prestige_salary = {
+    value = minor_court_position_prestige_salary
+}
+
+nfm_court_position_house_head_steward_aptitude = {
+    value = 0
+    add = {
+        value = stewardship
+        multiply = 2.5
+        max = 50
+        desc = court_position_skill_stewardship
+    }
+    if = {
+        limit = { has_trait = administrator }
+        add = {
+            value = 15
+            desc = court_position_administrator_trait
+        }
+    }
+    if = {
+        limit = { has_trait = overseer }
+        add = {
+            value = 15
+            desc = court_position_overseer_trait
+        }
+    }
+    if = {
+        limit = { has_trait = organizer }
+        add = {
+            value = 15
+            desc = court_position_organizer_trait
+        }
+    }
+}
+
+nfm_court_position_house_head_martial_aptitude = {
+    value = 0
+    add = {
+        value = martial
+        multiply = 2.5
+        max = 50
+        desc = court_position_skill_martial
+    }
+    if = {
+        limit = { has_trait = strategist }
+        add = {
+            value = 15
+            desc = court_position_strategist_trait
+        }
+    }
+    if = {
+        limit = { has_trait = brave }
+        add = {
+            value = 15
+            desc = court_position_brave_trait
+        }
+    }
+    if = {
+        limit = { has_trait = overseer }
+        add = {
+            value = 10
+            desc = court_position_overseer_trait
+        }
+    }
+}
+
+nfm_court_position_house_head_learning_aptitude = {
+    value = 0
+    add = {
+        value = learning
+        multiply = 2.5
+        max = 50
+        desc = court_position_skill_learning
+    }
+    if = {
+        limit = { has_trait = scholar }
+        add = {
+            value = 15
+            desc = court_position_scholar_trait
+        }
+    }
+    if = {
+        limit = { has_trait = theologian }
+        add = {
+            value = 15
+            desc = court_position_theologian_trait
+        }
+    }
+    if = {
+        limit = { has_trait = shrewd }
+        add = {
+            value = 10
+            desc = court_position_shrewd_trait
+        }
+    }
+}
+
+nfm_court_position_house_head_intrigue_aptitude = {
+    value = 0
+    add = {
+        value = intrigue
+        multiply = 2.5
+        max = 50
+        desc = court_position_skill_intrigue
+    }
+    if = {
+        limit = { has_trait = schemer }
+        add = {
+            value = 15
+            desc = court_position_schemer_trait
+        }
+    }
+    if = {
+        limit = { has_trait = deceitful }
+        add = {
+            value = 15
+            desc = court_position_deceitful_trait
+        }
+    }
+    if = {
+        limit = { has_trait = torturer }
+        add = {
+            value = 10
+            desc = court_position_torturer_trait
+        }
+    }
+}
+
+nfm_court_position_house_head_diplomatic_aptitude = {
+    value = 0
+    add = {
+        value = diplomacy
+        multiply = 2.5
+        max = 50
+        desc = court_position_skill_diplomacy
+    }
+    if = {
+        limit = { has_trait = diplomat }
+        add = {
+            value = 15
+            desc = court_position_diplomat_trait
+        }
+    }
+    if = {
+        limit = { has_trait = gregarious }
+        add = {
+            value = 15
+            desc = court_position_gregarious_trait
+        }
+    }
+    if = {
+        limit = { has_trait = just }
+        add = {
+            value = 10
+            desc = court_position_just_trait
+        }
+    }
+}
+
+nfm_court_position_house_head_foreign_aptitude = {
+    value = 0
+    add = {
+        value = diplomacy
+        multiply = 1.5
+        max = 30
+        desc = court_position_skill_diplomacy
+    }
+    add = {
+        value = learning
+        multiply = 1.5
+        max = 30
+        desc = court_position_skill_learning
+    }
+    if = {
+        limit = { has_trait = diplomat }
+        add = {
+            value = 15
+            desc = court_position_diplomat_trait
+        }
+    }
+    if = {
+        limit = { has_trait = shrewd }
+        add = {
+            value = 10
+            desc = court_position_shrewd_trait
+        }
+    }
+    if = {
+        limit = { has_trait = gregarious }
+        add = {
+            value = 10
+            desc = court_position_gregarious_trait
+        }
+    }
+}
 
 
 nfm_familysize_small = 1

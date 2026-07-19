@@ -1,0 +1,136 @@
+﻿# House Specialist Tasks
+
+nfm_court_position_house_head_steward_learning_task = {
+    court_position_types = { nfm_court_position_house_head }
+
+    court_position_asset = {
+        trigger = {
+            has_tgp_dlc_trigger = yes
+            culture_has_asian_heritage_pillar_trigger = yes
+        }
+        animation = holding_scrolls
+        background = "gfx/interface/illustrations/event_scenes/tgp_study_asia.dds"
+    }
+
+    court_position_asset = {
+        animation = page_flipping
+        background = "gfx/interface/illustrations/event_scenes/study.dds"
+    }
+
+    is_valid_showing_failures_only = {
+        custom_tooltip = {
+            text = nfm_court_position_house_head_steward_learning_task_requirement
+            house ?= {
+                OR = {
+                    nfm_trigger_house_is_steward = yes
+                    nfm_trigger_house_is_learning = yes
+                }
+            }
+        }
+    }
+}
+
+nfm_court_position_house_head_martial_task = {
+    court_position_types = { nfm_court_position_house_head }
+
+    court_position_asset = {
+        animation = marshal_axe
+        background = "gfx/interface/illustrations/event_scenes/courtyard.dds"
+    }
+
+    is_valid_showing_failures_only = {
+        house ?= { nfm_trigger_house_is_martial = yes }
+    }
+}
+
+nfm_court_position_house_head_intrigue_task = {
+    court_position_types = { nfm_court_position_house_head }
+
+    court_position_asset = {
+        trigger = {
+            has_tgp_dlc_trigger = yes
+            culture_has_asian_heritage_pillar_trigger = yes
+        }
+        animation = menacing
+        background = "gfx/interface/illustrations/event_scenes/tgp_chinese_corridor_day.dds"
+    }
+
+    court_position_asset = {
+        animation = menacing
+        background = "gfx/interface/illustrations/event_scenes/corridor.dds"
+    }
+
+    is_valid_showing_failures_only = {
+        house ?= { nfm_trigger_house_is_intrigue = yes }
+    }
+}
+
+nfm_court_position_house_head_diplomatic_foreign_task = {
+    court_position_types = { nfm_court_position_house_head }
+
+    court_position_asset = {
+        animation = chancellor
+        background = "gfx/interface/illustrations/event_scenes/courtyard.dds"
+    }
+
+    is_valid_showing_failures_only = {
+        custom_tooltip = {
+            text = nfm_court_position_house_head_diplomatic_foreign_task_requirement
+            house ?= {
+                OR = {
+                    nfm_trigger_house_is_diplomatic = yes
+                    nfm_trigger_house_is_foreign = yes
+                }
+            }
+        }
+    }
+
+    employee_modifier = {
+        minority_opinion = 10
+        different_faith_county_opinion_mult = -0.25
+        county_opinion_add = 10
+    }
+
+    scaling_employer_modifiers = {
+        terrible = {
+            minority_opinion = 2
+            different_faith_county_opinion_mult = -0.05
+            county_opinion_add = 5
+        }
+        poor = {
+            minority_opinion = 3
+            different_faith_county_opinion_mult = -0.10
+            county_opinion_add = 5
+        }
+        average = {
+            minority_opinion = 5
+            different_faith_county_opinion_mult = -0.15
+            county_opinion_add = 10
+        }
+        good = {
+            minority_opinion = 5
+            different_faith_county_opinion_mult = -0.15
+            county_opinion_add = 10
+        }
+        excellent = {
+            minority_opinion = 6
+            different_faith_county_opinion_mult = -0.20
+            county_opinion_add = 15
+        }
+    }
+
+    # Effect run once per year on the court position with this task
+    # Root: employee character
+    #  scope:liege - Employer character
+    on_yearly = {
+        if = {
+            limit = { house ?= { nfm_trigger_house_is_diplomatic = yes } }
+            nfm_effect_court_task_diplomatic_on_yearly = yes
+        }
+        if = {
+            limit = { house ?= { nfm_trigger_house_is_foreign = yes } }
+            nfm_effect_court_task_foreign_on_yearly = yes
+        }
+    }
+
+}

@@ -1,0 +1,18 @@
+﻿l_english:
+ nfm_court_position_house_head: "House Specialist"
+ nfm_court_position_house_head_desc: "TBD"
+ nfm_court_position_house_head_effect: "$EFFECT_LIST_BULLET$The [GetCourtPositionType('nfm_court_position_house_head').GetNameNoTooltip()] can be assigned to [court_position_tasks|E] depending on their [nfm_house_type|E]"
+ 
+ nfm_court_position_house_head_steward_learning_task: "Oversee Estates"
+ nfm_court_position_house_head_steward_learning_task_desc: "TBD"
+ nfm_court_position_house_head_steward_learning_task_requirement: "House is not a [nfm_steward_house|E] or [nfm_learning_house|E]"
+
+ nfm_court_position_house_head_martial_task: "Organize Retinues"
+ nfm_court_position_house_head_martial_task_desc: "TBD"
+
+ nfm_court_position_house_head_intrigue_task: "Manage Informants"
+ nfm_court_position_house_head_intrigue_task_desc: "TBD"
+
+ nfm_court_position_house_head_diplomatic_foreign_task: "Manage Relations"
+ nfm_court_position_house_head_diplomatic_foreign_task_desc: "TBD"
+ nfm_court_position_house_head_diplomatic_foreign_task_requirement: "House is not a [nfm_diplomatic_house|E] or [nfm_foreign_house|E]"

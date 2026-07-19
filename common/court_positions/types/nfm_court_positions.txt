@@ -1,0 +1,153 @@
+﻿# House Representative (flavor names for each house type)
+nfm_court_position_house_head = {
+
+    court_position_asset = {
+        animation = throne_room_one_handed_passive_3
+        background = "gfx/interface/illustrations/event_scenes/councilchamber.dds"
+    }
+
+    max_available_positions = 2
+
+    minimum_rank = kingdom
+
+    #skill = diplomacy/martial/etc
+
+    opinion = {
+        value = 5
+        #scope:liege = { ... }
+        #scope:employee = { ... }
+    }
+
+    ### Brief: aptitude_level_breakpoints ( int32 array )
+    # Breakpoints to increase aptitude level by 1.
+    # 	Defaults to this if not set, as defined by
+    #	DEFAULT_APTITUDE_LEVEL_BREAKPOINTS
+    aptitude_level_breakpoints = { 10 20 40 60 }
+
+    aptitude = {
+        value = 1
+
+        switch = {
+            trigger = house.var:nfm_housetype
+
+            nfm_housetype_steward = { add = nfm_court_position_house_head_steward_aptitude }
+            nfm_housetype_martial = { add = nfm_court_position_house_head_martial_aptitude }
+            nfm_housetype_learning = { add = nfm_court_position_house_head_learning_aptitude }
+            nfm_housetype_intrigue = { add = nfm_court_position_house_head_intrigue_aptitude }
+            nfm_housetype_diplomatic = { add = nfm_court_position_house_head_diplomatic_aptitude }
+            nfm_housetype_foreign = { add = nfm_court_position_house_head_foreign_aptitude }
+
+            fallback = { add = 10 }
+        }
+        
+        if = {
+            limit = { house.house_head ?= this }
+            add = 10
+        }
+
+        add = general_aptitude_bonus
+    }
+
+    # Supported scopes:
+    # root ( Character ) Liege being evaluated.
+    valid_position = {
+        highest_held_title_tier >= tier_kingdom
+        is_ai = no
+    }
+
+    ### Brief: is_shown_character ( trigger )
+    # Is this character even shown for the position?
+    is_shown_character = {
+        scope:employee = {
+            court_position_employee_shown_trigger = yes
+            is_lowborn = no
+            house ?= { nfm_trigger_house_has_nfm_type = yes }
+        }
+    }
+
+    ### Brief: valid_character ( trigger )
+    # Is this a valid character for a position? Also checks the scripted rule
+    # "is_eligible_for_court_positions" in code.
+    #
+    # Supported scopes:
+    # 		scope:liege (Character)
+    #			Liege of the position
+    #		scope:employee (Character)
+    #			Courtier being considered for or holding the position
+    valid_character = {
+        scope:employee = {
+            liege = scope:liege # To ensure invalidation if they leave court
+            house ?= { nfm_trigger_house_has_nfm_type = yes }
+        }
+    }
+
+    revoke_cost = {
+        prestige = {
+            value = major_court_position_prestige_revoke_cost
+        }
+    }
+
+    salary = {
+        gold = {
+            value = 0
+            if = {
+                limit = {
+                    scope:liege = {
+                        has_treasury = no
+                    }
+                }
+                add = nfm_court_position_house_head_salary
+            }
+        }
+        treasury = {
+            value = 0
+            if = {
+                limit = {
+                    scope:liege = {
+                        has_treasury = yes
+                    }
+                }
+                add = nfm_court_position_house_head_salary
+            }
+        }
+        prestige = {
+            value = nfm_court_position_house_head_prestige_salary
+        }
+        round = no
+    }
+
+    received_salary = {
+        gold = {
+            value = nfm_court_position_house_head_salary
+        }
+        prestige = {
+            value = nfm_court_position_house_head_prestige_salary
+        }
+        round = no
+    }
+
+    ### Brief: custom_employer_modifier_description
+    # Additional, verbose description of position's effect on the employer.
+    #
+    # Example:
+    #		"Court Physician will preform medical proceedures for you."
+    custom_employer_modifier_description = nfm_court_position_house_head_effect
+
+    ### Brief: modifier
+    # Modifiers gained by the holder of the court position.
+	modifier = {
+        fellow_vassal_opinion = 5
+		monthly_lifestyle_xp_gain_mult = 0.2
+	}
+
+    ai_position_score = { value = -999 }
+
+    ### Brief: sort_order (optional scripted value int32)
+    # Scripted value to determine the order in which Court Positions appear in the UI.
+    # Note: Higher value means higher priority and will be displayed earlier in the list.
+    # Defaults to definition order.
+    sort_order = {
+        value = 141
+    }
+    
+}

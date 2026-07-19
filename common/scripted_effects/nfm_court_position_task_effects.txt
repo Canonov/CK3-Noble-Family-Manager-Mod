@@ -1,0 +1,13 @@
+﻿
+
+
+# Effect run once per year on the court position with this task
+# Root: employee character
+#  scope:liege - Employer character
+nfm_effect_court_task_diplomatic_on_yearly = {
+
+}
+
+nfm_effect_court_task_foreign_on_yearly = {
+
+}

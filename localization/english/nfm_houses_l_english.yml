@@ -52,7 +52,7 @@
 
  ## Generalist House Concept ##
  game_concept_nfm_generalist_house: "Generalist Family"
- game_concept_nfm_generalist_house_desc: "A broad household drawn from many walks of life, favoring numbers and varied talents over a single specialty.\n\n#weak-This family is guaranteed to be Medium or Large.\n \n- They will gain no gameplay bonuses.#!"
+ game_concept_nfm_generalist_house_desc: "A broad household drawn from many walks of life, favoring numbers and varied talents over a single specialty.\n\n#weak - This family is guaranteed to be Medium or Large.\n- They will gain no gameplay bonuses.#!"
 
  ################################
  # NOBLE HOUSE TYPES

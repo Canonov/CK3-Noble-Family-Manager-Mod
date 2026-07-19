@@ -1,0 +1,154 @@
+﻿nfm_character_parent_generalist = {
+    random_traits_list = {
+        education_diplomacy_1 = { weight = { base = 35 } }
+        education_diplomacy_2 = { weight = { base = 35 } }
+        education_diplomacy_3 = { weight = { base = 20 } }
+        education_diplomacy_4 = { weight = { base = 10 } }
+        education_martial_1 = { weight = { base = 35 } }
+        education_martial_2 = { weight = { base = 35 } }
+        education_martial_3 = { weight = { base = 20 } }
+        education_martial_4 = { weight = { base = 10 } }
+        education_stewardship_1 = { weight = { base = 35 } }
+        education_stewardship_2 = { weight = { base = 35 } }
+        education_stewardship_3 = { weight = { base = 20 } }
+        education_stewardship_4 = { weight = { base = 10 } }
+        education_intrigue_1 = { weight = { base = 35 } }
+        education_intrigue_2 = { weight = { base = 35 } }
+        education_intrigue_3 = { weight = { base = 20 } }
+        education_intrigue_4 = { weight = { base = 10 } }
+        education_learning_1 = { weight = { base = 35 } }
+        education_learning_2 = { weight = { base = 35 } }
+        education_learning_3 = { weight = { base = 20 } }
+        education_learning_4 = { weight = { base = 10 } }
+    }
+
+    random_traits = yes
+
+    culture = scope:family_culture
+    faith = scope:family_faith
+
+    gender_female_chance = new_employer_faith_dominant_gender_adjusted_female_chance
+
+    after_creation = {
+        random_list = {
+            200 = { }
+            25 = { change_current_weight = -25 }
+            25 = { change_current_weight = -75 }
+            25 = { change_current_weight = 25 }
+            25 = { change_current_weight = 75 }
+            5 = { change_current_weight = 100 }
+        }
+        set_interesting_traits_and_modifiers_effect = yes
+    }
+}
+
+nfm_character_familyhead_generalist = {
+    age = { 34 45 }
+    random_traits_list = {
+        education_diplomacy_3 = { weight = { base = 60 } }
+        education_diplomacy_4 = { weight = { base = 40 } }
+        education_martial_3 = { weight = { base = 60 } }
+        education_martial_4 = { weight = { base = 40 } }
+        education_stewardship_3 = { weight = { base = 60 } }
+        education_stewardship_4 = { weight = { base = 40 } }
+        education_intrigue_3 = { weight = { base = 60 } }
+        education_intrigue_4 = { weight = { base = 40 } }
+        education_learning_3 = { weight = { base = 60 } }
+        education_learning_4 = { weight = { base = 40 } }
+    }
+
+    random_traits = yes
+
+    culture = scope:family_culture
+    faith = scope:family_faith
+
+    gender_female_chance = new_employer_faith_dominant_gender_adjusted_female_chance
+
+    after_creation = {
+        random_list = {
+            200 = { }
+            25 = { change_current_weight = -25 }
+            25 = { change_current_weight = -75 }
+            25 = { change_current_weight = 25 }
+            25 = { change_current_weight = 75 }
+            5 = { change_current_weight = 100 }
+        }
+        set_interesting_traits_and_modifiers_effect = yes
+    }
+}
+
+nfm_character_sibling_generalist = {
+    age = { 25 40 }
+    random_traits_list = {
+        education_diplomacy_1 = { weight = { base = 15 } }
+        education_diplomacy_2 = { weight = { base = 45 } }
+        education_diplomacy_3 = { weight = { base = 35 } }
+        education_diplomacy_4 = { weight = { base = 5 } }
+        education_martial_1 = { weight = { base = 15 } }
+        education_martial_2 = { weight = { base = 45 } }
+        education_martial_3 = { weight = { base = 35 } }
+        education_martial_4 = { weight = { base = 5 } }
+        education_stewardship_1 = { weight = { base = 15 } }
+        education_stewardship_2 = { weight = { base = 45 } }
+        education_stewardship_3 = { weight = { base = 35 } }
+        education_stewardship_4 = { weight = { base = 5 } }
+        education_intrigue_1 = { weight = { base = 15 } }
+        education_intrigue_2 = { weight = { base = 45 } }
+        education_intrigue_3 = { weight = { base = 35 } }
+        education_intrigue_4 = { weight = { base = 5 } }
+        education_learning_1 = { weight = { base = 15 } }
+        education_learning_2 = { weight = { base = 45 } }
+        education_learning_3 = { weight = { base = 35 } }
+        education_learning_4 = { weight = { base = 5 } }
+    }
+
+    random_traits = yes
+
+    culture = scope:family_culture
+    faith = scope:family_faith
+
+    gender_female_chance = new_employer_faith_dominant_gender_adjusted_female_chance
+
+    after_creation = {
+        random_list = {
+            200 = { }
+            25 = { change_current_weight = -25 }
+            25 = { change_current_weight = -75 }
+            25 = { change_current_weight = 25 }
+            25 = { change_current_weight = 75 }
+            5 = { change_current_weight = 100 }
+        }
+        set_interesting_traits_and_modifiers_effect = yes
+    }
+}
+
+nfm_character_child_generalist = {
+    age = { 1 15 }
+    random_traits_list = {
+        count = 1
+        charming = { weight = { base = 20 } }
+        curious = { weight = { base = 20 } }
+        pensive = { weight = { base = 20 } }
+        rowdy = { weight = { base = 20 } }
+        bossy = { weight = { base = 20 } }
+    }
+
+    random_traits = yes
+
+    culture = scope:family_culture
+    faith = scope:family_faith
+
+    gender_female_chance = new_employer_faith_dominant_gender_adjusted_female_chance
+
+    after_creation = {
+        random_list = {
+            200 = { }
+            25 = { change_current_weight = -25 }
+            25 = { change_current_weight = -75 }
+            25 = { change_current_weight = 25 }
+            25 = { change_current_weight = 75 }
+            5 = { change_current_weight = 100 }
+        }
+        set_interesting_traits_and_modifiers_effect = yes
+    }
+}

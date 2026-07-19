@@ -8,12 +8,22 @@
  game_concept_nfm_house_types: "Noble House Types"
  game_concept_nfm_house_type: "House Type"
  game_concept_nfm_house_types_desc: "Each [noble_family|E] belongs to one of six types, reflecting their area of expertise.\n\nEvery type comes with an associated [modifier|E].\n#weak (For example the [GetStaticModifier('nfm_modifier_housetype_steward').GetNameWithTooltip] modifier of the $game_concept_nfm_steward_house$)#! \n\n#S Available House Types:#!\n$EFFECT_LIST_BULLET$[nfm_steward_house|E]\n$EFFECT_LIST_BULLET$[nfm_martial_house|E]\n$EFFECT_LIST_BULLET$[nfm_learning_house|E]\n$EFFECT_LIST_BULLET$[nfm_intrigue_house|E]\n$EFFECT_LIST_BULLET$[nfm_diplomatic_house|E]\n$EFFECT_LIST_BULLET$[nfm_foreign_house|E]"
+ game_concept_nfm_house_types_desc: "Each [noble_family|E] belongs to one of seven types, reflecting their area of expertise or family composition.\n\nEvery type comes with an associated [modifier|E]. The [nfm_generalist_house|E] modifier is purely an identifier and provides no gameplay bonuses.\n#weak (For example the [GetStaticModifier('nfm_modifier_housetype_steward').GetNameWithTooltip] modifier of the $game_concept_nfm_steward_house$)#! \n\nIn addition, members of the [house|E] will be able to be appointed to the [GetCourtPositionType('nfm_court_position_house_head').GetName()] [court_position|E]\n\n#S Available House Types:#!\n$EFFECT_LIST_BULLET$[nfm_steward_house|E]\n$EFFECT_LIST_BULLET$[nfm_martial_house|E]\n$EFFECT_LIST_BULLET$[nfm_learning_house|E]\n$EFFECT_LIST_BULLET$[nfm_intrigue_house|E]\n$EFFECT_LIST_BULLET$[nfm_diplomatic_house|E]\n$EFFECT_LIST_BULLET$[nfm_foreign_house|E]\n$EFFECT_LIST_BULLET$[nfm_generalist_house|E]"
 
  ## Family Sizes Concept ##
  game_concept_nfm_family_sizes: "Family Sizes"
  game_concept_nfm_family_size: "Family Size"
- game_concept_nfm_family_sizes_desc: "When elevating a new [noble_family|E], they will arrive in one of three $game_concept_nfm_family_sizes$:\n\n#bold Small Family (20% chance):#! Only the head and their children arrive.\n\n#bold Medium Family (60% chance):#! The head, aging parents, siblings, and children — about a dozen family members.\n\n#bold Large Family (20% chance):#! An extended clan including parents, siblings, children, and cousins.\n\nLarger families provide more potential [councillors|E], [governors|E], and [knights|E]."
+ game_concept_nfm_family_sizes_desc: "When elevating a new [noble_family|E], they will arrive in one of three $game_concept_nfm_family_sizes$:\n\n#bold Small Family (20% chance):#! Only the head and their children arrive.\n\n#bold Medium Family (60% chance):#! The head, aging parents, siblings, and children — about a dozen family members.\n\n#bold Large Family (20% chance):#! An extended clan including parents, siblings, children, and cousins.\n\nA [nfm_generalist_house|E] instead has a #bold 50%#! chance of being Medium and a #bold 50%#! chance of being Large.\n\nLarger families provide more potential [councillors|E], [governors|E], and [knights|E]."
 
+ ## HOUSE TYPE CONCEPTS
+ nfm_loc_concept_steward: "[nfm_steward_house|E]"
+ nfm_loc_concept_martial: "[nfm_martial_house|E]"
+ nfm_loc_concept_learning: "[nfm_learning_house|E]"
+ nfm_loc_concept_intrigue: "[nfm_intrigue_house|E]"
+ nfm_loc_concept_diplomatic: "[nfm_diplomatic_house|E]"
+ nfm_loc_concept_foreign: "[nfm_foreign_house|E]"
+ nfm_loc_concept_generalist: "[nfm_generalist_house|E]"
+ 
  ################################
  # HOUSE TYPE CONCEPTS
  ################################
@@ -41,6 +51,10 @@
  ## Foreign House Concept ##
  game_concept_nfm_foreign_house: "Foreign House"
  game_concept_nfm_foreign_house_desc: "A family from the fringes of the [realm|E], bringing unique talents.\n\nMembers bring various [educations|E] and will be content under a [liege|E] of differing culture.\n#weak \n- They will gain the $nfm_modifier_housetype_foreign_tt$ [modifier|E].#!"
+
+ ## Generalist House Concept ##
+ game_concept_nfm_generalist_house: "Generalist Family"
+ game_concept_nfm_generalist_house_desc: "A broad household drawn from many walks of life, favoring numbers and varied talents over a single specialty.\n\n#weak-This family is guaranteed to be Medium or Large.\n \n- They will gain no gameplay bonuses.#!"
 
  ################################
  # NOBLE HOUSE TYPES
@@ -91,6 +105,12 @@
  nfm_house_foreign_tooltip: "#T $game_concept_nfm_foreign_house$#!\n$game_concept_nfm_foreign_house_desc$"
  nfm_house_foreign_diff_culture_tooltip: "#weak $nfm_house_foreign_name$:#! The house will be chosen from one of your [realm|E] [counties|E] of a different [culture|E], if their [faith|E] is [faith_astray|E] or [faith_righteous|E] they will be allowed to keep their [faith|E]."
 
+ ## [7] Generalist Houses ##
+
+ nfm_house_generalist_name: "Generalist Family"
+ nfm_house_generalist_desc: "A large and varied household without a single professional specialty. They provide more potential servants of the realm, but receive no house-type gameplay bonuses."
+ nfm_house_generalist_tooltip: "#T $game_concept_nfm_generalist_house$#!\n$game_concept_nfm_generalist_house_desc$"
+
 
  ################################
  # EVENT DESCRIPTIONS
@@ -102,6 +122,7 @@
  nfm_house_intrigue_event_desc: "Little is known of the [ROOT.Char.GetDynastyHouseName] publicly, which is perhaps their greatest asset. They have served in the shadows, their loyalty proven through discretion and results."
  nfm_house_diplomatic_event_desc: "The [ROOT.Char.GetDynastyHouseName] are masters of negotiation and statecraft. [ROOT.Char.GetFirstName] speaks with the eloquence of a seasoned diplomat."
  nfm_house_foreign_event_desc: "The [ROOT.Char.GetDynastyHouseName] hail from the [ROOT.Char.MakeScope.Var('nfm_origin_county').Title.GetName], bringing their [ROOT.Char.GetCulture.GetCollectiveNoun] customs and [ROOT.Char.GetFaith.GetName] faith. Outsiders, perhaps, but their talents speak for themselves."
+ nfm_house_generalist_event_desc: "The [ROOT.Char.GetDynastyHouseName] arrive as a broad and varied household. Their members claim no single specialty, but their numbers promise many hands ready to serve the realm."
  ## Family Size Descriptions ##
  nfm_familysize_small_event_desc: "[ROOT.Char.GetFirstName] stands with only [ROOT.Char.GetHerHis] children at [ROOT.Char.GetHerHis] side. A small household, but sometimes the mightiest oaks grow from a single acorn."
  nfm_familysize_medium_event_desc: "Behind [ROOT.Char.GetFirstName] stand [ROOT.Char.GetHerHis] aging parents, siblings, and a gaggle of children. A respectable household of perhaps a dozen souls."

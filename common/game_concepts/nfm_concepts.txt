@@ -45,3 +45,8 @@ nfm_foreign_house = {
     texture = "gfx/interface/icons/message_feed/culture.dds"
     parent = nfm_house_type
 }
+
+nfm_generalist_house = {
+    texture = "gfx/interface/icons/message_feed/dynasty.dds"
+    parent = nfm_house_type
+}

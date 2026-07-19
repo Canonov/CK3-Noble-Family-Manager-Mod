@@ -19,7 +19,11 @@ nfm_cb_int_ban_house = {
 
     is_shown = {
         exists = scope:recipient.house
-        scope:actor.dynasty = scope:recipient.dynasty
+        OR = {
+            scope:actor.dynasty = scope:recipient.dynasty
+            scope:recipient.liege = scope:actor
+            scope:recipient.top_liege = scope:actor
+        }
 
         scope:recipient.house = {
             NOT = { has_house_modifier = nfm_cb_modifier_forbidcadetbranches_house }
@@ -54,7 +58,11 @@ nfm_cb_int_unban_house = {
 
     is_shown = {
         exists = scope:recipient.house
-        scope:actor.dynasty = scope:recipient.dynasty
+        OR = {
+            scope:actor.dynasty = scope:recipient.dynasty
+            scope:recipient.liege = scope:actor
+            scope:recipient.top_liege = scope:actor
+        }
 
         scope:recipient.house = {
             has_house_modifier = nfm_cb_modifier_forbidcadetbranches_house

@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.6.2
+### Added
+- Added a **Generalist Family** option to **Elevate a Noble Family**. Generalist families are always Medium or Large, have varied educations, and receive an identifying house modifier with no gameplay bonuses.
+
 ## v1.6.1
 ### Fixed
 - Fixed Cadet Branch Control child requirement checks using the wrong scope to check dominant faith gender

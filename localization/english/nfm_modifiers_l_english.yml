@@ -37,3 +37,7 @@
  nfm_modifier_housetype_foreign: "Adaptive Heritage"
  nfm_modifier_housetype_foreign_desc: "This [nfm_foreign_house|e] knows what it is to be a small part of the realm, so they have the ability to adapt cultures and faiths."
  nfm_modifier_housetype_foreign_tt: "[GetStaticModifier('nfm_modifier_housetype_foreign').GetNameWithTooltip]"
+
+ nfm_modifier_housetype_generalist: "Generalist Family"
+ nfm_modifier_housetype_generalist_desc: "This [nfm_generalist_house|e] was elevated at once. This modifier provides no gameplay bonuses."
+ nfm_modifier_housetype_generalist_tt: "[GetStaticModifier('nfm_modifier_housetype_generalist').GetNameWithTooltip]"

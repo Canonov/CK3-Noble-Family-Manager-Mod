@@ -219,6 +219,20 @@ nfm_decision_elevate_nobles = {
             }
         }
 
+        # Generalist Family
+        item = {
+            value = nfm_house_generalist
+
+            localization = nfm_house_generalist_name
+            current_description = nfm_house_generalist_desc
+
+            icon = "gfx/interface/icons/event_types/type_family.dds"
+
+            ai_chance = {
+                value = 0
+            }
+        }
+
     }
 
     effect = {
@@ -242,29 +256,54 @@ nfm_decision_elevate_nobles = {
 
         ## Choose a House Size
         hidden_effect = {
-            random_list = {
-                20 = {
-                    save_scope_value_as  = {
-                        name = family_size
-                        value = nfm_familysize_small
+            if = {
+                limit = { scope:nfm_house_generalist ?= yes }
+                random_list = {
+                    50 = {
+                        save_scope_value_as = {
+                            name = family_size
+                            value = nfm_familysize_medium
+                        }
+                    }
+                    50 = {
+                        save_scope_value_as = {
+                            name = family_size
+                            value = nfm_familysize_large
+                        }
                     }
                 }
-                60 = {
-                    save_scope_value_as  = {
-                        name = family_size
-                        value = nfm_familysize_medium
+            }
+            else = {
+                random_list = {
+                    20 = {
+                        save_scope_value_as = {
+                            name = family_size
+                            value = nfm_familysize_small
+                        }
                     }
-                }
-                20 = {
-                    save_scope_value_as  = {
-                        name = family_size
-                        value = nfm_familysize_large
+                    60 = {
+                        save_scope_value_as = {
+                            name = family_size
+                            value = nfm_familysize_medium
+                        }
+                    }
+                    20 = {
+                        save_scope_value_as = {
+                            name = family_size
+                            value = nfm_familysize_large
+                        }
                     }
                 }
             }
         }
 
-        custom_tooltip = nfm_decision_elevate_nobles_sizes_tt
+        if = {
+            limit = { scope:nfm_house_generalist ?= yes }
+            custom_tooltip = nfm_decision_elevate_nobles_generalist_sizes_tt
+        }
+        else = {
+            custom_tooltip = nfm_decision_elevate_nobles_sizes_tt
+        }
 
         ## Save the House Type Once
         save_scope_value_as = {
@@ -293,6 +332,9 @@ nfm_decision_elevate_nobles = {
                 }
                 nfm_housetype_foreign = {
                     nfm_effect_create_house_foreign = { EMPLOYER = root }
+                }
+                nfm_housetype_generalist = {
+                    nfm_effect_create_house_generalist = { EMPLOYER = root }
                 }
             }
 
@@ -327,7 +369,13 @@ nfm_decision_elevate_nobles = {
         }
 
         # Will gain modifier tooltip
-        custom_tooltip = nfm_decision_elevate_nobles_modifier_tt
+        if = {
+            limit = { scope:house_type = nfm_housetype_generalist }
+            custom_tooltip = nfm_decision_elevate_nobles_generalist_modifier_tt
+        }
+        else = {
+            custom_tooltip = nfm_decision_elevate_nobles_modifier_tt
+        }
 
         # Tooltip to explain their culture and faith
         if = {

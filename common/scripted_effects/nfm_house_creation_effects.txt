@@ -23,6 +23,9 @@ nfm_effect_add_house_modifier = {
         nfm_housetype_foreign = {
             add_house_modifier = { modifier = nfm_modifier_housetype_foreign }
         }
+        nfm_housetype_generalist = {
+            add_house_modifier = { modifier = nfm_modifier_housetype_generalist }
+        }
     }
 }
 
@@ -102,6 +105,9 @@ nfm_effect_add_fitting_house_aspiration = {
         }
         nfm_housetype_foreign = {
             # None really relate
+        }
+        nfm_housetype_generalist = {
+            # Generalist families have no specialized aspiration.
         }
     }
 }
@@ -428,5 +434,16 @@ nfm_effect_create_house_foreign = {
             name = nfm_origin_county
             value = scope:origin_county
         }
+    }
+}
+
+nfm_effect_create_house_generalist = {
+    nfm_effect_create_house = {
+        EMPLOYER = $EMPLOYER$
+
+        PARENT_TEMPLATE = nfm_character_parent_generalist
+        HEAD_TEMPLATE = nfm_character_familyhead_generalist
+        CHILD_TEMPLATE = nfm_character_child_generalist
+        SIBLING_TEMPLATE = nfm_character_sibling_generalist
     }
 }

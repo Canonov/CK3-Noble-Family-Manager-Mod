@@ -1,0 +1,15 @@
+﻿# House has an nfm type
+# @Scope: DynastyHouse
+nfm_trigger_house_has_nfm_type = {
+    exists = var:nfm_housetype
+}
+
+# Triggers for each house type
+# @Scope: DynastyHouse
+nfm_trigger_house_is_steward = { var:nfm_housetype = nfm_housetype_steward }
+nfm_trigger_house_is_martial = { var:nfm_housetype = nfm_housetype_martial }
+nfm_trigger_house_is_learning = { var:nfm_housetype = nfm_housetype_learning }
+nfm_trigger_house_is_intrigue = { var:nfm_housetype = nfm_housetype_intrigue }
+nfm_trigger_house_is_diplomatic = { var:nfm_housetype = nfm_housetype_diplomatic }
+nfm_trigger_house_is_foreign = { var:nfm_housetype = nfm_housetype_foreign }
+nfm_trigger_house_is_generalist = { var:nfm_housetype = nfm_housetype_generalist }

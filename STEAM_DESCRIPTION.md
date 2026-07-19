@@ -13,9 +13,10 @@ This mod gives administrative (including AuH's governments) rulers tools to crea
   • House of Spies - Intrigue Focus
   • House of Envoys - Diplomacy Focus
   • House of Foreigners - More varied, with a culture of a random county in your realm, they keep their religion if they're not lower than Astray
+  • House of Generalists - More varied, no specific modifiers but is guaranteed to be decently sized.
 
   [H3]Size[/H3]
-  Each family arrives with randomized size (small, medium, or large clans) and if your government has Merit, will gain an amount of Merit and Passed Examinations so they can be appointed right away.
+  Each family arrives with randomized size (small, medium, or large) and if your government has Merit, will gain an amount of Merit and Passed Examinations so they can be appointed right away.
 
   [H3]House Modifiers[/H3]
   Each house type has a house wide modifier applied to it on creation.

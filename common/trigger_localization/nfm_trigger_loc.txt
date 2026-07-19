@@ -4,6 +4,49 @@ nfm_loc_house_must_be_unlanded = {
     third_not = nfm_loc_house_must_be_unlanded_not
 }
 
+nfm_trigger_house_has_nfm_type = {
+    third = nfm_trigger_house_has_nfm_type_third
+    third_not = nfm_trigger_house_has_nfm_type_third_not
+    global = nfm_trigger_house_has_nfm_type_global
+    global_not = nfm_trigger_house_has_nfm_type_global_not
+}
+
+nfm_trigger_house_is_steward = {
+    global = nfm_trigger_house_is_steward
+    global_not = nfm_trigger_house_is_steward_not
+}
+
+nfm_trigger_house_is_martial = {
+    global = nfm_trigger_house_is_martial
+    global_not = nfm_trigger_house_is_martial_not
+}
+
+nfm_trigger_house_is_learning = {
+    global = nfm_trigger_house_is_learning
+    global_not = nfm_trigger_house_is_learning_not
+}
+
+nfm_trigger_house_is_intrigue = {
+    global = nfm_trigger_house_is_intrigue
+    global_not = nfm_trigger_house_is_intrigue_not
+}
+
+nfm_trigger_house_is_diplomatic = {
+    global = nfm_trigger_house_is_diplomatic
+    global_not = nfm_trigger_house_is_diplomatic_not
+}
+
+nfm_trigger_house_is_foreign = {
+    global = nfm_trigger_house_is_foreign
+    global_not = nfm_trigger_house_is_foreign_not
+}
+
+nfm_trigger_house_is_generalist = {
+    global = nfm_trigger_house_is_generalist
+    global_not = nfm_trigger_house_is_generalist_not
+}
+
+
 ## House Dissolution
 nfm_loc_dissolve_house_few_members = {
     third_not = nfm_loc_dissolve_house_few_members_not

@@ -19,6 +19,7 @@
     government_allows = noble_families
 }
 
+
 nfm_trigger_has_authority_for_destruction = {
     # Agot Quick Fallback
     trigger_if = {

@@ -4,12 +4,23 @@
  ## Trigger Loc
  nfm_loc_house_must_be_unlanded: "No member of [house|E] [DYNASTY_HOUSE.GetName] has [land|E] in your [realm|E]"
  nfm_loc_house_must_be_unlanded_not: "A member of [house|E] [DYNASTY_HOUSE.GetName] is [landed|E] in your [realm|E]"
- 
- ## HOUSE TYPE CONCEPT REFERENCES
- nfm_loc_concept_steward: "[nfm_steward_house|E]"
- nfm_loc_concept_martial: "[nfm_martial_house|E]"
- nfm_loc_concept_learning: "[nfm_learning_house|E]"
- nfm_loc_concept_intrigue: "[nfm_intrigue_house|E]"
- nfm_loc_concept_diplomatic: "[nfm_diplomatic_house|E]"
- nfm_loc_concept_foreign: "[nfm_foreign_house|E]"
- 
+
+ nfm_trigger_house_has_nfm_type_third: "[DYNASTY_HOUSE.GetName] has a [nfm_house_type|E]"
+ nfm_trigger_house_has_nfm_type_third_not: "[DYNASTY_HOUSE.GetName] does not have a [nfm_house_type|E]"
+ nfm_trigger_house_has_nfm_type_global: "[house|E] has a [nfm_house_type|E]"
+ nfm_trigger_house_has_nfm_type_global_not: "[house|E] does not have a [nfm_house_type|E]"
+
+ nfm_trigger_house_is_steward: "House is a [nfm_steward_house|E]"
+ nfm_trigger_house_is_steward_not: "House is not a [nfm_steward_house|E]"
+ nfm_trigger_house_is_martial: "House is a [nfm_martial_house|E]"
+ nfm_trigger_house_is_martial_not: "House is not a [nfm_martial_house|E]"
+ nfm_trigger_house_is_learning: "House is a [nfm_learning_house|E]"
+ nfm_trigger_house_is_learning_not: "House is not a [nfm_learning_house|E]"
+ nfm_trigger_house_is_intrigue: "House is an [nfm_intrigue_house|E]"
+ nfm_trigger_house_is_intrigue_not: "House is not an [nfm_intrigue_house|E]"
+ nfm_trigger_house_is_diplomatic: "House is a [nfm_diplomatic_house|E]"
+ nfm_trigger_house_is_diplomatic_not: "House is not a [nfm_diplomatic_house|E]"
+ nfm_trigger_house_is_foreign: "House is a [nfm_foreign_house|E]"
+ nfm_trigger_house_is_foreign_not: "House is not a [nfm_foreign_house|E]"
+ nfm_trigger_house_is_generalist: "House is a [nfm_generalist_house|E]"
+ nfm_trigger_house_is_generalist_not: "House is not a [nfm_generalist_house|E]"

@@ -1,5 +1,4 @@
 ﻿l_english:
-
  ################################
  # GAME CONCEPTS
  ################################
@@ -7,7 +6,6 @@
  ## House Types Concept ##
  game_concept_nfm_house_types: "Noble House Types"
  game_concept_nfm_house_type: "House Type"
- game_concept_nfm_house_types_desc: "Each [noble_family|E] belongs to one of six types, reflecting their area of expertise.\n\nEvery type comes with an associated [modifier|E].\n#weak (For example the [GetStaticModifier('nfm_modifier_housetype_steward').GetNameWithTooltip] modifier of the $game_concept_nfm_steward_house$)#! \n\n#S Available House Types:#!\n$EFFECT_LIST_BULLET$[nfm_steward_house|E]\n$EFFECT_LIST_BULLET$[nfm_martial_house|E]\n$EFFECT_LIST_BULLET$[nfm_learning_house|E]\n$EFFECT_LIST_BULLET$[nfm_intrigue_house|E]\n$EFFECT_LIST_BULLET$[nfm_diplomatic_house|E]\n$EFFECT_LIST_BULLET$[nfm_foreign_house|E]"
  game_concept_nfm_house_types_desc: "Each [noble_family|E] belongs to one of seven types, reflecting their area of expertise or family composition.\n\nEvery type comes with an associated [modifier|E]. The [nfm_generalist_house|E] modifier is purely an identifier and provides no gameplay bonuses.\n#weak (For example the [GetStaticModifier('nfm_modifier_housetype_steward').GetNameWithTooltip] modifier of the $game_concept_nfm_steward_house$)#! \n\nIn addition, members of the [house|E] will be able to be appointed to the [GetCourtPositionType('nfm_court_position_house_head').GetName()] [court_position|E]\n\n#S Available House Types:#!\n$EFFECT_LIST_BULLET$[nfm_steward_house|E]\n$EFFECT_LIST_BULLET$[nfm_martial_house|E]\n$EFFECT_LIST_BULLET$[nfm_learning_house|E]\n$EFFECT_LIST_BULLET$[nfm_intrigue_house|E]\n$EFFECT_LIST_BULLET$[nfm_diplomatic_house|E]\n$EFFECT_LIST_BULLET$[nfm_foreign_house|E]\n$EFFECT_LIST_BULLET$[nfm_generalist_house|E]"
 
  ## Family Sizes Concept ##

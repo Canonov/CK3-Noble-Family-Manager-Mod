@@ -131,7 +131,7 @@ nfm_int_grant_cadet_branch = {
                     limit = {
                         OR = {
                             is_married = yes
-                            faith = { has_doctrine = doctrine_gender_female_dominated }
+                            rite = { rite_has_doctrine = doctrine_gender_female_dominated }
                         }
                     }
                     patrilinear_marriage = yes
@@ -142,7 +142,7 @@ nfm_int_grant_cadet_branch = {
                     limit = {
                         OR = {
                             is_married = yes
-                            faith = { has_doctrine = doctrine_gender_male_dominated }
+                            rite = { rite_has_doctrine = doctrine_gender_male_dominated }
                         }
                     }
                     matrilinear_marriage = yes

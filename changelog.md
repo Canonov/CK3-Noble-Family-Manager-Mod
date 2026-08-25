@@ -1,14 +1,21 @@
 # Changelog
 
+## v1.7.0-1.20
+### Changed
+- Updated Better Noble Family Management for CK3 1.20 & By God Alone.
+
+
 ## v1.6.2
 ### Added
 - Added a **Generalist Family** option to **Elevate a Noble Family**. Generalist families are always Medium or Large, have varied educations, and receive an identifying house modifier with no gameplay bonuses.
+
 
 ## v1.6.1
 ### Fixed
 - Fixed Cadet Branch Control child requirement checks using the wrong scope to check dominant faith gender
 - Fixed the Grant Cadet Branch interaction's dynasty head check to use the recipient's dynasty head properly
 - Fixed Grant Cadet Branch error log spam from previewing the full vanilla cadet branch creation effect.
+
 
 ## v1.6.0
 ### Added

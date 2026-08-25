@@ -271,7 +271,10 @@ nfm_int_revoke_house = {
                         value = scope:actor
                         months = 4
                     }
-                    scope:actor = { save_scope_as = expeller }
+                    scope:actor = {
+                        save_scope_as = puppet_or_actor
+                        save_scope_as = expeller
+                    }
                     trigger_event = {
                         id = ep3_interactions_events.0500
                         days = 1

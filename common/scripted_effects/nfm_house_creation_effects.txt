@@ -197,6 +197,7 @@ nfm_effect_setup_merit_for_member = {
 # @input scope:family_size [value] - Controls family composition (small/medium/large)
 # @input scope:family_culture [value] - Controls family culture, defaults to employer's {optional}
 # @input scope:family_faith [value] - Controls family faith, defaults to employer's {optional}
+# @input scope:family_rite [rite] - Controls family rite, defaults to the employer's matching rite or the selected faith's main rite {optional}
 # @input $EMPLOYER$ - The Character who is employing them.
 # @input $PARENT_TEMPLATE$ - Template for elderly parents (e.g., pool_repopulate_stewardship)
 # @input $HEAD_TEMPLATE$ - Template for family head (e.g., nfm_character_familyhead_stewardship)
@@ -222,6 +223,24 @@ nfm_effect_create_house = {
             save_scope_as = family_faith
         }
     }
+    if = {
+        limit = {
+            NOT = { exists = scope:family_rite }
+        }
+        if = {
+            limit = {
+                scope:family_faith = scope:new_employer.faith
+            }
+            scope:new_employer.rite = {
+                save_scope_as = family_rite
+            }
+        }
+        else = {
+            scope:family_faith.main_rite = {
+                save_scope_as = family_rite
+            }
+        }
+    }
 
     # Generate Parents if it's not a small family
     if = {
@@ -236,6 +255,7 @@ nfm_effect_create_house = {
             age = { 60 95 }
             culture = scope:family_culture
             faith = scope:family_faith
+            rite = scope:family_rite
             employer = scope:new_employer
 
             dynasty = generate
@@ -247,6 +267,7 @@ nfm_effect_create_house = {
             age = { 60 80 }
             culture = scope:family_culture
             faith = scope:family_faith
+            rite = scope:family_rite
             employer = scope:new_employer
 
             dynasty = none
@@ -262,6 +283,7 @@ nfm_effect_create_house = {
             father = scope:head_father
             mother = scope:head_father.primary_spouse
             employer = scope:new_employer
+            rite = scope:family_rite
 
             dynasty = inherit
 
@@ -273,6 +295,7 @@ nfm_effect_create_house = {
         create_character = {
             template = $HEAD_TEMPLATE$
             employer = scope:new_employer
+            rite = scope:family_rite
 
             dynasty = generate
 
@@ -285,6 +308,7 @@ nfm_effect_create_house = {
         template = $HEAD_TEMPLATE$
         age = { 16 18 }
         employer = scope:new_employer
+        rite = scope:family_rite
 
         father = scope:new_house_head
 
@@ -301,6 +325,7 @@ nfm_effect_create_house = {
         create_character = {
             template = $CHILD_TEMPLATE$
             employer = scope:new_employer
+            rite = scope:family_rite
 
             age = { 0 nfm_value_oneyoungerthanheir }
 
@@ -325,6 +350,7 @@ nfm_effect_create_house = {
                 template = $SIBLING_TEMPLATE$
                 age = { 25 nfm_value_new_house_head_age }
                 employer = scope:new_employer
+                rite = scope:family_rite
 
                 # Same parents as the house head
                 father = scope:head_father
@@ -415,6 +441,7 @@ nfm_effect_create_house_foreign = {
                 }
             }
             faith = { save_scope_as = family_faith }
+            rite = { save_scope_as = family_rite }
         }
 
         save_scope_as = origin_county

@@ -52,6 +52,7 @@ nfm_cb_decision_toggledyncadetban = {
 
     is_shown = {
         is_ai = no
+        is_lowborn = no
     }
 
     effect = {

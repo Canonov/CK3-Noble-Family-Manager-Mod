@@ -41,7 +41,7 @@
         }
         # Lifestyle traits (mutually exclusive selection)
         random_list = {
-            40 = { add_trait = scholar }
+            40 = { add_trait = erudite }
             35 = { add_trait = theologian }
             15 = { add_trait = whole_of_body }
             10 = { }
@@ -106,7 +106,7 @@ nfm_character_sibling_learning = {
             }
             random_list = {
                 70 = { }
-                15 = { add_trait = scholar }
+                15 = { add_trait = erudite }
                 10 = { add_trait = theologian }
                 5 = { add_trait = whole_of_body }
             }

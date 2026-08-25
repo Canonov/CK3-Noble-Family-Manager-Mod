@@ -76,12 +76,12 @@ nfm_int_grant_house = {
                 text = is_not_theocratic_court_chaplain
                 subject = scope:recipient
                 NAND = {
-                    scope:actor.faith = {
-                        has_doctrine = doctrine_theocracy_temporal
+                    scope:actor.rite = {
+                        rite_has_doctrine = doctrine_theocracy_temporal
                     }
                     scope:recipient = {
-                        faith = {
-                            has_doctrine = doctrine_theocracy_temporal
+                        rite = {
+                            rite_has_doctrine = doctrine_theocracy_temporal
                         }
                         has_council_position = councillor_court_chaplain
                     }

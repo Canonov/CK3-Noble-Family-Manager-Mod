@@ -6,7 +6,7 @@ on_government_change = {
 # On Government Change - Add Recently Founded Administration flag to decrease cooldowns
 nfm_on_government_change = {
     trigger = {
-        government_allows = administrative
+        government_has_mechanic = administrative
     }
 
     effect = {

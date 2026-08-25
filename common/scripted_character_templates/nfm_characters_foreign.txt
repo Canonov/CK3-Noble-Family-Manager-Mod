@@ -92,7 +92,7 @@
             3 = { add_trait = avaricious }
             2 = { add_trait = architect }
             # Learning
-            5 = { add_trait = scholar }
+            5 = { add_trait = erudite }
             3 = { add_trait = theologian }
             2 = { add_trait = whole_of_body }
             # Intrigue
@@ -273,7 +273,7 @@ nfm_character_sibling_foreign = {
             2 = { add_trait = avaricious }
             1 = { add_trait = architect }
             # Learning
-            3 = { add_trait = scholar }
+            3 = { add_trait = erudite }
             2 = { add_trait = theologian }
             1 = { add_trait = whole_of_body }
             # Intrigue

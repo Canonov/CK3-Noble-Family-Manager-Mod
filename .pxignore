@@ -1,0 +1,10 @@
+README.md
+TESTING.md
+AGENTS.md
+TODOS.md
+STEAM_DESCRIPTION.md
+
+.git/
+.pxignore
+.editorconfig
+vanilla_references/

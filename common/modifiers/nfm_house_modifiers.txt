@@ -24,7 +24,7 @@ nfm_modifier_housetype_martial = {
     martial = 2
     prowess = 3
     levy_size = 0.05
-    monthly_county_control_growth_factor = 0.1
+    monthly_county_control_growth_add = 0.1
 }
 
 # Learning House

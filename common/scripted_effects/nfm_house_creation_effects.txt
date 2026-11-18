@@ -304,17 +304,35 @@ nfm_effect_create_house = {
     }
 
     # Generate an Adult Heir (aged 16-18) as the primary successor
-    create_character = {
-        template = $HEAD_TEMPLATE$
-        age = { 16 18 }
-        employer = scope:new_employer
-        rite = scope:family_rite
+    # House head may be female (faith dominant gender)
+    if = {
+        limit = { scope:new_house_head ?= { is_female = no } }
+        create_character = {
+            template = $HEAD_TEMPLATE$
+            age = { 16 18 }
+            employer = scope:new_employer
+            rite = scope:family_rite
 
-        father = scope:new_house_head
+            father = scope:new_house_head
 
-        dynasty = inherit
+            dynasty = inherit
 
-        save_scope_as = new_house_head_heir
+            save_scope_as = new_house_head_heir
+        }
+    }
+    else = {
+        create_character = {
+            template = $HEAD_TEMPLATE$
+            age = { 16 18 }
+            employer = scope:new_employer
+            rite = scope:family_rite
+
+            mother = scope:new_house_head
+
+            dynasty = inherit
+
+            save_scope_as = new_house_head_heir
+        }
     }
 
     # Generate additional children (younger than the heir)
@@ -322,16 +340,33 @@ nfm_effect_create_house = {
     while = {
         count = nfm_familysize_headchildcount
 
-        create_character = {
-            template = $CHILD_TEMPLATE$
-            employer = scope:new_employer
-            rite = scope:family_rite
+        # House head may be female (faith dominant gender)
+        if = {
+            limit = { scope:new_house_head ?= { is_female = no } }
+            create_character = {
+                template = $CHILD_TEMPLATE$
+                employer = scope:new_employer
+                rite = scope:family_rite
 
-            age = { 0 nfm_value_oneyoungerthanheir }
+                age = { 0 nfm_value_oneyoungerthanheir }
 
-            father = scope:new_house_head
+                father = scope:new_house_head
 
-            dynasty = inherit
+                dynasty = inherit
+            }
+        }
+        else = {
+            create_character = {
+                template = $CHILD_TEMPLATE$
+                employer = scope:new_employer
+                rite = scope:family_rite
+
+                age = { 0 nfm_value_oneyoungerthanheir }
+
+                mother = scope:new_house_head
+
+                dynasty = inherit
+            }
         }
     }
 

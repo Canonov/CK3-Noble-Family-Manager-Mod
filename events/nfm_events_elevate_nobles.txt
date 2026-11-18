@@ -93,12 +93,19 @@ nfm_events_elevate_nobles.1 = {
 
                 hidden_effect = {
                     if = {
-                        limit = { root = { government_allows = noble_families }}
+                        limit = {
+                            root = { government_allows = noble_families }
+                            NOT = { employer ?= scope:new_house_head }
+                        }
                         set_employer = scope:new_house_head
                     }
-                    else = {
+                    else_if = {
+                        limit = {
+                            NOT = { root = { government_allows = noble_families } }
+                            NOT = { employer ?= root }
+                        }
                         set_employer = root
-                    }  
+                    }
                 }
 
                 # Set up Merit and Examinations

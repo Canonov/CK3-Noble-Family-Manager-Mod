@@ -4,6 +4,11 @@
 ### Changed
 - Updated for CK3 1.21
 - Celestial, Meritocratic, Japanese, Steppe Administrative and Republic rulers (governments with county-tier noble families) can now elevate, grant and recruit noble families from Duke tier instead of King.
+### Fixed
+- Families elevated, granted or recruited by a Republic no longer become Feudal after swearing fealty; landless patricians keep the Republic government.
+- Fixed elevated families failing to generate the heir and children when the generated house head is female.
+- Fixed set_employer errors when elevated family members were already in the new house head's court.
+- Martial house modifier: replaced the removed 1.21 modifier monthly_county_control_growth_factor with monthly_county_control_growth_add.
 
 
 ## v1.7.0-1.20

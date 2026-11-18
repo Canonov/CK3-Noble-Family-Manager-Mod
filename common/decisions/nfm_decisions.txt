@@ -80,9 +80,15 @@ nfm_decision_elevate_nobles = {
         # for now, maybe
         is_ai = no
 
-        # Must be at least a King
+        # Must be at least a King (Duke for county-tier noble family governments)
         is_landed = yes
-        highest_held_title_tier >= tier_kingdom
+        trigger_if = {
+            limit = { nfm_trigger_has_county_tier_noble_families = yes }
+            highest_held_title_tier >= tier_duchy
+        }
+        trigger_else = {
+            highest_held_title_tier >= tier_kingdom
+        }
     }
 
     is_valid_showing_failures_only = {

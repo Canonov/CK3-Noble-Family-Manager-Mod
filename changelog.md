@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.7.1-1.21
+### Changed
+- Updated for CK3 1.21
+- Celestial, Meritocratic, Japanese, Steppe Administrative and Republic rulers (governments with county-tier noble families) can now elevate, grant and recruit noble families from Duke tier instead of King.
+
+
 ## v1.7.0-1.20
 ### Changed
 - Updated Better Noble Family Management for CK3 1.20 & By God Alone.

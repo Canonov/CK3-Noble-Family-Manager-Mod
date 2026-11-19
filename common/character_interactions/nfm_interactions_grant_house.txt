@@ -112,7 +112,14 @@ nfm_int_grant_house = {
                 text = nfm_int_grant_house_costs_tt
                 # Todo update these to use the same cost calculation the grant house will
                 add_prestige = 250
-                change_influence = 150
+                # Non-influence governments (e.g. republics) get prestige instead
+                if = {
+                    limit = { government_has_flag = government_has_influence }
+                    change_influence = 150
+                }
+                else = {
+                    add_prestige = 150
+                }
                 add_gold = 50
             }
 
@@ -179,27 +186,8 @@ nfm_int_grant_house = {
     }
 
     cost = {
-        # TODO Extract these to script values 
+        prestige = { value = nfm_value_grant_house_prestige_cost }
 
-        prestige = {
-            value = 250
-
-            # Vassals pay double
-            if = {
-                limit = { scope:actor = { is_independent_ruler = no } }
-                multiply = 2
-            }
-            # Same Dynasty Discount
-            if = {
-                limit = { scope:actor.dynasty ?= scope:recipient.dynasty }
-                multiply = 0.5
-            }
-            # Debug Negation
-            if = {
-                limit = { scope:actor = { has_variable = nfm_debug_enabled } }
-                value = 0
-            }
-        }
         gold = {
             value = 75
 
@@ -234,26 +222,7 @@ nfm_int_grant_house = {
             }
         }
 
-        influence = {
-            value = 125
-
-            # Vassals pay double
-            if = {
-                limit = { scope:actor = { is_independent_ruler = no } }
-                multiply = 2
-            }
-            # Same Dynasty Discount
-            if = {
-                limit = { scope:actor.dynasty ?= scope:recipient.dynasty }
-                multiply = 0.5
-            }
-            # Debug Negation
-            if = {
-                limit = { scope:actor = { has_variable = nfm_debug_enabled } }
-                value = 0
-            }
-            
-        }
+        influence = { value = nfm_value_grant_house_influence_cost }
 
     }
 }

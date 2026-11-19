@@ -506,3 +506,60 @@ nfm_value_domicileworth_vanilla = {
     }
 
 }
+
+# Grant House: base influence cost (before government check)
+nfm_value_grant_house_influence_base = {
+    value = 125
+
+    # Vassals pay double
+    if = {
+        limit = { scope:actor = { is_independent_ruler = no } }
+        multiply = 2
+    }
+    # Same Dynasty Discount
+    if = {
+        limit = { scope:actor.dynasty ?= scope:recipient.dynasty }
+        multiply = 0.5
+    }
+    # Debug Negation
+    if = {
+        limit = { scope:actor = { has_variable = nfm_debug_enabled } }
+        value = 0
+    }
+}
+
+# Grant House: influence cost, only for governments that use influence
+nfm_value_grant_house_influence_cost = {
+    value = 0
+
+    if = {
+        limit = { scope:actor = { government_has_flag = government_has_influence } }
+        value = nfm_value_grant_house_influence_base
+    }
+}
+
+# Grant House: prestige cost; non-influence governments (e.g. republics) pay the influence cost as prestige
+nfm_value_grant_house_prestige_cost = {
+    value = 250
+
+    # Vassals pay double
+    if = {
+        limit = { scope:actor = { is_independent_ruler = no } }
+        multiply = 2
+    }
+    # Same Dynasty Discount
+    if = {
+        limit = { scope:actor.dynasty ?= scope:recipient.dynasty }
+        multiply = 0.5
+    }
+    # Influence replacement
+    if = {
+        limit = { scope:actor = { NOT = { government_has_flag = government_has_influence } } }
+        add = nfm_value_grant_house_influence_base
+    }
+    # Debug Negation
+    if = {
+        limit = { scope:actor = { has_variable = nfm_debug_enabled } }
+        value = 0
+    }
+}
